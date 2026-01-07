@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMR Segmentation QC - Web App</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: #000;
+        }
+
+        #main-container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            gap: 0;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .panel {
+            width: calc(100vh);
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 2px solid #333;
+        }
+
+        #left-panel {
+            background: #1a1a1a;
+            overflow: hidden;
+        }
+
+        #middle-panel {
+            background: #1a1a1a;
+        }
+
+        #right-panel {
+            background: #1a1a1a;
+            border-right: none;
+            overflow: hidden;
+        }
+
+        .placeholder-img {
+            max-width: 98%;
+            max-height: 98%;
+            object-fit: contain;
+        }
+
+        #seg-slice-img {
+            transform: scale(1.7);
+            image-rendering: pixelated;
+        }
+
+        #container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .panel-title {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 100;
+        }
+
+        .overlay-control {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .overlay-control input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .overlay-control:hover {
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+        #mri-canvas {
+            max-width: 98%;
+            max-height: 98%;
+            object-fit: contain;
+            image-rendering: pixelated;
+        }
+
+        #info {
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 100;
+        }
+
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 100;
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+
+        #floating-qc-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(30, 30, 30, 0.95);
+            border: 2px solid #444;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            min-width: 400px;
+        }
+
+        #panel-header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 12px 15px;
+            border-radius: 8px 8px 0 0;
+            cursor: move;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #555;
+        }
+
+        #panel-title {
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #drag-icon {
+            color: #888;
+            font-size: 16px;
+        }
+
+        #qc-buttons {
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+        }
+
+        #comments-section {
+            padding: 0 20px 10px 20px;
+        }
+
+        #comments-label {
+            color: #ccc;
+            font-size: 12px;
+            margin-bottom: 5px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #patient-comments {
+            width: 100%;
+            min-height: 80px;
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background: #2a2a2a;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        #patient-comments:focus {
+            outline: none;
+            border-color: #6c757d;
+        }
+
+        #save-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+        }
+
+        #save-btn:hover {
+            background: linear-gradient(135deg, #0069d9, #004085);
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .qc-checkbox-section {
+            padding: 0 20px 10px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .qc-checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .qc-checkbox-item:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .qc-checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #28a745;
+        }
+
+        .qc-checkbox-item.reject input[type="checkbox"] {
+            accent-color: #dc3545;
+        }
+
+        .qc-checkbox-item label {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            flex: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .qc-checkbox-label {
+            color: #ccc;
+            font-size: 12px;
+            margin-bottom: 8px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0 20px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            flex: 1;
+            background: linear-gradient(135deg, #495057, #343a40);
+            padding: 12px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #5a6268, #3d4449);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #lab-logo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0.5;
+            z-index: 150;
+            pointer-events: none;
+        }
+
+        #lab-logo:hover {
+            opacity: 0.8;
+        }
+
+        .slider-section {
+            padding: 0 20px 10px 20px;
+        }
+
+        .slider-label {
+            color: #ccc;
+            font-size: 12px;
+            margin-bottom: 8px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #transparency-slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: #555;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        #transparency-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #transparency-slider::-webkit-slider-thumb:hover {
+            background: #0056b3;
+        }
+
+        #transparency-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s ease;
+        }
+
+        #transparency-slider::-moz-range-thumb:hover {
+            background: #0056b3;
+        }
+
+        #transparency-value {
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: right;
+        }
+
+        .qc-button {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #accept-btn {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+        }
+
+        #accept-btn:hover {
+            background: linear-gradient(135deg, #218838, #1aa179);
+            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.4);
+            transform: translateY(-2px);
+        }
+
+        #reject-btn {
+            background: linear-gradient(135deg, #dc3545, #ff6b6b);
+            color: white;
+        }
+
+        #reject-btn:hover {
+            background: linear-gradient(135deg, #c82333, #ee5a52);
+            box-shadow: 0 6px 12px rgba(220, 53, 69, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .qc-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #status-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            z-index: 300;
+            display: none;
+            animation: fadeInOut 2s ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+            10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            90% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+        }
+
+        .status-accepted {
+            background: #28a745;
+            color: white;
+        }
+
+        .status-rejected {
+            background: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-container">
+        <!-- Left Panel -->
+        <div id="left-panel" class="panel">
+            <div class="panel-title">Short Axis View - Slice <span id="slice-number">1</span>/<span id="total-slices">0</span></div>
+            <canvas id="mri-canvas"></canvas>
+            <div class="overlay-control">
+                <input type="checkbox" id="overlay-checkbox">
+                <label for="overlay-checkbox">Show Overlay</label>
+            </div>
+        </div>
+
+        <!-- Middle Panel (3D Visualization) -->
+        <div id="middle-panel" class="panel">
+            <div class="panel-title">3D Visualization</div>
+            <div id="container"></div>
+            <div id="info">
+                <h1>Controls</h1>
+                Left click + drag: Rotate<br>
+                Right click + drag: Pan<br>
+                Scroll: Zoom in/out<br>
+                <div id="stats"></div>
+            </div>
+            <div id="loading">Loading CMR segmentation...</div>
+        </div>
+
+        <!-- Right Panel -->
+        <div id="right-panel" class="panel">
+            <div class="panel-title">Segmentation - Slice <span id="seg-slice-number">1</span>/<span id="seg-total-slices">0</span></div>
+            <img id="seg-slice-img" alt="Segmentation Slice" class="placeholder-img" style="image-rendering: pixelated;">
+        </div>
+    </div>
+
+    <!-- Status Message -->
+    <div id="status-message"></div>
+
+    <!-- Lab Logo -->
+    <img id="lab-logo" src="https://images.squarespace-cdn.com/content/v1/611bce9f0ec5ff43949b98ea/068036ac-5a6f-4da8-869f-520764bdaaaa/still_v023_frame_0103_photoshop_layer_logo_LMS.png?format=1500w" alt="Lab Logo">
+
+    <!-- Floating QC Panel -->
+    <div id="floating-qc-panel">
+        <div id="panel-header">
+            <span id="panel-title">Control Panel</span>
+            <span id="drag-icon">⋮⋮</span>
+        </div>
+        <div id="comments-section">
+            <label id="comments-label" for="patient-comments">Patient Comments</label>
+            <textarea id="patient-comments" placeholder="Enter comments here..."></textarea>
+        </div>
+        <div class="slider-section">
+            <label class="slider-label" for="transparency-slider">Overlay Transparency</label>
+            <div class="slider-container">
+                <input type="range" id="transparency-slider" min="0" max="100" value="50">
+                <span id="transparency-value">50%</span>
+            </div>
+        </div>
+        <label class="qc-checkbox-label">QC Decision</label>
+        <div class="qc-checkbox-section">
+            <div class="qc-checkbox-item accept">
+                <input type="checkbox" id="accept-checkbox">
+                <label for="accept-checkbox">✓ Accept</label>
+            </div>
+            <div class="qc-checkbox-item reject">
+                <input type="checkbox" id="reject-checkbox">
+                <label for="reject-checkbox">✗ Reject</label>
+            </div>
+        </div>
+        <div id="qc-buttons">
+            <div class="navigation-buttons">
+                <button id="prev-btn" class="nav-btn">⏪</button>
+                <button id="next-btn" class="nav-btn">⏩</button>
+            </div>
+            <button id="play-pause-btn" class="qc-button" style="background: linear-gradient(135deg, #6c757d, #495057);">▶ Play Slices</button>
+            <button id="save-btn" class="qc-button">💾 Save</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        // MRI slice data from Flask
+        const MRI_SLICES = {{ mri_slices|safe }};
+        const SEG_SLICES = {{ seg_slices|safe }};
+
+        // Segmentation data from Flask
+        const SEG_COORDS = {{ seg_coords|safe }};
+        const SEG_LABELS = {{ seg_labels|safe }};
+        const SEG_SHAPE = {{ seg_shape }};
+        const SEG_SPACING = {{ seg_spacing }};
+
+        // MRI slice playback variables
+        let currentSliceIndex = 0;
+        let isPlaying = false;
+        let playbackInterval = null;
+        const playbackFPS = 5; // 5 frames per second
+        let showOverlay = false;
+        let overlayTransparency = 0.5; // Default 50% transparency
+
+        // Canvas and images for overlay
+        const mriCanvas = document.getElementById('mri-canvas');
+        const mriCtx = mriCanvas.getContext('2d');
+        const mriImages = [];
+        const segImages = [];
+
+        let scene, camera, renderer, points, controls;
+        const container = document.getElementById('container');
+        const loadingDiv = document.getElementById('loading');
+
+        // Initialize Three.js scene
+        function init() {
+            // Scene
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x0a0a0a);
+
+            // Get middle panel dimensions
+            const middlePanel = document.getElementById('middle-panel');
+            const width = middlePanel.clientWidth;
+            const height = middlePanel.clientHeight;
+
+            // Camera
+            camera = new THREE.PerspectiveCamera(
+                75,
+                width / height,
+                0.1,
+                2000
+            );
+            camera.position.set(300, 300, 300);
+            camera.lookAt(128, 128, 128);
+
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(width, height);
+            container.appendChild(renderer.domElement);
+
+            // Add lights for medical visualization
+            // Ambient light for overall visibility
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+            scene.add(ambientLight);
+
+            // Key light - main directional light from top-front
+            const keyLight = new THREE.DirectionalLight(0xffffff, 0.5);
+            keyLight.position.set(200, 300, 200);
+            scene.add(keyLight);
+
+            // Fill light - softer light from opposite side
+            const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+            fillLight.position.set(-200, 100, -100);
+            scene.add(fillLight);
+
+            // Back light - for edge definition
+            const backLight = new THREE.DirectionalLight(0xffffff, 0.25);
+            backLight.position.set(0, 100, -300);
+            scene.add(backLight);
+
+            // Bottom light - reduce shadows from below
+            const bottomLight = new THREE.DirectionalLight(0xffffff, 0.15);
+            bottomLight.position.set(0, -200, 100);
+            scene.add(bottomLight);
+
+            // Hemisphere light for natural ambient
+            const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.2);
+            scene.add(hemiLight);
+
+            // Add OrbitControls
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.screenSpacePanning = false;
+            controls.minDistance = 100;
+            controls.maxDistance = 1000;
+            controls.maxPolarAngle = Math.PI;
+
+            // Load ball data
+            loadBallData();
+
+            // Handle window resize
+            window.addEventListener('resize', onWindowResize, false);
+        }
+
+        // Load segmentation data
+        function loadBallData() {
+            loadingDiv.innerHTML = 'Loading CMR segmentation...';
+
+            console.log('Loaded segmentation with', SEG_COORDS.length, 'voxels');
+            console.log('Segmentation shape:', SEG_SHAPE);
+
+            // Use the segmentation coordinates directly
+            createPointCloud(SEG_COORDS, SEG_LABELS);
+
+            loadingDiv.style.display = 'none';
+            document.getElementById('stats').innerHTML =
+                `<br><strong>Statistics:</strong><br>` +
+                `Voxels: ${SEG_COORDS.length.toLocaleString()}<br>` +
+                `Dimensions: ${SEG_SHAPE[0]} × ${SEG_SHAPE[1]} × ${SEG_SHAPE[2]}<br>` +
+                `Spacing: ${SEG_SPACING[0].toFixed(2)} × ${SEG_SPACING[1].toFixed(2)} × ${SEG_SPACING[2].toFixed(2)} mm<br>` +
+                `Labels: ${new Set(SEG_LABELS).size}`;
+        }
+
+        // Create instanced mesh from coordinates with color-coded labels
+        function createPointCloud(coordinates, labels) {
+            // Color map for different cardiac structures
+            const labelColors = {
+                1: 0xff0000,  // Red - Left Ventricle
+                2: 0x00ff00,  // Green - Right Ventricle
+                3: 0x0088ff   // Blue - Myocardium
+            };
+
+            // Calculate center of the segmentation in voxel space
+            const centerX = SEG_SHAPE[0] / 2;
+            const centerY = SEG_SHAPE[1] / 2;
+            const centerZ = SEG_SHAPE[2] / 2;
+
+            // Voxel spacing for proper aspect ratio
+            const spacingX = SEG_SPACING[0];
+            const spacingY = SEG_SPACING[1];
+            const spacingZ = SEG_SPACING[2];
+
+            console.log('Voxel spacing:', spacingX, spacingY, spacingZ);
+
+            // Create box geometry with spacing applied
+            const boxGeometry = new THREE.BoxGeometry(spacingX, spacingY, spacingZ);
+
+            // Create separate meshes for each label
+            const labelGroups = {};
+            labels.forEach((label, i) => {
+                if (!labelGroups[label]) {
+                    labelGroups[label] = [];
+                }
+                labelGroups[label].push(coordinates[i]);
+            });
+
+            // Create instanced mesh for each label
+            Object.keys(labelGroups).forEach(label => {
+                const coords = labelGroups[label];
+                const color = labelColors[label] || 0xffffff;
+
+                const material = new THREE.MeshPhongMaterial({
+                    color: color,
+                    shininess: 30,
+                    specular: 0x333333,
+                    emissive: color,
+                    emissiveIntensity: 0.05,
+                    flatShading: false
+                });
+
+                const instancedMesh = new THREE.InstancedMesh(boxGeometry, material, coords.length);
+                const matrix = new THREE.Matrix4();
+
+                for (let i = 0; i < coords.length; i++) {
+                    // Apply spacing to positions for correct physical dimensions
+                    matrix.setPosition(
+                        (coords[i][0] - centerX) * spacingX,
+                        (coords[i][1] - centerY) * spacingY,
+                        (coords[i][2] - centerZ) * spacingZ
+                    );
+                    instancedMesh.setMatrixAt(i, matrix);
+                }
+
+                instancedMesh.instanceMatrix.needsUpdate = true;
+                scene.add(instancedMesh);
+            });
+
+            // Start animation
+            animate();
+        }
+
+        // Handle window resize
+        function onWindowResize() {
+            const middlePanel = document.getElementById('middle-panel');
+            const width = middlePanel.clientWidth;
+            const height = middlePanel.clientHeight;
+
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        }
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        // QC Button functionality
+        function showStatus(message, isAccepted) {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.textContent = message;
+            statusDiv.className = isAccepted ? 'status-accepted' : 'status-rejected';
+            statusDiv.style.display = 'block';
+
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 2000);
+        }
+
+        // QC Checkbox handlers - mutually exclusive
+        document.getElementById('accept-checkbox').addEventListener('change', function(e) {
+            if (e.target.checked) {
+                document.getElementById('reject-checkbox').checked = false;
+                console.log('QC Status: ACCEPTED');
+                showStatus('✓ Segmentation Accepted', true);
+            } else {
+                console.log('QC Status: Cleared');
+            }
+        });
+
+        document.getElementById('reject-checkbox').addEventListener('change', function(e) {
+            if (e.target.checked) {
+                document.getElementById('accept-checkbox').checked = false;
+                console.log('QC Status: REJECTED');
+                showStatus('✗ Segmentation Rejected', false);
+            } else {
+                console.log('QC Status: Cleared');
+            }
+        });
+
+        document.getElementById('save-btn').addEventListener('click', function() {
+            const comments = document.getElementById('patient-comments').value;
+            const accepted = document.getElementById('accept-checkbox').checked;
+            const rejected = document.getElementById('reject-checkbox').checked;
+
+            let qcDecision = 'none';
+            if (accepted) qcDecision = 'accepted';
+            if (rejected) qcDecision = 'rejected';
+
+            console.log('Saving QC data...');
+            console.log('QC Decision:', qcDecision);
+            console.log('Comments:', comments);
+
+            // Show save confirmation
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.textContent = '💾 Data Saved Successfully';
+            statusDiv.className = '';
+            statusDiv.style.background = '#007bff';
+            statusDiv.style.color = 'white';
+            statusDiv.style.display = 'block';
+
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 2000);
+
+            // Here you can add code to send data to backend
+            // For example:
+            // fetch('/save_qc', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({
+            //         qc_decision: qcDecision,
+            //         comments: comments
+            //     })
+            // });
+        });
+
+        // Preload all images
+        function preloadImages() {
+            return new Promise((resolve, reject) => {
+                let loadedCount = 0;
+                const totalImages = MRI_SLICES.length + SEG_SLICES.length;
+
+                if (totalImages === 0) {
+                    resolve();
+                    return;
+                }
+
+                // Load MRI images
+                MRI_SLICES.forEach((src, index) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        loadedCount++;
+                        if (loadedCount === totalImages) resolve();
+                    };
+                    img.onerror = reject;
+                    img.src = src;
+                    mriImages[index] = img;
+                });
+
+                // Load segmentation images
+                SEG_SLICES.forEach((src, index) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        loadedCount++;
+                        if (loadedCount === totalImages) resolve();
+                    };
+                    img.onerror = reject;
+                    img.src = src;
+                    segImages[index] = img;
+                });
+            });
+        }
+
+        // Draw slice on canvas with optional overlay
+        function drawSliceOnCanvas(index) {
+            if (mriImages.length === 0) return;
+
+            const mriImg = mriImages[index];
+            const scale = 1.7; // Scale factor
+
+            // Set canvas size to match scaled image
+            mriCanvas.width = mriImg.width * scale;
+            mriCanvas.height = mriImg.height * scale;
+
+            // Clear canvas
+            mriCtx.clearRect(0, 0, mriCanvas.width, mriCanvas.height);
+
+            // Draw MRI image scaled up
+            mriCtx.drawImage(mriImg, 0, 0, mriCanvas.width, mriCanvas.height);
+
+            // If overlay is enabled and segmentation exists, draw it with transparency
+            if (showOverlay && segImages.length > 0) {
+                mriCtx.globalAlpha = overlayTransparency;
+                mriCtx.drawImage(segImages[index], 0, 0, mriCanvas.width, mriCanvas.height);
+                mriCtx.globalAlpha = 1.0; // Reset alpha
+            }
+        }
+
+        // MRI Slice Display Functions
+        function displaySlice(index) {
+            if (MRI_SLICES.length === 0) return;
+
+            // Update MRI slice with canvas
+            const sliceNumberSpan = document.getElementById('slice-number');
+            const totalSlicesSpan = document.getElementById('total-slices');
+            sliceNumberSpan.textContent = index + 1;
+            totalSlicesSpan.textContent = MRI_SLICES.length;
+
+            // Draw on canvas
+            drawSliceOnCanvas(index);
+
+            // Update segmentation slice in right panel
+            if (SEG_SLICES.length > 0) {
+                const segImg = document.getElementById('seg-slice-img');
+                const segSliceNumberSpan = document.getElementById('seg-slice-number');
+                const segTotalSlicesSpan = document.getElementById('seg-total-slices');
+                segImg.src = SEG_SLICES[index];
+                segSliceNumberSpan.textContent = index + 1;
+                segTotalSlicesSpan.textContent = SEG_SLICES.length;
+            }
+
+            currentSliceIndex = index;
+        }
+
+        function nextSlice() {
+            currentSliceIndex = (currentSliceIndex + 1) % MRI_SLICES.length;
+            displaySlice(currentSliceIndex);
+        }
+
+        function prevSlice() {
+            currentSliceIndex = (currentSliceIndex - 1 + MRI_SLICES.length) % MRI_SLICES.length;
+            displaySlice(currentSliceIndex);
+        }
+
+        function goToNextSlice() {
+            nextSlice();
+        }
+
+        function goToPrevSlice() {
+            prevSlice();
+        }
+
+        function togglePlayPause() {
+            const playPauseBtn = document.getElementById('play-pause-btn');
+
+            if (isPlaying) {
+                // Stop playback
+                isPlaying = false;
+                clearInterval(playbackInterval);
+                playbackInterval = null;
+                playPauseBtn.textContent = '▶ Play Slices';
+                playPauseBtn.style.background = 'linear-gradient(135deg, #6c757d, #495057)';
+            } else {
+                // Start playback
+                isPlaying = true;
+                playbackInterval = setInterval(nextSlice, 1000 / playbackFPS);
+                playPauseBtn.textContent = '⏸ Pause';
+                playPauseBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+            }
+        }
+
+        // Play/Pause button handler
+        document.getElementById('play-pause-btn').addEventListener('click', togglePlayPause);
+
+        // Navigation button handlers
+        document.getElementById('prev-btn').addEventListener('click', goToPrevSlice);
+        document.getElementById('next-btn').addEventListener('click', goToNextSlice);
+
+        // Overlay checkbox handler
+        document.getElementById('overlay-checkbox').addEventListener('change', function(e) {
+            showOverlay = e.target.checked;
+            drawSliceOnCanvas(currentSliceIndex);
+            console.log('Overlay:', showOverlay ? 'ON' : 'OFF');
+        });
+
+        // Transparency slider handler
+        document.getElementById('transparency-slider').addEventListener('input', function(e) {
+            const value = parseInt(e.target.value);
+            overlayTransparency = value / 100;
+            document.getElementById('transparency-value').textContent = value + '%';
+            drawSliceOnCanvas(currentSliceIndex);
+        });
+
+        // Initialize MRI and segmentation slice display
+        async function initializeSlices() {
+            if (MRI_SLICES.length > 0) {
+                console.log(`Loading ${MRI_SLICES.length} MRI slices...`);
+                await preloadImages();
+                console.log('All images loaded');
+                displaySlice(0);
+            }
+            if (SEG_SLICES.length > 0) {
+                console.log(`Loaded ${SEG_SLICES.length} segmentation slices`);
+            }
+        }
+
+        initializeSlices();
+
+        // Draggable floating panel
+        const floatingPanel = document.getElementById('floating-qc-panel');
+        const panelHeader = document.getElementById('panel-header');
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        panelHeader.addEventListener('mousedown', dragStart);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', dragEnd);
+
+        function dragStart(e) {
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+
+            if (e.target === panelHeader || e.target.id === 'panel-title' || e.target.id === 'drag-icon') {
+                isDragging = true;
+            }
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                setTranslate(currentX, currentY, floatingPanel);
+            }
+        }
+
+        function dragEnd(e) {
+            initialX = currentX;
+            initialY = currentY;
+            isDragging = false;
+        }
+
+        function setTranslate(xPos, yPos, el) {
+            el.style.transform = `translate(${xPos}px, ${yPos}px)`;
+        }
+
+        // Start
+        init();
+    </script>
+</body>
+</html>

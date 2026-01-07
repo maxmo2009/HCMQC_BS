@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(move ball_data.json staticball_data.json)",
+      "Bash(copy ball_data.json staticball_data.json)",
+      "Bash(pip install:*)",
+      "Bash(timeout 3 bash:*)",
+      "Bash(ls:*)",
+      "Bash(dir:*)",
+      "Bash(timeout 5 bash:*)",
+      "Bash(curl:*)",
+      "Bash(taskkill:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
