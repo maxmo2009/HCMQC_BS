@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request, session, send_file
 import os
 import nibabel as nib
 import numpy as np
@@ -8,11 +8,41 @@ from io import BytesIO
 from PIL import Image
 
 app = Flask(__name__)
+app.secret_key = 'cmr_qc_secret_key_12345'  # Required for session management
 
-# Load MRI slices
-def load_mri_slices():
+# Base path to prepend to patient paths
+BASE_PATH = '/mnt/storage/home/ym1413'
+
+# Global variables
+PATIENT_LIST = []
+PATIENT_DATA = {}
+
+def load_patient_database():
+    """Load patient database from QC_logs.json"""
+    json_path = os.path.join(os.path.dirname(__file__), 'JSON', 'QC_logs.json')
+
+    with open(json_path, 'r') as f:
+        data = json.load(f)
+
+    # Get list of patient paths
+    patient_paths = list(data.keys())
+
+    print(f"Loaded {len(patient_paths)} patients from QC_logs.json")
+
+    return patient_paths, data
+
+# Load patient database at startup
+PATIENT_LIST, PATIENT_DATA = load_patient_database()
+
+def load_mri_slices(patient_path, phase='ED'):
     """Load MRI volume and extract slices as base64 encoded images"""
-    mri_img = nib.load('tempCMR/lvsa_SR_ED.nii.gz')
+    mri_path = os.path.join(BASE_PATH + patient_path, f'lvsa_SR_{phase}.nii.gz')
+
+    if not os.path.exists(mri_path):
+        print(f"MRI file not found: {mri_path}")
+        return []
+
+    mri_img = nib.load(mri_path)
     mri_data = mri_img.get_fdata()
 
     print(f"MRI shape: {mri_data.shape}")
@@ -44,10 +74,15 @@ def load_mri_slices():
     print(f"Extracted {len(slices_base64)} MRI slices")
     return slices_base64
 
-# Load segmentation slices
-def load_segmentation_slices():
+def load_segmentation_slices(patient_path, phase='ED'):
     """Load segmentation volume and extract slices as base64 encoded images with color coding"""
-    seg_img = nib.load('tempCMR/seg_lvsa_SR_ED.nii.gz')
+    seg_path = os.path.join(BASE_PATH + patient_path, f'seg_lvsa_SR_{phase}.nii.gz')
+
+    if not os.path.exists(seg_path):
+        print(f"Segmentation file not found: {seg_path}")
+        return []
+
+    seg_img = nib.load(seg_path)
     seg_data = seg_img.get_fdata()
 
     print(f"Segmentation shape: {seg_data.shape}")
@@ -86,10 +121,15 @@ def load_segmentation_slices():
     print(f"Extracted {len(seg_slices_base64)} segmentation slices")
     return seg_slices_base64
 
-# Load segmentation data at startup
-def load_segmentation_data():
+def load_segmentation_data(patient_path, phase='ED'):
     """Load NIfTI segmentation file and extract non-zero coordinates"""
-    seg_img = nib.load('tempCMR/seg_lvsa_SR_ED.nii.gz')
+    seg_path = os.path.join(BASE_PATH + patient_path, f'seg_lvsa_SR_{phase}.nii.gz')
+
+    if not os.path.exists(seg_path):
+        print(f"Segmentation file not found: {seg_path}")
+        return [], [], (0, 0, 0), [1.0, 1.0, 1.0]
+
+    seg_img = nib.load(seg_path)
     seg_data = seg_img.get_fdata()
 
     # Get voxel spacing from header
@@ -108,22 +148,226 @@ def load_segmentation_data():
 
     return coords.tolist(), labels.tolist(), seg_data.shape, [float(spacing[0]), float(spacing[1]), float(spacing[2])]
 
-# Load data once at startup
-MRI_SLICES = load_mri_slices()
-SEG_SLICES = load_segmentation_slices()
-SEG_COORDS, SEG_LABELS, SEG_SHAPE, SEG_SPACING = load_segmentation_data()
+def load_patient_data(patient_index, phase='ED'):
+    """Load all data for a specific patient"""
+    if patient_index < 0 or patient_index >= len(PATIENT_LIST):
+        return None
+
+    patient_path = PATIENT_LIST[patient_index]
+
+    # Load patient metadata
+    patient_info = PATIENT_DATA.get(patient_path, {})
+
+    # Load MRI and segmentation data
+    mri_slices = load_mri_slices(patient_path, phase)
+    seg_slices = load_segmentation_slices(patient_path, phase)
+    seg_coords, seg_labels, seg_shape, seg_spacing = load_segmentation_data(patient_path, phase)
+
+    return {
+        'patient_index': patient_index,
+        'patient_path': patient_path,
+        'patient_info': patient_info,
+        'phase': phase,
+        'mri_slices': mri_slices,
+        'seg_slices': seg_slices,
+        'seg_coords': seg_coords,
+        'seg_labels': seg_labels,
+        'seg_shape': list(seg_shape),
+        'seg_spacing': seg_spacing,
+        'total_patients': len(PATIENT_LIST)
+    }
 
 @app.route('/')
 def index():
     """Serve the main visualization page"""
-    # Pass segmentation data and MRI slices to template
+    # Initialize session if not exists
+    if 'patient_index' not in session:
+        session['patient_index'] = 0
+    if 'phase' not in session:
+        session['phase'] = 'ED'
+
+    # Load current patient data
+    patient_data = load_patient_data(session['patient_index'], session['phase'])
+
+    if patient_data is None:
+        return "Error: No patient data available", 500
+
+    # Get the appropriate comment based on phase
+    comment_key = f"{patient_data['phase']}_Comments"
+    qc_comment = patient_data['patient_info'].get(comment_key, '')
+
+    # Pass data to template
     return render_template('index.html',
-                          mri_slices=json.dumps(MRI_SLICES),
-                          seg_slices=json.dumps(SEG_SLICES),
-                          seg_coords=json.dumps(SEG_COORDS),
-                          seg_labels=json.dumps(SEG_LABELS),
-                          seg_shape=list(SEG_SHAPE),
-                          seg_spacing=SEG_SPACING)
+                          patient_index=patient_data['patient_index'],
+                          patient_path=patient_data['patient_path'],
+                          patient_info=json.dumps(patient_data['patient_info']),
+                          phase=patient_data['phase'],
+                          qc_comment=qc_comment,
+                          mri_slices=json.dumps(patient_data['mri_slices']),
+                          seg_slices=json.dumps(patient_data['seg_slices']),
+                          seg_coords=json.dumps(patient_data['seg_coords']),
+                          seg_labels=json.dumps(patient_data['seg_labels']),
+                          seg_shape=patient_data['seg_shape'],
+                          seg_spacing=patient_data['seg_spacing'],
+                          total_patients=patient_data['total_patients'])
+
+@app.route('/api/next_patient')
+def next_patient():
+    """Navigate to next patient"""
+    current_index = session.get('patient_index', 0)
+    new_index = (current_index + 1) % len(PATIENT_LIST)
+    session['patient_index'] = new_index
+
+    return jsonify({
+        'status': 'success',
+        'patient_index': new_index,
+        'total_patients': len(PATIENT_LIST)
+    })
+
+@app.route('/api/prev_patient')
+def prev_patient():
+    """Navigate to previous patient"""
+    current_index = session.get('patient_index', 0)
+    new_index = (current_index - 1) % len(PATIENT_LIST)
+    session['patient_index'] = new_index
+
+    return jsonify({
+        'status': 'success',
+        'patient_index': new_index,
+        'total_patients': len(PATIENT_LIST)
+    })
+
+@app.route('/api/set_phase/<phase>')
+def set_phase(phase):
+    """Set current cardiac phase (ED or ES)"""
+    if phase in ['ED', 'ES']:
+        session['phase'] = phase
+        return jsonify({
+            'status': 'success',
+            'phase': phase
+        })
+    else:
+        return jsonify({
+            'status': 'error',
+            'message': 'Invalid phase. Must be ED or ES'
+        }), 400
+
+@app.route('/api/patient_data')
+def get_patient_data():
+    """Get current patient data"""
+    patient_data = load_patient_data(session.get('patient_index', 0), session.get('phase', 'ED'))
+
+    if patient_data is None:
+        return jsonify({'status': 'error', 'message': 'Patient data not found'}), 404
+
+    return jsonify({
+        'status': 'success',
+        'data': patient_data
+    })
+
+@app.route('/api/patient_list')
+def get_patient_list():
+    """Get list of all patient paths with comment status"""
+    patient_list_with_status = []
+
+    for patient_path in PATIENT_LIST:
+        patient_info = PATIENT_DATA.get(patient_path, {})
+        ed_comment = patient_info.get('ED_Comments', '')
+        es_comment = patient_info.get('ES_Comments', '')
+
+        # Count how many phases have comments
+        comment_count = 0
+        if ed_comment and ed_comment.strip():
+            comment_count += 1
+        if es_comment and es_comment.strip():
+            comment_count += 1
+
+        patient_list_with_status.append({
+            'path': patient_path,
+            'comment_status': f"{comment_count}/2"
+        })
+
+    return jsonify({
+        'status': 'success',
+        'patients': patient_list_with_status,
+        'total': len(PATIENT_LIST)
+    })
+
+@app.route('/api/goto_patient/<int:patient_index>')
+def goto_patient(patient_index):
+    """Jump to a specific patient by index"""
+    if 0 <= patient_index < len(PATIENT_LIST):
+        session['patient_index'] = patient_index
+        return jsonify({
+            'status': 'success',
+            'patient_index': patient_index,
+            'total_patients': len(PATIENT_LIST)
+        })
+    else:
+        return jsonify({
+            'status': 'error',
+            'message': f'Invalid patient index. Must be between 0 and {len(PATIENT_LIST) - 1}'
+        }), 400
+
+@app.route('/api/save_qc', methods=['POST'])
+def save_qc():
+    """Save QC decision and comments to JSON file"""
+    try:
+        data = request.get_json()
+        qc_comment = data.get('qc_comment', '')
+        phase = data.get('phase', 'ED')
+
+        # Get current patient
+        patient_index = session.get('patient_index', 0)
+        if patient_index < 0 or patient_index >= len(PATIENT_LIST):
+            return jsonify({'status': 'error', 'message': 'Invalid patient index'}), 400
+
+        patient_path = PATIENT_LIST[patient_index]
+        comment_key = f"{phase}_Comments"
+
+        # Update in-memory data
+        if patient_path in PATIENT_DATA:
+            PATIENT_DATA[patient_path][comment_key] = qc_comment
+        else:
+            return jsonify({'status': 'error', 'message': 'Patient not found in database'}), 404
+
+        # Save to JSON file
+        json_path = os.path.join(os.path.dirname(__file__), 'JSON', 'QC_logs.json')
+        with open(json_path, 'w') as f:
+            json.dump(PATIENT_DATA, f, indent=4)
+
+        print(f"Saved QC comment for patient {patient_index} ({phase}): {qc_comment}")
+
+        return jsonify({
+            'status': 'success',
+            'message': 'QC data saved successfully',
+            'patient_index': patient_index,
+            'phase': phase
+        })
+
+    except Exception as e:
+        print(f"Error saving QC data: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': f'Error saving QC data: {str(e)}'
+        }), 500
+
+@app.route('/api/download_json')
+def download_json():
+    """Download the QC_logs.json file"""
+    try:
+        json_path = os.path.join(os.path.dirname(__file__), 'JSON', 'QC_logs.json')
+        return send_file(
+            json_path,
+            mimetype='application/json',
+            as_attachment=True,
+            download_name='QC_logs.json'
+        )
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': f'Error downloading JSON file: {str(e)}'
+        }), 500
 
 @app.route('/health')
 def health():
@@ -131,7 +375,7 @@ def health():
     return jsonify({
         'status': 'ok',
         'message': 'CMR Segmentation QC Web App is running',
-        'voxels': len(SEG_COORDS)
+        'total_patients': len(PATIENT_LIST)
     })
 
 if __name__ == '__main__':
