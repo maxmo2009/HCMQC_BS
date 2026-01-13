@@ -614,6 +614,109 @@
             background: linear-gradient(135deg, #0069d9, #004085);
             border-color: #0069d9;
         }
+
+        /* Floating Statistics Panel */
+        #floating-stats-panel {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(30, 30, 30, 0.95);
+            border: 2px solid #444;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            min-width: 350px;
+            max-width: 400px;
+            transition: min-width 0.3s ease;
+            cursor: move;
+        }
+
+        #floating-stats-panel.minimized {
+            min-width: 200px;
+        }
+
+        #floating-stats-panel button,
+        #floating-stats-panel canvas {
+            cursor: auto;
+        }
+
+        #stats-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #444;
+            color: #fff;
+        }
+
+        #stats-panel-title {
+            font-weight: bold;
+            font-size: 14px;
+            color: #4CAF50;
+        }
+
+        #stats-minimize-btn {
+            cursor: pointer !important;
+            font-size: 18px;
+            line-height: 1;
+            color: #888;
+            transition: color 0.3s;
+        }
+
+        #stats-minimize-btn:hover {
+            color: #fff;
+        }
+
+        #stats-panel-content {
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+            overflow: hidden;
+        }
+
+        #stats-panel-content.hidden {
+            opacity: 0;
+            max-height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #chart-container {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .stat-label {
+            flex: 1;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -736,8 +839,25 @@
         </div>
     </div>
 
+    <!-- Floating Statistics Panel -->
+    <div id="floating-stats-panel">
+        <div id="stats-panel-header">
+            <span id="stats-panel-title">QC Statistics</span>
+            <span id="stats-minimize-btn" title="Minimize">－</span>
+        </div>
+        <div id="stats-panel-content">
+            <div id="chart-container">
+                <canvas id="qc-pie-chart"></canvas>
+            </div>
+            <div class="stats-summary" id="stats-summary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
     <script>
         // Patient data from Flask
         const PATIENT_INDEX = {{ patient_index }};
@@ -1069,6 +1189,8 @@
                 if (data.status === 'success') {
                     statusDiv.textContent = '💾 Data Saved Successfully';
                     statusDiv.style.background = '#28a745';
+                    // Update statistics after saving
+                    updateStatistics();
                 } else {
                     statusDiv.textContent = '❌ Save Failed';
                     statusDiv.style.background = '#dc3545';
@@ -1652,6 +1774,225 @@
                 localStorage.setItem('panelMinimized', 'false');
             }
         });
+
+        // Floating Statistics Panel
+        const statsPanel = document.getElementById('floating-stats-panel');
+        const statsPanelHeader = document.getElementById('stats-panel-header');
+        const statsMinimizeBtn = document.getElementById('stats-minimize-btn');
+        const statsPanelContent = document.getElementById('stats-panel-content');
+        let pieChart = null;
+        let statsMinimized = false;
+        let statsDragging = false;
+        let statsCurrentX;
+        let statsCurrentY;
+        let statsInitialX;
+        let statsInitialY;
+
+        // Initialize pie chart
+        function initPieChart() {
+            const ctx = document.getElementById('qc-pie-chart').getContext('2d');
+
+            pieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Accept', 'Reject', 'Fine-tune', 'Unclassified', 'No Decision'],
+                    datasets: [{
+                        data: [0, 0, 0, 0, 0],
+                        backgroundColor: [
+                            'rgba(76, 175, 80, 0.8)',  // Accept - Green
+                            'rgba(244, 67, 54, 0.8)',  // Reject - Red
+                            'rgba(255, 193, 7, 0.8)',  // Fine-tune - Amber
+                            'rgba(158, 158, 158, 0.8)', // Unclassified - Gray
+                            'rgba(96, 125, 139, 0.8)'  // No Decision - Blue-Gray
+                        ],
+                        borderColor: [
+                            'rgba(76, 175, 80, 1)',
+                            'rgba(244, 67, 54, 1)',
+                            'rgba(255, 193, 7, 1)',
+                            'rgba(158, 158, 158, 1)',
+                            'rgba(96, 125, 139, 1)'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#fff',
+                                padding: 10,
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'QC Decision Distribution',
+                            color: '#fff',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return label + ': ' + value + ' (' + percentage + '%)';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update statistics
+        async function updateStatistics() {
+            try {
+                const response = await fetch('/api/qc_statistics');
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    const stats = data.statistics;
+
+                    // Update pie chart
+                    if (pieChart) {
+                        pieChart.data.datasets[0].data = [
+                            stats.accept,
+                            stats.reject,
+                            stats.finetune,
+                            stats.unclassified,
+                            stats.no_decision
+                        ];
+                        pieChart.update();
+                    }
+
+                    // Update summary
+                    const summaryHtml = `
+                        <div class="stat-item">
+                            <div class="stat-color" style="background: rgba(76, 175, 80, 0.8);"></div>
+                            <span class="stat-label">Accept:</span>
+                            <span class="stat-value">${stats.accept}</span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-color" style="background: rgba(244, 67, 54, 0.8);"></div>
+                            <span class="stat-label">Reject:</span>
+                            <span class="stat-value">${stats.reject}</span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-color" style="background: rgba(255, 193, 7, 0.8);"></div>
+                            <span class="stat-label">Fine-tune:</span>
+                            <span class="stat-value">${stats.finetune}</span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-color" style="background: rgba(158, 158, 158, 0.8);"></div>
+                            <span class="stat-label">Unclassified:</span>
+                            <span class="stat-value">${stats.unclassified}</span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-color" style="background: rgba(96, 125, 139, 0.8);"></div>
+                            <span class="stat-label">No Decision:</span>
+                            <span class="stat-value">${stats.no_decision}</span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-color" style="background: #333;"></div>
+                            <span class="stat-label">Total:</span>
+                            <span class="stat-value">${data.total}</span>
+                        </div>
+                    `;
+                    document.getElementById('stats-summary').innerHTML = summaryHtml;
+                }
+            } catch (error) {
+                console.error('Error fetching statistics:', error);
+            }
+        }
+
+        // Make stats panel draggable
+        statsPanelHeader.addEventListener('mousedown', dragStartStats);
+
+        function dragStartStats(e) {
+            if (e.target === statsMinimizeBtn) return;
+
+            statsDragging = true;
+            statsInitialX = e.clientX - statsPanel.offsetLeft;
+            statsInitialY = e.clientY - statsPanel.offsetTop;
+
+            document.addEventListener('mousemove', dragStats);
+            document.addEventListener('mouseup', dragEndStats);
+        }
+
+        function dragStats(e) {
+            if (!statsDragging) return;
+
+            e.preventDefault();
+            statsCurrentX = e.clientX - statsInitialX;
+            statsCurrentY = e.clientY - statsInitialY;
+
+            statsPanel.style.left = statsCurrentX + 'px';
+            statsPanel.style.top = statsCurrentY + 'px';
+            statsPanel.style.right = 'auto';
+            statsPanel.style.bottom = 'auto';
+        }
+
+        function dragEndStats(e) {
+            statsDragging = false;
+            document.removeEventListener('mousemove', dragStats);
+            document.removeEventListener('mouseup', dragEndStats);
+
+            // Save position
+            localStorage.setItem('statsPanelPosX', statsPanel.style.left);
+            localStorage.setItem('statsPanelPosY', statsPanel.style.top);
+        }
+
+        // Restore saved position for stats panel
+        const savedStatsPosX = localStorage.getItem('statsPanelPosX');
+        const savedStatsPosY = localStorage.getItem('statsPanelPosY');
+        if (savedStatsPosX && savedStatsPosY) {
+            statsPanel.style.left = savedStatsPosX;
+            statsPanel.style.top = savedStatsPosY;
+        }
+
+        // Minimize/expand stats panel
+        statsMinimizeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            statsMinimized = !statsMinimized;
+
+            if (statsMinimized) {
+                statsPanelContent.classList.add('hidden');
+                statsPanel.classList.add('minimized');
+                statsMinimizeBtn.textContent = '＋';
+                statsMinimizeBtn.title = 'Expand';
+                localStorage.setItem('statsPanelMinimized', 'true');
+            } else {
+                statsPanelContent.classList.remove('hidden');
+                statsPanel.classList.remove('minimized');
+                statsMinimizeBtn.textContent = '－';
+                statsMinimizeBtn.title = 'Minimize';
+                localStorage.setItem('statsPanelMinimized', 'false');
+            }
+        });
+
+        // Restore minimized state for stats panel
+        const savedStatsMinimized = localStorage.getItem('statsPanelMinimized');
+        if (savedStatsMinimized === 'true') {
+            statsMinimized = true;
+            statsPanelContent.classList.add('hidden');
+            statsPanel.classList.add('minimized');
+            statsMinimizeBtn.textContent = '＋';
+            statsMinimizeBtn.title = 'Expand';
+        }
+
+        // Initialize chart and load statistics on page load
+        initPieChart();
+        updateStatistics();
 
         // Start
         init();

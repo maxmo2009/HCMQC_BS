@@ -293,6 +293,50 @@ def get_patient_list():
         'total': len(PATIENT_LIST)
     })
 
+@app.route('/api/qc_statistics')
+def get_qc_statistics():
+    """Get QC decision statistics for all patients"""
+    stats = {
+        'accept': 0,
+        'reject': 0,
+        'finetune': 0,
+        'unclassified': 0,
+        'no_decision': 0  # No comment at all
+    }
+
+    for patient_path in PATIENT_LIST:
+        patient_info = PATIENT_DATA.get(patient_path, {})
+
+        # Check both ED and ES phases
+        for phase in ['ED', 'ES']:
+            comment_key = f"{phase}_Comments"
+            comment = patient_info.get(comment_key, '')
+
+            if not comment or not comment.strip():
+                stats['no_decision'] += 1
+            elif comment.startswith('accept:'):
+                stats['accept'] += 1
+            elif comment.startswith('reject:'):
+                stats['reject'] += 1
+            elif comment.startswith('finetune:'):
+                stats['finetune'] += 1
+            elif comment.startswith('unclassified:'):
+                stats['unclassified'] += 1
+            else:
+                # If format is unexpected, count as no decision
+                stats['no_decision'] += 1
+
+    # Calculate total and percentages
+    total = sum(stats.values())
+    percentages = {k: round((v / total * 100), 1) if total > 0 else 0 for k, v in stats.items()}
+
+    return jsonify({
+        'status': 'success',
+        'statistics': stats,
+        'percentages': percentages,
+        'total': total
+    })
+
 @app.route('/api/goto_patient/<int:patient_index>')
 def goto_patient(patient_index):
     """Jump to a specific patient by index"""

@@ -40,3 +40,6 @@ Thumbs.db
 
 # Environment variables
 .env
+
+# Data files
+JSON/QC_logs.json
