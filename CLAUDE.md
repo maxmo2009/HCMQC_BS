@@ -4,191 +4,206 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Cardiac MRI (CMR) Segmentation Quality Check** web application. The app provides a 3-panel interface for reviewing cardiac segmentation quality across multiple patients with 3D visualization, MRI slice viewing, and QC decision tracking.
+CMR Segmentation QC Web Application - A Flask-based tool for quality control review of Cardiac MRI (CMR) segmentation results. Provides real-time visualization of 2650 patient scans with both End-Diastole (ED) and End-Systole (ES) phases.
 
 ## Running the Application
 
-Start the Flask development server:
 ```bash
+# Install dependencies (only needed once)
+pip install -r requirements.txt
+
+# Start development server
 python app.py
+
+# Server configuration:
+# - URL: http://localhost:5000
+# - Debug mode: Enabled (auto-reload on file changes)
+# - Host: 0.0.0.0 (accessible from network)
+# - Port: 5000
+
+# Health check endpoint
+curl http://localhost:5000/health
 ```
 
-Access the app at: `http://localhost:5000`
+## Architecture
 
-The server runs in debug mode with auto-reload enabled, so changes to templates and Python files are reflected automatically.
+### Data Flow
+1. **Startup**: Loads `JSON/QC_logs.json` (4.3MB) containing 2650 patient records into memory
+2. **Session Management**: Flask sessions track current `patient_index` and `phase` (ED/ES)
+3. **NIfTI Loading**: Reads `.nii.gz` files from patient directories using nibabel
+4. **Image Processing**: Converts to base64 PNG for web display
+5. **3D Extraction**: Extracts non-zero voxel coordinates for WebGL rendering
 
-## Architecture Overview
+### Critical Path Configuration
+- **BASE_PATH**: `/mnt/storage/home/ym1413/` - Hardcoded in app.py:31, prepended to all patient paths from JSON
+- **File Structure per Patient**:
+  ```
+  {patient_path}/
+    ├── lvsa_SR_ED.nii.gz      # ED phase MRI
+    ├── lvsa_SR_ES.nii.gz      # ES phase MRI
+    ├── seg_lvsa_SR_ED.nii.gz  # ED segmentation
+    └── seg_lvsa_SR_ES.nii.gz  # ES segmentation
+  ```
 
-### Backend (Flask + Session Management)
-- **app.py**: Flask application with session-based patient tracking
-  - Loads 2650 patients from `JSON/QC_logs.json` at startup
-  - Session variables track current patient index and cardiac phase (ED/ES)
-  - Base path: `/mnt/storage/home/ym1413/` prepended to all patient paths from JSON
+### Backend API Endpoints
 
-### Patient Data Structure
-- **Patient Database**: `JSON/QC_logs.json` contains 2650 patient records
-  - Keys are patient directory paths (relative to BASE_PATH)
-  - Each patient has metadata: SHARE_id, Sex, Age, Race, volumes, wall thickness stats, etc.
-  - Each patient folder contains 4 NIfTI files:
-    - `lvsa_SR_ED.nii.gz` - End-Diastole MRI
-    - `lvsa_SR_ES.nii.gz` - End-Systole MRI
-    - `seg_lvsa_SR_ED.nii.gz` - End-Diastole segmentation
-    - `seg_lvsa_SR_ES.nii.gz` - End-Systole segmentation
+```python
+# Patient Navigation
+GET /api/next_patient      # Updates session['patient_index'], triggers page reload
+GET /api/prev_patient      # Updates session['patient_index'], triggers page reload
+GET /api/goto_patient/<id> # Jump to specific patient by index
 
-### Frontend (Single HTML File)
-- **templates/index.html**: Complete SPA (~1300 lines) containing:
-  - CSS styling (inline `<style>` block)
-  - HTML structure (3-panel layout + floating control panel)
-  - JavaScript (Three.js 3D rendering, canvas overlay, patient navigation)
+# Phase Control
+GET /api/set_phase/<phase> # Switch between 'ED' and 'ES'
 
-## Key API Endpoints
+# Data Access
+GET /api/patient_data      # Returns current patient's full dataset as JSON
+GET /api/patient_list      # Returns all patients with comment status [0/2, 1/2, 2/2]
 
-- `GET /` - Main visualization page (loads current patient/phase from session)
-- `GET /health` - Health check endpoint
-- `GET /api/next_patient` - Navigate to next patient, update session
-- `GET /api/prev_patient` - Navigate to previous patient, update session
-- `GET /api/set_phase/<phase>` - Switch between ED/ES phases (phase = 'ED' or 'ES')
-- `GET /api/patient_data` - Get current patient data as JSON
+# QC Management
+POST /api/save_qc          # Saves QC decision and comments to JSON
+                          # Body: {qc_comment: "<choice>:<comments>", phase: "ED/ES"}
+                          # Choices: accept, reject, finetune, unclassified
 
-## Frontend Architecture
+GET /api/download_json     # Downloads QC_logs.json file
+```
 
-### 3-Panel Layout (Left to Right)
-1. **Left Panel**: MRI slices with overlay controls
-   - Canvas-based rendering for MRI + segmentation overlay
-   - Overlay checkbox and transparency slider
-   - Zoom slider (50%-300%) affects both left and middle panels
+### Frontend Architecture (templates/index.html)
 
-2. **Middle Panel**: Color-coded segmentation slices
-   - RGB images with color-mapped labels
-   - Synchronized with left panel slice navigation
-   - Same zoom level as left panel
+**Panel Layout** (100vh × 100vh squares):
+- **Left Panel** (`#left-panel`): MRI with overlay canvas
+- **Middle Panel** (`#middle-panel`): Color-coded segmentation
+- **Right Panel** (`#right-panel`): Three.js 3D visualization
 
-3. **Right Panel**: 3D visualization
-   - Three.js WebGL renderer attached to this panel
-   - InstancedMesh rendering of segmentation voxels
-   - OrbitControls for camera (left-click rotate, right-click pan, scroll zoom)
-   - Lab logo positioned at bottom-right (absolute positioning within panel)
+**Key JavaScript Variables**:
+```javascript
+MRI_SLICES     // Base64 PNG array
+SEG_SLICES     // Base64 RGB PNG array
+SEG_COORDS     // [[x,y,z], ...] voxel positions
+SEG_LABELS     // [1,2,3, ...] corresponding labels
+SEG_SHAPE      // [width, height, depth]
+SEG_SPACING    // [x_mm, y_mm, z_mm] voxel dimensions
+```
 
-### Panel Dimensions
-- All panels are **square**: `width: 100vh`, `height: 100vh`
-- Three.js renderer dimensions pulled from `#right-panel` (not middle-panel!)
-- Window resize handler updates renderer based on right panel dimensions
+**Three.js Rendering** (attached to `#right-panel`):
+- InstancedMesh per label for performance
+- Color mapping: 1=Red (LV), 2=Green (RV), 3=Blue (Myocardium)
+- OrbitControls for interaction
 
-### Data Loading Flow
-1. Backend loads NIfTI files (MRI + segmentation) for current patient/phase
-2. MRI slices converted to base64 PNG images (grayscale)
-3. Segmentation slices converted to base64 PNG images (RGB color-coded)
-4. 3D segmentation extracted as coordinate arrays with labels
-5. All data passed to template via Jinja2 variables
-6. JavaScript receives: `MRI_SLICES`, `SEG_SLICES`, `SEG_COORDS`, `SEG_LABELS`, `SEG_SHAPE`, `SEG_SPACING`
+### Control Panel Features
 
-### 3D Visualization Details
-- **Color Map**:
-  - Label 1 (Red): Left Ventricle
-  - Label 2 (Green): Right Ventricle
-  - Label 3 (Blue): Myocardium
-- **Rendering**: InstancedMesh with separate meshes per label
-- **Scaling**: Uses voxel spacing from NIfTI header for proper aspect ratio
-- **Centering**: Coordinates centered around segmentation shape midpoint
+**Draggable Panel** (`#floating-qc-panel`):
+- Drag from any background area (not buttons/inputs)
+- Minimize/expand functionality
+- Position persisted in localStorage
 
-### Slice Navigation
-- **Manual**: ⏪ Prev / Next ⏩ buttons navigate through Z-axis slices
-- **Auto-play**: ▶ Play button cycles through slices at 5 FPS
-- **Synchronized**: All panels (left MRI, middle seg, right 3D) stay in sync
+**Patient Selector Dropdown**:
+- Shows all 2650 patients with format: `{index}. {patient_id} [comment_status]`
+- Comment status shows `[0/2]`, `[1/2]`, or `[2/2]` for ED/ES completion
 
-### Patient Navigation
-- **← Prev / Next →** buttons navigate through 2650 patients
-- Calls `/api/prev_patient` or `/api/next_patient`
-- Page reloads after navigation to load new patient data
-- Session persists patient index across page reloads
+**QC Decision System**:
+- Mutually exclusive checkboxes (Accept/Reject/Fine-tune/Unclassified)
+- Comments stored as `<choice>:<comment_text>` in JSON
+- Auto-loads existing decisions when navigating patients
 
-### Cardiac Phase Switching
-- **ED / ES buttons** in control panel switch between End-Diastole and End-Systole
-- Calls `/api/set_phase/<phase>` endpoint
-- Page reloads to load new phase data
-- Active button highlighted with blue gradient
+**Interactive Controls**:
+- Zoom slider (50%-300%) - affects both MRI and segmentation panels
+- Transparency slider (0-100%) - for segmentation overlay on MRI
+- Play/Pause for automatic slice cycling at 5 FPS
 
-### Floating Control Panel
-- **Draggable**: Click header to drag anywhere on screen
-- **Persistent Position**: Panel position saved to localStorage
-- **Contains**:
-  - Patient info display (ID, index, phase, path)
-  - ED/ES phase switcher buttons
-  - Patient comments textarea
-  - Overlay transparency slider (0-100%)
-  - QC Decision checkboxes (Accept, Reject, Fine-tune, Unclassified - mutually exclusive)
-  - Slice navigation buttons (⏪ ⏩)
-  - Play/Pause button
-  - Patient navigation buttons (← Prev, Next →)
-  - Save button
+## Key Implementation Details
 
-### Zoom Control
-- **Location**: Bottom-right of left panel
-- **Range**: 50% to 300%
-- **Default**: 170%
-- **Affects**: Both left panel (MRI canvas) and middle panel (segmentation image)
-- **Implementation**:
-  - Left panel: Canvas scale via `zoomLevel` variable
-  - Middle panel: CSS transform `scale(zoomLevel)` on `#seg-slice-img`
+### Session Initialization
+Sessions must be initialized on first visit:
+```python
+if 'patient_index' not in session:
+    session['patient_index'] = 0
+if 'phase' not in session:
+    session['phase'] = 'ED'
+```
 
-### Overlay System
-- **Canvas-based**: Left panel uses HTML5 Canvas for compositing
-- **Two layers**: MRI (grayscale) drawn first, segmentation (RGB) drawn on top with alpha
-- **Controls**:
-  - Checkbox to toggle overlay on/off
-  - Slider to adjust transparency (0-100%)
-- **Real-time**: Both zoom and transparency changes trigger immediate canvas redraw
+### QC Comment Format
+Comments in JSON follow the pattern `<choice>:<comments>`:
+```json
+{
+  "ED_Comments": "accept:Good segmentation quality",
+  "ES_Comments": "reject:Poor myocardium boundary"
+}
+```
 
-## Important Implementation Notes
+### Canvas Overlay System
+Left panel uses HTML5 Canvas for compositing:
+1. Draw MRI image scaled to zoom level
+2. If overlay enabled, draw segmentation with global alpha
+3. Redraw triggered by zoom/transparency changes
 
-1. **Session Management**: Flask sessions track patient_index and phase. Must be initialized on first visit.
+### LocalStorage Keys
+- `panelPosX`, `panelPosY` - Control panel position
+- `panelMinimized` - Panel minimized state ('true'/'false')
+- `zoomLevel` - Current zoom level
+- `overlayTransparency` - Overlay transparency value
 
-2. **Panel ID Confusion**: Despite being in middle position, segmentation is in `#middle-panel` div. 3D visualization is in `#right-panel`. JavaScript references `rightPanel` for Three.js renderer.
+### Voxel Spacing Usage
+Critical for accurate 3D representation:
+```javascript
+const scaledX = (x - midX) * SEG_SPACING[0] * 0.01;
+const scaledY = (y - midY) * SEG_SPACING[1] * 0.01;
+const scaledZ = (z - midZ) * SEG_SPACING[2] * 0.01;
+```
 
-3. **Data Size**: With 2650 patients, JSON file is 4.3MB. Patient database loaded once at startup into memory.
+## Development Notes
 
-4. **File Paths**: Patient paths in JSON are relative. BASE_PATH (`/mnt/storage/home/ym1413/`) must be prepended to access files.
+### Adding New Features
+- Patient navigation triggers full page reload (cannot use pure client-side state)
+- All image data transmitted as base64 to avoid static file serving
+- Three.js renderer must reference `#right-panel` despite middle visual position
 
-5. **Image Encoding**: All image data transmitted as base64-encoded data URLs to avoid serving static files. MRI slices normalized to 0-255 range.
+### Modifying Segmentation Colors
+Update both locations to maintain consistency:
+```python
+# Backend (app.py)
+color_map = {
+    0: (0, 0, 0),       # Background
+    1: (255, 0, 0),     # LV - Red
+    2: (0, 255, 0),     # RV - Green
+    3: (0, 136, 255)    # Myocardium - Blue
+}
 
-6. **Segmentation Label Colors**: Hardcoded in both backend (for slice images) and frontend (for 3D rendering). Keep consistent:
-   - 0: Black (background)
-   - 1: Red (LV)
-   - 2: Green (RV)
-   - 3: Blue (Myocardium)
+# Frontend (index.html)
+const colors = {
+    1: 0xff0000,  // Red
+    2: 0x00ff00,  // Green
+    3: 0x0088ff   // Blue
+};
+```
 
-7. **LocalStorage**: Panel position saved to localStorage with keys `panelPosX` and `panelPosY`. Restored on page load.
+### Performance Considerations
+- 2650 patients loaded into memory at startup (~4.3MB)
+- Image caching implemented with 10-patient LRU cache (app.py:36-38)
+- InstancedMesh used for 3D rendering (handles ~50K voxels efficiently)
+- Flask sessions stored server-side with filesystem storage
 
-8. **Voxel Spacing**: Critical for 3D visualization accuracy. Read from NIfTI header and applied as scaling factors in Three.js coordinate calculations.
+## Testing and Development
 
-9. **Page Reloads**: Patient and phase navigation trigger full page reloads. Cannot use client-side state management due to need to load new image data from backend.
+### Manual Testing
+```bash
+# Test API endpoints
+curl http://localhost:5000/api/patient_list   # Get all patients
+curl http://localhost:5000/api/patient_data   # Get current patient data
+curl http://localhost:5000/health             # Health check (returns voxel count)
+```
 
-10. **GitHub Account**: User's GitHub is `maxmo2009@gmail.com` (from global CLAUDE.md).
+### Common Development Tasks
+- **Modifying Patient Data Path**: Update `BASE_PATH` in app.py:31
+- **Changing Cache Size**: Modify `maxsize` in app.py:36-38
+- **Adjusting Session Config**: Update `SESSION_TYPE` and related settings in app.py:22-25
 
-## Lab Logo
-The lab logo appears at bottom-right of right panel (3D visualization):
-- Position: `absolute` (not `fixed`)
-- URL: `https://images.squarespace-cdn.com/content/v1/611bce9f0ec5ff43949b98ea/068036ac-5a6f-4da8-869f-520764bdaaaa/still_v023_frame_0103_photoshop_layer_logo_LMS.png?format=1500w`
-- Z-index: 150 (below control panel at 200)
+## GitHub Configuration
+- Repository: `git@github.com:maxmo2009/HCMQC_BS.git`
+- User email: `maxmo2009@gmail.com`
 
-## Common Development Tasks
-
-### Modifying 3D Visualization
-- Edit JavaScript in `templates/index.html` starting at `function init()`
-- Renderer attached to `#right-panel`, not `#middle-panel`
-- Update `onWindowResize()` if panel IDs change
-
-### Adding New Patient Metadata
-- Data sourced from `JSON/QC_logs.json`
-- Access via `PATIENT_DATA[patient_path]` in backend
-- Pass to template via `patient_info` variable
-
-### Changing Panel Layout
-- Panel order controlled by HTML structure in `<div id="main-container">`
-- CSS IDs (`#left-panel`, `#middle-panel`, `#right-panel`) have specific styling
-- Update JavaScript references to panel IDs for Three.js rendering
-
-### Adding New API Endpoints
-- Session-based, use `session['patient_index']` and `session['phase']`
-- Call `load_patient_data(index, phase)` to get full patient dataset
-- Return JSON with `jsonify()` or reload page for new visualizations
+## Project Dependencies
+- Flask 3.0.0 - Web framework
+- numpy 1.24.3 - Array operations
+- nibabel 5.3.3 - NIfTI file reading
+- Pillow 10.0.0 - Image processing

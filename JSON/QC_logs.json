@@ -216,7 +216,7 @@
             "RV": 55583.92887933007,
             "endo": 45432.706645513426
         },
-        "ED_Comments": "finetune:Here some walls haven't been captured. ",
+        "ED_Comments": "accept:Here some walls haven't been captured. ",
         "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1739_3": {
@@ -745,7 +745,7 @@
             "endo": 28445.16765728724
         },
         "ED_Comments": "accept:",
-        "ES_Comments": "finetune:"
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2295_1": {
         "SHARE_id": "2295_1",
@@ -788,8 +788,8 @@
             "RV": 49817.980073593346,
             "endo": 41246.896509903585
         },
-        "ED_Comments": "finetune:",
-        "ES_Comments": "finetune:"
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2574_1": {
         "SHARE_id": "2574_1",
@@ -1184,7 +1184,7 @@
             "RV": 35443.08160131403,
             "endo": 44366.91389562554
         },
-        "ED_Comments": "accept:",
+        "ED_Comments": "accept:no apex in CMR and segment ",
         "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1423_1": {
@@ -1316,8 +1316,8 @@
             "RV": 78381.18474000454,
             "endo": 32605.197879383562
         },
-        "ED_Comments": "finetune:",
-        "ES_Comments": "finetune:"
+        "ED_Comments": "accept:",
+        "ES_Comments": "finetune:did not capture apex slices "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/84_1": {
         "SHARE_id": "84_1",
@@ -1580,7 +1580,7 @@
             "RV": 77386.26788898079,
             "endo": 62511.03983071545
         },
-        "ED_Comments": "accept:",
+        "ED_Comments": "accept:No apex segmentation , no apex slices in CMR",
         "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2545_1": {
@@ -1712,8 +1712,8 @@
             "RV": 67553.54241538377,
             "endo": 56859.25831590848
         },
-        "ED_Comments": "finetune:Some segments are missing which might cause false metrics like LV mass. ",
-        "ES_Comments": "finetune:"
+        "ED_Comments": "accept: ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2576_1": {
         "SHARE_id": "2576_1",
@@ -1889,7 +1889,7 @@
             "endo": 30874.867135257547
         },
         "ED_Comments": "accept:",
-        "ES_Comments": "finetune:Basal part severly misaligned"
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1041_1": {
         "SHARE_id": "1041_1",
@@ -2196,7 +2196,7 @@
             "RV": 68506.34522858211,
             "endo": 57567.20874813097
         },
-        "ED_Comments": "accept:",
+        "ED_Comments": "accept:no apex slices and segmentation",
         "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2519_1": {
@@ -2241,7 +2241,7 @@
             "endo": 11802.450536849943
         },
         "ED_Comments": "accept:",
-        "ES_Comments": "finetune:"
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1879_1": {
         "SHARE_id": "1879_1",
@@ -2284,7 +2284,7 @@
             "RV": 82150.91626762497,
             "endo": 57069.89871395031
         },
-        "ED_Comments": "finetune:Did not capture apex ",
+        "ED_Comments": "accept: ",
         "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1024_1": {
@@ -2460,8 +2460,8 @@
             "RV": 51703.776518844206,
             "endo": 23780.30997436481
         },
-        "ED_Comments": "finetune:Did not capture apex ",
-        "ES_Comments": "finetune:"
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2508_1": {
         "SHARE_id": "2508_1",
@@ -2504,7 +2504,7 @@
             "RV": 19449.100609932266,
             "endo": 17453.023317382216
         },
-        "ED_Comments": "finetune:",
+        "ED_Comments": "accept:",
         "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1860_1": {
@@ -2988,7 +2988,7 @@
             "RV": 76968.18407026147,
             "endo": 51672.53089507732
         },
-        "ED_Comments": "accept:accepted but it did not take all slices in base and apex",
+        "ED_Comments": "accept:",
         "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2020_1": {
@@ -3251,7 +3251,9 @@
             "myo": 179821.2590432989,
             "RV": 53249.85581115591,
             "endo": 68211.80974784502
-        }
+        },
+        "ED_Comments": "accept:Accepted. But in apex some walls haven't been captured. So, I am afraid it might affect our measurments from segmentation. ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1094_1": {
         "SHARE_id": "1094_1",
@@ -3293,7 +3295,9 @@
             "myo": 207344.35246571593,
             "RV": 59865.47362152682,
             "endo": 29219.89247918485
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2423_1": {
         "SHARE_id": "2423_1",
@@ -3335,7 +3339,9 @@
             "myo": 273231.4364941061,
             "RV": 73637.42543771982,
             "endo": 67376.20412365471
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1777_1": {
         "SHARE_id": "1777_1",
@@ -3377,7 +3383,9 @@
             "myo": 186463.7929550346,
             "RV": 36759.666416024855,
             "endo": 24391.03946719224
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1943_1": {
         "SHARE_id": "1943_1",
@@ -3419,7 +3427,9 @@
             "myo": 105865.48261669863,
             "RV": 43874.37253501493,
             "endo": 48539.326924849214
-        }
+        },
+        "ED_Comments": "accept:Accepted but no apex slice in original CMR and segmentation.",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/54_1": {
         "SHARE_id": "54_1",
@@ -3461,7 +3471,9 @@
             "myo": 101287.21481958202,
             "RV": 29289.148880108547,
             "endo": 16163.019670991735
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/610_1": {
         "SHARE_id": "610_1",
@@ -3503,7 +3515,9 @@
             "myo": 108213.16535493315,
             "RV": 65194.657354787065,
             "endo": 33139.2726334962
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2554_2": {
         "SHARE_id": "2554_2",
@@ -3545,7 +3559,9 @@
             "myo": 171017.15063606645,
             "RV": 50582.542423534964,
             "endo": 26365.73031607406
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2158_1": {
         "SHARE_id": "2158_1",
@@ -3587,7 +3603,9 @@
             "myo": 296134.48835339263,
             "RV": 58539.564553365475,
             "endo": 44344.5794884063
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/77_1": {
         "SHARE_id": "77_1",
@@ -3629,7 +3647,9 @@
             "myo": 251291.19621346533,
             "RV": 59399.13535711315,
             "endo": 58447.81561556864
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2502_1": {
         "SHARE_id": "2502_1",
@@ -3671,7 +3691,9 @@
             "myo": 175434.40996472936,
             "RV": 27007.120744297124,
             "endo": 34868.707090172116
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/108-2536_1": {
         "SHARE_id": "108-2536_1",
@@ -3713,7 +3735,9 @@
             "myo": 210167.15533607852,
             "RV": 55000.17365979594,
             "endo": 21378.777348173786
-        }
+        },
+        "ED_Comments": "accept:Did not capture last slice in apex",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2379_1": {
         "SHARE_id": "2379_1",
@@ -3755,7 +3779,9 @@
             "myo": -1.0,
             "RV": -1.0,
             "endo": -1.0
-        }
+        },
+        "ED_Comments": "reject:There is no short axis view in CMR images. ",
+        "ES_Comments": "reject:same"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/108-1894_1": {
         "SHARE_id": "108-1894_1",
@@ -3797,7 +3823,9 @@
             "myo": 190721.17504539076,
             "RV": 40198.26097286274,
             "endo": 29205.42271451159
-        }
+        },
+        "ED_Comments": "accept:Some slices from base and apex are missing from segmented and CMR images. ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/79_1": {
         "SHARE_id": "79_1",
@@ -3839,7 +3867,9 @@
             "myo": 219122.43707045945,
             "RV": 65830.19920147408,
             "endo": 37447.961325902426
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2003_1": {
         "SHARE_id": "2003_1",
@@ -3881,7 +3911,9 @@
             "myo": 144591.64647805205,
             "RV": 39741.83534953508,
             "endo": 35160.97559754496
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1845_1": {
         "SHARE_id": "1845_1",
@@ -3923,7 +3955,9 @@
             "myo": 201700.45297671363,
             "RV": 40273.48731556389,
             "endo": 21847.434918061703
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1590_1": {
         "SHARE_id": "1590_1",
@@ -3965,7 +3999,9 @@
             "myo": 275511.2693991512,
             "RV": 117073.11817728692,
             "endo": 72586.78840100484
-        }
+        },
+        "ED_Comments": "accept:Slice in base hasn't been captured",
+        "ES_Comments": "finetune:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1997_1": {
         "SHARE_id": "1997_1",
@@ -4007,7 +4043,9 @@
             "myo": 175746.50392065,
             "RV": 80929.08971052177,
             "endo": 84393.71040511047
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1199_1": {
         "SHARE_id": "1199_1",
@@ -4049,7 +4087,9 @@
             "myo": 227686.23892359782,
             "RV": 68902.72677795071,
             "endo": 53237.74914745047
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1474_1": {
         "SHARE_id": "1474_1",
@@ -4091,7 +4131,9 @@
             "myo": 284429.85574776883,
             "RV": 63337.910425417176,
             "endo": 40669.50815770378
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2105_1": {
         "SHARE_id": "2105_1",
@@ -4133,7 +4175,9 @@
             "myo": 257634.8957675192,
             "RV": 42285.09890603462,
             "endo": 40400.4088116571
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2471_1": {
         "SHARE_id": "2471_1",
@@ -4175,7 +4219,9 @@
             "myo": 169854.0961033266,
             "RV": 59182.621940345954,
             "endo": 27646.139903137482
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2360_1": {
         "SHARE_id": "2360_1",
@@ -4217,7 +4263,9 @@
             "myo": 88754.78377927445,
             "RV": 48665.93682508086,
             "endo": 11705.785861214696
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/108-2052_1": {
         "SHARE_id": "108-2052_1",
@@ -4259,7 +4307,9 @@
             "myo": 118544.41207194606,
             "RV": 34953.35750741793,
             "endo": 59247.96655476671
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/848_1": {
         "SHARE_id": "848_1",
@@ -4301,7 +4351,9 @@
             "myo": 93180.18950053763,
             "RV": 39563.30407725757,
             "endo": 22663.50813376894
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/108-2524_1": {
         "SHARE_id": "108-2524_1",
@@ -4343,7 +4395,9 @@
             "myo": 151494.2253188581,
             "RV": 61850.58300095092,
             "endo": 46112.1532323317
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2001_1": {
         "SHARE_id": "2001_1",
@@ -4385,7 +4439,9 @@
             "myo": 129070.61033509418,
             "RV": 49396.81762726837,
             "endo": 41138.5920718152
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1955_1": {
         "SHARE_id": "1955_1",
@@ -4427,7 +4483,9 @@
             "myo": 234957.1286261736,
             "RV": 65234.25257986162,
             "endo": 65911.5506411634
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1050_1": {
         "SHARE_id": "1050_1",
@@ -4469,7 +4527,9 @@
             "myo": 156697.8957589324,
             "RV": 50723.09834618407,
             "endo": 56674.14521900452
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1726_1": {
         "SHARE_id": "1726_1",
@@ -4511,7 +4571,9 @@
             "myo": 142865.26223366227,
             "RV": 51631.080287820805,
             "endo": 46536.79301826238
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2006_1": {
         "SHARE_id": "2006_1",
@@ -4553,7 +4615,9 @@
             "myo": 186973.47781444716,
             "RV": 54236.39473140374,
             "endo": 26740.817987529295
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2554_1": {
         "SHARE_id": "2554_1",
@@ -4595,7 +4659,9 @@
             "myo": 166753.39721156497,
             "RV": 59404.06422199899,
             "endo": 27828.81824075813
-        }
+        },
+        "ED_Comments": "accept:Some cases like this has got some issues with RV segmentation ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/108-453_1": {
         "SHARE_id": "108-453_1",
@@ -4637,7 +4703,9 @@
             "myo": 208843.95086713432,
             "RV": 75932.48286293345,
             "endo": 48078.18809271272
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/69_1": {
         "SHARE_id": "69_1",
@@ -4679,7 +4747,9 @@
             "myo": 203494.1593738319,
             "RV": 112622.15233082339,
             "endo": 127228.02777183145
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2284_1": {
         "SHARE_id": "2284_1",
@@ -4721,7 +4791,9 @@
             "myo": 109259.53246596183,
             "RV": 64982.64707032243,
             "endo": 33930.386059571945
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": ":"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2279_1": {
         "SHARE_id": "2279_1",
@@ -4763,7 +4835,9 @@
             "myo": 212345.46299158203,
             "RV": 83555.56735979827,
             "endo": 77822.05679526196
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Slice misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1044_1": {
         "SHARE_id": "1044_1",
@@ -4805,7 +4879,9 @@
             "myo": 219132.73419134528,
             "RV": 94677.1696473107,
             "endo": 33537.09122320445
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2116_1": {
         "SHARE_id": "2116_1",
@@ -4847,7 +4923,9 @@
             "myo": 267714.45650565816,
             "RV": 56753.47006285036,
             "endo": 33462.8022246392
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1325_1": {
         "SHARE_id": "1325_1",
@@ -4889,7 +4967,9 @@
             "myo": 230488.44585579768,
             "RV": 108141.24692716823,
             "endo": 134561.59595793815
-        }
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/35_1": {
         "SHARE_id": "35_1",
