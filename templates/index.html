@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMR Segmentation QC - Web App</title>
+    <title>HCM QC Tool</title>
     <style>
         body {
             margin: 0;
@@ -12,18 +12,43 @@
             background: #000;
         }
 
+        #top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-bottom: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #top-bar h1 {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
         #main-container {
             display: flex;
             width: 100vw;
-            height: 100vh;
+            height: calc(100vh - 52px);
+            margin-top: 52px;
             gap: 0;
             align-items: center;
             justify-content: center;
         }
 
         .panel {
-            width: calc(100vh);
-            height: 100vh;
+            width: calc(100vh - 52px);
+            height: calc(100vh - 52px);
             position: relative;
             display: flex;
             align-items: center;
@@ -205,7 +230,7 @@
             border: 2px solid #444;
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-            z-index: 200;
+            z-index: 2000;
             min-width: 400px;
             transition: min-width 0.3s ease;
             cursor: move;
@@ -618,14 +643,14 @@
         /* Floating Statistics Panel */
         #floating-stats-panel {
             position: fixed;
-            top: 20px;
+            top: 70px;
             left: 20px;
             background: rgba(30, 30, 30, 0.95);
             border: 2px solid #444;
             border-radius: 10px;
             padding: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            z-index: 1001;
+            z-index: 2000;
             min-width: 350px;
             max-width: 400px;
             transition: min-width 0.3s ease;
@@ -649,6 +674,7 @@
             padding-bottom: 10px;
             border-bottom: 1px solid #444;
             color: #fff;
+            cursor: move;
         }
 
         #stats-panel-title {
@@ -720,6 +746,11 @@
     </style>
 </head>
 <body>
+    <!-- Top Bar -->
+    <div id="top-bar">
+        <h1>HCM QC Tool</h1>
+    </div>
+
     <div id="main-container">
         <!-- Left Panel (MRI Slices) -->
         <div id="left-panel" class="panel">
@@ -1464,14 +1495,17 @@
                         const pathParts = patientData.path.split('/');
                         const patientId = pathParts[pathParts.length - 1];
 
-                        // Include comment status in the display with right alignment
                         // Format patient ID to fixed width for better alignment
                         const indexStr = String(index + 1).padStart(4, ' ');
-                        const patientIdStr = patientId.substring(0, 35).padEnd(35, ' '); // Limit and pad patient ID
-                        const statusText = `[${patientData.comment_status}]`;
+                        const patientIdStr = patientId.substring(0, 30).padEnd(30, ' '); // Limit and pad patient ID
 
-                        option.textContent = `${indexStr}. ${patientIdStr} ${statusText}`;
-                        option.title = `${patientData.path} (Comments: ${patientData.comment_status})`; // Full path and status as tooltip
+                        // Create QC decision status text
+                        const edDecision = patientData.ed_decision || '-';
+                        const esDecision = patientData.es_decision || '-';
+                        const qcStatusText = `(${edDecision}, ${esDecision})`;
+
+                        option.textContent = `${indexStr}. ${patientIdStr} ${qcStatusText}`;
+                        option.title = `${patientData.path}\nED: ${edDecision}\nES: ${esDecision}`; // Full path and QC decisions as tooltip
 
                         if (index === PATIENT_INDEX) {
                             option.selected = true;
@@ -1936,6 +1970,9 @@
             statsCurrentX = e.clientX - statsInitialX;
             statsCurrentY = e.clientY - statsInitialY;
 
+            // Ensure panel stays below the top bar (minimum 70px from top)
+            statsCurrentY = Math.max(70, statsCurrentY);
+
             statsPanel.style.left = statsCurrentX + 'px';
             statsPanel.style.top = statsCurrentY + 'px';
             statsPanel.style.right = 'auto';
@@ -1957,7 +1994,9 @@
         const savedStatsPosY = localStorage.getItem('statsPanelPosY');
         if (savedStatsPosX && savedStatsPosY) {
             statsPanel.style.left = savedStatsPosX;
-            statsPanel.style.top = savedStatsPosY;
+            // Ensure panel is below the top bar (minimum 70px from top)
+            const savedY = parseInt(savedStatsPosY);
+            statsPanel.style.top = isNaN(savedY) ? savedStatsPosY : Math.max(70, savedY) + 'px';
         }
 
         // Minimize/expand stats panel

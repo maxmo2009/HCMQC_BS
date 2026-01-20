@@ -12,6 +12,7 @@ app.secret_key = 'cmr_qc_secret_key_12345'  # Required for session management
 
 # Base path to prepend to patient paths
 BASE_PATH = '/mnt/storage/home/ym1413'
+# BASE_PATH = ''
 
 # Global variables
 PATIENT_LIST = []
@@ -275,6 +276,38 @@ def get_patient_list():
         ed_comment = patient_info.get('ED_Comments', '')
         es_comment = patient_info.get('ES_Comments', '')
 
+        # Extract QC decisions from comments
+        ed_decision = ''
+        es_decision = ''
+
+        if ed_comment and ed_comment.strip():
+            if ed_comment.startswith('accept:'):
+                ed_decision = 'accept'
+            elif ed_comment.startswith('reject:'):
+                ed_decision = 'reject'
+            elif ed_comment.startswith('finetune:'):
+                ed_decision = 'finetune'
+            elif ed_comment.startswith('unclassified:'):
+                ed_decision = 'unclassified'
+            else:
+                ed_decision = 'unknown'
+        else:
+            ed_decision = '-'
+
+        if es_comment and es_comment.strip():
+            if es_comment.startswith('accept:'):
+                es_decision = 'accept'
+            elif es_comment.startswith('reject:'):
+                es_decision = 'reject'
+            elif es_comment.startswith('finetune:'):
+                es_decision = 'finetune'
+            elif es_comment.startswith('unclassified:'):
+                es_decision = 'unclassified'
+            else:
+                es_decision = 'unknown'
+        else:
+            es_decision = '-'
+
         # Count how many phases have comments
         comment_count = 0
         if ed_comment and ed_comment.strip():
@@ -284,7 +317,9 @@ def get_patient_list():
 
         patient_list_with_status.append({
             'path': patient_path,
-            'comment_status': f"{comment_count}/2"
+            'comment_status': f"{comment_count}/2",
+            'ed_decision': ed_decision,
+            'es_decision': es_decision
         })
 
     return jsonify({
@@ -429,4 +464,4 @@ if __name__ == '__main__':
     print("Starting server...")
     print("Open your browser and navigate to: http://localhost:5000")
     print("=" * 60)
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=5000)
