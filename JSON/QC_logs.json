@@ -5011,7 +5011,9 @@
             "myo": 122972.6845111567,
             "RV": 57106.37871199634,
             "endo": 52073.843586791336
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. ",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1283_1": {
         "SHARE_id": "1283_1",
@@ -5053,7 +5055,9 @@
             "myo": 111957.06067386057,
             "RV": 24638.525784529615,
             "endo": 21156.315595126413
-        }
+        },
+        "ES_Comments": "accept: Basal slice is misaligned and incomplete. ",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2054_1": {
         "SHARE_id": "2054_1",
@@ -5095,7 +5099,9 @@
             "myo": 106091.44945496021,
             "RV": 36444.58458894687,
             "endo": 23530.404566668818
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. ",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned and incomplete. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2582_1": {
         "SHARE_id": "2582_1",
@@ -5137,7 +5143,9 @@
             "myo": 31845.9452595161,
             "RV": 24194.990231622964,
             "endo": 10663.832629981509
-        }
+        },
+        "ED_Comments": "reject:Missing a lot of slices in bot CMR and segmentation . ",
+        "ES_Comments": "reject:Missing a lot of slices in bot CMR and segmentation . "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1523_1": {
         "SHARE_id": "1523_1",
@@ -5179,7 +5187,9 @@
             "myo": 167096.01548681795,
             "RV": 75577.31932191731,
             "endo": 30611.77898610555
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. ",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2204_1": {
         "SHARE_id": "2204_1",
@@ -5221,7 +5231,9 @@
             "myo": 120337.81239826992,
             "RV": 52889.65010837099,
             "endo": 28977.248589825627
-        }
+        },
+        "ED_Comments": "accept:Needs to be checked",
+        "ES_Comments": "accept:Needs to be checked"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1840_1": {
         "SHARE_id": "1840_1",
@@ -5263,7 +5275,9 @@
             "myo": 171745.749504134,
             "RV": 54923.21987224546,
             "endo": 39950.73204988532
-        }
+        },
+        "ED_Comments": "accept:There is no two last apical slice in both segmentation and CMR images. Basal slice is misaligned",
+        "ES_Comments": ":There is no two last apical slice in both segmentation and CMR images. Basal slice is misaligned"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1293_1": {
         "SHARE_id": "1293_1",
@@ -5305,7 +5319,9 @@
             "myo": 199230.7197372243,
             "RV": 67266.75835663294,
             "endo": 49044.55797579112
-        }
+        },
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned",
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2225_1": {
         "SHARE_id": "2225_1",
@@ -5347,7 +5363,9 @@
             "myo": 120081.35509354746,
             "RV": 58910.22842378,
             "endo": 41113.25128704932
-        }
+        },
+        "ED_Comments": "accept:There is no two last apical slice in both segmentation and CMR images. Slice misalignment \n",
+        "ES_Comments": "accept:There is no two last apical slice in both segmentation and CMR images. Basal slice is misaligned"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/108-2417_1": {
         "SHARE_id": "108-2417_1",
@@ -5389,7 +5407,9 @@
             "myo": 173445.88973320607,
             "RV": 66648.58183906856,
             "endo": 39721.052094142695
-        }
+        },
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. ",
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2475_1": {
         "SHARE_id": "2475_1",
@@ -5431,7 +5451,9 @@
             "myo": 152829.86116703553,
             "RV": 32168.808472359524,
             "endo": 26781.714679772253
-        }
+        },
+        "ES_Comments": "accept:Misalignment ",
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1145_1": {
         "SHARE_id": "1145_1",
@@ -5473,7 +5495,9 @@
             "myo": 70627.40382062548,
             "RV": 57889.7036970074,
             "endo": 58227.2951298173
-        }
+        },
+        "ES_Comments": "unclassified:Missing a lot of slices in both CMR and segmentation ",
+        "ED_Comments": "unclassified:Missing a lot of slices in both CMR and segmentation "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2483_1": {
         "SHARE_id": "2483_1",
@@ -5515,7 +5539,9 @@
             "myo": 94980.88128603078,
             "RV": 43670.03701054875,
             "endo": 66717.00611813742
-        }
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2557_1": {
         "SHARE_id": "2557_1",
@@ -5557,7 +5583,8 @@
             "myo": 127608.90567992465,
             "RV": 40533.37357079535,
             "endo": 42731.72657859149
-        }
+        },
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1513_1": {
         "SHARE_id": "1513_1",
@@ -5599,7 +5626,8 @@
             "myo": 195769.08764820706,
             "RV": 78543.15174680184,
             "endo": 49690.8346640006
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1739_1": {
         "SHARE_id": "1739_1",
@@ -5641,7 +5669,9 @@
             "myo": 292556.8166133821,
             "RV": 52811.167008241,
             "endo": 28662.896352736756
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/2537_1": {
         "SHARE_id": "2537_1",
@@ -5683,7 +5713,9 @@
             "myo": 142925.6642463152,
             "RV": 37552.46514829894,
             "endo": 26623.998912806073
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1031_1": {
         "SHARE_id": "1031_1",
@@ -5725,7 +5757,9 @@
             "myo": 283987.30691232934,
             "RV": 48985.824302016525,
             "endo": 16214.090215043138
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/1838_1": {
         "SHARE_id": "1838_1",
@@ -5767,7 +5801,9 @@
             "myo": 81849.68147605007,
             "RV": 45255.69621556757,
             "endo": 25305.157107773088
-        }
+        },
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Yale/seg/108-32_1": {
         "SHARE_id": "108-32_1",
@@ -5809,7 +5845,9 @@
             "myo": 178698.42874532426,
             "RV": 60073.636465675285,
             "endo": 25278.754519118997
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/10355_1": {
         "SHARE_id": "10355_1",
@@ -5851,7 +5889,9 @@
             "myo": 131391.8110065953,
             "RV": 61232.06803261875,
             "endo": 42285.632783216475
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/13303_1": {
         "SHARE_id": "13303_1",
@@ -5893,7 +5933,8 @@
             "myo": 46470.029000567105,
             "RV": 13167.632060881411,
             "endo": 18151.312939855317
-        }
+        },
+        "ED_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/10355_3": {
         "SHARE_id": "10355_3",
@@ -5935,7 +5976,9 @@
             "myo": 178139.82728161255,
             "RV": 66093.00591732975,
             "endo": 56016.62641423843
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/13302_1": {
         "SHARE_id": "13302_1",
@@ -5977,7 +6020,8 @@
             "myo": 146021.01836361285,
             "RV": 71183.73813114605,
             "endo": 36456.123494681764
-        }
+        },
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/102-760_1": {
         "SHARE_id": "102-760_1",
@@ -6019,7 +6063,8 @@
             "myo": 145119.3848119937,
             "RV": 45426.07375423326,
             "endo": 25543.598617210293
-        }
+        },
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/13267_1": {
         "SHARE_id": "13267_1",
@@ -6061,7 +6106,8 @@
             "myo": 220973.9291074259,
             "RV": 39185.36858017401,
             "endo": 29245.263301302424
-        }
+        },
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/809_1": {
         "SHARE_id": "809_1",
@@ -6103,7 +6149,8 @@
             "myo": 63656.62789881285,
             "RV": 20972.265258599535,
             "endo": 15353.28020578424
-        }
+        },
+        "ES_Comments": "accept:Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/102-784_1": {
         "SHARE_id": "102-784_1",
@@ -6145,7 +6192,8 @@
             "myo": 206678.95871821465,
             "RV": 49108.82883744924,
             "endo": 40452.945799907466
-        }
+        },
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/10068_1": {
         "SHARE_id": "10068_1",
@@ -6187,7 +6235,8 @@
             "myo": 97341.55236626844,
             "RV": 43517.40667562984,
             "endo": 40103.283516737654
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/13265_1": {
         "SHARE_id": "13265_1",
@@ -6229,7 +6278,8 @@
             "myo": 169551.5573951529,
             "RV": 66730.69405212163,
             "endo": 64052.97306626091
-        }
+        },
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/13264_1": {
         "SHARE_id": "13264_1",
@@ -6271,7 +6321,9 @@
             "myo": 299142.76963093155,
             "RV": 74953.78688107218,
             "endo": 61355.781366330164
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/10355_2": {
         "SHARE_id": "10355_2",
@@ -6313,7 +6365,8 @@
             "myo": 147246.27925690878,
             "RV": 76083.28113623455,
             "endo": 50180.338059292044
-        }
+        },
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/820_2": {
         "SHARE_id": "820_2",
@@ -6355,7 +6408,8 @@
             "myo": 110476.52664983562,
             "RV": 50994.25269876807,
             "endo": 46429.909047228364
-        }
+        },
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/10068_2": {
         "SHARE_id": "10068_2",
@@ -6397,7 +6451,8 @@
             "myo": 170160.81920140598,
             "RV": 64602.13027816368,
             "endo": 57954.25016199977
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/7497_2": {
         "SHARE_id": "7497_2",
@@ -6439,7 +6494,8 @@
             "myo": 94765.10712524338,
             "RV": 43989.91639695754,
             "endo": 38582.36498827765
-        }
+        },
+        "ES_Comments": "unclassified:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/102-784_2": {
         "SHARE_id": "102-784_2",
@@ -6481,7 +6537,9 @@
             "myo": 298213.0050287781,
             "RV": 54473.80658702319,
             "endo": 49430.469195423844
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/7497_1": {
         "SHARE_id": "7497_1",
@@ -6523,7 +6581,8 @@
             "myo": 94765.10712524338,
             "RV": 43989.91639695754,
             "endo": 38582.36498827765
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BCH/seg/102-744_1": {
         "SHARE_id": "102-744_1",
@@ -6565,7 +6624,8 @@
             "myo": 182940.30408324208,
             "RV": 68333.11273088172,
             "endo": 49132.13903550994
-        }
+        },
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2254_3": {
         "SHARE_id": "2254_3",
@@ -6607,7 +6667,8 @@
             "myo": 113671.29017244873,
             "RV": 68592.96886897307,
             "endo": 40746.31122244143
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14709_1": {
         "SHARE_id": "14709_1",
@@ -6649,7 +6710,9 @@
             "myo": 143712.39554612926,
             "RV": 68039.45680184313,
             "endo": 32608.27553424517
-        }
+        },
+        "ES_Comments": ":",
+        "ED_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-1217_1": {
         "SHARE_id": "101-1217_1",
@@ -6691,7 +6754,9 @@
             "myo": 63147.937978258,
             "RV": 27237.727410139087,
             "endo": 9222.579834327815
-        }
+        },
+        "ES_Comments": ":Missing a lot of slices in both CMR and segmentation ",
+        "ED_Comments": "unclassified:Missing a lot of slices in both CMR and segmentation "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/8528_1": {
         "SHARE_id": "8528_1",
@@ -6733,7 +6798,9 @@
             "myo": 229726.62088443633,
             "RV": 66229.78395258401,
             "endo": 61667.884772854864
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/730_1": {
         "SHARE_id": "730_1",
@@ -6775,7 +6842,9 @@
             "myo": 138481.79099396872,
             "RV": 34884.7195278123,
             "endo": 42963.71633686756
-        }
+        },
+        "ED_Comments": "unclassified:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/365_2": {
         "SHARE_id": "365_2",
@@ -6817,7 +6886,9 @@
             "myo": 214306.52657739003,
             "RV": 34822.408997869985,
             "endo": 40052.1638050891
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1116_2": {
         "SHARE_id": "1116_2",
@@ -6859,7 +6930,9 @@
             "myo": 90849.52039530454,
             "RV": 36233.485500727584,
             "endo": 12884.703800107636
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-1217_2": {
         "SHARE_id": "101-1217_2",
@@ -6901,7 +6974,9 @@
             "myo": 94194.48750899444,
             "RV": 44549.83578052731,
             "endo": 35407.161110768575
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/8496_1": {
         "SHARE_id": "8496_1",
@@ -6943,7 +7018,8 @@
             "myo": 186687.2959845908,
             "RV": 78963.20227308391,
             "endo": 32756.2718037538
-        }
+        },
+        "ED_Comments": "accept:Misalignment\nThere is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/470_3": {
         "SHARE_id": "470_3",
@@ -6985,7 +7061,9 @@
             "myo": 159880.98357495057,
             "RV": 74243.7799684589,
             "endo": 36606.21432750653
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14475_1": {
         "SHARE_id": "14475_1",
@@ -7027,7 +7105,8 @@
             "myo": -1.0,
             "RV": -1.0,
             "endo": -1.0
-        }
+        },
+        "ES_Comments": "unclassified:There are slices in CMR, no in segmentation "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/454_1": {
         "SHARE_id": "454_1",
@@ -7069,7 +7148,9 @@
             "myo": 227327.05849656943,
             "RV": 74311.73604348334,
             "endo": 51710.13290197619
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:There is no last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14675_1": {
         "SHARE_id": "14675_1",
@@ -7111,7 +7192,9 @@
             "myo": 262087.2170804843,
             "RV": 24768.921673894365,
             "endo": 50713.298602300296
-        }
+        },
+        "ES_Comments": ":There is no last apical slice in both segmentation and CMR images.",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1360_1": {
         "SHARE_id": "1360_1",
@@ -7153,7 +7236,9 @@
             "myo": 150986.90304748327,
             "RV": 44295.64497748502,
             "endo": 26834.80898184658
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/470_4": {
         "SHARE_id": "470_4",
@@ -7195,7 +7280,9 @@
             "myo": 197317.15769965944,
             "RV": 71547.51655974655,
             "endo": 35580.46224321248
-        }
+        },
+        "ES_Comments": "accept:Misalignment",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-13341_1": {
         "SHARE_id": "101-13341_1",
@@ -7237,7 +7324,8 @@
             "myo": 233294.95591281244,
             "RV": 92964.37245849513,
             "endo": 53908.037979846835
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in segmentation\n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2838_1": {
         "SHARE_id": "2838_1",
@@ -7279,7 +7367,9 @@
             "myo": 158748.93796458197,
             "RV": 51975.795990115665,
             "endo": 22185.169630688633
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/449_1": {
         "SHARE_id": "449_1",
@@ -7321,7 +7411,9 @@
             "myo": 146047.5857235223,
             "RV": 25849.05833360006,
             "endo": 28610.703227455277
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2720_1": {
         "SHARE_id": "2720_1",
@@ -7363,7 +7455,9 @@
             "myo": 106858.63912788263,
             "RV": 45973.69086826334,
             "endo": 21928.968070490817
-        }
+        },
+        "ED_Comments": "accept:Proper one",
+        "ES_Comments": "accept:Needs to be checked"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1646_1": {
         "SHARE_id": "1646_1",
@@ -7405,7 +7499,9 @@
             "myo": 143292.4811529397,
             "RV": 89961.56286994104,
             "endo": 46098.76165339202
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2254_2": {
         "SHARE_id": "2254_2",
@@ -7447,7 +7543,9 @@
             "myo": 104335.9755912442,
             "RV": 41908.77317333208,
             "endo": 31321.77059051076
-        }
+        },
+        "ED_Comments": "unclassified:Missing a lot of slices in both CMR and segmentation \nMisalignment ",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1546_1": {
         "SHARE_id": "1546_1",
@@ -7489,7 +7587,8 @@
             "myo": 101792.62912993191,
             "RV": 50437.45217680679,
             "endo": 35109.56362544934
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-238_1": {
         "SHARE_id": "101-238_1",
@@ -7573,7 +7672,9 @@
             "myo": 95987.08967085464,
             "RV": 45448.443804787385,
             "endo": 42436.06942095394
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14280_1": {
         "SHARE_id": "14280_1",
@@ -7615,7 +7716,9 @@
             "myo": 216099.99886927655,
             "RV": 97808.41668824496,
             "endo": 44794.85259533331
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/13259_1": {
         "SHARE_id": "13259_1",
@@ -7657,7 +7760,9 @@
             "myo": 147011.8984966392,
             "RV": 33589.28508764203,
             "endo": 17599.915261924532
-        }
+        },
+        "ES_Comments": "accept:Misalignment ",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1047_1": {
         "SHARE_id": "1047_1",
@@ -7699,7 +7804,9 @@
             "myo": 154610.8524253045,
             "RV": 39434.25136590983,
             "endo": 24295.138802046753
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1614_1": {
         "SHARE_id": "1614_1",
@@ -7741,7 +7848,9 @@
             "myo": 120189.41827095315,
             "RV": 35391.966156929884,
             "endo": 18631.999774792715
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/8543_1": {
         "SHARE_id": "8543_1",
@@ -7783,7 +7892,9 @@
             "myo": 119603.92131502597,
             "RV": 45426.21319204074,
             "endo": 31959.532679002492
-        }
+        },
+        "ES_Comments": "accept:There is no last apical slice in segmentation",
+        "ED_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/11489_1": {
         "SHARE_id": "11489_1",
@@ -7825,7 +7936,9 @@
             "myo": 219996.50661146193,
             "RV": 51751.419339381224,
             "endo": 45461.44548448957
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice Misalignment\nThere is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/38_2": {
         "SHARE_id": "38_2",
@@ -7867,7 +7980,9 @@
             "myo": 220966.5828491996,
             "RV": 43282.81243253088,
             "endo": 37473.024030729284
-        }
+        },
+        "ED_Comments": "unclassified:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-2658_1": {
         "SHARE_id": "101-2658_1",
@@ -7909,7 +8024,9 @@
             "myo": 146593.10410883877,
             "RV": 42110.31266265725,
             "endo": 29260.441993396944
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:8.\tBasal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/166_1": {
         "SHARE_id": "166_1",
@@ -7951,7 +8068,9 @@
             "myo": -1.0,
             "RV": -1.0,
             "endo": -1.0
-        }
+        },
+        "ED_Comments": "reject:There are slices in CMR , no in segmentation ",
+        "ES_Comments": "reject:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/6463_1": {
         "SHARE_id": "6463_1",
@@ -7993,7 +8112,9 @@
             "myo": 140103.0448523527,
             "RV": 48157.42445613257,
             "endo": 28703.3594179259
-        }
+        },
+        "ES_Comments": "accept:Misalignment ",
+        "ED_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2254_4": {
         "SHARE_id": "2254_4",
@@ -8035,7 +8156,9 @@
             "myo": 126955.91105028622,
             "RV": 38158.449292954174,
             "endo": 33129.62028818655
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2163_1": {
         "SHARE_id": "2163_1",
@@ -8077,7 +8200,9 @@
             "myo": 137191.73049139767,
             "RV": 47403.308245344284,
             "endo": 35530.09264723861
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/5512_1": {
         "SHARE_id": "5512_1",
@@ -8119,7 +8244,9 @@
             "myo": 116546.53158402556,
             "RV": 41070.9250200345,
             "endo": 15760.555617924714
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/807_1": {
         "SHARE_id": "807_1",
@@ -8161,7 +8288,9 @@
             "myo": 226176.37174793018,
             "RV": 96917.04026359985,
             "endo": 55749.22821483315
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/4306_1": {
         "SHARE_id": "4306_1",
@@ -8203,7 +8332,9 @@
             "myo": 158531.374273828,
             "RV": 60208.85160107157,
             "endo": 46093.52364213245
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-244_1": {
         "SHARE_id": "101-244_1",
@@ -8245,7 +8376,9 @@
             "myo": 129049.2564342905,
             "RV": 90226.02075223828,
             "endo": 48894.65793648177
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2828_1": {
         "SHARE_id": "2828_1",
@@ -8287,7 +8420,9 @@
             "myo": 130001.29847079086,
             "RV": 42660.472276456225,
             "endo": 21715.565370112003
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. ",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14243_1": {
         "SHARE_id": "14243_1",
@@ -8329,7 +8464,9 @@
             "myo": 115215.46932064868,
             "RV": 47423.77430845912,
             "endo": 27633.685581913403
-        }
+        },
+        "ED_Comments": "unclassified:",
+        "ES_Comments": ":"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1942_1": {
         "SHARE_id": "1942_1",
@@ -8371,7 +8508,9 @@
             "myo": 138950.89873332658,
             "RV": 35985.22359461333,
             "endo": 26436.864298712742
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14684_2": {
         "SHARE_id": "14684_2",
@@ -8413,7 +8552,9 @@
             "myo": 138829.43703918828,
             "RV": 53336.33483974522,
             "endo": 33983.29897162105
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/28_2": {
         "SHARE_id": "28_2",
@@ -8455,7 +8596,9 @@
             "myo": 174104.89604669312,
             "RV": 64594.279180356374,
             "endo": 46131.09262143135
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/903_2": {
         "SHARE_id": "903_2",
@@ -8497,7 +8640,9 @@
             "myo": 192803.21589833303,
             "RV": 65889.99261321485,
             "endo": 29739.625606315676
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14440_1": {
         "SHARE_id": "14440_1",
@@ -8539,7 +8684,9 @@
             "myo": 241641.01861461785,
             "RV": 47443.8604621105,
             "endo": 17206.25558846723
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/11622_1": {
         "SHARE_id": "11622_1",
@@ -8581,7 +8728,9 @@
             "myo": 130783.15049293882,
             "RV": 53067.23814166292,
             "endo": 63290.4421468366
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/344_1": {
         "SHARE_id": "344_1",
@@ -8623,7 +8772,9 @@
             "myo": 220163.3255413609,
             "RV": 35955.77622462185,
             "endo": 26927.304358007117
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/6310_2": {
         "SHARE_id": "6310_2",
@@ -8665,7 +8816,9 @@
             "myo": 229953.1514120626,
             "RV": 48994.16402233524,
             "endo": 42028.88100779134
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1557_1": {
         "SHARE_id": "1557_1",
@@ -8707,7 +8860,9 @@
             "myo": 116799.49114995988,
             "RV": 56059.084372309364,
             "endo": 31087.446718772197
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/4328_1": {
         "SHARE_id": "4328_1",
@@ -8749,7 +8904,9 @@
             "myo": 177459.56918442264,
             "RV": 59228.258065057635,
             "endo": 38688.281492733884
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-2165_1": {
         "SHARE_id": "101-2165_1",
@@ -8791,7 +8948,9 @@
             "myo": 131005.88348009676,
             "RV": 36016.77964060026,
             "endo": 20856.595377682952
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/167_1": {
         "SHARE_id": "167_1",
@@ -8833,7 +8992,9 @@
             "myo": 137566.1710400215,
             "RV": 58269.30778364338,
             "endo": 38438.389968144234
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/888_1": {
         "SHARE_id": "888_1",
@@ -8875,7 +9036,9 @@
             "myo": 210459.6695286666,
             "RV": 67827.91537847678,
             "endo": 18378.781144351447
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14280_2": {
         "SHARE_id": "14280_2",
@@ -8917,7 +9080,9 @@
             "myo": 220118.92271444298,
             "RV": 71218.61880871406,
             "endo": 26204.117249313724
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/13385_1": {
         "SHARE_id": "13385_1",
@@ -8959,7 +9124,9 @@
             "myo": 124524.54799308507,
             "RV": 55198.16664056296,
             "endo": 100584.66302008866
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/207_1": {
         "SHARE_id": "207_1",
@@ -9001,7 +9168,9 @@
             "myo": 105317.1285724238,
             "RV": 31799.214369518224,
             "endo": 20638.935889660606
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-332_1": {
         "SHARE_id": "101-332_1",
@@ -9043,7 +9212,9 @@
             "myo": 126313.3510651806,
             "RV": 33962.697911122996,
             "endo": 22488.778962313296
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. ",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2766_2": {
         "SHARE_id": "2766_2",
@@ -9085,7 +9256,9 @@
             "myo": 121136.43903817647,
             "RV": 63140.94728920106,
             "endo": 21567.024649032202
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. ",
+        "ES_Comments": "accept:There is no last apical slice in segmentation "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/207_3": {
         "SHARE_id": "207_3",
@@ -9127,7 +9300,9 @@
             "myo": 71708.0573159229,
             "RV": 11977.204381787951,
             "endo": 13613.813677700944
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/11489_2": {
         "SHARE_id": "11489_2",
@@ -9169,7 +9344,9 @@
             "myo": 226778.3657399357,
             "RV": 59282.32106848755,
             "endo": 49482.20889428174
-        }
+        },
+        "ED_Comments": "accept:Needs to be checked\nMisalignment \n",
+        "ES_Comments": "accept:There is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/428_1": {
         "SHARE_id": "428_1",
@@ -9211,7 +9388,9 @@
             "myo": 178013.2156672022,
             "RV": 55694.96689007139,
             "endo": 37292.031924155424
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. ",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-332_2": {
         "SHARE_id": "101-332_2",
@@ -9253,7 +9432,9 @@
             "myo": 127064.40025901476,
             "RV": 61359.60980857324,
             "endo": 33140.32546474109
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-1217_3": {
         "SHARE_id": "101-1217_3",
@@ -9295,7 +9476,9 @@
             "myo": 71078.87995013311,
             "RV": 34072.68002929435,
             "endo": 13817.43874252943
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/3940_1": {
         "SHARE_id": "3940_1",
@@ -9337,7 +9520,9 @@
             "myo": 231828.1598502712,
             "RV": 49684.52529854657,
             "endo": 25547.31958908494
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1793_1": {
         "SHARE_id": "1793_1",
@@ -9379,7 +9564,9 @@
             "myo": 95040.18867594308,
             "RV": 57355.36465436739,
             "endo": 38537.5827695576
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-760_1": {
         "SHARE_id": "101-760_1",
@@ -9421,7 +9608,9 @@
             "myo": 76065.37987524242,
             "RV": 35067.494069021515,
             "endo": 27562.089796190565
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images",
+        "ES_Comments": "accept:There is no last apical slice in segmentation "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/6390_1": {
         "SHARE_id": "6390_1",
@@ -9463,7 +9652,9 @@
             "myo": 93607.40763409444,
             "RV": 48374.379805052034,
             "endo": 23155.158648579192
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images",
+        "ES_Comments": "unclassified:There is no last apical slice in both segmentation and CMR images"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1942_2": {
         "SHARE_id": "1942_2",
@@ -9505,7 +9696,9 @@
             "myo": 167635.0536090958,
             "RV": 62341.00372682067,
             "endo": 31345.93333994622
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2227_1": {
         "SHARE_id": "2227_1",
@@ -9547,7 +9740,9 @@
             "myo": 219842.18350785284,
             "RV": 52379.78287837413,
             "endo": 44972.9376618932
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1109_1": {
         "SHARE_id": "1109_1",
@@ -9589,7 +9784,9 @@
             "myo": 112229.97880378662,
             "RV": 31166.372287521088,
             "endo": 18937.595366430025
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2546_1": {
         "SHARE_id": "2546_1",
@@ -9631,7 +9828,9 @@
             "myo": 132258.72218527232,
             "RV": 55755.29643280843,
             "endo": 18531.739904805312
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:There is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2546_2": {
         "SHARE_id": "2546_2",
@@ -9673,7 +9872,9 @@
             "myo": 124624.45326886512,
             "RV": 59692.16170901299,
             "endo": 18887.93252569811
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:There is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/8501_1": {
         "SHARE_id": "8501_1",
@@ -9715,7 +9916,9 @@
             "myo": 209996.94492358877,
             "RV": 62845.162163376146,
             "endo": 66284.28607463707
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14662_1": {
         "SHARE_id": "14662_1",
@@ -9757,7 +9960,9 @@
             "myo": 215088.0518491717,
             "RV": 54440.77884101405,
             "endo": 33473.48625224412
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/13558_1": {
         "SHARE_id": "13558_1",
@@ -9799,7 +10004,9 @@
             "myo": 111176.80673400802,
             "RV": 52187.466575141516,
             "endo": 21620.56153370798
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1116_1": {
         "SHARE_id": "1116_1",
@@ -9841,7 +10048,9 @@
             "myo": 115684.8402298021,
             "RV": 52308.02464125356,
             "endo": 17197.482084513118
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-328_1": {
         "SHARE_id": "101-328_1",
@@ -9883,7 +10092,9 @@
             "myo": 281094.86665276106,
             "RV": 44864.23462899119,
             "endo": 31053.32102594086
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/13589_1": {
         "SHARE_id": "13589_1",
@@ -9967,7 +10178,9 @@
             "myo": 130741.72892448466,
             "RV": 49587.18641095485,
             "endo": 23977.30094315101
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/4118_1": {
         "SHARE_id": "4118_1",
@@ -10009,7 +10222,9 @@
             "myo": 191056.55292116004,
             "RV": 70336.35812048789,
             "endo": 53682.87678060526
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/3746_1": {
         "SHARE_id": "3746_1",
@@ -10051,7 +10266,9 @@
             "myo": 183240.33768066345,
             "RV": 44825.23478231425,
             "endo": 39583.094518819475
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/470_1": {
         "SHARE_id": "470_1",
@@ -10093,7 +10310,9 @@
             "myo": 187869.14382691553,
             "RV": 71142.90119122353,
             "endo": 31180.506434478542
-        }
+        },
+        "ED_Comments": "accept:Misalignment",
+        "ES_Comments": "accept:Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-332_3": {
         "SHARE_id": "101-332_3",
@@ -10135,7 +10354,9 @@
             "myo": 103736.00583816392,
             "RV": 50745.40204075456,
             "endo": 25638.418991781524
-        }
+        },
+        "ED_Comments": "unclassified:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "unclassified:There is no last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/476_2": {
         "SHARE_id": "476_2",
@@ -10177,7 +10398,9 @@
             "myo": 95719.98216280894,
             "RV": 45975.98689045594,
             "endo": 34050.186940543135
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14323_1": {
         "SHARE_id": "14323_1",
@@ -10219,7 +10442,9 @@
             "myo": 79253.63889249916,
             "RV": 40288.38507883561,
             "endo": 25793.48999716896
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/186_1": {
         "SHARE_id": "186_1",
@@ -10261,7 +10486,9 @@
             "myo": 118851.2634690263,
             "RV": 54177.66864100007,
             "endo": 37488.69076567638
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:There is no last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/311_1": {
         "SHARE_id": "311_1",
@@ -10303,7 +10530,9 @@
             "myo": 132739.0725337097,
             "RV": 5278.307595030135,
             "endo": 8881.414148806036
-        }
+        },
+        "ED_Comments": "unclassified:No slices towards to base after papillary muscle level",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/186_3": {
         "SHARE_id": "186_3",
@@ -10345,7 +10574,9 @@
             "myo": 159271.7176915081,
             "RV": 45375.5516553255,
             "endo": 31270.525160036075
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/12129_1": {
         "SHARE_id": "12129_1",
@@ -10387,7 +10618,9 @@
             "myo": 183863.31724117172,
             "RV": 47795.81018904839,
             "endo": 24683.251106511605
-        }
+        },
+        "ED_Comments": "accept:Proper one",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/6310_3": {
         "SHARE_id": "6310_3",
@@ -10429,7 +10662,9 @@
             "myo": 266404.9639773769,
             "RV": 63729.38595411662,
             "endo": 49274.5969549218
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2455_1": {
         "SHARE_id": "2455_1",
@@ -10471,7 +10706,9 @@
             "myo": 137381.7806347185,
             "RV": 39693.33531037576,
             "endo": 22593.620994944915
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14217_1": {
         "SHARE_id": "14217_1",
@@ -10513,7 +10750,9 @@
             "myo": 168690.41711280914,
             "RV": 39302.28152327283,
             "endo": 40897.44856212647
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/8568_1": {
         "SHARE_id": "8568_1",
@@ -10555,7 +10794,9 @@
             "myo": 119401.48611872017,
             "RV": 54847.7561940631,
             "endo": 25759.417470297125
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14251_1": {
         "SHARE_id": "14251_1",
@@ -10597,7 +10838,9 @@
             "myo": 256541.6553637653,
             "RV": 56247.96069838674,
             "endo": 48484.25437694876
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/12528_1": {
         "SHARE_id": "12528_1",
@@ -10639,7 +10882,9 @@
             "myo": 177115.1020800178,
             "RV": 93110.95996879044,
             "endo": 36606.63378805962
-        }
+        },
+        "ED_Comments": "accept:Proper one",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14322_1": {
         "SHARE_id": "14322_1",
@@ -10681,7 +10926,9 @@
             "myo": 149144.31828021488,
             "RV": 42257.10046101722,
             "endo": 34876.86945650948
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2254_6": {
         "SHARE_id": "2254_6",
@@ -10723,7 +10970,9 @@
             "myo": 113671.29017244873,
             "RV": 68592.96886897307,
             "endo": 40746.31122244143
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2766_1": {
         "SHARE_id": "2766_1",
@@ -10765,7 +11014,9 @@
             "myo": 132714.78364434605,
             "RV": 73791.49084591122,
             "endo": 26512.232699864133
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:There is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/186_2": {
         "SHARE_id": "186_2",
@@ -10807,7 +11058,9 @@
             "myo": 125729.1896494905,
             "RV": 37186.46214217562,
             "endo": 24638.83439778345
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14690_1": {
         "SHARE_id": "14690_1",
@@ -10849,7 +11102,9 @@
             "myo": 240768.5868119122,
             "RV": 57495.872087211406,
             "endo": 44541.08843778675
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14475_2": {
         "SHARE_id": "14475_2",
@@ -10891,7 +11146,9 @@
             "myo": 171902.22556050852,
             "RV": 88808.6247335936,
             "endo": 106382.21332784097
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:First slice in base has not been captured fully "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-283_1": {
         "SHARE_id": "101-283_1",
@@ -10933,7 +11190,9 @@
             "myo": 317919.01590491086,
             "RV": 21326.836448355356,
             "endo": 48695.20498958964
-        }
+        },
+        "ES_Comments": ":",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/12233_1": {
         "SHARE_id": "12233_1",
@@ -10975,7 +11234,9 @@
             "myo": 133516.4774059407,
             "RV": 61804.29236161933,
             "endo": 36209.19254784461
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:There is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/13462_1": {
         "SHARE_id": "13462_1",
@@ -11017,7 +11278,9 @@
             "myo": 323558.5779253741,
             "RV": 72901.15778192284,
             "endo": 50514.945838227424
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/6382_1": {
         "SHARE_id": "6382_1",
@@ -11059,7 +11322,9 @@
             "myo": 164891.88212765587,
             "RV": 62121.1999062478,
             "endo": 42837.433633058536
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14632_1": {
         "SHARE_id": "14632_1",
@@ -11101,7 +11366,9 @@
             "myo": 163691.45365242843,
             "RV": 73123.71354574949,
             "endo": 38140.90420468538
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/667_1": {
         "SHARE_id": "667_1",
@@ -11143,7 +11410,9 @@
             "myo": 155998.18050377426,
             "RV": 55261.41207696011,
             "endo": 28140.308512313044
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-369_1": {
         "SHARE_id": "101-369_1",
@@ -11185,7 +11454,9 @@
             "myo": 99404.61483897558,
             "RV": 18269.61478065765,
             "endo": 11431.194146808886
-        }
+        },
+        "ED_Comments": "unclassified:No basal slices after papillary muscles level",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/246_1": {
         "SHARE_id": "246_1",
@@ -11227,7 +11498,9 @@
             "myo": 174424.57171356646,
             "RV": 34163.72063869935,
             "endo": 21060.815158582755
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/449_2": {
         "SHARE_id": "449_2",
@@ -11269,7 +11542,9 @@
             "myo": 168464.85533700956,
             "RV": 54487.98641037077,
             "endo": 20594.426566789814
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/246_3": {
         "SHARE_id": "246_3",
@@ -11311,7 +11586,9 @@
             "myo": 137933.21389186918,
             "RV": 34431.695148062856,
             "endo": 13108.304145607144
-        }
+        },
+        "ED_Comments": "accept:Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/4417_1": {
         "SHARE_id": "4417_1",
@@ -11353,7 +11630,9 @@
             "myo": 217028.1271459276,
             "RV": 33899.84927879758,
             "endo": 49817.15371215547
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/13845_1": {
         "SHARE_id": "13845_1",
@@ -11395,7 +11674,9 @@
             "myo": 108847.99367898512,
             "RV": 44560.05002502159,
             "endo": 25599.592179876032
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/401_1": {
         "SHARE_id": "401_1",
@@ -11437,7 +11718,9 @@
             "myo": 141490.9357771937,
             "RV": 51608.10130284302,
             "endo": 26710.07717751269
-        }
+        },
+        "ED_Comments": "accept:Basal slice is incomplete",
+        "ES_Comments": "accept:Basal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-369_2": {
         "SHARE_id": "101-369_2",
@@ -11479,7 +11762,9 @@
             "myo": 157971.26256325617,
             "RV": 71596.93156022608,
             "endo": 49719.95266840362
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/795_2": {
         "SHARE_id": "795_2",
@@ -11521,7 +11806,9 @@
             "myo": 283019.069240448,
             "RV": 58628.1346144928,
             "endo": 50625.17010340428
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-2719_2": {
         "SHARE_id": "101-2719_2",
@@ -11563,7 +11850,9 @@
             "myo": 184126.2455019261,
             "RV": 93865.59498934481,
             "endo": 30352.551659371376
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14551_1": {
         "SHARE_id": "14551_1",
@@ -11605,7 +11894,9 @@
             "myo": 135240.036541123,
             "RV": 45800.40099534897,
             "endo": 45356.4106476124
-        }
+        },
+        "ED_Comments": "accept:Proper one",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/4841_1": {
         "SHARE_id": "4841_1",
@@ -11689,7 +11980,9 @@
             "myo": 261625.26690827296,
             "RV": 36424.07829639872,
             "endo": 33913.98675904519
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14318_1": {
         "SHARE_id": "14318_1",
@@ -11731,7 +12024,9 @@
             "myo": 187591.89194328623,
             "RV": 41110.581140116556,
             "endo": 46666.08894579885
-        }
+        },
+        "ED_Comments": "unclassified:",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/470_2": {
         "SHARE_id": "470_2",
@@ -11773,7 +12068,9 @@
             "myo": 177425.4950068047,
             "RV": 63992.85387084706,
             "endo": 26836.70873092661
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2254_5": {
         "SHARE_id": "2254_5",
@@ -11815,7 +12112,9 @@
             "myo": 104335.9755912442,
             "RV": 41908.77317333208,
             "endo": 31321.77059051076
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/4881_1": {
         "SHARE_id": "4881_1",
@@ -11857,7 +12156,9 @@
             "myo": 141516.28153929452,
             "RV": 86791.94908995698,
             "endo": 34840.252755359405
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/12217_1": {
         "SHARE_id": "12217_1",
@@ -11899,7 +12200,9 @@
             "myo": 154059.51120079722,
             "RV": 56041.8937799025,
             "endo": 33393.650145229054
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/207_2": {
         "SHARE_id": "207_2",
@@ -11941,7 +12244,9 @@
             "myo": 110973.69143310915,
             "RV": 35995.925806874104,
             "endo": 19111.68024186369
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2163_2": {
         "SHARE_id": "2163_2",
@@ -11983,7 +12288,9 @@
             "myo": 158369.09219098822,
             "RV": 90735.52165008764,
             "endo": 66600.04995657338
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/3972_1": {
         "SHARE_id": "3972_1",
@@ -12025,7 +12332,9 @@
             "myo": 154373.7864752417,
             "RV": 73267.19790314916,
             "endo": 29200.747515273506
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-1815_1": {
         "SHARE_id": "101-1815_1",
@@ -12067,7 +12376,9 @@
             "myo": 150238.625946624,
             "RV": 98752.37484052882,
             "endo": 71876.63011408708
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1766_1": {
         "SHARE_id": "1766_1",
@@ -12109,7 +12420,9 @@
             "myo": 91701.9707095873,
             "RV": 64022.96069613982,
             "endo": 28904.553094876646
-        }
+        },
+        "ES_Comments": "accept:Misalignment ",
+        "ED_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-2417_1": {
         "SHARE_id": "101-2417_1",
@@ -12151,7 +12464,9 @@
             "myo": 130500.19530402054,
             "RV": 43591.116185232255,
             "endo": 14521.648532458368
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/6382_2": {
         "SHARE_id": "6382_2",
@@ -12193,7 +12508,9 @@
             "myo": 155451.73771290807,
             "RV": 71399.17135314958,
             "endo": 28357.664828303234
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/28_3": {
         "SHARE_id": "28_3",
@@ -12235,7 +12552,9 @@
             "myo": 155060.03859614138,
             "RV": 48844.08709257051,
             "endo": 27392.864388176622
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/4750_1": {
         "SHARE_id": "4750_1",
@@ -12277,7 +12596,9 @@
             "myo": 216609.53531625032,
             "RV": 82989.34085440755,
             "endo": 50262.143109956705
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2235_1": {
         "SHARE_id": "2235_1",
@@ -12319,7 +12640,9 @@
             "myo": 92706.04534829821,
             "RV": 51943.773516453904,
             "endo": 12873.508028527851
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14241_1": {
         "SHARE_id": "14241_1",
@@ -12361,7 +12684,9 @@
             "myo": 182160.0351120663,
             "RV": 79401.34324676584,
             "endo": 44542.26934200109
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2424_1": {
         "SHARE_id": "2424_1",
@@ -12403,7 +12728,9 @@
             "myo": 144101.44891090668,
             "RV": 52720.51684746116,
             "endo": 38040.59872203763
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14718_1": {
         "SHARE_id": "14718_1",
@@ -12445,7 +12772,9 @@
             "myo": 127377.02135985912,
             "RV": 43247.71376410364,
             "endo": 29433.788903532663
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14714_1": {
         "SHARE_id": "14714_1",
@@ -12487,7 +12816,9 @@
             "myo": 193765.83591220685,
             "RV": 55722.26879376723,
             "endo": 41237.147747007235
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2490_1": {
         "SHARE_id": "2490_1",
@@ -12529,7 +12860,9 @@
             "myo": 89034.35782285628,
             "RV": 27541.05833747347,
             "endo": 47719.52895911684
-        }
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/428_2": {
         "SHARE_id": "428_2",
@@ -12571,7 +12904,9 @@
             "myo": 221175.7676337252,
             "RV": 53417.83008366669,
             "endo": 25783.510073746835
-        }
+        },
+        "ED_Comments": "unclassified:Needs to be checked",
+        "ES_Comments": "unclassified:Needs to be checked"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/168_1": {
         "SHARE_id": "168_1",
@@ -12613,7 +12948,9 @@
             "myo": 191264.7828229102,
             "RV": 54166.2361469041,
             "endo": 43448.02144893484
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1797_1": {
         "SHARE_id": "1797_1",
@@ -12655,7 +12992,9 @@
             "myo": 132094.0366686621,
             "RV": 66971.00263012535,
             "endo": 74829.49531613557
-        }
+        },
+        "ED_Comments": "unclassified:Needs to be checked",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/6375_1": {
         "SHARE_id": "6375_1",
@@ -12697,7 +13036,9 @@
             "myo": 238726.6096170048,
             "RV": 55444.2862188108,
             "endo": 39333.5905840651
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:There is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/28_1": {
         "SHARE_id": "28_1",
@@ -12739,7 +13080,9 @@
             "myo": 174796.8067688265,
             "RV": 46720.94580383925,
             "endo": 25181.99977761692
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2490_2": {
         "SHARE_id": "2490_2",
@@ -12781,7 +13124,9 @@
             "myo": 132044.20495038544,
             "RV": 62249.74638283039,
             "endo": 45331.97788421979
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14170_1": {
         "SHARE_id": "14170_1",
@@ -12823,7 +13168,9 @@
             "myo": 190480.9154196184,
             "RV": 49017.051820278764,
             "endo": 44000.612070416704
-        }
+        },
+        "ED_Comments": "accept:Basal slice is incomplete",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/168_2": {
         "SHARE_id": "168_2",
@@ -12865,7 +13212,9 @@
             "myo": 208415.5872354954,
             "RV": 67451.77794873361,
             "endo": 42839.609655915076
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/13580_2": {
         "SHARE_id": "13580_2",
@@ -12907,7 +13256,9 @@
             "myo": 177189.4658413567,
             "RV": 38275.420985944824,
             "endo": 26934.554376797634
-        }
+        },
+        "ED_Comments": "unclassified:Needs to be checked",
+        "ES_Comments": "unclassified:Needs to be checked"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1652_1": {
         "SHARE_id": "1652_1",
@@ -12949,7 +13300,9 @@
             "myo": 109456.24515476811,
             "RV": 36672.00616787856,
             "endo": 29625.081343054677
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1557_2": {
         "SHARE_id": "1557_2",
@@ -12991,7 +13344,9 @@
             "myo": 136177.94541895308,
             "RV": 71008.24206727049,
             "endo": 36833.429421028595
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/4323_1": {
         "SHARE_id": "4323_1",
@@ -13033,7 +13388,9 @@
             "myo": 183431.3538721805,
             "RV": 62590.39285472124,
             "endo": 38447.736823345374
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/795_1": {
         "SHARE_id": "795_1",
@@ -13075,7 +13432,9 @@
             "myo": 171101.0485175371,
             "RV": 53727.64193026858,
             "endo": 23629.99527512842
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Misalignment \nThere is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/4538_1": {
         "SHARE_id": "4538_1",
@@ -13117,7 +13476,9 @@
             "myo": 184538.20673660992,
             "RV": 61869.84574816274,
             "endo": 36820.968559426336
-        }
+        },
+        "ES_Comments": "accept:Basal slice Misalignment",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/795_3": {
         "SHARE_id": "795_3",
@@ -13159,7 +13520,9 @@
             "myo": 221256.36203951747,
             "RV": 71611.6694793427,
             "endo": 43473.61991315596
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/338_2": {
         "SHARE_id": "338_2",
@@ -13201,7 +13564,9 @@
             "myo": 160923.23831539575,
             "RV": 80349.73402838367,
             "endo": 32046.296779767406
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14684_1": {
         "SHARE_id": "14684_1",
@@ -13243,7 +13608,9 @@
             "myo": 158966.06707531027,
             "RV": 29184.0894521543,
             "endo": 28988.054252376383
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/6233_1": {
         "SHARE_id": "6233_1",
@@ -13285,7 +13652,9 @@
             "myo": 173534.84746306093,
             "RV": 86368.33131051461,
             "endo": 46615.69161279524
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2750_1": {
         "SHARE_id": "2750_1",
@@ -13327,7 +13696,9 @@
             "myo": 99649.11122328992,
             "RV": 40029.65985773318,
             "endo": 19765.360169393214
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1793_2": {
         "SHARE_id": "1793_2",
@@ -13369,7 +13740,9 @@
             "myo": 81839.38454597129,
             "RV": 45939.078226418744,
             "endo": 17342.117609413523
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/2254_1": {
         "SHARE_id": "2254_1",
@@ -13411,7 +13784,9 @@
             "myo": 126955.91105028622,
             "RV": 38158.449292954174,
             "endo": 33129.62028818655
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14711_2": {
         "SHARE_id": "14711_2",
@@ -13453,7 +13828,9 @@
             "myo": 142299.20515949113,
             "RV": 41835.138265248315,
             "endo": 25857.029364161768
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/486_2": {
         "SHARE_id": "486_2",
@@ -13495,7 +13872,9 @@
             "myo": 107857.41457894507,
             "RV": 57932.13409270876,
             "endo": 48094.54212658847
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-1961_3": {
         "SHARE_id": "101-1961_3",
@@ -13537,7 +13916,9 @@
             "myo": 220991.54834144976,
             "RV": 68891.05946661408,
             "endo": 37419.35761679558
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/365_1": {
         "SHARE_id": "365_1",
@@ -13579,7 +13960,9 @@
             "myo": 223393.36900760105,
             "RV": 38082.7433923974,
             "endo": 22471.238115004177
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/6628_1": {
         "SHARE_id": "6628_1",
@@ -13621,7 +14004,9 @@
             "myo": 169912.6690458336,
             "RV": 47950.08849559857,
             "endo": 27321.056291469256
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/4538_2": {
         "SHARE_id": "4538_2",
@@ -13663,7 +14048,9 @@
             "myo": 240564.90551942983,
             "RV": 78556.72503684706,
             "endo": 35764.10529615437
-        }
+        },
+        "ED_Comments": "accept:Proper one",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/246_2": {
         "SHARE_id": "246_2",
@@ -13705,7 +14092,9 @@
             "myo": 142405.64792963187,
             "RV": 41237.73558751618,
             "endo": 29302.853968626616
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/14711_1": {
         "SHARE_id": "14711_1",
@@ -13747,7 +14136,9 @@
             "myo": 142299.20515949113,
             "RV": 41835.138265248315,
             "endo": 25857.029364161768
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice is incomplete\nBasal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/13580_1": {
         "SHARE_id": "13580_1",
@@ -13789,7 +14180,9 @@
             "myo": 139325.05572462862,
             "RV": 60502.968108062545,
             "endo": 25047.0250063254
-        }
+        },
+        "ED_Comments": "unclassified:Needs to be checked",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/1234_1": {
         "SHARE_id": "1234_1",
@@ -13831,7 +14224,9 @@
             "myo": 145290.84563144838,
             "RV": 58210.36855543018,
             "endo": 19152.53471757424
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-1961_1": {
         "SHARE_id": "101-1961_1",
@@ -13873,7 +14268,9 @@
             "myo": 167776.21351622758,
             "RV": 34200.45246297532,
             "endo": 24570.736807404763
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/BWHv2/seg/101-2719_1": {
         "SHARE_id": "101-2719_1",
@@ -13915,7 +14312,9 @@
             "myo": 195432.97054594487,
             "RV": 32925.57367379496,
             "endo": 14416.519198638704
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "unclassified:Needs to be checked"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/1000068_1": {
         "SHARE_id": "1000068_1",
@@ -13957,7 +14356,9 @@
             "myo": 126547.73740678058,
             "RV": 27305.97210887883,
             "endo": 17823.368943481695
-        }
+        },
+        "ED_Comments": "accept:Misalignment \nNeeds to be checked",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/152991_1": {
         "SHARE_id": "152991_1",
@@ -13999,7 +14400,9 @@
             "myo": 126045.96156537748,
             "RV": 43376.43012932746,
             "endo": 22466.999209710368
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Proper one"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/1000064_1": {
         "SHARE_id": "1000064_1",
@@ -14041,7 +14444,9 @@
             "myo": 221018.97536198585,
             "RV": 45298.933746317016,
             "endo": 42695.24082894684
-        }
+        },
+        "ES_Comments": "accept:Basal slice Misalignment",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/152991_3": {
         "SHARE_id": "152991_3",
@@ -14083,7 +14488,9 @@
             "myo": 144213.30958442442,
             "RV": 50355.816069566536,
             "endo": 28766.914755193106
-        }
+        },
+        "ED_Comments": "accept:Basal slice is incomplete",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/1000063_1": {
         "SHARE_id": "1000063_1",
@@ -14125,7 +14532,9 @@
             "myo": 152553.1157782243,
             "RV": 7031.164149049238,
             "endo": 12509.782708796589
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/14846_2": {
         "SHARE_id": "14846_2",
@@ -14167,7 +14576,9 @@
             "myo": 45076.27929789696,
             "RV": 17421.249870923235,
             "endo": 14232.89548446955
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "unclassified:There are slices in CMR , no in segmentation \nMisalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/47030_1": {
         "SHARE_id": "47030_1",
@@ -14209,7 +14620,9 @@
             "myo": 192148.16772310194,
             "RV": 77825.67468700344,
             "endo": 46992.5726346926
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/38073_2": {
         "SHARE_id": "38073_2",
@@ -14251,7 +14664,9 @@
             "myo": -1.0,
             "RV": -1.0,
             "endo": -1.0
-        }
+        },
+        "ED_Comments": "reject:No short axis in CMR ",
+        "ES_Comments": "reject:No short axis in CMR "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/1000065_1": {
         "SHARE_id": "1000065_1",
@@ -14293,7 +14708,9 @@
             "myo": 274570.72031579854,
             "RV": 77471.3344590872,
             "endo": 51470.615965073535
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/14846_1": {
         "SHARE_id": "14846_1",
@@ -14335,7 +14752,9 @@
             "myo": 37038.40266651372,
             "RV": 5964.204028754679,
             "endo": 7626.111684432148
-        }
+        },
+        "ED_Comments": "unclassified:There are slices in CMR , no in segmentation ",
+        "ES_Comments": ":"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/1000061_1": {
         "SHARE_id": "1000061_1",
@@ -14377,7 +14796,9 @@
             "myo": 169375.0378522718,
             "RV": 85232.82302507324,
             "endo": 55810.885358944295
-        }
+        },
+        "ED_Comments": "accept:Proper one",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/47030_2": {
         "SHARE_id": "47030_2",
@@ -14419,7 +14840,9 @@
             "myo": 213680.86206167587,
             "RV": 88516.13008363819,
             "endo": 48936.92245593456
-        }
+        },
+        "ED_Comments": "accept:Proper one",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/38073_1": {
         "SHARE_id": "38073_1",
@@ -14461,7 +14884,9 @@
             "myo": 70321.13685156175,
             "RV": 31073.383880292677,
             "endo": 32883.203012929145
-        }
+        },
+        "ED_Comments": "accept:Basal slice is incomplete",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/152991_2": {
         "SHARE_id": "152991_2",
@@ -14503,7 +14928,9 @@
             "myo": 123133.93814354579,
             "RV": 45773.75766885627,
             "endo": 18595.35946698428
-        }
+        },
+        "ED_Comments": "accept:Proper one",
+        "ES_Comments": "accept:Misalignment \nBasal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/1000064_2": {
         "SHARE_id": "1000064_2",
@@ -14545,7 +14972,8 @@
             "myo": 225773.31419784343,
             "RV": 49958.87598981309,
             "endo": 33780.73928999704
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.\nBasal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/24466_1": {
         "SHARE_id": "24466_1",
@@ -14587,7 +15015,9 @@
             "myo": 49964.991112421885,
             "RV": 507.4309949131834,
             "endo": 27444.990962675307
-        }
+        },
+        "ED_Comments": "unclassified:There are slices in CMR , no in segmentation ",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CCH/seg/14846_3": {
         "SHARE_id": "14846_3",
@@ -14629,7 +15059,9 @@
             "myo": 193057.53381008224,
             "RV": 45662.348107914295,
             "endo": 33189.59073050439
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/80_1": {
         "SHARE_id": "80_1",
@@ -14671,7 +15103,9 @@
             "myo": 109107.12184926751,
             "RV": 82732.37395464204,
             "endo": 68717.61624964843
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/307_1": {
         "SHARE_id": "307_1",
@@ -14713,7 +15147,9 @@
             "myo": 71466.83383447738,
             "RV": 12924.261684413292,
             "endo": 9703.473761572533
-        }
+        },
+        "ED_Comments": "unclassified:",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/103-0320_4": {
         "SHARE_id": "103-0320_4",
@@ -14755,7 +15191,9 @@
             "myo": 96200.40953428198,
             "RV": 25275.01849909762,
             "endo": 17719.70230044462
-        }
+        },
+        "ED_Comments": "unclassified:",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/336_1": {
         "SHARE_id": "336_1",
@@ -14797,7 +15235,9 @@
             "myo": 222752.29916415247,
             "RV": 83657.88295720835,
             "endo": 70548.1658080811
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/333_2": {
         "SHARE_id": "333_2",
@@ -14839,7 +15279,9 @@
             "myo": 223013.01390554055,
             "RV": 68508.82325694503,
             "endo": 79854.12768282223
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/103-0320_1": {
         "SHARE_id": "103-0320_1",
@@ -14881,7 +15323,9 @@
             "myo": 120900.55456734095,
             "RV": 32509.9929305119,
             "endo": 19500.682197930975
-        }
+        },
+        "ED_Comments": "accept:There are slices in CMR , no in segmentation ",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/80_3": {
         "SHARE_id": "80_3",
@@ -14923,7 +15367,9 @@
             "myo": 12636.080771489542,
             "RV": 14090.021305960645,
             "endo": 17498.19487280232
-        }
+        },
+        "ED_Comments": "unclassified:There are slices in CMR , no in segmentation ",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/333_1": {
         "SHARE_id": "333_1",
@@ -14965,7 +15411,9 @@
             "myo": 7224.037074721922,
             "RV": 3092.1328856386244,
             "endo": 13528.819607275002
-        }
+        },
+        "ED_Comments": "unclassified:There are slices in CMR , no in segmentation ",
+        "ES_Comments": "unclassified:There are slices in CMR , no in segmentation "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/103-0144_2": {
         "SHARE_id": "103-0144_2",
@@ -15007,7 +15455,9 @@
             "myo": 100361.66499717091,
             "RV": 19854.481636501747,
             "endo": 20030.676723379867
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/103-352_1": {
         "SHARE_id": "103-352_1",
@@ -15049,7 +15499,9 @@
             "myo": 115298.29472515514,
             "RV": 34456.337214463,
             "endo": 22982.827494832873
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Apical Slice segmentation is Incomplete\nMisalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/0465_1": {
         "SHARE_id": "0465_1",
@@ -15091,7 +15543,9 @@
             "myo": 115066.98651881775,
             "RV": 29821.757422379545,
             "endo": 31071.7040276506
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/103-381_1": {
         "SHARE_id": "103-381_1",
@@ -15133,7 +15587,9 @@
             "myo": 105868.14914498804,
             "RV": 37620.35368803836,
             "endo": 30065.081860586706
-        }
+        },
+        "ED_Comments": "accept:Apical Slices are Incomplete",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/336_2": {
         "SHARE_id": "336_2",
@@ -15175,7 +15631,9 @@
             "myo": 244316.9845603843,
             "RV": 68241.6581587979,
             "endo": 40966.449166955084
-        }
+        },
+        "ES_Comments": "accept:",
+        "ED_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/CHP/seg/103-332_1": {
         "SHARE_id": "103-332_1",
@@ -15217,7 +15675,9 @@
             "myo": 224904.1773143136,
             "RV": 84346.8745244999,
             "endo": 55227.428737667964
-        }
+        },
+        "ED_Comments": "accept:Apical Slices are Incomplete",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2990_1": {
         "SHARE_id": "2990_1",
@@ -15259,7 +15719,9 @@
             "myo": 124486.11524028724,
             "RV": 66494.47681093693,
             "endo": 65416.49189408765
-        }
+        },
+        "ED_Comments": "accept:Basal slice is incomplete",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/110-2704_1": {
         "SHARE_id": "110-2704_1",
@@ -15301,7 +15763,9 @@
             "myo": 162598.34664837617,
             "RV": 38745.59371067721,
             "endo": 10031.930473912538
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3873_2": {
         "SHARE_id": "3873_2",
@@ -15343,7 +15807,9 @@
             "myo": 173265.96844284792,
             "RV": 41082.83683485609,
             "endo": 64408.57617724667
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.\nSome slices are incomplete",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5800_1": {
         "SHARE_id": "5800_1",
@@ -15385,7 +15851,9 @@
             "myo": 236099.60299394076,
             "RV": 67178.56927391462,
             "endo": 33270.81729961102
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/8900_1": {
         "SHARE_id": "8900_1",
@@ -15427,7 +15895,9 @@
             "myo": 62220.11846157427,
             "RV": 36391.452348203835,
             "endo": 9687.286066428698
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6226_1": {
         "SHARE_id": "6226_1",
@@ -15469,7 +15939,9 @@
             "myo": 179069.21440761964,
             "RV": 36287.34918359184,
             "endo": 34133.228875140456
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.\nRV needs to be checked ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4688_1": {
         "SHARE_id": "4688_1",
@@ -15511,7 +15983,9 @@
             "myo": 196748.71222476332,
             "RV": 54167.98747020156,
             "endo": 54539.525276519686
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\nApical Slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5353_2": {
         "SHARE_id": "5353_2",
@@ -15553,7 +16027,9 @@
             "myo": 171350.80020640395,
             "RV": 47136.409398067146,
             "endo": 28717.402092142256
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3842_1": {
         "SHARE_id": "3842_1",
@@ -15595,7 +16071,9 @@
             "myo": 240588.448130609,
             "RV": 53492.17857314262,
             "endo": 76201.77791535854
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2610_1": {
         "SHARE_id": "2610_1",
@@ -15637,7 +16115,9 @@
             "myo": 136600.1742352559,
             "RV": 52103.02463297537,
             "endo": 27078.63573182101
-        }
+        },
+        "ED_Comments": "accept:Proper one",
+        "ES_Comments": "accept:Basal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6081_1": {
         "SHARE_id": "6081_1",
@@ -15679,7 +16159,9 @@
             "myo": 153077.11864050725,
             "RV": 58067.30952566898,
             "endo": 55273.066490952384
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2949_1": {
         "SHARE_id": "2949_1",
@@ -15721,7 +16203,9 @@
             "myo": 129886.465761011,
             "RV": 77298.83700885608,
             "endo": 46497.72970466135
-        }
+        },
+        "ED_Comments": "unclassified:There is no last apical slice in both segmentation and CMR images.\n3-4 slices missing \n\n",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4638_1": {
         "SHARE_id": "4638_1",
@@ -15763,7 +16247,9 @@
             "myo": 160810.69823440711,
             "RV": 41235.6593340203,
             "endo": 83585.27212679468
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5071_1": {
         "SHARE_id": "5071_1",
@@ -15805,7 +16291,8 @@
             "myo": 162745.12681489636,
             "RV": 65320.90139781652,
             "endo": 47801.56973191445
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.\n3-4 slices"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6250_1": {
         "SHARE_id": "6250_1",
@@ -15847,7 +16334,9 @@
             "myo": 276237.51064387953,
             "RV": 54502.26156359482,
             "endo": 60660.3600299271
-        }
+        },
+        "ED_Comments": "accept:Underestimation",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6166_1": {
         "SHARE_id": "6166_1",
@@ -15889,7 +16378,9 @@
             "myo": 195085.54843825276,
             "RV": 134912.81737891532,
             "endo": 63567.021072114265
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment\nThere is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/8925_1": {
         "SHARE_id": "8925_1",
@@ -15931,7 +16422,9 @@
             "myo": 206289.7482277174,
             "RV": 69342.5984665565,
             "endo": 26354.169995166234
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5481_1": {
         "SHARE_id": "5481_1",
@@ -15973,7 +16466,9 @@
             "myo": 175758.62277550093,
             "RV": 61534.8362013547,
             "endo": 64461.91453231718
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6183_1": {
         "SHARE_id": "6183_1",
@@ -16015,7 +16510,9 @@
             "myo": 218562.27631697975,
             "RV": 54527.69521361389,
             "endo": 16739.76887637713
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3870_1": {
         "SHARE_id": "3870_1",
@@ -16057,7 +16554,9 @@
             "myo": 130526.43985563831,
             "RV": 81102.3844291523,
             "endo": 55416.128037999864
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\nApical Slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5960_1": {
         "SHARE_id": "5960_1",
@@ -16099,7 +16598,9 @@
             "myo": 176110.59182360923,
             "RV": 137231.8588603114,
             "endo": 99471.88620804067
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3268_2": {
         "SHARE_id": "3268_2",
@@ -16141,7 +16642,9 @@
             "myo": 146240.37623264152,
             "RV": 37105.81625365533,
             "endo": 36288.11044071434
-        }
+        },
+        "ED_Comments": "unclassified:",
+        "ES_Comments": "unclassified:Slice missing in the middle of CMR images "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6175_2": {
         "SHARE_id": "6175_2",
@@ -16183,7 +16686,9 @@
             "myo": 100200.49614036897,
             "RV": 37073.86585247337,
             "endo": 27401.3951688864
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Underestimation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/110-4791_3": {
         "SHARE_id": "110-4791_3",
@@ -16225,7 +16730,9 @@
             "myo": 229227.62814486786,
             "RV": 52058.117611742324,
             "endo": 37781.09569656651
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2871_2": {
         "SHARE_id": "2871_2",
@@ -16267,7 +16774,9 @@
             "myo": 132393.32449123228,
             "RV": 38289.38328244198,
             "endo": 30615.934141281385
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in segmentation",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/8758_1": {
         "SHARE_id": "8758_1",
@@ -16309,7 +16818,9 @@
             "myo": 146277.4963094336,
             "RV": 66695.54322493883,
             "endo": 57728.841978451776
-        }
+        },
+        "ED_Comments": "accept:Apical Slices are Incomplete",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5866_1": {
         "SHARE_id": "5866_1",
@@ -16351,7 +16862,9 @@
             "myo": 177146.73333161479,
             "RV": 19133.567204178325,
             "endo": 17748.12703858224
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Slice is  incomplete in the middle of segmentation\nMisalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4996_1": {
         "SHARE_id": "4996_1",
@@ -16393,7 +16906,9 @@
             "myo": 132912.92328059243,
             "RV": 75988.99922655929,
             "endo": 77811.01385858096
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/8924_1": {
         "SHARE_id": "8924_1",
@@ -16435,7 +16950,9 @@
             "myo": 202687.75374242562,
             "RV": 40528.41110359796,
             "endo": 25373.28790869917
-        }
+        },
+        "ED_Comments": "accept:Proper one\nBasal slice is incomplete",
+        "ES_Comments": "accept:Apical Slices are Incomplete\nBasal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4909_1": {
         "SHARE_id": "4909_1",
@@ -16477,7 +16994,9 @@
             "myo": 134456.50886717354,
             "RV": 64250.79535315817,
             "endo": 35278.79380520563
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice is incomplete\n\nThis slice can be excluded. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9216_1": {
         "SHARE_id": "9216_1",
@@ -16519,7 +17038,9 @@
             "myo": 140736.65926704972,
             "RV": 68138.14936342716,
             "endo": 44165.11052697556
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:There is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5256_2": {
         "SHARE_id": "5256_2",
@@ -16561,7 +17082,9 @@
             "myo": 161974.29998581533,
             "RV": 37842.45009821788,
             "endo": 27139.20932352775
-        }
+        },
+        "ED_Comments": "accept:Proper one",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2762_2": {
         "SHARE_id": "2762_2",
@@ -16603,7 +17126,9 @@
             "myo": 151628.37977449206,
             "RV": 74072.03027934494,
             "endo": 70497.13968924941
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4643_1": {
         "SHARE_id": "4643_1",
@@ -16645,7 +17170,9 @@
             "myo": 263160.2321955215,
             "RV": 76076.84466954359,
             "endo": 48067.671944757225
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\nBasal slice is incomplete",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4305_1": {
         "SHARE_id": "4305_1",
@@ -16687,7 +17214,9 @@
             "myo": 268035.82329775795,
             "RV": 42680.18254806029,
             "endo": 40719.61216550614
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images\nRV basal slice misalignment \n",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2949_2": {
         "SHARE_id": "2949_2",
@@ -16729,7 +17258,9 @@
             "myo": 133562.4541737932,
             "RV": 41598.10085584644,
             "endo": 30680.78127543753
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\nThere is no one last apical slice in both segmentation and CMR images.\n",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9993_1": {
         "SHARE_id": "9993_1",
@@ -16771,7 +17302,9 @@
             "myo": 94361.25815767473,
             "RV": 30108.980396459767,
             "endo": 18583.87898183524
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Apical Slices are Incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5353_1": {
         "SHARE_id": "5353_1",
@@ -16813,7 +17346,9 @@
             "myo": 176882.30715883875,
             "RV": 39844.54719320587,
             "endo": 21454.2476032667
-        }
+        },
+        "ES_Comments": "accept:Basal slice Misalignment",
+        "ED_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2762_1": {
         "SHARE_id": "2762_1",
@@ -16855,7 +17390,9 @@
             "myo": 139971.07583149915,
             "RV": 70843.33970124126,
             "endo": 66936.36306949482
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/110-4535_1": {
         "SHARE_id": "110-4535_1",
@@ -16897,7 +17434,9 @@
             "myo": 162633.57328052737,
             "RV": 59310.94133110908,
             "endo": 43591.47100952756
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9868_1": {
         "SHARE_id": "9868_1",
@@ -16939,7 +17478,9 @@
             "myo": 128164.57752798623,
             "RV": 48191.0139870947,
             "endo": 35821.041517606165
-        }
+        },
+        "ED_Comments": "accept:Basal slice is incomplete",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9334_1": {
         "SHARE_id": "9334_1",
@@ -16981,7 +17522,9 @@
             "myo": 144505.59043049178,
             "RV": 27085.819279227413,
             "endo": 18807.112940234387
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3575_3": {
         "SHARE_id": "3575_3",
@@ -17023,7 +17566,9 @@
             "myo": 108138.45602281978,
             "RV": 56971.79833742624,
             "endo": 51569.60581152516
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3575_2": {
         "SHARE_id": "3575_2",
@@ -17065,7 +17610,9 @@
             "myo": 97306.88600655193,
             "RV": 49540.34749734208,
             "endo": 32725.97227957853
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.\nBasal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3021_3": {
         "SHARE_id": "3021_3",
@@ -17107,7 +17654,9 @@
             "myo": 98205.74491691006,
             "RV": 74174.39067363372,
             "endo": 90015.75505713317
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5863_1": {
         "SHARE_id": "5863_1",
@@ -17149,7 +17698,9 @@
             "myo": 147091.93312589065,
             "RV": 73607.40567968393,
             "endo": 40660.42186697306
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9565_1": {
         "SHARE_id": "9565_1",
@@ -17191,7 +17742,9 @@
             "myo": 131793.49485559895,
             "RV": 40393.68792672626,
             "endo": 18986.082054698018
-        }
+        },
+        "ED_Comments": "accept:Proper One ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5602_1": {
         "SHARE_id": "5602_1",
@@ -17233,7 +17786,9 @@
             "myo": 188805.27437897178,
             "RV": 62493.018756188,
             "endo": 32917.49706239187
-        }
+        },
+        "ED_Comments": "accept:Proper One ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9046_1": {
         "SHARE_id": "9046_1",
@@ -17275,7 +17830,9 @@
             "myo": 278452.06118135253,
             "RV": 75254.09553758349,
             "endo": 30453.623793707255
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/8722_1": {
         "SHARE_id": "8722_1",
@@ -17317,7 +17874,9 @@
             "myo": 156512.4890195897,
             "RV": 73974.83424900341,
             "endo": 46966.60129420384
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment\nBasal slice is incomplete\nThere is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5452_1": {
         "SHARE_id": "5452_1",
@@ -17359,7 +17918,9 @@
             "myo": 116096.84088066225,
             "RV": 38246.83199100539,
             "endo": 20863.14315271011
-        }
+        },
+        "ED_Comments": "accept:Basal slice is incomplete\nApical Slices are Incomplete\n",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4612_1": {
         "SHARE_id": "4612_1",
@@ -17401,7 +17962,9 @@
             "myo": 95408.13998604297,
             "RV": 27583.9169785254,
             "endo": 17168.15771049638
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Apical Slices are Incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3391_1": {
         "SHARE_id": "3391_1",
@@ -17443,7 +18006,9 @@
             "myo": 120028.72898636255,
             "RV": 52098.80337255598,
             "endo": 33142.57845960525
-        }
+        },
+        "ED_Comments": "unclassified:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "unclassified:There is no last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6101_1": {
         "SHARE_id": "6101_1",
@@ -17485,7 +18050,9 @@
             "myo": 155531.80649759495,
             "RV": 52136.53757655298,
             "endo": 38736.386523534355
-        }
+        },
+        "ED_Comments": "accept:Proper One ",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4408_1": {
         "SHARE_id": "4408_1",
@@ -17527,7 +18094,9 @@
             "myo": 72797.13273038916,
             "RV": 21813.530799797256,
             "endo": 17600.558626982034
-        }
+        },
+        "ED_Comments": "unclassified:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4475_2": {
         "SHARE_id": "4475_2",
@@ -17569,7 +18138,9 @@
             "myo": 199482.0007297656,
             "RV": 80426.95126714012,
             "endo": 67241.78950022049
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5481_2": {
         "SHARE_id": "5481_2",
@@ -17611,7 +18182,9 @@
             "myo": 162178.65443515911,
             "RV": 59248.281815219874,
             "endo": 55884.83201833987
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3816_1": {
         "SHARE_id": "3816_1",
@@ -17653,7 +18226,9 @@
             "myo": 161920.30327935625,
             "RV": 39017.80551376375,
             "endo": 30562.835859514496
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5835_2": {
         "SHARE_id": "5835_2",
@@ -17695,7 +18270,9 @@
             "myo": 118058.40911707174,
             "RV": 42086.71143814422,
             "endo": 62803.67704597714
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2991_3": {
         "SHARE_id": "2991_3",
@@ -17737,7 +18314,9 @@
             "myo": 175484.31228685912,
             "RV": 37190.14257041439,
             "endo": 36291.71169378039
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5824_1": {
         "SHARE_id": "5824_1",
@@ -17779,7 +18358,9 @@
             "myo": 156034.09286857053,
             "RV": 38007.16786302079,
             "endo": 21219.600319658814
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. ",
+        "ES_Comments": "accept:Here I am wondering if you mesh fitting script will take last tiny segmentation or remove it? "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2930_1": {
         "SHARE_id": "2930_1",
@@ -17821,7 +18402,9 @@
             "myo": 190940.09472046193,
             "RV": 61537.87543892943,
             "endo": 32179.15997747507
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\nProper one \n\nThis one is proper and  well because the slices are taken with a small thickness ",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4580_1": {
         "SHARE_id": "4580_1",
@@ -17863,7 +18446,9 @@
             "myo": 48912.393444450674,
             "RV": 19246.498281861383,
             "endo": 8457.49868099957
-        }
+        },
+        "ED_Comments": "unclassified:",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5688_1": {
         "SHARE_id": "5688_1",
@@ -17905,7 +18490,9 @@
             "myo": 157691.22767451647,
             "RV": 48790.992448594305,
             "endo": 49984.90371627163
-        }
+        },
+        "ED_Comments": "accept:Proper One ",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4426_1": {
         "SHARE_id": "4426_1",
@@ -17947,7 +18534,9 @@
             "myo": 134130.6319290946,
             "RV": 46889.73114546389,
             "endo": 41759.34386952727
-        }
+        },
+        "ED_Comments": "unclassified:",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3632_1": {
         "SHARE_id": "3632_1",
@@ -17989,7 +18578,9 @@
             "myo": 190992.91393071067,
             "RV": 52813.117367375424,
             "endo": 14060.375123741691
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5838_1": {
         "SHARE_id": "5838_1",
@@ -18031,7 +18622,9 @@
             "myo": 161915.5450660009,
             "RV": 39808.462525525436,
             "endo": 25311.621234664944
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/8731_1": {
         "SHARE_id": "8731_1",
@@ -18073,7 +18666,9 @@
             "myo": 122507.396445801,
             "RV": 39573.11328614069,
             "endo": 24064.60745414905
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9260_1": {
         "SHARE_id": "9260_1",
@@ -18115,7 +18710,9 @@
             "myo": 122387.52997888642,
             "RV": 31040.76689920744,
             "endo": 13480.57950243654
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4217_1": {
         "SHARE_id": "4217_1",
@@ -18157,7 +18754,9 @@
             "myo": 183024.1065110544,
             "RV": 60895.844336048074,
             "endo": 81236.99972628994
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4193_1": {
         "SHARE_id": "4193_1",
@@ -18199,7 +18798,9 @@
             "myo": 108503.94964255345,
             "RV": 72670.5499201276,
             "endo": 55916.436422185245
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3632_2": {
         "SHARE_id": "3632_2",
@@ -18241,7 +18842,9 @@
             "myo": 167732.1533393755,
             "RV": 49003.67757248487,
             "endo": 15672.75494884753
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4294_1": {
         "SHARE_id": "4294_1",
@@ -18283,7 +18886,9 @@
             "myo": 165045.10039765216,
             "RV": 63555.444149719304,
             "endo": 68379.4919895766
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5683_1": {
         "SHARE_id": "5683_1",
@@ -18325,7 +18930,9 @@
             "myo": 146195.40546625905,
             "RV": 46583.86113278935,
             "endo": 22529.652571293787
-        }
+        },
+        "ED_Comments": "accept:Misalignment \nThere is no one last apical slice in both segmentation and CMR images.\n",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5373_1": {
         "SHARE_id": "5373_1",
@@ -18367,7 +18974,9 @@
             "myo": 154011.8068575707,
             "RV": 58087.89972281655,
             "endo": 19817.19676400169
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4909_2": {
         "SHARE_id": "4909_2",
@@ -18409,7 +19018,9 @@
             "myo": 119420.20824298685,
             "RV": 56476.93053799846,
             "endo": 37979.9654250631
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/10781_1": {
         "SHARE_id": "10781_1",
@@ -18451,7 +19062,9 @@
             "myo": 244499.23553612552,
             "RV": 58441.610070153,
             "endo": 18716.44996327473
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/8932_1": {
         "SHARE_id": "8932_1",
@@ -18493,7 +19106,9 @@
             "myo": 126628.03528849046,
             "RV": 49840.751848341955,
             "endo": 29797.341691513513
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9066_1": {
         "SHARE_id": "9066_1",
@@ -18535,7 +19150,9 @@
             "myo": 152653.5526847543,
             "RV": 52052.89798619124,
             "endo": 42869.948765312394
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in segmentation\nThe model failed to segment the last apical slice, likely secondary to a bright myocardial signal relative to the upper slices",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9410_1": {
         "SHARE_id": "9410_1",
@@ -18577,7 +19194,9 @@
             "myo": 130770.64475323891,
             "RV": 50525.925725516296,
             "endo": 34418.010699215425
-        }
+        },
+        "ED_Comments": "accept:Basal slice is incomplete",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4158_2": {
         "SHARE_id": "4158_2",
@@ -18619,7 +19238,9 @@
             "myo": 218860.99810204332,
             "RV": 62219.58038870257,
             "endo": 36773.29576028058
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment\nThere is no last apical slice in segmentation\n\nAn apical slice is visible on CMR; however, the segmentation failed to capture this slice and subsequently produced dot-like segmentation in the following slices"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5592_1": {
         "SHARE_id": "5592_1",
@@ -18661,7 +19282,9 @@
             "myo": 128302.64468153346,
             "RV": 63309.18643843061,
             "endo": 38768.96274119872
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.\nBasal slice is incomplete\n",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6135_1": {
         "SHARE_id": "6135_1",
@@ -18703,7 +19326,9 @@
             "myo": 116826.74025960182,
             "RV": 59175.1540698997,
             "endo": 58463.45488468025
-        }
+        },
+        "ED_Comments": "accept:Apical Slices are Incomplete",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4426_3": {
         "SHARE_id": "4426_3",
@@ -18745,7 +19370,9 @@
             "myo": 183595.72379141126,
             "RV": 68753.34412707944,
             "endo": 89563.61320393714
-        }
+        },
+        "ES_Comments": "accept:Basal slice Misalignment",
+        "ED_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5658_1": {
         "SHARE_id": "5658_1",
@@ -18787,7 +19414,9 @@
             "myo": 231082.06234162152,
             "RV": 48891.65087697063,
             "endo": 49281.905367418956
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4560_1": {
         "SHARE_id": "4560_1",
@@ -18829,7 +19458,9 @@
             "myo": 199810.80881849592,
             "RV": 62822.75280189123,
             "endo": 39300.59761213676
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.\nBasal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9500_1": {
         "SHARE_id": "9500_1",
@@ -18871,7 +19502,9 @@
             "myo": 128665.76521320874,
             "RV": 36767.66448083287,
             "endo": 20998.097402958552
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment\nBasal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6260_1": {
         "SHARE_id": "6260_1",
@@ -18913,7 +19546,9 @@
             "myo": 165056.42982629835,
             "RV": 44830.97207522861,
             "endo": 24147.226195034204
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in segmentation",
+        "ES_Comments": "accept:There is no last apical slice in segmentation\nBasal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3552_1": {
         "SHARE_id": "3552_1",
@@ -18955,7 +19590,9 @@
             "myo": 187663.6230037608,
             "RV": 60342.64714539036,
             "endo": 26610.96292793346
-        }
+        },
+        "ED_Comments": "accept:Slice is  incomplete in the middle of segmentation\nThere is no last apical slice in segmentation",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/110-4791_2": {
         "SHARE_id": "110-4791_2",
@@ -18997,7 +19634,9 @@
             "myo": 246909.12466561774,
             "RV": 31777.965851643996,
             "endo": 48090.79297994796
-        }
+        },
+        "ED_Comments": "accept:Basal slice is incomplete",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5987_1": {
         "SHARE_id": "5987_1",
@@ -19039,7 +19678,9 @@
             "myo": 112914.38996785633,
             "RV": 48136.562951169544,
             "endo": 23085.018049547343
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6175_1": {
         "SHARE_id": "6175_1",
@@ -19081,7 +19722,9 @@
             "myo": 95201.83901493173,
             "RV": 36523.0507189952,
             "endo": 16451.169985765107
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:There is no last apical slice in segmentation\nBasal slice Misalignment\n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/110-4037_1": {
         "SHARE_id": "110-4037_1",
@@ -19123,7 +19766,9 @@
             "myo": 79643.27579039341,
             "RV": 33566.537374398584,
             "endo": 36609.80157819116
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9991_1": {
         "SHARE_id": "9991_1",
@@ -19165,7 +19810,9 @@
             "myo": 175149.0228406666,
             "RV": 52092.26474384465,
             "endo": 60200.47032450223
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:There is no last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9703_1": {
         "SHARE_id": "9703_1",
@@ -19207,7 +19854,8 @@
             "myo": 152076.09245946287,
             "RV": 28614.192757834746,
             "endo": 14865.593009263468
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in segmentation\nRV basal slice misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/110-3466_1": {
         "SHARE_id": "110-3466_1",
@@ -19249,7 +19897,9 @@
             "myo": 182271.98311931477,
             "RV": 68696.35297006174,
             "endo": 34475.97307884854
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6137_1": {
         "SHARE_id": "6137_1",
@@ -19291,7 +19941,9 @@
             "myo": 143008.93167615772,
             "RV": 39465.622054229476,
             "endo": 19370.9133249811
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment\nThere is no last apical slice in segmentation\n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9055_1": {
         "SHARE_id": "9055_1",
@@ -19333,7 +19985,9 @@
             "myo": 128260.24962169223,
             "RV": 40702.16583809389,
             "endo": 22118.759039094595
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\nSlice is  incomplete in the middle of segmentation\n",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3267_2": {
         "SHARE_id": "3267_2",
@@ -19375,7 +20029,9 @@
             "myo": 189723.13247822737,
             "RV": 37062.3585356366,
             "endo": 30165.637624809027
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\nThere is no last apical slice in segmentation\n",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5031_1": {
         "SHARE_id": "5031_1",
@@ -19417,7 +20073,9 @@
             "myo": 207653.7359548068,
             "RV": 63781.925899775546,
             "endo": 44636.61379015295
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Misalignment \nThere is no last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/110-2704_2": {
         "SHARE_id": "110-2704_2",
@@ -19459,7 +20117,9 @@
             "myo": 149032.07643385266,
             "RV": 23371.83816020561,
             "endo": 18158.20364972037
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/110-5988_1": {
         "SHARE_id": "110-5988_1",
@@ -19501,7 +20161,9 @@
             "myo": 145929.23444023012,
             "RV": 49283.10400288751,
             "endo": 27803.284273377354
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5223_1": {
         "SHARE_id": "5223_1",
@@ -19543,7 +20205,8 @@
             "myo": 136014.2275244632,
             "RV": 69419.62912615394,
             "endo": 47609.433871427966
-        }
+        },
+        "ED_Comments": "accept:Apical Slices are Incomplete\nBasal slice Misalignment\n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6101_2": {
         "SHARE_id": "6101_2",
@@ -25423,7 +26086,9 @@
             "myo": 192806.50624476833,
             "RV": 60425.374878790964,
             "endo": 36055.87515712461
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:The most basal slice is not required, as the preceding slice already provides complete basal coverage. Basal slice misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2713_1": {
         "SHARE_id": "2713_1",
@@ -25465,7 +26130,9 @@
             "myo": 125895.42623255015,
             "RV": 42063.67944514073,
             "endo": 20637.235456625953
-        }
+        },
+        "ED_Comments": "accept:The most basal slice is not required, as the preceding slice already provides complete basal coverage. Basal slice misalignment \nIncomplete segmentation is present in a small region of the apical slice and may lead to zero wall thickness values in mesh-based calculations.",
+        "ES_Comments": "accept:The most basal slice is not required, as the preceding slice already provides complete basal coverage."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/4790_1": {
         "SHARE_id": "4790_1",
@@ -25507,7 +26174,9 @@
             "myo": 104050.69389232344,
             "RV": 59604.55843015137,
             "endo": 103204.24193636682
-        }
+        },
+        "ED_Comments": "accept:Incomplete segmentation is present in 2 different regions one of the apical slices and may lead to zero wall thickness values in mesh-based calculations.\n\n",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/8761_1": {
         "SHARE_id": "8761_1",
@@ -25549,7 +26218,9 @@
             "myo": 132634.5456462408,
             "RV": 47107.75297310758,
             "endo": 24948.5680188915
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/8780_1": {
         "SHARE_id": "8780_1",
@@ -25591,7 +26262,9 @@
             "myo": 104638.5023010906,
             "RV": 47028.61465721045,
             "endo": 66878.68980817578
-        }
+        },
+        "ED_Comments": "accept:The most basal slice is incompletely segmented, with only a very small portion delineated; however, this slice is not required, as the preceding slice provides full basal coverage. In addition, a small portion of a near-apical slice is missing in the segmentation. The final apical slice is absent in both the CMR images and the segmentation.",
+        "ES_Comments": "accept:A large portion of a near-apical slice is missing in the segmentation. The final apical slice is absent in both the CMR images and the segmentation.\n\n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5801_2": {
         "SHARE_id": "5801_2",
@@ -25633,7 +26306,9 @@
             "myo": 121006.18708285663,
             "RV": 50311.80265307671,
             "endo": 52039.64726716838
-        }
+        },
+        "ED_Comments": "accept:The most apical slice has not been captured. Although it is small and not clearly visible, would it be possible to modify the script to include it as well?",
+        "ES_Comments": "accept:The most apical slice has not been captured. Although it is small and not clearly visible, would it be possible to modify the script to include it as well?\nBasal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/3495_1": {
         "SHARE_id": "3495_1",
@@ -25675,7 +26350,9 @@
             "myo": 187067.9464968511,
             "RV": 88641.43321056798,
             "endo": 53106.91206600234
-        }
+        },
+        "ED_Comments": "accept:The most apical slice has not been captured. Although it is small and not clearly visible, would it be possible to modify the script to include it as well?",
+        "ES_Comments": "accept:Last two slices in apex haven't been segmented even if they are in CMR images. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/9108_1": {
         "SHARE_id": "9108_1",
@@ -25717,7 +26394,9 @@
             "myo": 150785.93916403278,
             "RV": 70960.41676373973,
             "endo": 80745.8523041725
-        }
+        },
+        "ED_Comments": "accept:a small portion of a near-apical slice is missing in the segmentation",
+        "ES_Comments": "accept:Proper one"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2786_2": {
         "SHARE_id": "2786_2",
@@ -25759,7 +26438,9 @@
             "myo": 166450.403321432,
             "RV": 69094.60678779025,
             "endo": 37179.82407307656
-        }
+        },
+        "ED_Comments": "accept:The most apical slice has not been captured. Although it is small and not clearly visible, would it be possible to modify the script to include it as well?\nThe most basal slice is misaligned. That slice is not needed as the preceding slice already provides complete basal coverage.",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5469_1": {
         "SHARE_id": "5469_1",
@@ -25801,7 +26482,9 @@
             "myo": 114651.0927422692,
             "RV": 41395.88371905308,
             "endo": 20823.67678481276
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images . At the very basal level, only the blood pool volume has been segmented.",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/6060_1": {
         "SHARE_id": "6060_1",
@@ -25843,7 +26526,9 @@
             "myo": 148655.43560976884,
             "RV": 48750.356386188854,
             "endo": 28396.12707990223
-        }
+        },
+        "ED_Comments": "accept:Basal slice segmentation includes cavity volume only.\nThere is no last apical slice in segmentation \n",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/5995_1": {
         "SHARE_id": "5995_1",
@@ -25885,7 +26570,8 @@
             "myo": 171516.30684355064,
             "RV": 24707.90165474549,
             "endo": 16538.247622482664
-        }
+        },
+        "ES_Comments": "accept:Incomplete segmentation is present in a small region of the apical slice \nThe most basal slice is incompletely segmented, with only a very small portion delineated; however, this slice is not required, as the preceding slice provides full basal coverage\n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/Florence/seg/2785_1": {
         "SHARE_id": "2785_1",
@@ -32563,7 +33249,9 @@
             "myo": 84544.91961633337,
             "RV": 42814.21249925171,
             "endo": 37617.55518429453
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/106-00677_1": {
         "SHARE_id": "106-00677_1",
@@ -32605,7 +33293,9 @@
             "myo": 202884.03765094565,
             "RV": 40737.60882299821,
             "endo": 15397.6679969566
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/106-00617_1": {
         "SHARE_id": "106-00617_1",
@@ -32647,7 +33337,9 @@
             "myo": 171174.10189230362,
             "RV": 88088.33408451237,
             "endo": 63677.060760781766
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01375_1": {
         "SHARE_id": "01375_1",
@@ -32689,7 +33381,9 @@
             "myo": 125769.53950661332,
             "RV": 37684.9827052958,
             "endo": 31978.90883753388
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.\nBasal slice is incomplete",
+        "ES_Comments": "accept:Slice is  incomplete in the middle of segmentation\nThere is no last apical slice in both segmentation and CMR images\nMisalignment \n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00766_2": {
         "SHARE_id": "00766_2",
@@ -32731,7 +33425,9 @@
             "myo": 170196.87971984566,
             "RV": 86357.21579132289,
             "endo": 35763.36869320433
-        }
+        },
+        "ED_Comments": "accept:Proper One",
+        "ES_Comments": "accept:Basal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00834_1": {
         "SHARE_id": "00834_1",
@@ -32773,7 +33469,9 @@
             "myo": 91790.04912473063,
             "RV": 42563.519776869965,
             "endo": 21771.598782174446
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01132_1": {
         "SHARE_id": "01132_1",
@@ -32815,7 +33513,9 @@
             "myo": 229947.5431066398,
             "RV": 80012.4433220457,
             "endo": 71825.1354226948
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment\nBasal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01491_1": {
         "SHARE_id": "01491_1",
@@ -32857,7 +33557,9 @@
             "myo": 219847.29126058432,
             "RV": 50433.843118353914,
             "endo": 39915.97673953659
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01751_1": {
         "SHARE_id": "01751_1",
@@ -32899,7 +33601,9 @@
             "myo": 244951.12915434386,
             "RV": 74245.84020165243,
             "endo": 35153.469124588286
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01155_1": {
         "SHARE_id": "01155_1",
@@ -32941,7 +33645,9 @@
             "myo": 196813.90634778078,
             "RV": 64110.964654488605,
             "endo": 31793.93185372795
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:There is no last apical slice in segmentation\nBasal slice Misalignment\n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01397_1": {
         "SHARE_id": "01397_1",
@@ -32983,7 +33689,9 @@
             "myo": 164672.3410926013,
             "RV": 45364.3199554468,
             "endo": 46226.868412718875
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in segmentation",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01711_1": {
         "SHARE_id": "01711_1",
@@ -33025,7 +33733,9 @@
             "myo": 232291.19239327795,
             "RV": 124999.9745853887,
             "endo": 66924.4012430891
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\nMisalignment \n",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00147_1": {
         "SHARE_id": "00147_1",
@@ -33067,7 +33777,9 @@
             "myo": 170976.2610447321,
             "RV": 56795.01306984341,
             "endo": 33292.56033267528
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00868_1": {
         "SHARE_id": "00868_1",
@@ -33109,7 +33821,9 @@
             "myo": 133512.80191002606,
             "RV": 61004.82806529176,
             "endo": 44337.15323849601
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/106-00637_1": {
         "SHARE_id": "106-00637_1",
@@ -33151,7 +33865,9 @@
             "myo": 117995.11623914455,
             "RV": 42411.415878445536,
             "endo": 21661.734405798255
-        }
+        },
+        "ED_Comments": "unclassified:Here a lot of slices are missing after papillary muscle level.  In CMR images there are all slices that we need to take them. ",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01731_1": {
         "SHARE_id": "01731_1",
@@ -33193,7 +33909,9 @@
             "myo": 185222.13273686136,
             "RV": 31695.42168738749,
             "endo": 29345.5822129163
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01245_1": {
         "SHARE_id": "01245_1",
@@ -33235,7 +33953,9 @@
             "myo": 238880.95343069796,
             "RV": 71099.64245340606,
             "endo": 49423.60416461126
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01081_1": {
         "SHARE_id": "01081_1",
@@ -33277,7 +33997,9 @@
             "myo": 155114.37140975703,
             "RV": 58042.18856708705,
             "endo": 40296.83596605006
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01626_1": {
         "SHARE_id": "01626_1",
@@ -33319,7 +34041,9 @@
             "myo": 89491.74147576834,
             "RV": 22401.6846949589,
             "endo": 8249.828312836567
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Misalignment "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01687_2": {
         "SHARE_id": "01687_2",
@@ -33361,7 +34085,9 @@
             "myo": 296783.2422544834,
             "RV": 98090.05221894407,
             "endo": 70003.57523213881
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/106-00185_2": {
         "SHARE_id": "106-00185_2",
@@ -33403,7 +34129,9 @@
             "myo": 25594.14262389208,
             "RV": 29365.69724342685,
             "endo": 1969.7517337995218
-        }
+        },
+        "ED_Comments": "unclassified:Here a lot of slices are missing. But there is image that shows all slices in CMR ",
+        "ES_Comments": "unclassified:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00459_1": {
         "SHARE_id": "00459_1",
@@ -33445,7 +34173,9 @@
             "myo": 198955.8772856237,
             "RV": 55668.07062107037,
             "endo": 26201.44758687231
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01824_1": {
         "SHARE_id": "01824_1",
@@ -33487,7 +34217,9 @@
             "myo": 323788.9535276491,
             "RV": 32531.92621163406,
             "endo": 32494.005290245306
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in segmentation",
+        "ES_Comments": "accept:Proper one "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00868_2": {
         "SHARE_id": "00868_2",
@@ -33529,7 +34261,9 @@
             "myo": 133159.25980991707,
             "RV": 55041.52469288792,
             "endo": 44600.15819059881
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01270_1": {
         "SHARE_id": "01270_1",
@@ -33571,7 +34305,9 @@
             "myo": 306628.0333255271,
             "RV": 78635.33207993404,
             "endo": 74677.77013312928
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00464_4": {
         "SHARE_id": "00464_4",
@@ -33613,7 +34349,9 @@
             "myo": 138884.84058039944,
             "RV": 49245.81494202012,
             "endo": 32433.18119798994
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01374_1": {
         "SHARE_id": "01374_1",
@@ -33655,7 +34393,9 @@
             "myo": 173290.73901169762,
             "RV": 24960.707647501684,
             "endo": 17832.294574364598
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00867_2": {
         "SHARE_id": "00867_2",
@@ -33697,7 +34437,9 @@
             "myo": 194197.67675932997,
             "RV": 90767.2280228707,
             "endo": 51485.81056036263
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\n\nHere model took slices in basal part not needed to be taken  ",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01725_1": {
         "SHARE_id": "01725_1",
@@ -33739,7 +34481,9 @@
             "myo": 138947.0302483979,
             "RV": 57706.601083812944,
             "endo": 51094.403821934975
-        }
+        },
+        "ED_Comments": "accept:Misalignment \nThere is no last apical slice in both segmentation and CMR images.\n",
+        "ES_Comments": "accept:Basal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00818_1": {
         "SHARE_id": "00818_1",
@@ -33781,7 +34525,9 @@
             "myo": 176708.6721490946,
             "RV": 87978.93668252368,
             "endo": 81394.46311915897
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00945_2": {
         "SHARE_id": "00945_2",
@@ -33823,7 +34569,9 @@
             "myo": 234610.1164767172,
             "RV": 30815.047030459493,
             "endo": 25228.862074997407
-        }
+        },
+        "ED_Comments": "accept:Proper One ",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/106-00617_2": {
         "SHARE_id": "106-00617_2",
@@ -33865,7 +34613,9 @@
             "myo": 172190.3333901374,
             "RV": 81493.25833562785,
             "endo": 58317.30810572314
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in segmentation\nBasal slice Misalignment",
+        "ES_Comments": "accept:RV needs to be checked"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01300_1": {
         "SHARE_id": "01300_1",
@@ -33907,7 +34657,9 @@
             "myo": 198960.90856552083,
             "RV": 40893.447162043645,
             "endo": 21432.06525674637
-        }
+        },
+        "ED_Comments": "accept:Misalignment ",
+        "ES_Comments": "accept:Basal slice Misalignment\nThere is no last apical slice in both segmentation and CMR images\n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00766_3": {
         "SHARE_id": "00766_3",
@@ -33949,7 +34701,9 @@
             "myo": 200914.28258759342,
             "RV": 75492.12410466153,
             "endo": 40235.30816491401
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01661_1": {
         "SHARE_id": "01661_1",
@@ -33991,7 +34745,9 @@
             "myo": 166782.4193928419,
             "RV": 35692.160879079296,
             "endo": 19546.30103442469
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\n\n",
+        "ES_Comments": "accept:Basal slice Misalignment\n\n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00289_2": {
         "SHARE_id": "00289_2",
@@ -34033,7 +34789,9 @@
             "myo": -1.0,
             "RV": -1.0,
             "endo": -1.0
-        }
+        },
+        "ED_Comments": "reject:Here it shows that there is no short axis. But, in CMR images there are some short axis slices that we can use. ",
+        "ES_Comments": "reject:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01361_1": {
         "SHARE_id": "01361_1",
@@ -34075,7 +34833,9 @@
             "myo": 212389.6375951477,
             "RV": 28464.732294929003,
             "endo": 21627.378844871153
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01795_1": {
         "SHARE_id": "01795_1",
@@ -34117,7 +34877,9 @@
             "myo": 189500.59271901104,
             "RV": 66129.04394789787,
             "endo": 46458.85363591898
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\nThere is no last apical slice in both segmentation and CMR images\n",
+        "ES_Comments": "accept:Basal slice Misalignment\nThere is no last apical slice in both segmentation and CMR images\n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01665_1": {
         "SHARE_id": "01665_1",
@@ -34159,7 +34921,9 @@
             "myo": 244105.339956826,
             "RV": 56588.646315454156,
             "endo": 34477.67620682615
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01368_1": {
         "SHARE_id": "01368_1",
@@ -34201,7 +34965,9 @@
             "myo": 215186.48315812135,
             "RV": 81841.55451216672,
             "endo": 51504.8098686435
-        }
+        },
+        "ED_Comments": "accept:Proper One ",
+        "ES_Comments": "accept:Basal slice Misalignment\n\n"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01776_1": {
         "SHARE_id": "01776_1",
@@ -34243,7 +35009,9 @@
             "myo": 8812.01922089153,
             "RV": 15504.322497019857,
             "endo": 7744.283010147623
-        }
+        },
+        "ED_Comments": "reject:There are no dedicated short-axis cine slices available; however, in the CMR dataset, PSIR TFE breath-hold sequences are present and can be utilised for segmentation.",
+        "ES_Comments": "reject:There are no dedicated short-axis cine slices available; however, in the CMR dataset, PSIR TFE breath-hold sequences are present and can be utilised for segmentation."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01811_1": {
         "SHARE_id": "01811_1",
@@ -34285,7 +35053,8 @@
             "myo": 172875.9541428473,
             "RV": 54816.329923172496,
             "endo": 54682.696886041726
-        }
+        },
+        "ED_Comments": "accept:Basal slice is incomplete\nThere is no last apical slice in both segmentation and CMR images\n\n\nThe slice in base is not needed to be segmented. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01589_1": {
         "SHARE_id": "01589_1",
@@ -34327,7 +35096,9 @@
             "myo": 154167.289426372,
             "RV": 59298.12522227473,
             "endo": 43872.36190990785
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in segmentation",
+        "ES_Comments": "accept:10.\tThere is no last apical slice in segmentation"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01500_1": {
         "SHARE_id": "01500_1",
@@ -34369,7 +35140,9 @@
             "myo": 135182.02167121123,
             "RV": 45297.64446942226,
             "endo": 28478.76859624192
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. \n\nThe final basal slice( misaligned) is not necessary for segmentation because the slice immediately before it adequately covers the basal anatomy",
+        "ES_Comments": "accept:Basal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01059_1": {
         "SHARE_id": "01059_1",
@@ -34411,7 +35184,9 @@
             "myo": 181383.96897142977,
             "RV": 38729.070648660316,
             "endo": 41637.72314078344
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in segmentation",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images. Basal slice is misaligned. "
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00592_1": {
         "SHARE_id": "00592_1",
@@ -34453,7 +35228,9 @@
             "myo": -1.0,
             "RV": -1.0,
             "endo": -1.0
-        }
+        },
+        "ED_Comments": "reject:Look at CMR images ",
+        "ES_Comments": "reject:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/01544_1": {
         "SHARE_id": "01544_1",
@@ -34537,7 +35314,9 @@
             "myo": 361597.3903441758,
             "RV": 77466.25156211722,
             "endo": 78951.22423629122
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment\nBasal slice is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00561_1": {
         "SHARE_id": "00561_1",
@@ -34579,7 +35358,9 @@
             "myo": 157255.44835625569,
             "RV": 47102.18248970221,
             "endo": 38549.35151291693
-        }
+        },
+        "ED_Comments": "accept:Proper One ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00926_2": {
         "SHARE_id": "00926_2",
@@ -34621,7 +35402,9 @@
             "myo": 158975.36323561275,
             "RV": 72846.31424398732,
             "endo": 56975.70829787934
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch1/UMich/seg/00863_1": {
         "SHARE_id": "00863_1",
@@ -61669,7 +62452,9 @@
             "myo": 263462.10201200494,
             "RV": 69747.03669178864,
             "endo": 52232.09449249581
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/12036_1": {
         "SHARE_id": "12036_1",
@@ -61711,7 +62496,9 @@
             "myo": 187278.88077937035,
             "RV": 15001.097496164146,
             "endo": 22659.415406783977
-        }
+        },
+        "ED_Comments": "accept:There is noticeable misalignment, resulting in suboptimal alignment across slices. The final apical slice is missing in both the CMR and segmentation. The most basal slice shows incomplete segmentation, and RV segmentation appears inaccurate.",
+        "ES_Comments": "unclassified:There is noticeable misalignment, resulting in suboptimal alignment across slices. The basal slice is not required, as it is not properly recognised. In addition, several mid-ventricular slices are incompletely segmented."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/00615_4": {
         "SHARE_id": "00615_4",
@@ -61753,7 +62540,9 @@
             "myo": 219895.37294242077,
             "RV": 75782.3969583482,
             "endo": 54777.42353666876
-        }
+        },
+        "ED_Comments": "accept:Proper one ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/12003_1": {
         "SHARE_id": "12003_1",
@@ -61795,7 +62584,9 @@
             "myo": 188003.90906746755,
             "RV": 51960.248632289426,
             "endo": 29355.39653687399
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:An apical slice is visible on CMR; however, the segmentation failed to capture this slice \nBasal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/00594_3": {
         "SHARE_id": "00594_3",
@@ -61837,7 +62628,9 @@
             "myo": 69608.58015967996,
             "RV": 54083.96646075663,
             "endo": 37182.35371374363
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:There is no one last apical slice in both segmentation and CMR images."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/01484_1": {
         "SHARE_id": "01484_1",
@@ -61879,7 +62672,9 @@
             "myo": 137026.77861383645,
             "RV": 60459.801124878795,
             "endo": 31078.06419653339
-        }
+        },
+        "ED_Comments": "accept:The most basal slice is incompletely segmented, with only a very small portion delineated; however, this slice is not required, as the preceding slice provides full basal coverage. ",
+        "ES_Comments": "accept:"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/00645_1": {
         "SHARE_id": "00645_1",
@@ -61921,7 +62716,9 @@
             "myo": 152913.69964735946,
             "RV": 69748.43154717672,
             "endo": 41075.8124587742
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:The most apical slice has not been captured. Although it is small and not clearly visible, would it be possible to modify the script to include it as well?"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/01752_1": {
         "SHARE_id": "01752_1",
@@ -61963,7 +62760,9 @@
             "myo": 100578.00430028117,
             "RV": 65805.56877805077,
             "endo": 23191.139882192736
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/11908_1": {
         "SHARE_id": "11908_1",
@@ -62005,7 +62804,9 @@
             "myo": 226364.7751322768,
             "RV": 52789.33350611597,
             "endo": 45913.28125528375
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\nThere is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:An apical slice is visible on CMR; however, the segmentation failed to capture this slice  -only the blood pool volume has been segmented.\nThe most basal slice is not required, as the preceding slice already provides complete basal coverage. Also that slice misaligned"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/11952_1": {
         "SHARE_id": "11952_1",
@@ -62047,7 +62848,9 @@
             "myo": 134234.89337338545,
             "RV": 74592.56754406392,
             "endo": 54385.65754835616
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment\nThere is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/01807_1": {
         "SHARE_id": "01807_1",
@@ -62089,7 +62892,9 @@
             "myo": 260147.6540787356,
             "RV": 57359.35933796328,
             "endo": 39255.462715948095
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/00812_1": {
         "SHARE_id": "00812_1",
@@ -62131,7 +62936,9 @@
             "myo": 270854.2079641192,
             "RV": 81617.79486901914,
             "endo": 58705.069135204256
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/11985_1": {
         "SHARE_id": "11985_1",
@@ -62173,7 +62980,9 @@
             "myo": 176271.75755949187,
             "RV": 45707.25852108467,
             "endo": 24511.885219732198
-        }
+        },
+        "ED_Comments": "accept:There is no last apical slice in both segmentation and CMR images.",
+        "ES_Comments": "accept:There is no last apical slice in both segmentation and CMR images.\nBasal slice Misalignment. The most basal slice is not required, as the preceding slice already provides complete basal coverage."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/00754_1": {
         "SHARE_id": "00754_1",
@@ -62215,7 +63024,9 @@
             "myo": 198060.21360272515,
             "RV": 55459.44424981212,
             "endo": 40911.37995792386
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/11809_1": {
         "SHARE_id": "11809_1",
@@ -62257,7 +63068,9 @@
             "myo": 125592.02066037281,
             "RV": 59833.344904560116,
             "endo": 36990.439047073334
-        }
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/11964_1": {
         "SHARE_id": "11964_1",
@@ -62299,7 +63112,9 @@
             "myo": 302442.3412291424,
             "RV": 103534.31874406802,
             "endo": 89222.36068495826
-        }
+        },
+        "ED_Comments": "accept:Proper One ",
+        "ES_Comments": "accept:The most basal slice is not required, as the preceding slice already provides complete basal coverage."
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/01137_1": {
         "SHARE_id": "01137_1",
@@ -62341,7 +63156,9 @@
             "myo": 303155.359117153,
             "RV": 79414.40709807599,
             "endo": 27518.089940428814
-        }
+        },
+        "ED_Comments": "accept:Basal slice Misalignment",
+        "ES_Comments": "accept:Basal slice Misalignment"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch2/UMich/seg/01342_1": {
         "SHARE_id": "01342_1",
@@ -107575,7 +108392,9 @@
             "myo": 71403.26555533998,
             "RV": 24786.303903594075,
             "endo": 49958.42738126195
-        }
+        },
+        "ED_Comments": "accept:There is no one last apical slice in both segmentation and CMR images.\n\n\nThe last two slices towards the apex show incomplete segmentation and may therefore result in incorrect mesh generation.",
+        "ES_Comments": "accept:Basal slice segmentation is incomplete"
     },
     "/cardiac/HCMNIH/raw_new/SHARE_phase2/NNunet_mk2_lowres_wenjiatemplate_600/seg/batch3/Yale/seg/2703_1": {
         "SHARE_id": "2703_1",
