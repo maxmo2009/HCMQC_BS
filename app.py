@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, session, send_file
+from flask import Flask, render_template, render_template_string, jsonify, request, session, send_file, redirect, url_for
 import os
 import nibabel as nib
 import numpy as np
@@ -7,8 +7,47 @@ import base64
 from io import BytesIO
 from PIL import Image
 
+from datetime import timedelta
+
 app = Flask(__name__)
 app.secret_key = 'cmr_qc_secret_key_12345'  # Required for session management
+app.permanent_session_lifetime = timedelta(days=3)
+
+APP_PASSWORD = 'cardiacMRI'
+
+LOGIN_PAGE = '''
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HCM QC Tool - Login</title>
+    <style>
+        body { margin: 0; background: #1a1a2e; color: #eee; font-family: Arial, sans-serif;
+               display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .login-box { background: #16213e; padding: 40px; border-radius: 10px; text-align: center;
+                     box-shadow: 0 0 20px rgba(0,0,0,0.5); width: 320px; }
+        .login-box h2 { margin: 0 0 25px; color: #4fc3f7; }
+        .login-box input[type="password"] { width: 100%; padding: 12px; border: 1px solid #333;
+               border-radius: 5px; background: #0f3460; color: #eee; font-size: 16px;
+               box-sizing: border-box; margin-bottom: 15px; }
+        .login-box button { width: 100%; padding: 12px; border: none; border-radius: 5px;
+               background: #4fc3f7; color: #1a1a2e; font-size: 16px; font-weight: bold;
+               cursor: pointer; }
+        .login-box button:hover { background: #81d4fa; }
+        .error { color: #ff6b6b; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>HCM QC Tool</h2>
+        {% if error %}<div class="error">{{ error }}</div>{% endif %}
+        <form method="POST">
+            <input type="password" name="password" placeholder="Enter password" autofocus>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
+'''
 
 # Base path to prepend to patient paths
 BASE_PATH = '/mnt/storage/home/ym1413'
@@ -178,9 +217,29 @@ def load_patient_data(patient_index, phase='ED'):
         'total_patients': len(PATIENT_LIST)
     }
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """Simple password login page"""
+    if request.method == 'POST':
+        if request.form.get('password') == APP_PASSWORD:
+            session.permanent = True
+            session['authenticated'] = True
+            return redirect(url_for('index'))
+        else:
+            return render_template_string(LOGIN_PAGE, error='Incorrect password')
+    return render_template_string(LOGIN_PAGE, error=None)
+
+@app.route('/logout')
+def logout():
+    session.pop('authenticated', None)
+    return redirect(url_for('login'))
+
 @app.route('/')
 def index():
     """Serve the main visualization page"""
+    if not session.get('authenticated'):
+        return redirect(url_for('login'))
+
     # Initialize session if not exists
     if 'patient_index' not in session:
         session['patient_index'] = 0
@@ -191,7 +250,20 @@ def index():
     patient_data = load_patient_data(session['patient_index'], session['phase'])
 
     if patient_data is None:
-        return "Error: No patient data available", 500
+        # No patients available — render UI with empty data
+        return render_template('index.html',
+                              patient_index=0,
+                              patient_path='',
+                              patient_info=json.dumps({}),
+                              phase=session.get('phase', 'ED'),
+                              qc_comment='',
+                              mri_slices=json.dumps([]),
+                              seg_slices=json.dumps([]),
+                              seg_coords=json.dumps([]),
+                              seg_labels=json.dumps([]),
+                              seg_shape=[0, 0, 0],
+                              seg_spacing=[1.0, 1.0, 1.0],
+                              total_patients=0)
 
     # Get the appropriate comment based on phase
     comment_key = f"{patient_data['phase']}_Comments"
