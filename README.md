@@ -1,150 +1,190 @@
 # Cardiac Segmentation QC Studio
 
-A web-based quality control tool for reviewing Cardiac MRI (CMR) segmentation results. This application provides an interactive 3-panel interface for visualizing MRI slices, 3D segmentation, and overlay comparisons.
+A multi-user web application for reviewing cardiac MRI (CMR) segmentation results. Reviewers step through patients and both cardiac phases (End-Diastole / End-Systole), score each segmentation (accept / reject / fine-tune / unclassified), and persist decisions to their own JSON file.
 
 ![Lab Logo](https://images.squarespace-cdn.com/content/v1/611bce9f0ec5ff43949b98ea/068036ac-5a6f-4da8-869f-520764bdaaaa/still_v023_frame_0103_photoshop_layer_logo_LMS.png?format=300w)
 
 ## Features
 
-### 3-Panel Layout
-- **Left Panel**: MRI slices with optional segmentation overlay
-- **Middle Panel**: Interactive 3D visualization of cardiac segmentation
-- **Right Panel**: Color-coded segmentation slices
+### Multi-User
+- Username + password login (credentials in `JSON/users.json`)
+- Each reviewer's QC annotations are fully isolated under `JSON/users/<username>/`
+- Session-based auth with 3-day rolling lifetime
 
-### Interactive Visualization
-- **3D Cardiac Structures**:
-  - Red: Left Ventricle (LV)
-  - Green: Right Ventricle (RV)
-  - Blue: Myocardium
-- **Camera Controls**: Rotate (left-click drag), Pan (right-click drag), Zoom (scroll)
-- **Proper Aspect Ratio**: Uses voxel spacing from NIfTI headers
+### Dataset Management
+- Each user can maintain any number of QC dataset files side-by-side
+- A dataset dropdown in the stats panel switches the active file without re-login
+- Dataset format: top-level dict keyed by patient path, values hold `ED_Comments` / `ES_Comments`
+
+### 3-Panel Visualization (per cardiac phase)
+- **Left panel** — MRI slices with optional color-coded segmentation overlay (zoom + transparency sliders)
+- **Middle panel** — Color-coded segmentation slices
+- **Right panel** — Three.js 3D InstancedMesh rendering (~50K voxels) with OrbitControls (rotate / pan / zoom)
+
+### QC Decisions
+- Four mutually exclusive decisions: **Accept ✓**, **Reject ✗**, **Fine-tune ⚙**, **Unclassified ?**
+- Free-text reviewer comments per patient + phase
+- Chart.js pie chart of decision distribution for the active dataset
 
 ### Slice Navigation
-- **Play/Pause**: Automatic slice playback at 5 FPS
-- **Manual Navigation**: Previous (⏪) and Next (⏩) buttons
-- **Synchronized Views**: All panels update together
-
-### Overlay Controls
-- **Toggle Overlay**: Checkbox to show/hide segmentation overlay on MRI
-- **Transparency Slider**: Adjust overlay transparency (0-100%)
-- **Real-time Updates**: Instant visual feedback
-
-### Quality Control
-- **QC Decision**: Accept ✓ or Reject ✗ checkboxes (mutually exclusive)
-- **Patient Comments**: Text area for reviewer notes
-- **Save Function**: Store QC decisions and comments
-- **Draggable Control Panel**: Reposition controls anywhere on screen
+- Auto-play at 5 FPS, plus manual prev/next
+- All three panels stay synchronized on the same slice
 
 ### Medical Imaging Support
-- **NIfTI Format**: Loads .nii.gz files for both MRI and segmentation
-- **Voxel Spacing**: Accurate physical dimensions from header metadata
-- **Multi-label Support**: Color-coded visualization of different cardiac structures
+- Reads NIfTI (`.nii.gz`) for both MRI and segmentation
+- Voxel spacing taken from NIfTI header for correct physical dimensions
+- Multi-label color map: label 1 = LV (red), 2 = RV (green), 3 = myocardium (blue)
 
 ## Installation
 
-1. Clone the repository:
 ```bash
-git clone https://github.com/maxmo2009/HCMQC_BS.git
+git clone git@github.com:maxmo2009/HCMQC_BS.git
 cd HCMQC_BS
-```
-
-2. Install dependencies:
-```bash
+git checkout beta       # multi-user version; master is the older single-user build
 pip install -r requirements.txt
 ```
 
-## Running the Application
+## Running
 
-1. Start the Flask server:
 ```bash
-python app.py
+python3 app.py
 ```
 
-2. Open your browser and navigate to:
+Server binds to **http://localhost:5001** (`DEBUG=False`). Port 5000 is reserved for a separate production instance — don't use it here.
+
+See `CLAUDE.md` for background-process and ngrok tunnel recipes.
+
+## Adding Users
+
+Three manual steps — no CLI helper, no auto-seeding:
+
+1. Edit `JSON/users.json`:
+   ```json
+   {
+     "admin": "cardiacMRI",
+     "alice": "alicepassword"
+   }
+   ```
+2. Create the folder: `mkdir JSON/users/alice`
+3. Drop one or more QC dataset `.json` files into that folder
+
+No server restart needed — users.json is re-read on each login and the folder is scanned per request.
+
+## Expected File Layout (per patient, on disk)
+
 ```
-http://localhost:5000
+{patient_path}/
+├── lvsa_SR_ED.nii.gz      # ED-phase MRI
+├── lvsa_SR_ES.nii.gz      # ES-phase MRI
+├── seg_lvsa_SR_ED.nii.gz  # ED-phase segmentation
+└── seg_lvsa_SR_ES.nii.gz  # ES-phase segmentation
 ```
 
-The server runs in debug mode with auto-reload enabled.
+The `{patient_path}` is stored as a full absolute path in each dataset JSON.
+
+## Tech Stack
+
+### Backend (modular Flask app)
+- Flask 3.0.0 — app factory + blueprints (`routes/auth.py`, `routes/pages.py`, `routes/api.py`)
+- nibabel 5.3.3 — NIfTI parsing
+- numpy 1.24.3 — array ops
+- Pillow 10.0.0 — slice → PNG
+
+### Frontend (vanilla, no bundler)
+- Three.js r128 — WebGL 3D scene with 5-point lighting
+- OrbitControls — camera interaction
+- Chart.js 4.4.0 — statistics pie chart
+- HTML5 Canvas — MRI + overlay compositing
 
 ## Project Structure
 
 ```
 HCMQC_BS/
-├── app.py                          # Flask backend
+├── app.py                      # Flask app factory (create_app) + entrypoint
+├── config.py                   # Constants + path helpers (USERS_JSON_PATH, user_dir, ...)
+├── requirements.txt
+├── CLAUDE.md                   # Architecture notes + operational recipes for Claude Code
+├── README.md                   # This file
+│
+├── routes/                     # Flask blueprints
+│   ├── auth.py                 #   /login, /logout, login_required decorator
+│   ├── pages.py                #   /  (main page) and /health
+│   └── api.py                  #   all /api/* endpoints
+│
+├── services/                   # Business logic (no Flask dependency)
+│   ├── users.py                #   auth + per-user dataset file listing + path-traversal guard
+│   ├── qc_store.py             #   QCStore class (per-request, JSON-backed) + parse_decision
+│   ├── nifti_loader.py         #   MRI/segmentation slice loading → base64 PNG, 3D voxel extraction
+│   └── patient.py              #   get_store_for_session + build_patient_payload orchestrator
+│
 ├── templates/
-│   └── index.html                  # Single-page application
-├── tempCMR/
-│   ├── lvsa_SR_ED.nii.gz          # MRI volume data
-│   └── seg_lvsa_SR_ED.nii.gz      # Segmentation data
+│   ├── index.html              # Main page skeleton (3 panels + floating QC/stats panels)
+│   └── login.html              # Username + password form
+│
 ├── static/
-│   ├── left_placeholder.png        # Placeholder images
+│   ├── css/app.css             # All UI styles
+│   ├── js/app.js               # All frontend logic (Three.js, Chart.js, controls)
+│   ├── left_placeholder.png
 │   └── right_placeholder.png
-├── requirements.txt                # Python dependencies
-├── CLAUDE.md                       # Development documentation
-└── README.md                       # This file
+│
+└── JSON/                       # gitignored — contains credentials + patient data
+    ├── users.json              #   {"username": "plaintext_password", ...}
+    └── users/
+        └── <username>/
+            └── *.json           #     Per-user QC dataset files
 ```
+
+Nothing under `JSON/` is committed — both credentials and patient data stay local.
 
 ## API Endpoints
 
-- `GET /` - Main visualization page
-- `GET /health` - Health check endpoint returning voxel count
+All `/` and `/api/*` routes require auth. Most `/api/*` routes also require an active dataset (set automatically on first visit, or via `/api/set_qc_file`).
 
-## Tech Stack
-
-### Backend
-- **Flask 3.0.0**: Web framework
-- **nibabel 5.3.3**: NIfTI file reading
-- **numpy 1.24.3**: Array operations
-- **Pillow 10.0.0**: Image processing
-
-### Frontend
-- **Three.js**: WebGL 3D rendering
-- **OrbitControls**: Camera manipulation
-- **HTML5 Canvas**: MRI/segmentation overlay
-- **Vanilla JavaScript**: UI interactions
-
-## Usage
-
-### Viewing Data
-1. The application loads MRI and segmentation data on startup
-2. Use the overlay checkbox to toggle segmentation visibility
-3. Adjust transparency with the slider for optimal viewing
-4. Navigate slices manually or use auto-play
-
-### Making QC Decisions
-1. Review the MRI slices, segmentation, and 3D visualization
-2. Check "Accept" or "Reject" based on segmentation quality
-3. Add comments in the text area
-4. Click "Save" to store your decision
-
-### 3D Visualization
-- The middle panel shows the cardiac segmentation in 3D
-- Rotate to view from different angles
-- Color coding helps identify different structures
-- Real-time rendering of 51,185 voxels
+| Method | Path | Notes |
+|---|---|---|
+| GET | `/login` | Username + password form |
+| GET | `/logout` | Clears session |
+| GET | `/` | Main page |
+| GET | `/health` | Health check (no auth) |
+| GET | `/api/list_qc_files` | Files available to this user |
+| GET | `/api/set_qc_file/<filename>` | Switch active dataset |
+| GET | `/api/set_phase/<phase>` | `ED` or `ES` |
+| GET | `/api/next_patient` / `/api/prev_patient` / `/api/goto_patient/<id>` | Navigation |
+| GET | `/api/patient_data` | Current patient payload (slices + voxels) |
+| GET | `/api/patient_list` | Patients in active dataset + per-phase decisions |
+| GET | `/api/qc_statistics` | Counts + percentages |
+| POST | `/api/save_qc` | Persist one decision + comment |
+| GET | `/api/download_json` | Download the active dataset |
 
 ## Data Format
 
-The application expects NIfTI (.nii.gz) files with:
-- **MRI Data**: Grayscale intensity values
-- **Segmentation Data**: Integer labels (0=background, 1=LV, 2=RV, 3=Myocardium)
-- **Voxel Spacing**: Stored in NIfTI header (typically ~1.25 × 1.25 × 8.0 mm)
+### NIfTI inputs
+- MRI: grayscale intensity values
+- Segmentation: integer labels (0 = background, 1 = LV, 2 = RV, 3 = myocardium)
+- Voxel spacing read from NIfTI header (typically ~1.25 × 1.25 × 8.0 mm)
 
-## Development
+### QC comment encoding
+Each saved decision is encoded as `"<decision>:<free-text>"` in the `ED_Comments` or `ES_Comments` field:
+```json
+{
+  "ED_Comments": "accept:Good segmentation quality",
+  "ES_Comments": "reject:Poor myocardium boundary"
+}
+```
 
-This project uses:
-- Flask development server with auto-reload
-- Single-file frontend architecture (templates/index.html)
-- Client-side data processing for interactive performance
-- Base64-encoded images for efficient data transfer
+## Development Notes
 
-For development guidance, see `CLAUDE.md`.
+- Backend logic is split across `routes/` and `services/`; `config.py` centralizes constants
+- CSS and JS live under `static/` (no bundler, no framework) — edit and hard-refresh the browser
+- `DEBUG=False` — Flask caches templates, so restart Flask after editing `templates/*.html`
+- JSON-on-disk storage is not safe for concurrent writes; per-user isolation reduces risk but same-user parallel writes can still collide
+
+For deeper architecture notes and operational recipes, see `CLAUDE.md`.
 
 ## License
 
-Private repository - All rights reserved
+Private repository — all rights reserved.
 
 ## Acknowledgments
 
-Built with assistance from Claude Code (claude.com/code)
+Built with assistance from Claude Code (claude.com/code).
