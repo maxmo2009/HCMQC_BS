@@ -220,7 +220,7 @@ document.getElementById('accept-checkbox').addEventListener('change', function(e
     if (e.target.checked) {
         uncheckOthers('accept-checkbox');
         console.log('QC Status: ACCEPTED');
-        showStatus('✓ Segmentation Accepted', true);
+        showStatus('SEGMENTATION ACCEPTED', true);
     } else {
         console.log('QC Status: Cleared');
     }
@@ -230,7 +230,7 @@ document.getElementById('reject-checkbox').addEventListener('change', function(e
     if (e.target.checked) {
         uncheckOthers('reject-checkbox');
         console.log('QC Status: REJECTED');
-        showStatus('✗ Segmentation Rejected', false);
+        showStatus('SEGMENTATION REJECTED', false);
     } else {
         console.log('QC Status: Cleared');
     }
@@ -241,10 +241,10 @@ document.getElementById('finetune-checkbox').addEventListener('change', function
         uncheckOthers('finetune-checkbox');
         console.log('QC Status: FINE-TUNE');
         const statusDiv = document.getElementById('status-message');
-        statusDiv.textContent = '⚙ Needs Fine-tuning';
-        statusDiv.className = '';
-        statusDiv.style.background = '#ffc107';
-        statusDiv.style.color = '#000';
+        statusDiv.textContent = 'NEEDS FINE-TUNING';
+        statusDiv.className = 'status-warn';
+        statusDiv.style.background = '';
+        statusDiv.style.color = '';
         statusDiv.style.display = 'block';
         setTimeout(() => { statusDiv.style.display = 'none'; }, 2000);
     } else {
@@ -257,10 +257,10 @@ document.getElementById('unclassified-checkbox').addEventListener('change', func
         uncheckOthers('unclassified-checkbox');
         console.log('QC Status: UNCLASSIFIED');
         const statusDiv = document.getElementById('status-message');
-        statusDiv.textContent = '? Unclassified';
-        statusDiv.className = '';
-        statusDiv.style.background = '#6c757d';
-        statusDiv.style.color = '#fff';
+        statusDiv.textContent = 'UNCLASSIFIED';
+        statusDiv.className = 'status-neut';
+        statusDiv.style.background = '';
+        statusDiv.style.color = '';
         statusDiv.style.display = 'block';
         setTimeout(() => { statusDiv.style.display = 'none'; }, 2000);
     } else {
@@ -290,10 +290,10 @@ document.getElementById('save-btn').addEventListener('click', async function() {
     console.log('Formatted:', qcCommentString);
 
     const statusDiv = document.getElementById('status-message');
-    statusDiv.textContent = '💾 Saving...';
-    statusDiv.className = '';
-    statusDiv.style.background = '#007bff';
-    statusDiv.style.color = 'white';
+    statusDiv.textContent = 'SAVING...';
+    statusDiv.className = 'status-info';
+    statusDiv.style.background = '';
+    statusDiv.style.color = '';
     statusDiv.style.display = 'block';
 
     try {
@@ -309,18 +309,18 @@ document.getElementById('save-btn').addEventListener('click', async function() {
         const data = await response.json();
 
         if (data.status === 'success') {
-            statusDiv.textContent = '💾 Data Saved Successfully';
-            statusDiv.style.background = '#28a745';
+            statusDiv.textContent = 'DATA SAVED';
+            statusDiv.className = 'status-success';
             // Update statistics after saving
             updateStatistics();
         } else {
-            statusDiv.textContent = '❌ Save Failed';
-            statusDiv.style.background = '#dc3545';
+            statusDiv.textContent = 'SAVE FAILED';
+            statusDiv.className = 'status-error';
         }
     } catch (error) {
         console.error('Error saving QC data:', error);
-        statusDiv.textContent = '❌ Save Error';
-        statusDiv.style.background = '#dc3545';
+        statusDiv.textContent = 'SAVE ERROR';
+        statusDiv.className = 'status-error';
     }
 
     setTimeout(() => {
@@ -331,10 +331,10 @@ document.getElementById('save-btn').addEventListener('click', async function() {
 // Download JSON button handler
 document.getElementById('download-btn').addEventListener('click', function() {
     const statusDiv = document.getElementById('status-message');
-    statusDiv.textContent = '📥 Downloading JSON...';
-    statusDiv.className = '';
-    statusDiv.style.background = '#28a745';
-    statusDiv.style.color = 'white';
+    statusDiv.textContent = 'DOWNLOADING JSON...';
+    statusDiv.className = 'status-info';
+    statusDiv.style.background = '';
+    statusDiv.style.color = '';
     statusDiv.style.display = 'block';
 
     // Create a hidden link and trigger download. No link.download attribute —
@@ -465,14 +465,14 @@ function togglePlayPause() {
         isPlaying = false;
         clearInterval(playbackInterval);
         playbackInterval = null;
-        playPauseBtn.textContent = '▶ Play Slices';
-        playPauseBtn.style.background = 'linear-gradient(135deg, #6c757d, #495057)';
+        playPauseBtn.textContent = '▶  PLAY SLICES';
+        playPauseBtn.classList.remove('playing');
     } else {
         // Start playback
         isPlaying = true;
         playbackInterval = setInterval(nextSlice, 1000 / playbackFPS);
-        playPauseBtn.textContent = '⏸ Pause';
-        playPauseBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+        playPauseBtn.textContent = '❚❚  PAUSE';
+        playPauseBtn.classList.add('playing');
     }
 }
 
@@ -487,10 +487,10 @@ document.getElementById('next-slice-btn').addEventListener('click', goToNextSlic
 document.getElementById('prev-btn').addEventListener('click', async function() {
     console.log('Previous patient/case');
     const statusDiv = document.getElementById('status-message');
-    statusDiv.textContent = '⏳ Loading Previous Patient...';
-    statusDiv.className = '';
-    statusDiv.style.background = '#6c757d';
-    statusDiv.style.color = '#fff';
+    statusDiv.textContent = 'LOADING PREVIOUS PATIENT...';
+    statusDiv.className = 'status-neut';
+    statusDiv.style.background = '';
+    statusDiv.style.color = '';
     statusDiv.style.display = 'block';
 
     try {
@@ -501,8 +501,8 @@ document.getElementById('prev-btn').addEventListener('click', async function() {
         }
     } catch (error) {
         console.error('Error navigating to previous patient:', error);
-        statusDiv.textContent = '❌ Error loading patient';
-        statusDiv.style.background = '#dc3545';
+        statusDiv.textContent = 'ERROR LOADING PATIENT';
+        statusDiv.className = 'status-error';
         setTimeout(() => { statusDiv.style.display = 'none'; }, 2000);
     }
 });
@@ -510,10 +510,10 @@ document.getElementById('prev-btn').addEventListener('click', async function() {
 document.getElementById('next-btn').addEventListener('click', async function() {
     console.log('Next patient/case');
     const statusDiv = document.getElementById('status-message');
-    statusDiv.textContent = '⏳ Loading Next Patient...';
-    statusDiv.className = '';
-    statusDiv.style.background = '#6c757d';
-    statusDiv.style.color = '#fff';
+    statusDiv.textContent = 'LOADING NEXT PATIENT...';
+    statusDiv.className = 'status-neut';
+    statusDiv.style.background = '';
+    statusDiv.style.color = '';
     statusDiv.style.display = 'block';
 
     try {
@@ -524,8 +524,8 @@ document.getElementById('next-btn').addEventListener('click', async function() {
         }
     } catch (error) {
         console.error('Error navigating to next patient:', error);
-        statusDiv.textContent = '❌ Error loading patient';
-        statusDiv.style.background = '#dc3545';
+        statusDiv.textContent = 'ERROR LOADING PATIENT';
+        statusDiv.className = 'status-error';
         setTimeout(() => { statusDiv.style.display = 'none'; }, 2000);
     }
 });
@@ -620,10 +620,10 @@ document.getElementById('patient-selector').addEventListener('change', async fun
     }
 
     const statusDiv = document.getElementById('status-message');
-    statusDiv.textContent = '⏳ Loading Patient...';
-    statusDiv.className = '';
-    statusDiv.style.background = '#007bff';
-    statusDiv.style.color = '#fff';
+    statusDiv.textContent = 'LOADING PATIENT...';
+    statusDiv.className = 'status-info';
+    statusDiv.style.background = '';
+    statusDiv.style.color = '';
     statusDiv.style.display = 'block';
 
     try {
@@ -635,8 +635,8 @@ document.getElementById('patient-selector').addEventListener('change', async fun
         }
     } catch (error) {
         console.error('Error navigating to patient:', error);
-        statusDiv.textContent = '❌ Error loading patient';
-        statusDiv.style.background = '#dc3545';
+        statusDiv.textContent = 'ERROR LOADING PATIENT';
+        statusDiv.className = 'status-error';
         setTimeout(() => { statusDiv.style.display = 'none'; }, 2000);
     }
 });
@@ -740,10 +740,10 @@ document.getElementById('ed-phase-btn').addEventListener('click', async function
     if (CURRENT_PHASE === 'ED') return; // Already on ED
 
     const statusDiv = document.getElementById('status-message');
-    statusDiv.textContent = '⏳ Loading ED Phase...';
-    statusDiv.className = '';
-    statusDiv.style.background = '#007bff';
-    statusDiv.style.color = '#fff';
+    statusDiv.textContent = 'LOADING ED PHASE...';
+    statusDiv.className = 'status-info';
+    statusDiv.style.background = '';
+    statusDiv.style.color = '';
     statusDiv.style.display = 'block';
 
     try {
@@ -754,8 +754,8 @@ document.getElementById('ed-phase-btn').addEventListener('click', async function
         }
     } catch (error) {
         console.error('Error switching to ED phase:', error);
-        statusDiv.textContent = '❌ Error switching phase';
-        statusDiv.style.background = '#dc3545';
+        statusDiv.textContent = 'ERROR SWITCHING PHASE';
+        statusDiv.className = 'status-error';
         setTimeout(() => { statusDiv.style.display = 'none'; }, 2000);
     }
 });
@@ -764,10 +764,10 @@ document.getElementById('es-phase-btn').addEventListener('click', async function
     if (CURRENT_PHASE === 'ES') return; // Already on ES
 
     const statusDiv = document.getElementById('status-message');
-    statusDiv.textContent = '⏳ Loading ES Phase...';
-    statusDiv.className = '';
-    statusDiv.style.background = '#007bff';
-    statusDiv.style.color = '#fff';
+    statusDiv.textContent = 'LOADING ES PHASE...';
+    statusDiv.className = 'status-info';
+    statusDiv.style.background = '';
+    statusDiv.style.color = '';
     statusDiv.style.display = 'block';
 
     try {
@@ -778,8 +778,8 @@ document.getElementById('es-phase-btn').addEventListener('click', async function
         }
     } catch (error) {
         console.error('Error switching to ES phase:', error);
-        statusDiv.textContent = '❌ Error switching phase';
-        statusDiv.style.background = '#dc3545';
+        statusDiv.textContent = 'ERROR SWITCHING PHASE';
+        statusDiv.className = 'status-error';
         setTimeout(() => { statusDiv.style.display = 'none'; }, 2000);
     }
 });
@@ -920,24 +920,24 @@ function initPieChart() {
     pieChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['Accept', 'Reject', 'Fine-tune', 'Unclassified', 'No Decision'],
+            labels: ['ACCEPT', 'REJECT', 'FINE-TUNE', 'UNCLASSIFIED', 'NO DECISION'],
             datasets: [{
                 data: [0, 0, 0, 0, 0],
                 backgroundColor: [
-                    'rgba(76, 175, 80, 0.8)',  // Accept - Green
-                    'rgba(244, 67, 54, 0.8)',  // Reject - Red
-                    'rgba(255, 193, 7, 0.8)',  // Fine-tune - Amber
-                    'rgba(158, 158, 158, 0.8)', // Unclassified - Gray
-                    'rgba(96, 125, 139, 0.8)'  // No Decision - Blue-Gray
+                    'rgba(63, 164, 110, 0.85)',  // --ok
+                    'rgba(215, 80, 74, 0.85)',   // --no
+                    'rgba(199, 152, 64, 0.85)',  // --warn
+                    'rgba(106, 118, 130, 0.85)', // --neut
+                    'rgba(58, 74, 90, 0.85)'     // darker neutral
                 ],
                 borderColor: [
-                    'rgba(76, 175, 80, 1)',
-                    'rgba(244, 67, 54, 1)',
-                    'rgba(255, 193, 7, 1)',
-                    'rgba(158, 158, 158, 1)',
-                    'rgba(96, 125, 139, 1)'
+                    'rgba(63, 164, 110, 1)',
+                    'rgba(215, 80, 74, 1)',
+                    'rgba(199, 152, 64, 1)',
+                    'rgba(106, 118, 130, 1)',
+                    'rgba(58, 74, 90, 1)'
                 ],
-                borderWidth: 2
+                borderWidth: 1
             }]
         },
         options: {
@@ -947,21 +947,26 @@ function initPieChart() {
                 legend: {
                     position: 'bottom',
                     labels: {
-                        color: '#fff',
+                        color: '#8a96a3',
                         padding: 10,
                         font: {
-                            size: 11
-                        }
+                            size: 10,
+                            family: "'IBM Plex Mono', ui-monospace, monospace"
+                        },
+                        boxWidth: 10,
+                        boxHeight: 10
                     }
                 },
                 title: {
                     display: true,
-                    text: 'QC Decision Distribution',
-                    color: '#fff',
+                    text: 'QC  DECISION  DISTRIBUTION',
+                    color: '#5fb3d4',
                     font: {
-                        size: 14,
-                        weight: 'bold'
-                    }
+                        size: 10,
+                        weight: '500',
+                        family: "'IBM Plex Mono', ui-monospace, monospace"
+                    },
+                    padding: { top: 2, bottom: 10 }
                 },
                 tooltip: {
                     callbacks: {
@@ -1003,33 +1008,33 @@ async function updateStatistics() {
             // Update summary
             const summaryHtml = `
                 <div class="stat-item">
-                    <div class="stat-color" style="background: rgba(76, 175, 80, 0.8);"></div>
-                    <span class="stat-label">Accept:</span>
+                    <div class="stat-color" style="background: #3fa46e;"></div>
+                    <span class="stat-label">Accept</span>
                     <span class="stat-value">${stats.accept}</span>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-color" style="background: rgba(244, 67, 54, 0.8);"></div>
-                    <span class="stat-label">Reject:</span>
+                    <div class="stat-color" style="background: #d7504a;"></div>
+                    <span class="stat-label">Reject</span>
                     <span class="stat-value">${stats.reject}</span>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-color" style="background: rgba(255, 193, 7, 0.8);"></div>
-                    <span class="stat-label">Fine-tune:</span>
+                    <div class="stat-color" style="background: #c79840;"></div>
+                    <span class="stat-label">Fine-tune</span>
                     <span class="stat-value">${stats.finetune}</span>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-color" style="background: rgba(158, 158, 158, 0.8);"></div>
-                    <span class="stat-label">Unclassified:</span>
+                    <div class="stat-color" style="background: #6a7682;"></div>
+                    <span class="stat-label">Unclassified</span>
                     <span class="stat-value">${stats.unclassified}</span>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-color" style="background: rgba(96, 125, 139, 0.8);"></div>
-                    <span class="stat-label">No Decision:</span>
+                    <div class="stat-color" style="background: #3a4a5a;"></div>
+                    <span class="stat-label">No Decision</span>
                     <span class="stat-value">${stats.no_decision}</span>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-color" style="background: #333;"></div>
-                    <span class="stat-label">Total:</span>
+                    <div class="stat-color" style="background: #5fb3d4;"></div>
+                    <span class="stat-label">Total</span>
                     <span class="stat-value">${data.total}</span>
                 </div>
             `;
@@ -1120,6 +1125,40 @@ if (savedStatsMinimized === 'true') {
     statsMinimizeBtn.title = 'Expand';
 }
 
+// 3D view info panel — collapsible (sometimes blocks the 3D canvas)
+const infoPanel = document.getElementById('info');
+const infoContent = document.getElementById('info-content');
+const infoMinimizeBtn = document.getElementById('info-minimize-btn');
+let infoMinimized = false;
+
+infoMinimizeBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    infoMinimized = !infoMinimized;
+
+    if (infoMinimized) {
+        infoContent.classList.add('hidden');
+        infoPanel.classList.add('minimized');
+        infoMinimizeBtn.textContent = '＋';
+        infoMinimizeBtn.title = 'Expand';
+        localStorage.setItem('infoPanelMinimized', 'true');
+    } else {
+        infoContent.classList.remove('hidden');
+        infoPanel.classList.remove('minimized');
+        infoMinimizeBtn.textContent = '－';
+        infoMinimizeBtn.title = 'Minimize';
+        localStorage.setItem('infoPanelMinimized', 'false');
+    }
+});
+
+const savedInfoMinimized = localStorage.getItem('infoPanelMinimized');
+if (savedInfoMinimized === 'true') {
+    infoMinimized = true;
+    infoContent.classList.add('hidden');
+    infoPanel.classList.add('minimized');
+    infoMinimizeBtn.textContent = '＋';
+    infoMinimizeBtn.title = 'Expand';
+}
+
 // Initialize chart and load statistics on page load
 initPieChart();
 updateStatistics();
@@ -1151,10 +1190,10 @@ document.getElementById('dataset-selector').addEventListener('change', async fun
     if (!chosen || chosen === ACTIVE_QC_FILE) return;
 
     const statusDiv = document.getElementById('status-message');
-    statusDiv.textContent = '⏳ Loading dataset...';
-    statusDiv.className = '';
-    statusDiv.style.background = '#007bff';
-    statusDiv.style.color = '#fff';
+    statusDiv.textContent = 'LOADING DATASET...';
+    statusDiv.className = 'status-info';
+    statusDiv.style.background = '';
+    statusDiv.style.color = '';
     statusDiv.style.display = 'block';
 
     try {
@@ -1163,14 +1202,14 @@ document.getElementById('dataset-selector').addEventListener('change', async fun
         if (data.status === 'success') {
             window.location.reload();
         } else {
-            statusDiv.textContent = '❌ ' + (data.message || 'Failed to switch dataset');
-            statusDiv.style.background = '#dc3545';
+            statusDiv.textContent = (data.message || 'FAILED TO SWITCH DATASET').toUpperCase();
+            statusDiv.className = 'status-error';
             setTimeout(() => { statusDiv.style.display = 'none'; }, 2000);
         }
     } catch (error) {
         console.error('Error switching dataset:', error);
-        statusDiv.textContent = '❌ Error switching dataset';
-        statusDiv.style.background = '#dc3545';
+        statusDiv.textContent = 'ERROR SWITCHING DATASET';
+        statusDiv.className = 'status-error';
         setTimeout(() => { statusDiv.style.display = 'none'; }, 2000);
     }
 });

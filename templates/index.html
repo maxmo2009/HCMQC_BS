@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardiac Segmentation QC Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
 </head>
 <body>
@@ -11,7 +14,7 @@
     <div id="top-bar">
         <h1>Cardiac Segmentation QC Studio</h1>
         <div id="user-info">
-            <span id="current-user">👤 {{ username }}</span>
+            <span id="current-user">{{ username }}</span>
             <a id="logout-link" href="/logout">Logout</a>
         </div>
     </div>
@@ -26,16 +29,16 @@
                 <label for="overlay-checkbox">Show Overlay</label>
             </div>
             <div class="zoom-control" style="min-width: 420px;">
-                <div style="display: flex; gap: 20px;">
+                <div style="display: flex; gap: 18px;">
                     <div style="flex: 1;">
-                        <div style="font-size: 12px; margin-bottom: 3px;">Zoom</div>
+                        <div style="font-size: 9.5px; letter-spacing: 0.2em; color: var(--text-2); margin-bottom: 4px;">Zoom</div>
                         <div class="zoom-slider-container">
                             <input type="range" id="zoom-slider" class="zoom-slider" min="50" max="300" value="170" step="10">
                             <span id="zoom-value" class="zoom-value">170%</span>
                         </div>
                     </div>
                     <div style="flex: 1;">
-                        <div style="font-size: 12px; margin-bottom: 3px;">Transparency</div>
+                        <div style="font-size: 9.5px; letter-spacing: 0.2em; color: var(--text-2); margin-bottom: 4px;">Transparency</div>
                         <div class="zoom-slider-container">
                             <input type="range" id="transparency-slider" class="zoom-slider" min="0" max="100" value="50">
                             <span id="transparency-value" class="zoom-value">50%</span>
@@ -56,13 +59,18 @@
             <div class="panel-title">3D Visualization</div>
             <div id="container"></div>
             <div id="info">
-                <h1>Controls</h1>
-                Left click + drag: Rotate<br>
-                Right click + drag: Pan<br>
-                Scroll: Zoom in/out<br>
-                <div id="stats"></div>
+                <div id="info-header">
+                    <h1>Controls</h1>
+                    <span id="info-minimize-btn" title="Minimize">－</span>
+                </div>
+                <div id="info-content">
+                    L-click + drag &nbsp;·&nbsp; rotate<br>
+                    R-click + drag &nbsp;·&nbsp; pan<br>
+                    Scroll &nbsp;·&nbsp; zoom<br>
+                    <div id="stats"></div>
+                </div>
             </div>
-            <div id="loading">Loading CMR segmentation...</div>
+            <div id="loading">LOADING CMR SEGMENTATION</div>
             <img id="lab-logo" src="https://images.squarespace-cdn.com/content/v1/611bce9f0ec5ff43949b98ea/068036ac-5a6f-4da8-869f-520764bdaaaa/still_v023_frame_0103_photoshop_layer_logo_LMS.png?format=1500w" alt="Lab Logo">
         </div>
     </div>
@@ -80,20 +88,20 @@
             </div>
         </div>
         <div id="panel-content">
-            <div style="padding: 10px 20px; background: rgba(0, 0, 0, 0.3); border-bottom: 1px solid #555;">
-                <div style="color: #ccc; font-size: 10px; margin-bottom: 5px;">PATIENT SELECTOR</div>
-            <select id="patient-selector" style="width: 100%; padding: 8px; background: #2a2a2a; color: white; border: 1px solid #555; border-radius: 5px; font-size: 12px; cursor: pointer; font-family: 'Courier New', Courier, monospace;">
-                <option value="">Loading patients...</option>
-            </select>
-            <div style="color: #aaa; font-size: 9px; margin-top: 5px; text-align: center;" id="patient-count-display"></div>
-        </div>
-        <div style="padding: 10px 20px; border-bottom: 1px solid #555;">
-            <div style="color: #ccc; font-size: 10px; margin-bottom: 5px;">CARDIAC PHASE</div>
-            <div style="display: flex; gap: 10px;">
-                <button id="ed-phase-btn" class="phase-btn phase-active">ED</button>
-                <button id="es-phase-btn" class="phase-btn">ES</button>
+            <div style="padding: 12px 14px; border-bottom: 1px solid var(--line);">
+                <div class="qc-checkbox-label" style="padding: 0;">Patient Selector</div>
+                <select id="patient-selector">
+                    <option value="">Loading patients...</option>
+                </select>
+                <div id="patient-count-display" style="color: var(--text-2); font-size: 9.5px; margin-top: 6px; text-align: center; letter-spacing: 0.16em; text-transform: uppercase;"></div>
             </div>
-        </div>
+            <div style="padding: 12px 14px; border-bottom: 1px solid var(--line);">
+                <div class="qc-checkbox-label" style="padding: 0;">Cardiac Phase</div>
+                <div style="display: flex; gap: 8px;">
+                    <button id="ed-phase-btn" class="phase-btn phase-active">ED</button>
+                    <button id="es-phase-btn" class="phase-btn">ES</button>
+                </div>
+            </div>
         <div id="comments-section">
             <label id="comments-label" for="patient-comments">Patient Comments</label>
             <textarea id="patient-comments" placeholder="Enter comments here..."></textarea>
@@ -102,34 +110,34 @@
         <div class="qc-checkbox-section">
             <div class="qc-checkbox-item accept">
                 <input type="checkbox" id="accept-checkbox">
-                <label for="accept-checkbox">✓ Accept</label>
+                <label for="accept-checkbox">Accept</label>
             </div>
             <div class="qc-checkbox-item reject">
                 <input type="checkbox" id="reject-checkbox">
-                <label for="reject-checkbox">✗ Reject</label>
+                <label for="reject-checkbox">Reject</label>
             </div>
             <div class="qc-checkbox-item finetune">
                 <input type="checkbox" id="finetune-checkbox">
-                <label for="finetune-checkbox">⚙ Fine-tune</label>
+                <label for="finetune-checkbox">Fine-tune</label>
             </div>
             <div class="qc-checkbox-item unclassified">
                 <input type="checkbox" id="unclassified-checkbox">
-                <label for="unclassified-checkbox">? Unclassified</label>
+                <label for="unclassified-checkbox">Unclass</label>
             </div>
         </div>
         <div id="qc-buttons">
             <div class="navigation-buttons">
-                <button id="prev-slice-btn" class="nav-btn">⏪</button>
-                <button id="next-slice-btn" class="nav-btn">⏩</button>
+                <button id="prev-slice-btn" class="nav-btn">◀◀  SLICE</button>
+                <button id="next-slice-btn" class="nav-btn">SLICE  ▶▶</button>
             </div>
-            <button id="play-pause-btn" class="qc-button" style="background: linear-gradient(135deg, #6c757d, #495057);">▶ Play Slices</button>
+            <button id="play-pause-btn" class="qc-button">▶  PLAY SLICES</button>
             <div class="navigation-buttons">
-                <button id="prev-btn" class="nav-btn">← Prev</button>
-                <button id="next-btn" class="nav-btn">Next →</button>
+                <button id="prev-btn" class="nav-btn">◀  PREV</button>
+                <button id="next-btn" class="nav-btn">NEXT  ▶</button>
             </div>
-            <div style="display: flex; gap: 10px;">
-                <button id="save-btn" class="qc-button" style="flex: 1;">💾 Save</button>
-                <button id="download-btn" class="qc-button" style="flex: 1;">📥 Download JSON</button>
+            <div style="display: flex; gap: 8px;">
+                <button id="save-btn" class="qc-button" style="flex: 1;">Save</button>
+                <button id="download-btn" class="qc-button" style="flex: 1;">Export JSON</button>
             </div>
         </div>
         </div>

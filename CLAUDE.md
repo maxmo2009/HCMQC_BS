@@ -145,14 +145,30 @@ GET  /api/download_json          # Serve the currently active dataset file
 
 ### Frontend Architecture
 
-**Three-Panel Layout** (each panel is `(100vh - 52px)` square):
+**Three-Panel Layout** (top bar is 44px, each panel is `(100vh - 44px)` square):
 - **Left Panel** (`#left-panel`): MRI canvas with segmentation overlay, zoom/transparency sliders
 - **Middle Panel** (`#middle-panel`): Color-coded segmentation image
 - **Right Panel** (`#right-panel`): Three.js 3D InstancedMesh visualization (~50K voxels)
 
-**Floating Panels** (z-index: 2000, draggable, minimizable, positions saved to localStorage):
-- **QC Control Panel**: Patient dropdown, ED/ES toggle, QC decisions (accept/reject/finetune/unclassified), comments, navigation
-- **Statistics Panel**: Chart.js pie chart with QC decision distribution
+**Collapsible Panels** — three panels share the same minimize pattern (click the `－ / ＋` header button to toggle `.hidden` on the content wrapper + `.minimized` on the panel; state persisted to localStorage):
+- **QC Control Panel** (`#floating-qc-panel`, z-index 2000, draggable): Patient dropdown, ED/ES toggle, QC decisions (accept / reject / finetune / unclassified), comments, navigation. Child ids: `#panel-content`, `#minimize-btn`.
+- **Statistics Panel** (`#floating-stats-panel`, z-index 2000, draggable): Dataset dropdown + Chart.js pie chart. Child ids: `#stats-panel-content`, `#stats-minimize-btn`.
+- **3D Controls/Stats Panel** (`#info`, pinned top-left of the right viewport, NOT draggable): Three.js input hints + voxel count / dimensions / spacing. Child ids: `#info-content`, `#info-minimize-btn`. Added late — the 3D panel's `#stats` block (populated by `loadBallData()` in app.js) lives inside `#info-content` and collapses with it.
+
+**Visual design language — "radiology workstation"** (don't regress this):
+- **Palette** lives in CSS variables on `:root` in `static/css/app.css`. Use the vars, never raw hex:
+  - Surfaces `--bg-0` (deepest) → `--bg-3` (elevated), plus `--bg-hover`
+  - Rules `--line` / `--line-mid` / `--line-strong` (always 1px, squared)
+  - Text `--text-0` (primary) → `--text-3` (faint)
+  - Accent cyan `--accent` / `--accent-hi` / `--accent-dim` / `--accent-bg`
+  - QC semantics `--ok` / `--no` / `--warn` / `--neut` (each with a `*-dim` companion)
+- **Typography**: `--font-mono` = IBM Plex Mono, loaded via Google Fonts `<link>` in both templates. All UI text is mono + uppercase with wide letter-spacing. Numbers use `font-variant-numeric: tabular-nums`.
+- **Forbidden patterns** (these are exactly what the theme replaces):
+  - Bootstrap hex (`#007bff / #28a745 / #dc3545 / #ffc107 / #6c757d`) or `linear-gradient(135deg, ...)` buttons
+  - `border-radius` above 0, or `transform: translateY(-2px)` hover lifts
+  - Emoji icons in button labels or status text (`💾 📥 ⚙ ✓ ✗ ⏳ ❌`). `▶` and `◀◀` as play/slice glyphs are intentionally kept.
+
+**Status message convention** — `#status-message` is styled via CSS class, NOT inline background. JS sets one of: `status-accepted` / `status-rejected` / `status-success` / `status-error` / `status-info` / `status-warn` / `status-neut` (all `!important`, each painting a 2px left border + semantic text color on dark bg). When swapping class on a div that previously had inline styles, clear them explicitly: `statusDiv.style.background = ''; statusDiv.style.color = '';` — otherwise the inline wins over the class. The `#play-pause-btn` follows the same idea via a `.playing` class toggle.
 
 **Key JS Variables** (top-level `const` declared in the inline `<script>` block of templates/index.html, visible to static/js/app.js via the shared script-scope global lexical environment):
 ```javascript
@@ -225,7 +241,7 @@ No server restart needed — `users.json` is re-read on each login, and the data
 - Patient/phase navigation requires full page reload (session-based state)
 - Slice/segmentation PNGs are inlined as base64 in the JSON payload; CSS and JS assets are served from `/static/` via Flask's `url_for`
 - QC decisions are mutually exclusive (enforced via JS, not backend)
-- Floating panel positions persisted in localStorage (keys: panelPosX/Y, statsPanelPosX/Y, panelMinimized, statsPanelMinimized)
+- Floating panel positions persisted in localStorage (keys: `panelPosX/Y`, `statsPanelPosX/Y`, `panelMinimized`, `statsPanelMinimized`, `infoPanelMinimized`)
 - NIfTI files are loaded fresh each request (no caching)
 - JSON file-based storage is not safe for concurrent writes
 - Segmentation labels from NIfTI files may be floats (e.g. 1.00000002) — backend rounds to int before sending to frontend

@@ -1,36 +1,236 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Cardiac Segmentation QC Studio - Login</title>
+    <meta charset="UTF-8">
+    <title>Cardiac Segmentation QC Studio — Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; background: #1a1a2e; color: #eee; font-family: Arial, sans-serif;
-               display: flex; justify-content: center; align-items: center; height: 100vh; }
-        .login-box { background: #16213e; padding: 40px; border-radius: 10px; text-align: center;
-                     box-shadow: 0 0 20px rgba(0,0,0,0.5); width: 320px; }
-        .login-box h2 { margin: 0 0 25px; color: #4fc3f7; }
-        .login-box img.logo { width: 180px; margin-bottom: 20px; border-radius: 8px;
-               transition: opacity 0.3s; }
-        .login-box img.logo:hover { opacity: 0.85; }
+        :root {
+            --bg-0:        #070a0d;
+            --bg-1:        #0c1116;
+            --bg-2:        #10161c;
+            --bg-3:        #171f27;
+            --line:        #1c242c;
+            --line-mid:    #273340;
+            --line-strong: #3a4a5a;
+            --text-0:      #d6dee6;
+            --text-1:      #8a96a3;
+            --text-2:      #566370;
+            --accent:      #5fb3d4;
+            --accent-hi:   #8ad0ec;
+            --accent-dim:  #26566c;
+            --accent-bg:   rgba(95, 179, 212, 0.08);
+            --err:         #d7504a;
+            --font-mono:   'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg-0);
+            color: var(--text-0);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.01em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                linear-gradient(to right, rgba(95, 179, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(95, 179, 212, 0.03) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+        /* HUD marker in the top-left corner of the viewport */
+        .viewport-tag {
+            position: fixed;
+            top: 20px;
+            left: 24px;
+            font-size: 10px;
+            color: var(--text-2);
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+        .viewport-tag b {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .viewport-tag-right {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            font-size: 10px;
+            color: var(--text-2);
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+
+        .login-box {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-2);
+            border: 1px solid var(--line-strong);
+            padding: 36px 34px 30px;
+            width: 340px;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.4);
+        }
+
+        /* Corner brackets on the login box (HUD feel) */
+        .login-box::before,
+        .login-box::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border: 0 solid var(--accent);
+            pointer-events: none;
+        }
+        .login-box::before {
+            top: -1px;
+            left: -1px;
+            border-top-width: 1px;
+            border-left-width: 1px;
+        }
+        .login-box::after {
+            bottom: -1px;
+            right: -1px;
+            border-bottom-width: 1px;
+            border-right-width: 1px;
+        }
+
+        .login-box img.logo {
+            display: block;
+            width: 120px;
+            margin: 0 auto 18px;
+            opacity: 0.85;
+            transition: opacity 0.15s linear;
+        }
+        .login-box img.logo:hover { opacity: 1; }
+
+        .login-box h2 {
+            margin: 0 0 4px;
+            color: var(--text-0);
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.28em;
+            text-align: center;
+        }
+        .login-box h2::before {
+            content: '▸ ';
+            color: var(--accent);
+            letter-spacing: 0;
+        }
+
+        .login-box .subtitle {
+            text-align: center;
+            font-size: 9.5px;
+            color: var(--text-2);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin: 0 0 22px;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 9.5px;
+            font-weight: 500;
+            color: var(--text-2);
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            margin: 10px 0 5px;
+        }
+
         .login-box input[type="text"],
-        .login-box input[type="password"] { width: 100%; padding: 12px; border: 1px solid #333;
-               border-radius: 5px; background: #0f3460; color: #eee; font-size: 16px;
-               box-sizing: border-box; margin-bottom: 15px; }
-        .login-box button { width: 100%; padding: 12px; border: none; border-radius: 5px;
-               background: #4fc3f7; color: #1a1a2e; font-size: 16px; font-weight: bold;
-               cursor: pointer; }
-        .login-box button:hover { background: #81d4fa; }
-        .error { color: #ff6b6b; margin-bottom: 15px; }
+        .login-box input[type="password"] {
+            width: 100%;
+            padding: 9px 11px;
+            border: 1px solid var(--line-mid);
+            background: var(--bg-1);
+            color: var(--text-0);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.04em;
+            transition: border-color 0.12s linear, background 0.12s linear;
+        }
+        .login-box input[type="text"]:focus,
+        .login-box input[type="password"]:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: var(--bg-3);
+        }
+
+        .login-box button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 11px;
+            border: 1px solid var(--accent-dim);
+            background: var(--bg-1);
+            color: var(--accent-hi);
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.12s linear, border-color 0.12s linear, color 0.12s linear;
+        }
+        .login-box button:hover {
+            background: var(--accent-bg);
+            border-color: var(--accent);
+            color: var(--accent-hi);
+        }
+        .login-box button:active {
+            background: var(--bg-3);
+        }
+
+        .error {
+            color: var(--err);
+            background: var(--bg-1);
+            border: 1px solid var(--err);
+            border-left: 2px solid var(--err);
+            padding: 7px 10px;
+            margin-bottom: 14px;
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
+    <div class="viewport-tag">◈ Cardiac <b>Segmentation</b> QC Studio</div>
+    <div class="viewport-tag-right">auth · v&thinsp;beta</div>
+
     <div class="login-box">
         <img class="logo" src="https://images.squarespace-cdn.com/content/v1/611bce9f0ec5ff43949b98ea/068036ac-5a6f-4da8-869f-520764bdaaaa/still_v023_frame_0103_photoshop_layer_logo_LMS.png?format=300w" alt="Lab Logo">
-        <h2>Cardiac Segmentation QC Studio</h2>
+        <h2>Sign In</h2>
+        <p class="subtitle">Authentication Required</p>
         {% if error %}<div class="error">{{ error }}</div>{% endif %}
         <form method="POST">
-            <input type="text" name="username" placeholder="Username" autofocus required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+            <label class="field-label" for="username-input">Username</label>
+            <input id="username-input" type="text" name="username" autofocus required autocomplete="username">
+            <label class="field-label" for="password-input">Password</label>
+            <input id="password-input" type="password" name="password" required autocomplete="current-password">
+            <button type="submit">Enter</button>
         </form>
     </div>
 </body>
