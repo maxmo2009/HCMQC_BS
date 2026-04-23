@@ -23,7 +23,7 @@ app = create_app()
 
 if __name__ == '__main__':
     print("=" * 60)
-    print("CMR Segmentation QC Web App (multi-user)")
+    print("Cardiac Segmentation QC Studio (multi-user)")
     print("=" * 60)
     print(f"Starting server on http://localhost:{PORT}")
     print("=" * 60)

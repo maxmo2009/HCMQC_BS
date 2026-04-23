@@ -4,24 +4,50 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-HCM QC Tool - A Flask-based web application for quality control review of Cardiac MRI (CMR) segmentation results. Provides real-time visualization of patient scans with both End-Diastole (ED) and End-Systole (ES) phases.
+Cardiac Segmentation QC Studio — A Flask-based web application for quality control review of Cardiac MRI (CMR) segmentation results. Provides real-time visualization of patient scans with both End-Diastole (ED) and End-Systole (ES) phases. Multi-user; each reviewer has their own QC datasets under `JSON/users/<username>/`.
 
 ## Running the Application
+
+Beta binds to **port 5001**. Port 5000 belongs to a separate non-beta/production instance — **never use 5000 here**, it will collide and kill the production server.
 
 ```bash
 # Install dependencies (only needed once)
 pip install -r requirements.txt
 
-# Start development server
+# Foreground (blocks terminal until Ctrl+C)
 python3 app.py
-
-# Beta runs on http://localhost:5001 (debug off, binds 0.0.0.0)
-# NOTE: Port 5000 is reserved for the non-beta/production instance — do not use 5000 here.
-
-# External access — two separate ngrok tunnels, one per instance:
-ngrok http --url=hcmqcbeta.ngrok.app 5001   # beta (this repo)      → https://hcmqcbeta.ngrok.app
-ngrok http --url=hcmqc.ngrok.app     5000   # production (separate) → https://hcmqc.ngrok.app
 ```
+
+### Run beta + external tunnel together (background)
+
+```bash
+# 1. Flask (writes log to /tmp/beta.log)
+python3 app.py > /tmp/beta.log 2>&1 &
+
+# 2. Wait for it to accept requests
+until curl -sf http://localhost:5001/health > /dev/null; do sleep 1; done
+
+# 3. ngrok tunnel → https://hcmqcbeta.ngrok.app
+ngrok http --url=hcmqcbeta.ngrok.app 5001 > /tmp/ngrok-beta.log 2>&1 &
+
+# 4. Verify external
+curl https://hcmqcbeta.ngrok.app/health
+```
+
+### Stop everything
+
+```bash
+pkill -f "python3 app.py"
+pkill -f "ngrok http --url=hcmqcbeta"
+# Do NOT pkill "ngrok" alone — it would also kill the production tunnel (hcmqc.ngrok.app → 5000).
+```
+
+### ngrok domains
+
+| Instance   | Local port | ngrok URL                      |
+|------------|-----------:|--------------------------------|
+| beta       |       5001 | https://hcmqcbeta.ngrok.app    |
+| production |       5000 | https://hcmqc.ngrok.app        |
 
 ## Datasets
 
@@ -174,6 +200,25 @@ Comments in JSON follow `<choice>:<comments>`:
 }
 ```
 
+## Adding a new user
+
+Three manual steps — no CLI helper, no auto-seeding:
+
+```bash
+# 1. Add the credential (plaintext password)
+# edit JSON/users.json to include a line like:
+#   "alice": "their_password"
+
+# 2. Create the user's folder
+mkdir JSON/users/alice
+
+# 3. Put one or more QC dataset .json files in there.
+#    Copy an existing dataset if they should start with the same patient list:
+cp JSON/users/admin/acdc_qc_dataset_seed42_ratio0.5_shift5.json JSON/users/alice/
+```
+
+No server restart needed — `users.json` is re-read on each login, and the dataset folder is scanned per request.
+
 ## Development Notes
 
 ### Important Constraints
@@ -184,6 +229,7 @@ Comments in JSON follow `<choice>:<comments>`:
 - NIfTI files are loaded fresh each request (no caching)
 - JSON file-based storage is not safe for concurrent writes
 - Segmentation labels from NIfTI files may be floats (e.g. 1.00000002) — backend rounds to int before sending to frontend
+- **Flask runs with `DEBUG=False`, so templates are cached.** After editing `templates/*.html` or Jinja-injected variables you must restart Flask (`pkill -f "python3 app.py"` then start again) for changes to show up. CSS/JS under `static/` are served directly and only need a browser refresh.
 
 ### 3D Visualization Details
 - Three.js with 5-point lighting setup optimized for cardiac structure visibility
@@ -195,4 +241,5 @@ Comments in JSON follow `<choice>:<comments>`:
 
 ## GitHub Configuration
 - Repository: `git@github.com:maxmo2009/HCMQC_BS.git`
+- Active branch: **`beta`** — holds the modular refactor + multi-user auth. `master` still has the single-user monolithic version; do not push beta changes to master without review.
 - User email: `maxmo2009@gmail.com`

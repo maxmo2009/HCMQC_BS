@@ -1,4 +1,4 @@
-# CMR Segmentation QC Web Application
+# Cardiac Segmentation QC Studio
 
 A web-based quality control tool for reviewing Cardiac MRI (CMR) segmentation results. This application provides an interactive 3-panel interface for visualizing MRI slices, 3D segmentation, and overlay comparisons.
 

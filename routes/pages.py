@@ -83,4 +83,4 @@ def index():
 
 @pages_bp.route('/health')
 def health():
-    return jsonify({'status': 'ok', 'message': 'CMR Segmentation QC Web App is running'})
+    return jsonify({'status': 'ok', 'message': 'Cardiac Segmentation QC Studio is running'})
