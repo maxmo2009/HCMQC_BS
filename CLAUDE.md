@@ -15,19 +15,44 @@ pip install -r requirements.txt
 # Start development server
 python3 app.py
 
-# Server runs on http://localhost:5000 (debug mode off, binds 0.0.0.0)
+# Beta runs on http://localhost:5001 (debug off, binds 0.0.0.0)
+# NOTE: Port 5000 is reserved for the non-beta/production instance — do not use 5000 here.
+
+# External access — two separate ngrok tunnels, one per instance:
+ngrok http --url=hcmqcbeta.ngrok.app 5001   # beta (this repo)      → https://hcmqcbeta.ngrok.app
+ngrok http --url=hcmqc.ngrok.app     5000   # production (separate) → https://hcmqc.ngrok.app
 ```
+
+## Datasets
+
+Each logged-in user has their own folder at `JSON/users/<username>/` containing any number of QC dataset `.json` files. Scale depends on which file is active:
+- `acdc_qc_dataset_seed42_ratio0.5_shift5.json` → 150 patients × 2 phases = 300 decisions
+- `mnms2_qc_dataset_seed42_ratio0.5_shift5.json` → 360 patients × 2 phases = 720 decisions
+
+`/api/qc_statistics` total reflects the currently active file in session (`session['active_qc_file']`).
 
 ## Testing Commands
 
 ```bash
-curl http://localhost:5000/health             # Health check
-curl http://localhost:5000/api/patient_list   # All patients with QC decisions
-curl http://localhost:5000/api/patient_data   # Current patient data
-curl http://localhost:5000/api/qc_statistics  # QC statistics
+# Health check (no auth required)
+curl http://localhost:5001/health
 
-# Save a QC decision
-curl -X POST http://localhost:5000/api/save_qc \
+# Authenticate: username + password (plaintext match against JSON/users.json)
+curl -c cookie.txt -X POST http://localhost:5001/login \
+  -d 'username=admin&password=cardiacMRI'
+
+# Most /api/* calls also need an active dataset selected in session.
+# Either the main page auto-picks the first file on login, or set it explicitly:
+curl -b cookie.txt -c cookie.txt \
+  http://localhost:5001/api/set_qc_file/acdc_qc_dataset_seed42_ratio0.5_shift5.json
+
+# Authenticated API calls
+curl -b cookie.txt http://localhost:5001/api/list_qc_files    # User's available datasets
+curl -b cookie.txt http://localhost:5001/api/patient_list     # Patients in active dataset
+curl -b cookie.txt http://localhost:5001/api/qc_statistics    # Stats for active dataset
+
+# Save a QC decision (writes to active dataset only)
+curl -b cookie.txt -X POST http://localhost:5001/api/save_qc \
   -H "Content-Type: application/json" \
   -d '{"qc_comment": "accept:Good segmentation", "phase": "ED"}'
 ```
@@ -35,15 +60,34 @@ curl -X POST http://localhost:5000/api/save_qc \
 ## Architecture
 
 ### Key Files
-- **app.py** (~468 lines) — Flask backend: all routes, NIfTI loading, image processing, QC persistence
-- **templates/index.html** (~2040 lines) — Single-page app: Three.js 3D visualization, Chart.js statistics, slice viewer, QC controls
-- **JSON/QC_logs.json** — Patient database (JSON with patient paths as keys, loaded into memory at startup)
+- **app.py** — Flask app factory (`create_app()`) + blueprint registration + entrypoint
+- **config.py** — Constants: `SECRET_KEY`, `BASE_PATH`, `PORT`, `LABEL_COLOR_MAP`, `QC_DECISIONS`, `USERS_JSON_PATH`, `USERS_DIR`, plus `user_dir()` / `user_qc_file()` path helpers
+- **routes/auth.py** — `/login` (username + password form), `/logout`, `login_required` decorator (redirects HTML routes, returns 401 JSON for `/api/*`)
+- **routes/pages.py** — `/` (main page, auto-picks first dataset if none active) and `/health`
+- **routes/api.py** — All `/api/*` endpoints; every one guarded by `@login_required` and resolves the per-user store via `_store_or_404()`
+- **services/users.py** — Loads `users.json`, authenticates credentials, lists a user's `.json` files, resolves filenames safely (blocks path traversal)
+- **services/qc_store.py** — `QCStore` class (constructed per-request with an explicit file path; no singleton) + `parse_decision()` helper
+- **services/nifti_loader.py** — MRI/segmentation slice loading, 3D voxel extraction, base64 encoding
+- **services/patient.py** — `get_store_for_session()` (resolves session → QCStore) + `build_patient_payload()` (assembles the full patient JSON for rendering)
+- **templates/index.html** — Page skeleton with top bar (user info + logout), three-panel layout, floating QC/stats panels (stats panel has the dataset dropdown), inline Jinja constants block, links to `static/css/app.css` and `static/js/app.js`
+- **templates/login.html** — Login form (username + password)
+- **static/css/app.css** — All UI styles
+- **static/js/app.js** — All frontend logic (Three.js 3D, Chart.js, slice viewer, dataset dropdown, patient/phase controls, draggable panels)
+- **JSON/users.json** — `{"<username>": "<plaintext password>", ...}`
+- **JSON/users/<username>/*.json** — That user's QC dataset files (keys = patient paths, values have `ED_Comments` / `ES_Comments`)
+
+### Authentication
+- Per-user login. Credentials in `JSON/users.json` as `{username: plaintext_password}`. No hashing by user's explicit request — keep the file access-controlled at the OS level.
+- Session-based auth with 3-day rolling lifetime (Flask refreshes expiry on each request).
+- Session state: `username`, `active_qc_file`, `patient_index`, `phase`.
+- `login_required` decorator: **all `/` and `/api/*` routes are guarded.** For `/api/*` paths it returns `401 JSON`; for HTML paths it redirects to `/login`.
+- Filename validation in `services/users.resolve_qc_path()` via a strict regex (`^[A-Za-z0-9_.\-]+\.json$`) plus `os.path.isfile` check — blocks `../` traversal and symlink shenanigans.
 
 ### Critical Path Configuration
-- **BASE_PATH**: `/mnt/storage/home/ym1413/` — Hardcoded in app.py:14, prepended to all patient paths from JSON
+- **BASE_PATH**: in config.py, prepended to all patient paths from JSON (currently empty — JSON keys contain full absolute paths)
 - **File Structure per Patient**:
   ```
-  {BASE_PATH}/{patient_path}/
+  {patient_path}/
     ├── lvsa_SR_ED.nii.gz      # ED phase MRI
     ├── lvsa_SR_ES.nii.gz      # ES phase MRI
     ├── seg_lvsa_SR_ED.nii.gz  # ED segmentation
@@ -52,18 +96,25 @@ curl -X POST http://localhost:5000/api/save_qc \
 
 ### Backend API Endpoints
 
+All `/` and `/api/*` routes require auth. Most `/api/*` routes additionally require an active dataset (`session['active_qc_file']`) and return 404 `No active dataset selected` otherwise.
+
 ```
-GET  /                        # Main page — loads patient data, renders index.html
-GET  /api/next_patient        # Increment session patient_index, returns JSON
-GET  /api/prev_patient        # Decrement session patient_index, returns JSON
-GET  /api/goto_patient/<id>   # Jump to patient by index
-GET  /api/set_phase/<phase>   # Switch between 'ED' and 'ES'
-GET  /api/patient_data        # Current patient's full dataset as JSON
-GET  /api/patient_list        # All patients with QC decisions (ed_decision, es_decision)
-GET  /api/qc_statistics       # QC decision counts and percentages
-POST /api/save_qc             # Save QC decision: {qc_comment: "<choice>:<comments>", phase: "ED/ES"}
-GET  /api/download_json       # Download QC_logs.json
-GET  /health                  # Health check
+GET  /login                      # Login page (GET=form, POST=username+password)
+GET  /logout                     # Clear session and redirect to login
+GET  /                           # Main page; auto-picks first dataset if none active
+GET  /health                     # Health check (no auth)
+
+GET  /api/list_qc_files          # {files: [...], active: "..."} — scans user's folder
+GET  /api/set_qc_file/<filename> # Set active dataset, reset patient_index to 0
+GET  /api/next_patient           # Increment session patient_index
+GET  /api/prev_patient           # Decrement session patient_index
+GET  /api/goto_patient/<id>      # Jump to patient by index
+GET  /api/set_phase/<phase>      # Switch between 'ED' and 'ES'
+GET  /api/patient_data           # Current patient's full dataset as JSON
+GET  /api/patient_list           # Patients with QC decisions (ed_decision, es_decision)
+GET  /api/qc_statistics          # QC decision counts and percentages
+POST /api/save_qc                # {qc_comment: "<choice>:<comments>", phase: "ED/ES"}
+GET  /api/download_json          # Serve the currently active dataset file
 ```
 
 ### Frontend Architecture
@@ -77,23 +128,34 @@ GET  /health                  # Health check
 - **QC Control Panel**: Patient dropdown, ED/ES toggle, QC decisions (accept/reject/finetune/unclassified), comments, navigation
 - **Statistics Panel**: Chart.js pie chart with QC decision distribution
 
-**Key JS Variables** (embedded from Flask template):
+**Key JS Variables** (top-level `const` declared in the inline `<script>` block of templates/index.html, visible to static/js/app.js via the shared script-scope global lexical environment):
 ```javascript
+// Session / user context
+CURRENT_USER       // Logged-in username
+QC_FILES           // Array of dataset filenames available to this user
+ACTIVE_QC_FILE     // Currently selected dataset filename
+
+// Patient context (for the active dataset + current patient)
+PATIENT_INDEX, PATIENT_PATH, TOTAL_PATIENTS, CURRENT_PHASE, QC_COMMENT
+
+// Slice + 3D data for the current patient + phase
 MRI_SLICES     // Base64 PNG array — MRI slices
 SEG_SLICES     // Base64 RGB PNG array — segmentation slices
 SEG_COORDS     // [[x,y,z], ...] voxel positions for 3D
-SEG_LABELS     // [1,2,3, ...] corresponding labels
+SEG_LABELS     // [1,2,3, ...] corresponding labels (integers)
 SEG_SHAPE      // [width, height, depth]
 SEG_SPACING    // [x_mm, y_mm, z_mm] voxel dimensions
 ```
 
 ### Data Flow
-1. Startup loads `QC_logs.json` into `PATIENT_LIST` and `PATIENT_DATA` globals
-2. Session tracks `patient_index` and `phase` (ED/ES)
-3. Page load triggers NIfTI file loading via nibabel → base64 PNG conversion + voxel coordinate extraction
-4. Frontend preloads all slice images, builds Three.js 3D scene, populates controls
-5. Patient/phase navigation updates session then triggers full page reload
-6. QC save writes to in-memory data and persists to `QC_logs.json` on disk
+1. Startup: `create_app()` registers blueprints only. No data is loaded until a request arrives — there is no startup singleton.
+2. Login writes `session['username']` after matching against `JSON/users.json`.
+3. First request to `/`: if `session['active_qc_file']` is empty, the page handler lists files in `JSON/users/<username>/` and auto-selects the first one. If the stored selection references a now-deleted file, it's cleared.
+4. For any request that needs data, `services/patient.get_store_for_session()` resolves `(username, active_qc_file)` into a fresh `QCStore` reading that file from disk (no caching; 225–600 KB reads are cheap).
+5. `build_patient_payload()` orchestrates NIfTI loading via `services/nifti_loader.py` → base64 PNG conversion + voxel coordinate extraction.
+6. Frontend preloads slice images, builds Three.js scene, populates controls. Dataset dropdown lives in the stats panel and switches the active file via `/api/set_qc_file/<filename>` then reloads the page.
+7. Patient/phase navigation updates session, then full page reload.
+8. `POST /api/save_qc` calls `QCStore.set_comment(index, phase, comment)` which updates the in-memory dict and writes the file back to disk (`store.json_path`). Only the active dataset is modified — other files in the user's folder are untouched, and other users' folders are never touched.
 
 ### Color Mapping (consistent across backend and frontend)
 ```
@@ -114,18 +176,14 @@ Comments in JSON follow `<choice>:<comments>`:
 
 ## Development Notes
 
-### Key Configuration Points
-- **Patient Data Path**: `BASE_PATH` in app.py:14
-- **Session Secret**: `app.secret_key` in app.py:11
-- **Port/Host**: `app.run()` at bottom of app.py (currently `0.0.0.0:5000`, debug=False)
-
 ### Important Constraints
 - Patient/phase navigation requires full page reload (session-based state)
-- All image data transmitted as base64 (no static file serving)
+- Slice/segmentation PNGs are inlined as base64 in the JSON payload; CSS and JS assets are served from `/static/` via Flask's `url_for`
 - QC decisions are mutually exclusive (enforced via JS, not backend)
 - Floating panel positions persisted in localStorage (keys: panelPosX/Y, statsPanelPosX/Y, panelMinimized, statsPanelMinimized)
-- No @lru_cache in current code despite prior documentation — NIfTI files are loaded fresh each request
+- NIfTI files are loaded fresh each request (no caching)
 - JSON file-based storage is not safe for concurrent writes
+- Segmentation labels from NIfTI files may be floats (e.g. 1.00000002) — backend rounds to int before sending to frontend
 
 ### 3D Visualization Details
 - Three.js with 5-point lighting setup optimized for cardiac structure visibility
@@ -133,6 +191,7 @@ Comments in JSON follow `<choice>:<comments>`:
 - Separate InstancedMesh per label with MeshPhongMaterial
 - Voxel spacing applied for correct physical dimensions
 - Slice playback at 5 FPS default
+- Label-to-color lookup uses `parseInt()` on Object.keys to match integer color map
 
 ## GitHub Configuration
 - Repository: `git@github.com:maxmo2009/HCMQC_BS.git`
