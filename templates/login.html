@@ -50,11 +50,19 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
             background-image:
                 linear-gradient(to right, rgba(95, 179, 212, 0.03) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(95, 179, 212, 0.03) 1px, transparent 1px);
             background-size: 48px 48px;
+        }
+
+        #voxel-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            display: block;
         }
 
         /* HUD marker in the top-left corner of the viewport */
@@ -66,7 +74,7 @@
             color: var(--text-2);
             letter-spacing: 0.24em;
             text-transform: uppercase;
-            z-index: 1;
+            z-index: 2;
         }
         .viewport-tag b {
             color: var(--accent);
@@ -81,12 +89,12 @@
             color: var(--text-2);
             letter-spacing: 0.24em;
             text-transform: uppercase;
-            z-index: 1;
+            z-index: 2;
         }
 
         .login-box {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             background: var(--bg-2);
             border: 1px solid var(--line-strong);
             padding: 36px 34px 30px;
@@ -217,8 +225,9 @@
     </style>
 </head>
 <body>
+    <canvas id="voxel-bg"></canvas>
     <div class="viewport-tag">◈ Cardiac <b>Segmentation</b> QC Studio</div>
-    <div class="viewport-tag-right">auth · v&thinsp;beta</div>
+    <div class="viewport-tag-right">auth</div>
 
     <div class="login-box">
         <img class="logo" src="https://images.squarespace-cdn.com/content/v1/611bce9f0ec5ff43949b98ea/068036ac-5a6f-4da8-869f-520764bdaaaa/still_v023_frame_0103_photoshop_layer_logo_LMS.png?format=300w" alt="Lab Logo">
@@ -233,5 +242,157 @@
             <button type="submit">Enter</button>
         </form>
     </div>
+
+    <script>
+    (function () {
+        const canvas = document.getElementById('voxel-bg');
+        if (!canvas || !canvas.getContext) return;
+        const ctx = canvas.getContext('2d');
+        let W = 0, H = 0, dpr = 1;
+
+        function resize() {
+            dpr = window.devicePixelRatio || 1;
+            W = window.innerWidth;
+            H = window.innerHeight;
+            canvas.width = Math.floor(W * dpr);
+            canvas.height = Math.floor(H * dpr);
+            canvas.style.width = W + 'px';
+            canvas.style.height = H + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        // Particle count scales with screen area so density stays consistent
+        const density = 0.00009;
+        const N = Math.min(140, Math.max(50, Math.round(W * H * density)));
+        const LINK_DIST  = 130;
+        const LINK_DIST2 = LINK_DIST * LINK_DIST;
+        const MOUSE_DIST  = 200;
+        const MOUSE_DIST2 = MOUSE_DIST * MOUSE_DIST;
+        const MAX_SPEED  = 1.4;
+
+        const particles = [];
+        for (let i = 0; i < N; i++) {
+            particles.push({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                r: 0.5 + Math.random() * 0.7,
+            });
+        }
+
+        let mouseX = -9999, mouseY = -9999, mouseActive = false;
+        function setMouse(x, y) { mouseX = x; mouseY = y; mouseActive = true; }
+        window.addEventListener('mousemove', (e) => setMouse(e.clientX, e.clientY));
+        window.addEventListener('mouseout', (e) => { if (!e.relatedTarget) mouseActive = false; });
+        window.addEventListener('blur',     () => { mouseActive = false; });
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length) setMouse(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: true });
+        window.addEventListener('touchend', () => { mouseActive = false; });
+
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function step() {
+            // Update positions
+            for (let i = 0; i < N; i++) {
+                const p = particles[i];
+
+                if (mouseActive) {
+                    const dx = mouseX - p.x, dy = mouseY - p.y;
+                    const d2 = dx*dx + dy*dy;
+                    if (d2 < MOUSE_DIST2 && d2 > 1) {
+                        const d = Math.sqrt(d2);
+                        // Gentle pull toward cursor, stronger when closer
+                        const f = (1 - d / MOUSE_DIST) * 0.06;
+                        p.vx += (dx / d) * f;
+                        p.vy += (dy / d) * f;
+                    }
+                }
+
+                // Mild damping so they don't accelerate forever
+                p.vx *= 0.992;
+                p.vy *= 0.992;
+                // Clamp speed
+                const sp2 = p.vx*p.vx + p.vy*p.vy;
+                if (sp2 > MAX_SPEED * MAX_SPEED) {
+                    const sp = Math.sqrt(sp2);
+                    p.vx = (p.vx / sp) * MAX_SPEED;
+                    p.vy = (p.vy / sp) * MAX_SPEED;
+                }
+                // Maintain a minimum drift so the field stays alive when idle
+                const minSp = 0.18;
+                if (sp2 < minSp * minSp) {
+                    const sp = Math.sqrt(sp2) || 0.0001;
+                    p.vx = (p.vx / sp) * minSp;
+                    p.vy = (p.vy / sp) * minSp;
+                }
+
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Wrap edges
+                if (p.x < -10)      p.x = W + 10;
+                else if (p.x > W + 10) p.x = -10;
+                if (p.y < -10)      p.y = H + 10;
+                else if (p.y > H + 10) p.y = -10;
+            }
+
+            ctx.clearRect(0, 0, W, H);
+
+            // Pair lines
+            ctx.lineWidth = 0.6;
+            for (let i = 0; i < N; i++) {
+                const a = particles[i];
+                for (let j = i + 1; j < N; j++) {
+                    const b = particles[j];
+                    const dx = a.x - b.x, dy = a.y - b.y;
+                    const d2 = dx*dx + dy*dy;
+                    if (d2 < LINK_DIST2) {
+                        const alpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.32;
+                        ctx.strokeStyle = 'rgba(95, 179, 212, ' + alpha.toFixed(3) + ')';
+                        ctx.beginPath();
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // Mouse → particle lines (brighter)
+            if (mouseActive) {
+                ctx.lineWidth = 0.9;
+                for (let i = 0; i < N; i++) {
+                    const p = particles[i];
+                    const dx = mouseX - p.x, dy = mouseY - p.y;
+                    const d2 = dx*dx + dy*dy;
+                    if (d2 < MOUSE_DIST2) {
+                        const alpha = (1 - Math.sqrt(d2) / MOUSE_DIST) * 0.6;
+                        ctx.strokeStyle = 'rgba(138, 208, 236, ' + alpha.toFixed(3) + ')';
+                        ctx.beginPath();
+                        ctx.moveTo(mouseX, mouseY);
+                        ctx.lineTo(p.x, p.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // Particles on top
+            ctx.fillStyle = 'rgba(160, 215, 240, 0.45)';
+            for (let i = 0; i < N; i++) {
+                const p = particles[i];
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            if (!reduced) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+    })();
+    </script>
 </body>
 </html>

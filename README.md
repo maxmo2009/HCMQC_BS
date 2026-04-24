@@ -40,7 +40,6 @@ A multi-user web application for reviewing cardiac MRI (CMR) segmentation result
 ```bash
 git clone git@github.com:maxmo2009/HCMQC_BS.git
 cd HCMQC_BS
-git checkout beta       # multi-user version; master is the older single-user build
 pip install -r requirements.txt
 ```
 
@@ -50,9 +49,9 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-Server binds to **http://localhost:5001** (`DEBUG=False`). Port 5000 is reserved for a separate production instance — don't use it here.
+Server binds to **http://localhost:5000** (`DEBUG=False`). On the production host the app is run as a systemd user service and exposed via ngrok at <https://hcmqc.ngrok.app>.
 
-See `CLAUDE.md` for background-process and ngrok tunnel recipes.
+See `CLAUDE.md` for the systemd unit layout and ngrok tunnel recipes.
 
 ## Adding Users
 

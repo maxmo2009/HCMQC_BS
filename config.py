@@ -12,7 +12,7 @@ USERS_JSON_PATH = os.path.join(JSON_DIR, 'users.json')
 USERS_DIR = os.path.join(JSON_DIR, 'users')
 
 HOST = '0.0.0.0'
-PORT = 5001
+PORT = 5000
 DEBUG = False
 
 LABEL_COLOR_MAP = {
