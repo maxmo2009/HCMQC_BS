@@ -24,6 +24,11 @@ LABEL_COLOR_MAP = {
 
 QC_DECISIONS = ('accept', 'reject', 'finetune', 'unclassified')
 
+# Root the admin-only File System browser is confined to (path-traversal guarded).
+FILES_ROOT = '/home/maxmo2009'
+# Extensions openable in the File System 3D viewer.
+NIFTI_EXTS = ('.nii', '.nii.gz')
+
 
 def user_dir(username):
     return os.path.join(USERS_DIR, username)

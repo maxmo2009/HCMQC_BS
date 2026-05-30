@@ -1,12 +1,17 @@
 import json
+import os
 
-from flask import Blueprint, jsonify, render_template, session
+from flask import Blueprint, jsonify, render_template, send_from_directory, session
 
-from routes.auth import login_required
+from config import PROJECT_ROOT
+from routes.auth import admin_required, login_required
 from services.patient import build_patient_payload, get_store_for_session
 from services.users import list_qc_files
 
 pages_bp = Blueprint('pages', __name__)
+
+# Folder holding generated team documents (markdown + image assets).
+DOCS_DIR = os.path.join(PROJECT_ROOT, 'reports', 'hulei_acdc_discussion')
 
 
 def _empty_render(username, files, active):
@@ -79,6 +84,27 @@ def index():
         seg_spacing=payload['seg_spacing'],
         total_patients=payload['total_patients'],
     )
+
+
+@pages_bp.route('/docs')
+@login_required
+def docs():
+    """Viewer page for the generated team document (rendered client-side)."""
+    return render_template('docs.html', username=session['username'])
+
+
+@pages_bp.route('/docs/file/<path:filename>')
+@login_required
+def docs_file(filename):
+    """Serve the markdown and its image assets (login-gated — patient-derived)."""
+    return send_from_directory(DOCS_DIR, filename)
+
+
+@pages_bp.route('/files')
+@admin_required
+def files():
+    """File System — admin-only NIfTI browser + multi-pane 3D segmentation viewer."""
+    return render_template('files.html', username=session['username'])
 
 
 @pages_bp.route('/health')

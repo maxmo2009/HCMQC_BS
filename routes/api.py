@@ -1,6 +1,10 @@
+import os
+
 from flask import Blueprint, jsonify, request, send_file, session
 
-from routes.auth import login_required
+from routes.auth import admin_required, login_required
+from services.filebrowser import is_nifti, list_dir, resolve
+from services.nifti_loader import load_nifti_voxels
 from services.patient import build_patient_payload, get_store_for_session
 from services.qc_store import parse_decision
 from services.users import list_qc_files, resolve_qc_path
@@ -187,6 +191,38 @@ def save_qc():
             'status': 'error',
             'message': f'Error saving QC data: {str(e)}',
         }), 500
+
+
+@api_bp.route('/fs/list')
+@admin_required
+def fs_list():
+    """List directories + NIfTI files under a path (admin-only, confined to FILES_ROOT)."""
+    result = list_dir(request.args.get('path', ''))
+    if result is None:
+        return jsonify({'status': 'error', 'message': 'Invalid or inaccessible path'}), 404
+    return jsonify({'status': 'success', **result})
+
+
+@api_bp.route('/fs/nifti')
+@admin_required
+def fs_nifti():
+    """Load a NIfTI file's segmentation voxels for the 3D viewer (admin-only)."""
+    abs_path = resolve(request.args.get('path', ''))
+    if abs_path is None or not os.path.isfile(abs_path):
+        return jsonify({'status': 'error', 'message': 'File not found'}), 404
+    if not is_nifti(abs_path):
+        return jsonify({'status': 'error', 'message': 'Not a NIfTI file'}), 400
+    # nib.load raises ImageFileError on corrupt/truncated files; surface as a
+    # structured 422 the frontend's describeError() can render, not a 500 HTML.
+    try:
+        result = load_nifti_voxels(abs_path)
+    except Exception as exc:
+        return jsonify({
+            'status': 'error', 'message': 'load_failed', 'detail': str(exc),
+        }), 422
+    if 'error' in result:
+        return jsonify({'status': 'error', 'message': result['error'], **result}), 422
+    return jsonify({'status': 'success', 'name': os.path.basename(abs_path), **result})
 
 
 @api_bp.route('/download_json')

@@ -14,6 +14,7 @@ const mriImages = [];
 const segImages = [];
 
 let scene, camera, renderer, points, controls;
+let labelMeshes = {};  // label int -> InstancedMesh, for per-category show/hide
 const container = document.getElementById('container');
 const loadingDiv = document.getElementById('loading');
 
@@ -116,6 +117,8 @@ function createPointCloud(coordinates, labels) {
         3: 0x0088ff   // Blue - Myocardium
     };
 
+    labelMeshes = {};
+
     // Calculate center of the segmentation in voxel space
     const centerX = SEG_SHAPE[0] / 2;
     const centerY = SEG_SHAPE[1] / 2;
@@ -169,10 +172,68 @@ function createPointCloud(coordinates, labels) {
 
         instancedMesh.instanceMatrix.needsUpdate = true;
         scene.add(instancedMesh);
+        const labelInt = parseInt(label);
+        instancedMesh.visible = isLabelVisible(labelInt);  // restore global preference
+        labelMeshes[labelInt] = instancedMesh;
     });
+
+    buildLabelToggles(Object.keys(labelGroups).map(Number));
 
     // Start animation
     animate();
+}
+
+// Per-category show/hide toggles for the 3D view
+const LABEL_INFO = {
+    1: { name: 'LV', css: '#ff0000' },
+    2: { name: 'RV', css: '#00ff00' },
+    3: { name: 'Myocardium', css: '#0088ff' }
+};
+
+// Visibility persists in localStorage so it survives the full page reload that
+// every patient/phase change triggers. Default (unset) = visible.
+// Scope the key by username so a shared workstation doesn't leak User A's
+// hide-myocardium preference into User B's session.
+const LABEL_VIS_KEY = 'labelVisibility::' +
+    (typeof CURRENT_USER !== 'undefined' && CURRENT_USER ? CURRENT_USER : '_anon');
+
+function getLabelVisibility() {
+    try { return JSON.parse(localStorage.getItem(LABEL_VIS_KEY)) || {}; }
+    catch (e) { return {}; }
+}
+
+function isLabelVisible(label) {
+    return getLabelVisibility()[label] !== false;
+}
+
+function saveLabelVisibility(label, visible) {
+    const v = getLabelVisibility();
+    v[label] = visible;
+    localStorage.setItem(LABEL_VIS_KEY, JSON.stringify(v));
+}
+
+function buildLabelToggles(presentLabels) {
+    const wrap = document.getElementById('label-toggles');
+    if (!wrap) return;
+    presentLabels.sort((a, b) => a - b);
+    let html = '<div class="lt-title">Show / Hide</div>';
+    presentLabels.forEach(lab => {
+        const info = LABEL_INFO[lab] || { name: 'Label ' + lab, css: '#ffffff' };
+        html += `<label class="lt-row">` +
+            `<input type="checkbox" class="lt-cb" data-label="${lab}" ${isLabelVisible(lab) ? 'checked' : ''}>` +
+            `<span class="lt-swatch" style="background:${info.css}"></span>` +
+            `<span class="lt-name">${info.name}</span>` +
+            `</label>`;
+    });
+    wrap.innerHTML = html;
+    wrap.querySelectorAll('.lt-cb').forEach(cb => {
+        cb.addEventListener('change', () => {
+            const lab = parseInt(cb.dataset.label);
+            const mesh = labelMeshes[lab];
+            if (mesh) mesh.visible = cb.checked;
+            saveLabelVisibility(lab, cb.checked);  // persist globally
+        });
+    });
 }
 
 // Handle window resize
@@ -824,14 +885,19 @@ function dragStart(e) {
     initialX = e.clientX - xOffset;
     initialY = e.clientY - yOffset;
 
-    // Don't allow dragging when clicking on interactive elements
+    // Don't allow dragging when clicking on interactive elements.
+    // closest('label') is essential: the kbd hint chips (`<span class="kbd">1</span>`)
+    // live inside `<label for="accept-checkbox">`. Without the label check, the
+    // span is treated as non-interactive → preventDefault on mousedown → the
+    // label's click-to-toggle activation is suppressed and the panel drags.
     const interactiveElements = ['INPUT', 'TEXTAREA', 'BUTTON', 'SELECT', 'OPTION', 'LABEL'];
     const isInteractive = interactiveElements.includes(e.target.tagName) ||
                           e.target.id === 'minimize-btn' ||
                           e.target.closest('button') ||
                           e.target.closest('input') ||
                           e.target.closest('textarea') ||
-                          e.target.closest('select');
+                          e.target.closest('select') ||
+                          e.target.closest('label');
 
     if (!isInteractive) {
         isDragging = true;
@@ -1215,6 +1281,144 @@ document.getElementById('dataset-selector').addEventListener('change', async fun
 });
 
 populateDatasetSelector();
+
+// Keyboard shortcuts: 1=accept, 2=reject, S=save, ArrowLeft=prev patient, ArrowRight=next patient.
+// Suppressed while typing in inputs/textareas or when any modifier is held (so Ctrl+S etc. still work).
+document.addEventListener('keydown', function(e) {
+    const tag = (e.target.tagName || '').toLowerCase();
+    // 'select' was missing here: ArrowLeft/Right would reload the page mid
+    // dropdown-navigation, 'S' would silently save instead of doing the native
+    // single-letter typeahead jump, '1'/'2' would change the QC decision.
+    if (tag === 'input' || tag === 'textarea' || tag === 'select' || e.target.isContentEditable) return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+    const setDecision = (id) => {
+        const cb = document.getElementById(id);
+        if (!cb) return;
+        if (cb.checked) return;
+        cb.checked = true;
+        cb.dispatchEvent(new Event('change'));
+    };
+    const safeClick = (id) => {
+        const el = document.getElementById(id);
+        if (el) el.click();
+    };
+
+    switch (e.key) {
+        case '1':
+            e.preventDefault();
+            setDecision('accept-checkbox');
+            break;
+        case '2':
+            e.preventDefault();
+            setDecision('reject-checkbox');
+            break;
+        case 's':
+        case 'S':
+            e.preventDefault();
+            safeClick('save-btn');
+            break;
+        case 'ArrowLeft':
+            e.preventDefault();
+            safeClick('prev-btn');
+            break;
+        case 'ArrowRight':
+            e.preventDefault();
+            safeClick('next-btn');
+            break;
+    }
+});
+
+// Move all draggable floating panels back to their CSS default positions.
+// Fixes the "I dragged a panel off-screen and can't find it" problem.
+function resetPanelPositions() {
+    // Control panel: positioned via transform translate(xOffset,yOffset).
+    xOffset = 0;
+    yOffset = 0;
+    if (floatingPanel) setTranslate(0, 0, floatingPanel);
+    localStorage.removeItem('panelPosX');
+    localStorage.removeItem('panelPosY');
+
+    // Stats panel: positioned via inline left/top — clearing them falls back to CSS.
+    if (statsPanel) {
+        statsPanel.style.left = '';
+        statsPanel.style.top = '';
+        statsPanel.style.right = '';
+        statsPanel.style.bottom = '';
+    }
+    localStorage.removeItem('statsPanelPosX');
+    localStorage.removeItem('statsPanelPosY');
+
+    // Also restore the minimized state, otherwise a panel that was dragged
+    // off-screen WHILE minimized comes back as a tiny collapsed strip and
+    // the user still can't find the expand toggle.
+    if (typeof isMinimized !== 'undefined' && isMinimized) {
+        isMinimized = false;
+        if (panelContent) panelContent.classList.remove('hidden');
+        if (floatingPanel) floatingPanel.classList.remove('minimized');
+        if (minimizeBtn) { minimizeBtn.textContent = '－'; minimizeBtn.title = 'Minimize'; }
+    }
+    localStorage.removeItem('panelMinimized');
+
+    if (typeof statsMinimized !== 'undefined' && statsMinimized) {
+        statsMinimized = false;
+        if (statsPanelContent) statsPanelContent.classList.remove('hidden');
+        if (statsPanel) statsPanel.classList.remove('minimized');
+        if (statsMinimizeBtn) { statsMinimizeBtn.textContent = '－'; statsMinimizeBtn.title = 'Minimize'; }
+    }
+    localStorage.removeItem('statsPanelMinimized');
+
+    if (typeof infoMinimized !== 'undefined' && infoMinimized) {
+        infoMinimized = false;
+        if (infoContent) infoContent.classList.remove('hidden');
+        if (infoPanel) infoPanel.classList.remove('minimized');
+        if (infoMinimizeBtn) { infoMinimizeBtn.textContent = '－'; infoMinimizeBtn.title = 'Minimize'; }
+    }
+    localStorage.removeItem('infoPanelMinimized');
+
+    const sd = document.getElementById('status-message');
+    if (sd) {
+        sd.textContent = 'PANELS RESET';
+        sd.className = 'status-info';
+        sd.style.background = '';
+        sd.style.color = '';
+        sd.style.display = 'block';
+        setTimeout(() => { sd.style.display = 'none'; }, 1500);
+    }
+}
+
+// Top-bar dropdown menu toggle
+(function () {
+    const dd = document.getElementById('nav-menu');
+    const btn = document.getElementById('nav-menu-btn');
+    if (!dd || !btn) return;
+    btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const open = dd.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    const resetItem = document.getElementById('reset-panels');
+    if (resetItem) {
+        resetItem.addEventListener('click', function (e) {
+            e.stopPropagation();
+            resetPanelPositions();
+            dd.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+        });
+    }
+    document.addEventListener('click', function (e) {
+        if (!dd.contains(e.target)) {
+            dd.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+        }
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            dd.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+        }
+    });
+})();
 
 // Start
 init();

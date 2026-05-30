@@ -12,6 +12,21 @@
 <body>
     <!-- Top Bar -->
     <div id="top-bar">
+        <div id="nav-menu" class="dropdown">
+            <button id="nav-menu-btn" class="dropdown-btn" type="button" aria-haspopup="true" aria-expanded="false">
+                <span class="dropdown-icon">☰</span> Menu <span class="caret">▾</span>
+            </button>
+            <div id="nav-menu-list" class="dropdown-list" role="menu">
+                <a class="dropdown-item" href="/docs" role="menuitem">Useful Document</a>
+                {% if username == 'admin' %}
+                <a class="dropdown-item" href="/files" role="menuitem">File System</a>
+                {% else %}
+                <span class="dropdown-item disabled" role="menuitem" aria-disabled="true" title="Admin only">File System <span class="lock">admin</span></span>
+                {% endif %}
+                <div class="dropdown-sep" role="separator"></div>
+                <div class="dropdown-item dropdown-action" id="reset-panels" role="menuitem" tabindex="0" title="Move all floating panels back to their default position (in case one was dragged off-screen)">⟲ Reset Panel Positions</div>
+            </div>
+        </div>
         <h1>Cardiac Segmentation QC Studio</h1>
         <div id="user-info">
             <span id="current-user">{{ username }}</span>
@@ -67,6 +82,7 @@
                     L-click + drag &nbsp;·&nbsp; rotate<br>
                     R-click + drag &nbsp;·&nbsp; pan<br>
                     Scroll &nbsp;·&nbsp; zoom<br>
+                    <div id="label-toggles"></div>
                     <div id="stats"></div>
                 </div>
             </div>
@@ -110,11 +126,11 @@
         <div class="qc-checkbox-section">
             <div class="qc-checkbox-item accept">
                 <input type="checkbox" id="accept-checkbox">
-                <label for="accept-checkbox">Accept</label>
+                <label for="accept-checkbox">Accept <span class="kbd">1</span></label>
             </div>
             <div class="qc-checkbox-item reject">
                 <input type="checkbox" id="reject-checkbox">
-                <label for="reject-checkbox">Reject</label>
+                <label for="reject-checkbox">Reject <span class="kbd">2</span></label>
             </div>
             <div class="qc-checkbox-item finetune">
                 <input type="checkbox" id="finetune-checkbox">
@@ -132,11 +148,11 @@
             </div>
             <button id="play-pause-btn" class="qc-button">▶  PLAY SLICES</button>
             <div class="navigation-buttons">
-                <button id="prev-btn" class="nav-btn">◀  PREV</button>
-                <button id="next-btn" class="nav-btn">NEXT  ▶</button>
+                <button id="prev-btn" class="nav-btn">◀  PREV <span class="kbd">←</span></button>
+                <button id="next-btn" class="nav-btn"><span class="kbd">→</span> NEXT  ▶</button>
             </div>
             <div style="display: flex; gap: 8px;">
-                <button id="save-btn" class="qc-button" style="flex: 1;">Save</button>
+                <button id="save-btn" class="qc-button" style="flex: 1;">Save <span class="kbd">S</span></button>
                 <button id="download-btn" class="qc-button" style="flex: 1;">Export JSON</button>
             </div>
         </div>
@@ -173,10 +189,10 @@
         // is visible to subsequent classic scripts via the shared global lexical
         // environment, so app.js can reference these directly.
         const PATIENT_INDEX = {{ patient_index }};
-        const PATIENT_PATH = "{{ patient_path }}";
+        const PATIENT_PATH = {{ patient_path | tojson }};
         const TOTAL_PATIENTS = {{ total_patients }};
-        const CURRENT_PHASE = "{{ phase }}";
-        const QC_COMMENT = "{{ qc_comment }}";
+        const CURRENT_PHASE = {{ phase | tojson }};
+        const QC_COMMENT = {{ qc_comment | tojson }};
 
         const MRI_SLICES = {{ mri_slices|safe }};
         const SEG_SLICES = {{ seg_slices|safe }};
@@ -186,9 +202,9 @@
         const SEG_SHAPE = {{ seg_shape }};
         const SEG_SPACING = {{ seg_spacing }};
 
-        const CURRENT_USER = "{{ username }}";
+        const CURRENT_USER = {{ username | tojson }};
         const QC_FILES = {{ qc_files|safe }};
-        const ACTIVE_QC_FILE = "{{ active_qc_file }}";
+        const ACTIVE_QC_FILE = {{ active_qc_file | tojson }};
     </script>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>

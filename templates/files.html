@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File System — Cardiac Segmentation QC Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <style>
+        html, body { height: 100%; overflow: hidden; }
+
+        #fs-top {
+            position: fixed; top: 0; left: 0; width: 100%; height: 44px; box-sizing: border-box;
+            background: var(--bg-1); border-bottom: 1px solid var(--line-mid);
+            display: flex; align-items: center; gap: 16px; padding: 0 18px; z-index: 1000;
+        }
+        #fs-top .back, #fs-top .logout {
+            color: var(--text-1); text-decoration: none; padding: 5px 10px;
+            border: 1px solid var(--line-mid); font-size: 10px; letter-spacing: 0.14em;
+            text-transform: uppercase; font-family: var(--font-mono);
+            transition: background .12s, border-color .12s, color .12s;
+        }
+        #fs-top .back:hover, #fs-top .logout:hover { background: var(--accent-bg); border-color: var(--accent-dim); color: var(--accent); }
+        #fs-top .title { font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--text-0); text-transform: uppercase; letter-spacing: 0.28em; }
+        #fs-top .title::before { content: '▤ '; color: var(--accent); }
+        #fs-top .spacer { margin-left: auto; }
+        #fs-top .hint { color: var(--text-2); font-size: 10px; font-family: var(--font-mono); letter-spacing: .06em; }
+        #fs-top .user { color: var(--accent); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+        #fs-main { position: fixed; top: 44px; left: 0; right: 0; bottom: 0; display: flex; }
+
+        /* Left: file tree */
+        #fs-tree {
+            width: 300px; flex-shrink: 0; height: 100%; overflow: auto;
+            background: var(--bg-0); border-right: 1px solid var(--line-mid);
+            font-family: var(--font-mono); font-size: 12px; padding: 8px 0;
+        }
+        #fs-tree .tree-head {
+            padding: 4px 12px 8px; color: var(--text-2); font-size: 9px; letter-spacing: .2em;
+            text-transform: uppercase; border-bottom: 1px solid var(--line); margin-bottom: 6px;
+            word-break: break-all;
+        }
+        .tree-node { user-select: none; }
+        .tree-row {
+            display: flex; align-items: center; gap: 5px; padding: 3px 10px; cursor: pointer;
+            color: var(--text-1); white-space: nowrap; line-height: 1.5;
+        }
+        .tree-row:hover { background: var(--accent-bg); color: var(--text-0); }
+        .tree-row .caret { width: 10px; color: var(--text-2); font-size: 9px; flex-shrink: 0; }
+        .tree-row .ic { width: 14px; flex-shrink: 0; text-align: center; }
+        .tree-row.is-dir .ic { color: var(--accent); }
+        .tree-row.is-file .ic { color: var(--no); }
+        .tree-row .nm { overflow: hidden; text-overflow: ellipsis; }
+        .tree-row .sz { color: var(--text-2); font-size: 9.5px; margin-left: auto; padding-left: 8px; }
+        .tree-row.is-file.opened { color: var(--accent); }
+        .tree-children { display: none; }
+        .tree-node.open > .tree-children { display: block; }
+        .tree-empty { color: var(--text-2); font-size: 10px; padding: 2px 10px 2px 28px; font-style: italic; }
+
+        /* Right: viewer grid */
+        #fs-grid {
+            flex: 1; height: 100%; overflow: hidden; background: var(--bg-0);
+            display: grid; gap: 6px; padding: 6px; box-sizing: border-box;
+            grid-template-columns: 1fr; grid-auto-rows: 1fr;
+        }
+        #fs-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+        #fs-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+        #fs-empty {
+            grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: var(--text-2); font-family: var(--font-mono); gap: 10px; text-align: center;
+        }
+        #fs-empty .big { font-size: 38px; color: var(--line-strong); }
+        #fs-empty .sub { font-size: 11px; letter-spacing: .06em; }
+
+        .pane {
+            position: relative; border: 1px solid var(--line-mid); background: #000;
+            display: flex; flex-direction: column; min-height: 0; overflow: hidden;
+        }
+        .pane-head {
+            display: flex; align-items: center; gap: 8px; padding: 5px 8px;
+            background: var(--bg-1); border-bottom: 1px solid var(--line); flex-shrink: 0;
+        }
+        .pane-head .pane-name {
+            font-family: var(--font-mono); font-size: 10.5px; color: var(--text-0);
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+        .pane-head .pane-meta { color: var(--text-2); font-size: 9px; font-family: var(--font-mono); white-space: nowrap; }
+        .pane-head .pane-close {
+            margin-left: auto; cursor: pointer; color: var(--text-1); width: 18px; height: 18px;
+            display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line-mid);
+            font-size: 12px; line-height: 1; flex-shrink: 0;
+        }
+        .pane-head .pane-close:hover { color: var(--no); border-color: var(--no); background: var(--no-dim); }
+        .pane-canvas { flex: 1; min-height: 0; position: relative; }
+        .pane-canvas canvas { display: block; }
+        .pane-legend {
+            position: absolute; left: 8px; bottom: 8px; display: flex; flex-direction: column; gap: 3px;
+            background: rgba(7,10,13,0.82); border: 1px solid var(--line-mid); padding: 6px 9px; z-index: 5;
+        }
+        .pane-legend .lg-title {
+            font-family: var(--font-mono); font-size: 8px; letter-spacing: .2em; text-transform: uppercase;
+            color: var(--text-2); margin-bottom: 2px;
+        }
+        .pane-legend .lg {
+            display: flex; align-items: center; gap: 6px; cursor: pointer; font-family: var(--font-mono);
+            font-size: 10px; color: var(--text-0); letter-spacing: .04em; user-select: none;
+        }
+        .pane-legend .lg .lg-cb { margin: 0; cursor: pointer; accent-color: var(--accent); width: 12px; height: 12px; flex-shrink: 0; }
+        .pane-legend .lg .dot { width: 10px; height: 10px; border: 1px solid rgba(255,255,255,0.25); flex-shrink: 0; }
+        .pane-legend .lg.off { opacity: 0.5; }
+        .pane-legend .lg.off .lg-name { text-decoration: line-through; color: var(--text-2); }
+        .pane-loading, .pane-error {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+            font-family: var(--font-mono); font-size: 11px; text-align: center; padding: 0 16px;
+        }
+        .pane-loading { color: var(--accent); }
+        .pane-error { color: var(--no); }
+    </style>
+</head>
+<body>
+    <div id="fs-top">
+        <a class="back" href="/">← Back to QC</a>
+        <span class="title">File System</span>
+        <span class="hint">click a folder to expand · click a NIfTI to open (max 6)</span>
+        <span class="spacer"></span>
+        <span class="user">{{ username }}</span>
+        <a class="logout" href="/logout">Logout</a>
+    </div>
+
+    <div id="fs-main">
+        <div id="fs-tree">
+            <div class="tree-head" id="tree-head">/</div>
+            <div id="tree-root"></div>
+        </div>
+        <div id="fs-grid">
+            <div id="fs-empty">
+                <div class="big">▤</div>
+                <div class="sub">Open a NIfTI segmentation from the tree<br>to view its 3D — up to 6 at once.</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="{{ url_for('static', filename='js/files.js') }}"></script>
+</body>
+</html>

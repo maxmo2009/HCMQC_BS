@@ -43,4 +43,7 @@ Thumbs.db
 
 # Data files
 JSON/QC_logs.json
+
+# Generated QC reports (contain patient-derived imagery)
+reports/
 JSON/*

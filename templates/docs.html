@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useful Document — Cardiac Segmentation QC Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <style>
+        body { overflow: auto; }
+        #doc-top {
+            position: fixed; top: 0; left: 0; width: 100%; height: 44px;
+            background: var(--bg-1); border-bottom: 1px solid var(--line-mid);
+            display: flex; align-items: center; gap: 18px; padding: 0 18px; z-index: 1000;
+        }
+        #doc-top .back {
+            color: var(--text-1); text-decoration: none; padding: 5px 10px;
+            border: 1px solid var(--line-mid); font-size: 10px; letter-spacing: 0.14em;
+            text-transform: uppercase; font-family: var(--font-mono);
+            transition: background .12s, border-color .12s, color .12s;
+        }
+        #doc-top .back:hover { background: var(--accent-bg); border-color: var(--accent-dim); color: var(--accent); }
+        #doc-top .title {
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            color: var(--text-0); text-transform: uppercase; letter-spacing: 0.28em;
+        }
+        #doc-top .spacer { margin-left: auto; }
+        #doc-top .user { color: var(--accent); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+        #doc-wrap { max-width: 900px; margin: 70px auto 80px; padding: 0 28px; }
+        #doc-content { color: var(--text-0); font-family: var(--font-sans); font-size: 14px; line-height: 1.7; }
+        #doc-content h1 { font-family: var(--font-mono); font-size: 22px; letter-spacing: .04em; color: var(--accent-hi); margin: 0 0 14px; }
+        #doc-content h2 {
+            font-family: var(--font-mono); font-size: 15px; letter-spacing: .03em; color: var(--text-0);
+            margin: 30px 0 8px; padding-top: 14px; border-top: 1px solid var(--line);
+        }
+        #doc-content h3 { font-size: 14px; color: var(--text-1); margin: 18px 0 6px; }
+        #doc-content p { margin: 8px 0; }
+        #doc-content a { color: var(--accent); }
+        #doc-content strong { color: var(--text-0); font-weight: 600; }
+        #doc-content blockquote {
+            margin: 8px 0; padding: 8px 14px; border-left: 2px solid var(--accent-dim);
+            background: var(--bg-1); color: var(--text-1);
+        }
+        #doc-content blockquote em { color: var(--text-0); font-style: normal; }
+        #doc-content hr { border: none; border-top: 1px solid var(--line); margin: 18px 0; }
+        #doc-content code {
+            font-family: var(--font-mono); font-size: 12px; background: var(--bg-1);
+            border: 1px solid var(--line); padding: 1px 5px; border-radius: 3px; color: var(--accent-hi);
+        }
+        #doc-content img {
+            display: block; max-width: 420px; width: 100%; height: auto; margin: 12px 0 6px;
+            border: 1px solid var(--line-mid); background: #000;
+        }
+        #doc-content table { border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+        #doc-content th, #doc-content td { border: 1px solid var(--line-mid); padding: 6px 12px; text-align: left; }
+        #doc-content th { background: var(--bg-1); color: var(--text-0); }
+        #doc-status { color: var(--text-2); font-family: var(--font-mono); font-size: 12px; padding: 20px 0; }
+    </style>
+</head>
+<body>
+    <div id="doc-top">
+        <a class="back" href="/">← Back to QC</a>
+        <span class="title">Useful Document</span>
+        <span class="spacer"></span>
+        <span class="user">{{ username }}</span>
+        <a class="back" href="/logout">Logout</a>
+    </div>
+
+    <div id="doc-wrap">
+        <div id="doc-status">Loading document…</div>
+        <div id="doc-content"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+    <script>
+        (async function () {
+            const status = document.getElementById('doc-status');
+            const content = document.getElementById('doc-content');
+            try {
+                const resp = await fetch('/docs/file/report.md', { cache: 'no-store' });
+                if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                const md = await resp.text();
+                let html = marked.parse(md);
+                // Rewrite relative image paths to the login-gated asset route.
+                html = html.replaceAll('src="imgs/', 'src="/docs/file/imgs/');
+                // Marked v12 does NOT sanitize HTML by default (sanitize option
+                // was removed in v5+). Run the parsed HTML through DOMPurify to
+                // strip <script>, on*-handlers, javascript: URLs, etc. before
+                // injecting into the live DOM. Defense-in-depth for the case
+                // where the report.md generation pipeline ever ingests
+                // untrusted input.
+                if (typeof DOMPurify !== 'undefined') {
+                    html = DOMPurify.sanitize(html);
+                }
+                content.innerHTML = html;
+                status.style.display = 'none';
+            } catch (err) {
+                status.textContent = '无法加载文档 (' + err.message + ')。报告可能尚未生成。';
+            }
+        })();
+    </script>
+</body>
+</html>

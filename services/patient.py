@@ -27,20 +27,26 @@ def build_patient_payload(store, patient_index, phase='ED'):
     """Assemble the full payload for a patient: metadata + slices + 3D voxel data.
 
     Returns None if the index is out of range.
+
+    Note on path handling:
+      `store.resolved_path(i)` is the ABSOLUTE filesystem path the NIfTI
+      loaders need (works for both v1 absolute-key files and v2 dataset_root +
+      relative-key files). The `patient_path` field of the returned payload
+      stays absolute too — that's what the UI has always shown.
     """
-    patient_path = store.path_at(patient_index)
-    if patient_path is None:
+    abs_patient_path = store.resolved_path(patient_index)
+    if abs_patient_path is None:
         return None
 
     patient_info = store.info_at(patient_index) or {}
 
-    mri_slices = load_mri_slices(patient_path, phase)
-    seg_slices = load_segmentation_slices(patient_path, phase)
-    seg_coords, seg_labels, seg_shape, seg_spacing = load_segmentation_data(patient_path, phase)
+    mri_slices = load_mri_slices(abs_patient_path, phase)
+    seg_slices = load_segmentation_slices(abs_patient_path, phase)
+    seg_coords, seg_labels, seg_shape, seg_spacing = load_segmentation_data(abs_patient_path, phase)
 
     return {
         'patient_index': patient_index,
-        'patient_path': patient_path,
+        'patient_path': abs_patient_path,
         'patient_info': patient_info,
         'phase': phase,
         'mri_slices': mri_slices,

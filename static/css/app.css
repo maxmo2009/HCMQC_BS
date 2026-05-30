@@ -146,6 +146,107 @@ body::before {
     color: var(--no);
 }
 
+/* Top-bar dropdown menu (left) */
+.dropdown {
+    position: relative;
+    margin-right: 22px;
+}
+
+.dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-0);
+    color: var(--text-1);
+    border: 1px solid var(--line-mid);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: background 0.12s linear, border-color 0.12s linear, color 0.12s linear;
+}
+
+.dropdown-btn:hover,
+.dropdown.open .dropdown-btn {
+    background: var(--accent-bg);
+    border-color: var(--accent-dim);
+    color: var(--accent);
+}
+
+.dropdown-btn .dropdown-icon { font-size: 12px; line-height: 1; }
+.dropdown-btn .caret { font-size: 9px; opacity: 0.8; }
+
+.dropdown-list {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    min-width: 200px;
+    background: var(--bg-1);
+    border: 1px solid var(--line-mid);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1100;
+}
+
+.dropdown.open .dropdown-list { display: block; }
+
+.dropdown-item {
+    display: block;
+    padding: 9px 14px;
+    color: var(--text-0);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    border-left: 2px solid transparent;
+    transition: background 0.12s linear, border-color 0.12s linear, color 0.12s linear;
+}
+
+.dropdown-item:hover {
+    background: var(--accent-bg);
+    border-left-color: var(--accent);
+    color: var(--accent-hi);
+}
+
+.dropdown-sep {
+    height: 1px;
+    background: var(--line);
+    margin: 4px 0;
+}
+
+.dropdown-action {
+    cursor: pointer;
+    color: var(--text-1);
+}
+
+.dropdown-item.disabled {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--text-2);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.dropdown-item.disabled:hover {
+    background: transparent;
+    border-left-color: transparent;
+    color: var(--text-2);
+}
+
+.dropdown-item.disabled .lock {
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-2);
+    border: 1px solid var(--line-mid);
+    padding: 1px 5px;
+    border-radius: 2px;
+}
+
 /* ───────────── Main viewports ───────────── */
 
 #main-container {
@@ -386,6 +487,55 @@ body::before {
     margin-top: 6px;
     color: var(--text-0);
     font-family: var(--font-mono);
+}
+
+/* 3D per-category show/hide toggles */
+#label-toggles {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+}
+
+#label-toggles .lt-title {
+    font-size: 9px;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 5px;
+}
+
+#label-toggles .lt-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 2px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+#label-toggles .lt-cb {
+    cursor: pointer;
+    accent-color: var(--accent);
+    margin: 0;
+}
+
+#label-toggles .lt-swatch {
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    flex-shrink: 0;
+}
+
+#label-toggles .lt-name {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-0);
+    letter-spacing: 0.06em;
+}
+
+#label-toggles .lt-row:has(.lt-cb:not(:checked)) .lt-name {
+    color: var(--text-2);
+    text-decoration: line-through;
 }
 
 #loading {
@@ -693,6 +843,25 @@ body::before {
     text-transform: uppercase;
     letter-spacing: 0.14em;
     white-space: nowrap;
+}
+
+/* Keyboard-shortcut chip shown on buttons/labels */
+.kbd {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 5px;
+    min-width: 14px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-2);
+    background: var(--bg-0);
+    border: 1px solid var(--line-mid);
+    border-radius: 3px;
+    letter-spacing: 0;
+    text-transform: none;
+    vertical-align: baseline;
 }
 
 /* Navigation button row */

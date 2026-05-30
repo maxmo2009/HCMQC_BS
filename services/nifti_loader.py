@@ -79,6 +79,76 @@ def load_segmentation_slices(patient_path, phase='ED'):
     return seg_slices_base64
 
 
+MAX_SEGMENTATION_LABELS = 50
+MAX_VOXELS_BEFORE_LOAD = 50_000_000  # header-only size gate, before get_fdata
+
+
+def load_nifti_voxels(filepath):
+    """Load an arbitrary NIfTI as a label volume → voxel coords/labels/shape/spacing.
+
+    Guards against non-segmentation input so the 3D viewer can't be handed an
+    intensity image (which would yield millions of voxels and freeze the browser):
+    rejects non-3D volumes (post-squeeze) and volumes with more than
+    MAX_SEGMENTATION_LABELS distinct nonzero rounded values. Header-only checks
+    run before get_fdata so a stray intensity volume can't OOM the server.
+    On rejection returns {'error': <reason>, ...}.
+    """
+    if not os.path.exists(filepath):
+        return {'error': 'not_found'}
+
+    img = nib.load(filepath)
+
+    # Squeeze the SHAPE first (header-only) and remember which axes survive,
+    # so spacing can be paired with the kept axes after np.squeeze.
+    raw_shape = tuple(int(n) for n in img.shape)
+    kept_axes = [i for i, n in enumerate(raw_shape) if n != 1]
+    squeezed_shape = tuple(raw_shape[i] for i in kept_axes)
+    if len(squeezed_shape) != 3:
+        return {'error': 'not_3d', 'ndim': int(len(squeezed_shape))}
+
+    # Header-only size gate — reject before allocating the full volume.
+    voxel_count = 1
+    for n in squeezed_shape:
+        voxel_count *= n
+    if voxel_count > MAX_VOXELS_BEFORE_LOAD:
+        return {'error': 'too_large', 'voxels': int(voxel_count)}
+
+    # Use the on-disk dtype where possible — for an int16 segmentation this is
+    # 4x smaller than the default float64 from get_fdata().
+    raw = np.asanyarray(img.dataobj)
+    data = np.squeeze(raw)
+
+    # NaN voxels would silently cast to INT_MIN via np.round().astype(int),
+    # bypassing the label-count guard and emitting phantom labels. Treat NaN
+    # as background.
+    if np.issubdtype(data.dtype, np.floating) and np.isnan(data).any():
+        data = np.nan_to_num(data, nan=0.0, posinf=0.0, neginf=0.0)
+
+    rounded = np.round(data).astype(np.int64)
+    uniq = np.unique(rounded)
+    nonzero_labels = uniq[uniq != 0]
+    if len(nonzero_labels) == 0:
+        return {'error': 'empty'}
+    if len(nonzero_labels) > MAX_SEGMENTATION_LABELS:
+        return {'error': 'not_segmentation', 'unique': int(len(nonzero_labels))}
+
+    zooms = img.header.get_zooms()
+    # Pair zooms with the axes that survived squeeze (NOT just the first three).
+    spacing = [float(zooms[i]) for i in kept_axes]
+
+    mask = rounded != 0
+    coords = np.argwhere(mask)
+    labels = rounded[mask]
+    return {
+        'coords': coords.tolist(),
+        'labels': labels.tolist(),
+        'shape': [int(s) for s in data.shape],
+        'spacing': spacing,
+        'num_voxels': int(len(coords)),
+        'labels_present': [int(x) for x in nonzero_labels],
+    }
+
+
 def load_segmentation_data(patient_path, phase='ED'):
     """Return non-zero voxel coords, labels, volume shape, and voxel spacing."""
     seg_path = _seg_file(patient_path, phase)

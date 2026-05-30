@@ -1,6 +1,6 @@
 from functools import wraps
 
-from flask import Blueprint, jsonify, redirect, render_template, request, session, url_for
+from flask import Blueprint, abort, jsonify, redirect, render_template, request, session, url_for
 
 from services.users import authenticate
 
@@ -15,6 +15,25 @@ def login_required(view):
             if request.path.startswith('/api/'):
                 return jsonify({'status': 'error', 'message': 'Not authenticated'}), 401
             return redirect(url_for('auth.login'))
+        return view(*args, **kwargs)
+    return wrapper
+
+
+def admin_required(view):
+    """Gate a view to the 'admin' user. 403 (JSON for /api/*) otherwise.
+
+    No role system exists — admin is simply username == 'admin'.
+    """
+    @wraps(view)
+    def wrapper(*args, **kwargs):
+        if not session.get('username'):
+            if request.path.startswith('/api/'):
+                return jsonify({'status': 'error', 'message': 'Not authenticated'}), 401
+            return redirect(url_for('auth.login'))
+        if session.get('username') != 'admin':
+            if request.path.startswith('/api/'):
+                return jsonify({'status': 'error', 'message': 'Admin only'}), 403
+            return abort(403)
         return view(*args, **kwargs)
     return wrapper
 
