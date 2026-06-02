@@ -27,7 +27,7 @@ Public URL: <https://hcmqc.ngrok.app> → forwards to `localhost:5000`.
 **Do not** run `python3 app.py` directly on this host — it will collide with the systemd-managed instance on port 5000. For ad-hoc local testing, stop the service first (`systemctl --user stop hcmqc`) or temporarily change `PORT` in `config.py`.
 
 ### Port note
-`config.py` sets `PORT = 5000` on this host. The README mentions `5001` — that's for non-production checkouts; on this host it was switched to 5000 to match the reserved ngrok tunnel.
+`config.py` sets `PORT = 5000` on this host, matched to the reserved ngrok tunnel; the README agrees on 5000 (an earlier README revision mentioned `5001` for non-production checkouts — since reconciled).
 
 ## Tests
 
@@ -165,4 +165,4 @@ The Control Panel's drag handler (`dragStart` in `app.js`) skips elements where 
 ## GitHub
 
 - Repo: `git@github.com:maxmo2009/HCMQC_BS.git`
-- `master` and `beta` branches are currently in sync (master was fast-forwarded to beta). New experimental work goes on `beta` first.
+- **`master` is the active branch.** Recent work (File System feature, the 15-fix security/correctness pass, QC store v2 migration, README refresh) was committed and pushed straight to `master`. `beta` has fallen several commits behind and is **not** currently tracking `master` — despite an earlier "experimental work on beta first" convention, current practice is `master` directly. If you resume the beta workflow, fast-forward `beta` to `master` first.
