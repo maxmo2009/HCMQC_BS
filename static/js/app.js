@@ -591,9 +591,53 @@ document.getElementById('next-btn').addEventListener('click', async function() {
     }
 });
 
+// ---- Viewer preferences (Show Overlay / transparency / zoom) ----
+// These live only in module state + DOM, so the full page reload that every
+// patient/phase change triggers would reset them (e.g. Show Overlay silently
+// un-checks itself on Next patient). Persist them per-user in localStorage,
+// same pattern as LABEL_VIS_KEY.
+const VIEWER_PREFS_KEY = 'viewerPrefs::' +
+    (typeof CURRENT_USER !== 'undefined' && CURRENT_USER ? CURRENT_USER : '_anon');
+function loadViewerPrefs() {
+    try { return JSON.parse(localStorage.getItem(VIEWER_PREFS_KEY)) || {}; }
+    catch (e) { return {}; }
+}
+function saveViewerPref(key, val) {
+    const p = loadViewerPrefs();
+    p[key] = val;
+    localStorage.setItem(VIEWER_PREFS_KEY, JSON.stringify(p));
+}
+// Restore into both module state and the DOM controls BEFORE the first render,
+// so the initial draw (drawSliceOnCanvas / seg image) already reflects them.
+(function restoreViewerPrefs() {
+    const p = loadViewerPrefs();
+    if (typeof p.showOverlay === 'boolean') {
+        showOverlay = p.showOverlay;
+        const cb = document.getElementById('overlay-checkbox');
+        if (cb) cb.checked = showOverlay;
+    }
+    if (typeof p.overlayTransparency === 'number') {
+        overlayTransparency = p.overlayTransparency;
+        const pct = Math.round(overlayTransparency * 100);
+        const sl = document.getElementById('transparency-slider');
+        const tv = document.getElementById('transparency-value');
+        if (sl) sl.value = pct;
+        if (tv) tv.textContent = pct + '%';
+    }
+    if (typeof p.zoomLevel === 'number') {
+        zoomLevel = p.zoomLevel;
+        const pct = Math.round(zoomLevel * 100);
+        const sl = document.getElementById('zoom-slider');
+        const zv = document.getElementById('zoom-value');
+        if (sl) sl.value = pct;
+        if (zv) zv.textContent = pct + '%';
+    }
+})();
+
 // Overlay checkbox handler
 document.getElementById('overlay-checkbox').addEventListener('change', function(e) {
     showOverlay = e.target.checked;
+    saveViewerPref('showOverlay', showOverlay);
     drawSliceOnCanvas(currentSliceIndex);
     console.log('Overlay:', showOverlay ? 'ON' : 'OFF');
 });
@@ -602,6 +646,7 @@ document.getElementById('overlay-checkbox').addEventListener('change', function(
 document.getElementById('transparency-slider').addEventListener('input', function(e) {
     const value = parseInt(e.target.value);
     overlayTransparency = value / 100;
+    saveViewerPref('overlayTransparency', overlayTransparency);
     document.getElementById('transparency-value').textContent = value + '%';
     drawSliceOnCanvas(currentSliceIndex);
 });
@@ -610,6 +655,7 @@ document.getElementById('transparency-slider').addEventListener('input', functio
 document.getElementById('zoom-slider').addEventListener('input', function(e) {
     const value = parseInt(e.target.value);
     zoomLevel = value / 100; // Convert percentage to scale factor
+    saveViewerPref('zoomLevel', zoomLevel);
     document.getElementById('zoom-value').textContent = value + '%';
 
     // Update left panel (MRI canvas)
