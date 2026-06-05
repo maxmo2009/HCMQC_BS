@@ -118,6 +118,13 @@
                     <button id="es-phase-btn" class="phase-btn">ES</button>
                 </div>
             </div>
+            <div style="padding: 12px 14px; border-bottom: 1px solid var(--line);">
+                <div class="qc-checkbox-label" style="padding: 0;">View</div>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-top: 6px;">
+                    <input type="checkbox" id="hide-mri-checkbox">
+                    <span style="font-size: 11px; color: var(--text-0); letter-spacing: 0.04em;">Hide MRI panel (more room for segmentation)</span>
+                </label>
+            </div>
         <div id="comments-section">
             <label id="comments-label" for="patient-comments">Patient Comments</label>
             <textarea id="patient-comments" placeholder="Enter comments here..."></textarea>
@@ -157,6 +164,7 @@
             </div>
         </div>
         </div>
+        <div id="panel-resize-handle" title="Drag to resize panel"></div>
     </div>
 
     <!-- Floating Statistics Panel -->
@@ -171,6 +179,9 @@
                 <select id="dataset-selector">
                     <option value="">Loading datasets...</option>
                 </select>
+                <label style="display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 10px; color: var(--text-2); cursor: pointer; letter-spacing: 0.04em;">
+                    <input type="checkbox" id="show-full-names"> Show full filename
+                </label>
             </div>
             <div id="chart-container">
                 <canvas id="qc-pie-chart"></canvas>
@@ -179,6 +190,7 @@
                 <!-- Will be populated by JavaScript -->
             </div>
         </div>
+        <div id="stats-resize-handle" title="Drag to resize panel"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

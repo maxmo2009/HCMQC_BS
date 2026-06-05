@@ -249,7 +249,7 @@ function addLegend(pane, viewer, labels) {
         row.innerHTML =
             `<input type="checkbox" class="lg-cb" checked>` +
             `<span class="dot" style="background:${info.css}"></span>` +
-            `<span class="lg-name">${info.name}</span>`;
+            `<span class="lg-name">${lab}</span>`;
         const cb = row.querySelector('input');
         cb.addEventListener('change', () => {
             viewer.setVisible(lab, cb.checked);

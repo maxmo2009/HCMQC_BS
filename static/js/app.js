@@ -222,7 +222,7 @@ function buildLabelToggles(presentLabels) {
         html += `<label class="lt-row">` +
             `<input type="checkbox" class="lt-cb" data-label="${lab}" ${isLabelVisible(lab) ? 'checked' : ''}>` +
             `<span class="lt-swatch" style="background:${info.css}"></span>` +
-            `<span class="lt-name">${info.name}</span>` +
+            `<span class="lt-name">${lab}</span>` +
             `</label>`;
     });
     wrap.innerHTML = html;
@@ -632,6 +632,28 @@ function saveViewerPref(key, val) {
         if (sl) sl.value = pct;
         if (zv) zv.textContent = pct + '%';
     }
+    // Hide left MRI panel — only touch the DOM here (3D isn't initialised yet).
+    // init() reads #right-panel size after this, so the 3D viewer comes up at the
+    // already-widened dimensions without an extra resize.
+    if (p.hideMriPanel === true) {
+        const lp = document.getElementById('left-panel');
+        const cb = document.getElementById('hide-mri-checkbox');
+        if (lp) lp.style.display = 'none';
+        if (cb) cb.checked = true;
+    }
+})();
+
+// Hide-MRI-panel toggle: collapse the left MRI panel to give the segmentation
+// + 3D panels more room. Per-user (viewerPrefs); re-frames the 3D canvas on toggle.
+(function () {
+    const cb = document.getElementById('hide-mri-checkbox');
+    if (!cb) return;
+    cb.addEventListener('change', function () {
+        const lp = document.getElementById('left-panel');
+        if (lp) lp.style.display = cb.checked ? 'none' : '';
+        saveViewerPref('hideMriPanel', cb.checked);
+        if (typeof onWindowResize === 'function') onWindowResize();
+    });
 })();
 
 // Overlay checkbox handler
@@ -904,17 +926,31 @@ let initialX;
 let initialY;
 let xOffset = 0;
 let yOffset = 0;
+let panelScale = 1;  // control panel uniform zoom (⊖ / ⊕ in header)
+const PANEL_SCALE_KEY = 'panelScale::' +
+    (typeof CURRENT_USER !== 'undefined' && CURRENT_USER ? CURRENT_USER : '_anon');
 
-// Restore panel position from localStorage
+// Restore panel position + scale from localStorage
 function restorePanelPosition() {
+    // One-time migration: panel was re-anchored from bottom-right to top-left,
+    // so old translate offsets (relative to the old anchor) no longer apply —
+    // drop them once so the panel starts at the new top-left default.
+    if (!localStorage.getItem('panelAnchorTL')) {
+        localStorage.removeItem('panelPosX');
+        localStorage.removeItem('panelPosY');
+        localStorage.setItem('panelAnchorTL', '1');
+    }
+    const savedScale = localStorage.getItem(PANEL_SCALE_KEY);
+    if (savedScale !== null) panelScale = parseFloat(savedScale) || 1;
+
     const savedX = localStorage.getItem('panelPosX');
     const savedY = localStorage.getItem('panelPosY');
-
     if (savedX !== null && savedY !== null) {
         xOffset = parseFloat(savedX);
         yOffset = parseFloat(savedY);
-        setTranslate(xOffset, yOffset, floatingPanel);
     }
+    // Always apply transform so a saved scale shows even with no saved position.
+    setTranslate(xOffset, yOffset, floatingPanel);
 }
 
 // Save panel position to localStorage
@@ -939,6 +975,7 @@ function dragStart(e) {
     const interactiveElements = ['INPUT', 'TEXTAREA', 'BUTTON', 'SELECT', 'OPTION', 'LABEL'];
     const isInteractive = interactiveElements.includes(e.target.tagName) ||
                           e.target.id === 'minimize-btn' ||
+                          e.target.id === 'panel-resize-handle' ||
                           e.target.closest('button') ||
                           e.target.closest('input') ||
                           e.target.closest('textarea') ||
@@ -972,8 +1009,40 @@ function dragEnd(e) {
 }
 
 function setTranslate(xPos, yPos, el) {
-    el.style.transform = `translate(${xPos}px, ${yPos}px)`;
+    el.style.transform = `translate(${xPos}px, ${yPos}px) scale(${panelScale})`;
 }
+
+// Control panel uniform zoom — drag the bottom-right resize handle to scale the
+// whole panel (same transform as the drag translate). Drag toward bottom-right
+// to enlarge, toward top-left to shrink. Clamped, persisted per-user.
+(function () {
+    const handle = document.getElementById('panel-resize-handle');
+    if (!handle) return;
+    let resizing = false, originX = 0, originY = 0, startDist = 1, startScale = 1;
+    handle.addEventListener('mousedown', function (e) {
+        e.preventDefault();
+        e.stopPropagation();   // don't start a panel drag
+        resizing = true;
+        const rect = floatingPanel.getBoundingClientRect();
+        originX = rect.left;   // top-left origin — fixed while scaling
+        originY = rect.top;
+        startDist = Math.hypot(e.clientX - originX, e.clientY - originY) || 1;
+        startScale = panelScale;
+    });
+    document.addEventListener('mousemove', function (e) {
+        if (!resizing) return;
+        // Radial: scale tracks the cursor's distance from the fixed top-left
+        // origin, so the handle follows the mouse along the diagonal.
+        const curDist = Math.hypot(e.clientX - originX, e.clientY - originY);
+        panelScale = Math.max(0.6, Math.min(1.8, startScale * (curDist / startDist)));
+        setTranslate(xOffset, yOffset, floatingPanel);
+    });
+    document.addEventListener('mouseup', function () {
+        if (!resizing) return;
+        resizing = false;
+        localStorage.setItem(PANEL_SCALE_KEY, panelScale);
+    });
+})();
 
 // Restore panel position on page load
 restorePanelPosition();
@@ -1207,6 +1276,44 @@ if (savedStatsPosX && savedStatsPosY) {
     statsPanel.style.top = isNaN(savedY) ? savedStatsPosY : Math.max(70, savedY) + 'px';
 }
 
+// Stats panel uniform zoom — drag the bottom-right resize handle. Stats panel
+// positions via inline left/top (not transform), so transform is free for a
+// plain scale(). Origin is top-left, so the handle follows the cursor. Per-user.
+let statsPanelScale = 1;
+const STATS_SCALE_KEY = 'statsPanelScale::' +
+    (typeof CURRENT_USER !== 'undefined' && CURRENT_USER ? CURRENT_USER : '_anon');
+(function () {
+    const savedScale = localStorage.getItem(STATS_SCALE_KEY);
+    if (savedScale !== null) {
+        statsPanelScale = parseFloat(savedScale) || 1;
+        statsPanel.style.transform = `scale(${statsPanelScale})`;
+    }
+    const handle = document.getElementById('stats-resize-handle');
+    if (!handle) return;
+    let resizing = false, originX = 0, originY = 0, startDist = 1, startScale = 1;
+    handle.addEventListener('mousedown', function (e) {
+        e.preventDefault();
+        e.stopPropagation();   // don't start a panel drag
+        resizing = true;
+        const rect = statsPanel.getBoundingClientRect();
+        originX = rect.left;   // top-left origin — fixed while scaling
+        originY = rect.top;
+        startDist = Math.hypot(e.clientX - originX, e.clientY - originY) || 1;
+        startScale = statsPanelScale;
+    });
+    document.addEventListener('mousemove', function (e) {
+        if (!resizing) return;
+        const curDist = Math.hypot(e.clientX - originX, e.clientY - originY);
+        statsPanelScale = Math.max(0.6, Math.min(1.8, startScale * (curDist / startDist)));
+        statsPanel.style.transform = `scale(${statsPanelScale})`;
+    });
+    document.addEventListener('mouseup', function () {
+        if (!resizing) return;
+        resizing = false;
+        localStorage.setItem(STATS_SCALE_KEY, statsPanelScale);
+    });
+})();
+
 // Minimize/expand stats panel
 statsMinimizeBtn.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -1277,6 +1384,36 @@ updateStatistics();
 
 // Dataset selector: lists JSON files in the current user's folder and switches
 // the active dataset by setting the session on the server, then reloading.
+// Blind dataset names for non-admin reviewers: hide the method-revealing
+// suffixes (gpt-5.5 / rulebase) so the dataset choice can't bias their review.
+// Display-only — the option *value* stays the real filename so switching still
+// works, and admin sees the real names. (Not a security boundary: the real
+// names are still in QC_FILES; this just keeps them out of the dropdown text.)
+// A "Show full filename" checkbox in the QC Statistics panel (default OFF) lets
+// anyone temporarily reveal the real names; admin always sees them. Not persisted
+// — every page load (incl. the reload on patient/phase change) defaults back to
+// blinded, so reviewers stay blind unless they deliberately flip it.
+const IS_ADMIN = (typeof CURRENT_USER !== 'undefined' && CURRENT_USER === 'admin');
+let showFullNames = false;
+function datasetLabel(name) {
+    if (IS_ADMIN || showFullNames) return name;      // full real filename
+    let lab = name.replace(/\.json$/, '');
+    // Position-based blinding: the config block always ends at `_shift<N>`, and
+    // any method tag (gpt-5.5 / rulebase / future ones) comes after it. Strip
+    // everything past `_shift<N>` so new method suffixes are hidden automatically.
+    // Falls back to the full name if the filename doesn't match the convention.
+    lab = lab.replace(/(_shift\d+).*$/, '$1');
+    return lab;
+}
+(function () {
+    const cb = document.getElementById('show-full-names');
+    if (!cb) return;
+    cb.addEventListener('change', function () {
+        showFullNames = cb.checked;
+        populateDatasetSelector();
+    });
+})();
+
 function populateDatasetSelector() {
     const selector = document.getElementById('dataset-selector');
     if (!selector) return;
@@ -1287,11 +1424,24 @@ function populateDatasetSelector() {
         return;
     }
 
+    // Blinded labels; disambiguate collisions (e.g. acdc_fixed gpt vs rulebase
+    // both collapse to the same name) with neutral numbers so the two variants
+    // are still distinguishable — without revealing which is which.
+    const labels = QC_FILES.map(datasetLabel);
+    const counts = {};
+    labels.forEach(l => { counts[l] = (counts[l] || 0) + 1; });
+    const seen = {};
+
     selector.innerHTML = '';
-    QC_FILES.forEach(name => {
+    QC_FILES.forEach((name, i) => {
+        let label = labels[i];
+        if (counts[label] > 1) {
+            seen[label] = (seen[label] || 0) + 1;
+            label = `${label} (${seen[label]})`;
+        }
         const opt = document.createElement('option');
-        opt.value = name;
-        opt.textContent = name;
+        opt.value = name;            // real filename — used to switch datasets
+        opt.textContent = label;     // blinded text for non-admin
         if (name === ACTIVE_QC_FILE) opt.selected = true;
         selector.appendChild(opt);
     });
