@@ -10,6 +10,8 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 JSON_DIR = os.path.join(PROJECT_ROOT, 'JSON')
 USERS_JSON_PATH = os.path.join(JSON_DIR, 'users.json')
 USERS_DIR = os.path.join(JSON_DIR, 'users')
+# Admin-managed per-user QC-file visibility: {username: [hidden_filename, ...]}
+VISIBILITY_PATH = os.path.join(JSON_DIR, 'file_visibility.json')
 
 HOST = '0.0.0.0'
 PORT = 5000

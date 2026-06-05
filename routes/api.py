@@ -7,7 +7,7 @@ from services.filebrowser import is_nifti, list_dir, resolve
 from services.nifti_loader import load_nifti_voxels
 from services.patient import build_patient_payload, get_store_for_session
 from services.qc_store import parse_decision
-from services.users import list_qc_files, resolve_qc_path
+from services.users import admin_overview, list_qc_files, resolve_qc_path, set_file_visibility
 
 api_bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -223,6 +223,28 @@ def fs_nifti():
     if 'error' in result:
         return jsonify({'status': 'error', 'message': result['error'], **result}), 422
     return jsonify({'status': 'success', 'name': os.path.basename(abs_path), **result})
+
+
+@api_bp.route('/admin/overview')
+@admin_required
+def api_admin_overview():
+    """All users + their QC files + per-file visibility (admin-only)."""
+    return jsonify({'status': 'success', 'users': admin_overview()})
+
+
+@api_bp.route('/admin/visibility', methods=['POST'])
+@admin_required
+def api_admin_visibility():
+    """Show/hide one user's QC file. Body: {username, filename, visible}."""
+    data = request.get_json(silent=True) or {}
+    username = data.get('username')
+    filename = data.get('filename')
+    visible = bool(data.get('visible'))
+    if not username or not filename:
+        return jsonify({'status': 'error', 'message': 'username and filename required'}), 400
+    if not set_file_visibility(username, filename, visible):
+        return jsonify({'status': 'error', 'message': 'File not found in that user\'s folder'}), 404
+    return jsonify({'status': 'success', 'username': username, 'filename': filename, 'visible': visible})
 
 
 @api_bp.route('/download_json')

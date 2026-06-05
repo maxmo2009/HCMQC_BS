@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Tools — Cardiac Segmentation QC Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <style>
+        html, body { height: 100%; }
+        body { overflow: auto; background: var(--bg-0); }
+
+        #admin-top {
+            position: fixed; top: 0; left: 0; width: 100%; height: 44px; box-sizing: border-box;
+            background: var(--bg-1); border-bottom: 1px solid var(--line-mid);
+            display: flex; align-items: center; gap: 16px; padding: 0 18px; z-index: 1000;
+        }
+        #admin-top .back, #admin-top .logout {
+            color: var(--text-1); text-decoration: none; padding: 5px 10px;
+            border: 1px solid var(--line-mid); font-size: 10px; letter-spacing: 0.14em;
+            text-transform: uppercase; font-family: var(--font-mono);
+            transition: background .12s, border-color .12s, color .12s;
+        }
+        #admin-top .back:hover, #admin-top .logout:hover { background: var(--accent-bg); border-color: var(--accent-dim); color: var(--accent); }
+        #admin-top .title { font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--text-0); text-transform: uppercase; letter-spacing: 0.28em; }
+        #admin-top .title::before { content: '⚙ '; color: var(--accent); }
+        #admin-top .spacer { margin-left: auto; }
+        #admin-top .user { color: var(--accent); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+        #admin-main { margin-top: 44px; padding: 24px; max-width: 920px; }
+        #admin-hint {
+            color: var(--text-2); font-family: var(--font-mono); font-size: 11px;
+            line-height: 1.6; margin-bottom: 18px; padding: 10px 14px;
+            border-left: 2px solid var(--accent-dim); background: var(--bg-1);
+        }
+        #admin-content { display: flex; flex-direction: column; gap: 14px; }
+
+        .user-card { border: 1px solid var(--line-mid); background: var(--bg-1); }
+        .user-head {
+            padding: 10px 14px; border-bottom: 1px solid var(--line);
+            font-family: var(--font-mono); font-size: 13px; color: var(--accent-hi);
+            letter-spacing: 0.08em; display: flex; align-items: center; gap: 12px;
+        }
+        .user-head.is-admin { color: var(--text-2); }
+        .user-head .file-count { color: var(--text-2); font-size: 10px; letter-spacing: 0.1em; }
+        .user-head .self-tag {
+            font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-2);
+            border: 1px solid var(--line-mid); padding: 1px 5px; border-radius: 2px;
+        }
+        .file-list { padding: 6px 0; }
+        .file-row {
+            display: flex; align-items: center; gap: 10px; padding: 6px 14px; cursor: pointer;
+            font-family: var(--font-mono); font-size: 12px; user-select: none;
+        }
+        .file-row:hover { background: var(--accent-bg); }
+        .file-row .vis-cb { accent-color: var(--accent); cursor: pointer; margin: 0; width: 14px; height: 14px; flex-shrink: 0; }
+        .file-row .file-name { color: var(--text-0); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .file-row .file-name.hidden-file { color: var(--text-2); text-decoration: line-through; }
+        .file-row .file-prog { margin-left: auto; color: var(--text-2); font-size: 10px; letter-spacing: 0.04em; white-space: nowrap; flex-shrink: 0; padding-left: 12px; }
+        .file-row .file-prog.prog-done { color: var(--ok); }
+        .no-files { padding: 8px 14px; color: var(--text-2); font-size: 11px; font-style: italic; }
+        .loading, .empty, .err { padding: 20px; color: var(--text-2); font-family: var(--font-mono); font-size: 12px; }
+        .err { color: var(--no); }
+    </style>
+</head>
+<body>
+    <div id="admin-top">
+        <a class="back" href="/">← Back to QC</a>
+        <span class="title">Admin Tools</span>
+        <span class="spacer"></span>
+        <span class="user">{{ username }}</span>
+        <a class="logout" href="/logout">Logout</a>
+    </div>
+
+    <div id="admin-main">
+        <div id="admin-hint">
+            勾选 = 该用户能在数据集下拉看到此文件;取消勾选 = 对该用户隐藏(文件不删,只是不显示)。
+            admin 自己始终能看到所有文件,不受这里设置影响。
+        </div>
+        <div id="admin-content">
+            <div class="loading">Loading users…</div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

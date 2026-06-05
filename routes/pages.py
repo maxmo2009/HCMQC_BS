@@ -107,6 +107,13 @@ def files():
     return render_template('files.html', username=session['username'])
 
 
+@pages_bp.route('/admin')
+@admin_required
+def admin_tools():
+    """Admin Tools — manage users + per-user QC-file visibility (admin-only)."""
+    return render_template('admin.html', username=session['username'])
+
+
 @pages_bp.route('/health')
 def health():
     return jsonify({'status': 'ok', 'message': 'Cardiac Segmentation QC Studio is running'})

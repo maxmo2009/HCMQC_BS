@@ -23,6 +23,11 @@
                 {% else %}
                 <span class="dropdown-item disabled" role="menuitem" aria-disabled="true" title="Admin only">File System <span class="lock">admin</span></span>
                 {% endif %}
+                {% if username == 'admin' %}
+                <a class="dropdown-item" href="/admin" role="menuitem">Admin Tools</a>
+                {% else %}
+                <span class="dropdown-item disabled" role="menuitem" aria-disabled="true" title="Admin only">Admin Tools <span class="lock">admin</span></span>
+                {% endif %}
                 <div class="dropdown-sep" role="separator"></div>
                 <div class="dropdown-item dropdown-action" id="reset-panels" role="menuitem" tabindex="0" title="Move all floating panels back to their default position (in case one was dragged off-screen)">⟲ Reset Panel Positions</div>
             </div>
