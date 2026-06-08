@@ -148,6 +148,17 @@ Things to preserve when editing `files.js`:
 - **`openFile` uses `AbortController`; `closePane` aborts and the `.then` re-checks `openByPath.get(path) === pane` before constructing the viewer.** This prevents a SegViewer with a runaway RAF loop being instantiated on a detached DOM node when the user closes the pane mid-load.
 - **`SegViewer.dispose()` must call `this.controls.dispose()`** before disposing the renderer. OrbitControls registers ~8 DOM listeners on the canvas; without dispose those listeners keep the whole scene graph alive across pane open/close cycles.
 
+### Admin Tools (`/admin`, admin-only)
+
+A second admin-only page (Menu → *Admin Tools*; disabled `<span>` for non-admins, exactly like File System). Routes: `/admin` in `routes/pages.py`, `/api/admin/*` in `routes/api.py` — all `@admin_required`. Frontend: `templates/admin.html` + `static/js/admin.js` (all filename/user interpolation goes through `esc()`).
+
+- **`/api/admin/overview`** → `services.users.admin_overview()`: every user + their QC files, each file carrying `visible` (bool) and `progress` (`{total, ed, es}`).
+- **`/api/admin/visibility`** (POST `{username, filename, visible}`) → `set_file_visibility()`.
+
+**Per-user file visibility** — stored in `JSON/file_visibility.json` as `{username: [hidden_filename, ...]}` (gitignored, like all of `JSON/`). `list_qc_files(username)` filters these out for non-admins, so a hidden file vanishes from that user's dataset dropdown (the file on disk is untouched). **Admin is never filtered** (`username == 'admin'` short-circuits) and can't hide its own files. `_list_files_raw()` is the unfiltered variant the admin overview uses.
+
+**QC progress** — `_file_progress()` counts a phase as done only when its comment is a *real reviewer decision*: `parse_decision(comment) in QC_DECISIONS`. A bare `CardiacAgent: …` note parses to `'unknown'` and is **not** counted, so agent-fixed datasets don't show false 100% progress. `static/js/admin.js` renders `ED x/N · ES y/N` per file (green when complete).
+
 ### Top-bar dropdown & floating panels
 
 The **Menu** dropdown (`#nav-menu`, toggled + wired in `app.js`) holds: *Useful Document* (`/docs`), *File System* (`/files`, admin-only — a disabled `<span>` for non-admins), and **⟲ Reset Panel Positions**.
