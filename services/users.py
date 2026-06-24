@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import shutil
 
 from config import QC_DECISIONS, USERS_JSON_PATH, USERS_DIR, VISIBILITY_PATH, user_dir
 from services.qc_store import parse_decision
@@ -10,6 +11,75 @@ def load_users():
     """Load username→password map from users.json (plaintext passwords)."""
     with open(USERS_JSON_PATH, 'r') as f:
         return json.load(f)
+
+
+def _save_users(users):
+    with open(USERS_JSON_PATH, 'w') as f:
+        json.dump(users, f, indent=2, ensure_ascii=False)
+
+
+# Usernames double as folder names (JSON/users/<name>/), so they must be a
+# single safe path segment: start alphanumeric (blocks '.', '..', '-rf', dotfiles)
+# then alphanumeric / _ . -. No separators, no traversal.
+_SAFE_USERNAME = re.compile(r'^[A-Za-z0-9][A-Za-z0-9_.\-]{0,63}$')
+
+
+def valid_username(name):
+    return bool(name) and bool(_SAFE_USERNAME.match(name))
+
+
+def add_user(username, password):
+    """Create a user + their (empty) QC data folder. Returns (ok, message)."""
+    if not valid_username(username):
+        return False, 'invalid username (use letters, digits, _ . - ; start alphanumeric)'
+    if not password:
+        return False, 'password required'
+    users = load_users()
+    if username in users:
+        return False, 'user already exists'
+    users[username] = password
+    _save_users(users)
+    os.makedirs(user_dir(username), exist_ok=True)
+    return True, 'created'
+
+
+def set_password(username, password):
+    """Change an existing user's password. Returns (ok, message)."""
+    if not password:
+        return False, 'password required'
+    users = load_users()
+    if username not in users:
+        return False, 'user not found'
+    users[username] = password
+    _save_users(users)
+    return True, 'updated'
+
+
+def delete_user(username, delete_data=False):
+    """Remove a user's credentials (+ visibility entries). If delete_data, also
+    rmtree their data folder. The 'admin' account is protected. Returns (ok, msg)."""
+    if username == 'admin':
+        return False, 'cannot delete the admin account'
+    users = load_users()
+    if username not in users:
+        return False, 'user not found'
+    del users[username]
+    _save_users(users)
+    # Drop any per-user file-visibility entries so a recreated same-name user
+    # doesn't inherit stale hidden-file state.
+    vis = load_visibility()
+    if username in vis:
+        vis.pop(username, None)
+        _save_visibility(vis)
+    if delete_data:
+        folder = user_dir(username)
+        # Confine the rmtree strictly inside USERS_DIR (defense-in-depth even
+        # though valid_username already blocks traversal).
+        users_root = os.path.realpath(USERS_DIR)
+        real = os.path.realpath(folder)
+        if os.path.isdir(real) and real.startswith(users_root + os.sep):
+            shutil.rmtree(real, ignore_errors=True)
+    return True, 'deleted'
 
 
 def authenticate(username, password):

@@ -106,6 +106,8 @@ function loadBallData() {
         `Dimensions: ${SEG_SHAPE[0]} × ${SEG_SHAPE[1]} × ${SEG_SHAPE[2]}<br>` +
         `Spacing: ${SEG_SPACING[0].toFixed(2)} × ${SEG_SPACING[1].toFixed(2)} × ${SEG_SPACING[2].toFixed(2)} mm<br>` +
         `Labels: ${new Set(SEG_LABELS).size}`;
+
+    setupMeshOverlay();
 }
 
 // Create instanced mesh from coordinates with color-coded labels
@@ -234,6 +236,164 @@ function buildLabelToggles(presentLabels) {
             saveLabelVisibility(lab, cb.checked);  // persist globally
         });
     });
+}
+
+// ---- Fitted template-mesh overlay (VTKs) -------------------------------
+// Surfaces fitted by heart-mesh-fitting, served by /api/meshes in VOXEL-index
+// space, drawn with the SAME (idx - shape/2) * spacing transform as the voxel
+// point cloud so they register exactly. Off by default + lazily fetched (the
+// geometry is several MB), with the master + per-region state persisted like
+// the label toggles.
+const MESH_INFO = {
+    LVendo: { color: 0xffd000 },
+    LVepi:  { color: 0xff7b00 },
+    LVmyo:  { color: 0xff2bbf },
+    RV:     { color: 0x00e5ff },
+};
+let meshOverlays = {};        // region -> THREE.Mesh
+let meshOverlayLoaded = false;
+
+const MESH_VIS_KEY = 'meshOverlay::' +
+    (typeof CURRENT_USER !== 'undefined' && CURRENT_USER ? CURRENT_USER : '_anon');
+
+function getMeshVis() {
+    try { return JSON.parse(localStorage.getItem(MESH_VIS_KEY)) || {}; }
+    catch (e) { return {}; }
+}
+function saveMeshVis(key, val) {
+    const v = getMeshVis(); v[key] = val;
+    localStorage.setItem(MESH_VIS_KEY, JSON.stringify(v));
+}
+function isMeshMasterOn() { return getMeshVis().__on === true; }      // default OFF
+function isRegionVisible(region) { return getMeshVis()[region] !== false; }  // default ON
+function getMeshOpacity() {
+    const o = getMeshVis().__opacity;
+    return (typeof o === 'number') ? o : 0.5;  // default 50%
+}
+
+function meshVoxelToScene(v) {
+    return [
+        (v[0] - SEG_SHAPE[0] / 2) * SEG_SPACING[0],
+        (v[1] - SEG_SHAPE[1] / 2) * SEG_SPACING[1],
+        (v[2] - SEG_SHAPE[2] / 2) * SEG_SPACING[2],
+    ];
+}
+
+function addRegionMesh(region, geom) {
+    const verts = geom.vertices, faces = geom.faces;
+    const positions = new Float32Array(verts.length * 3);
+    for (let i = 0; i < verts.length; i++) {
+        const p = meshVoxelToScene(verts[i]);
+        positions[i * 3] = p[0];
+        positions[i * 3 + 1] = p[1];
+        positions[i * 3 + 2] = p[2];
+    }
+    const indices = new Array(faces.length * 3);
+    for (let i = 0; i < faces.length; i++) {
+        indices[i * 3] = faces[i][0];
+        indices[i * 3 + 1] = faces[i][1];
+        indices[i * 3 + 2] = faces[i][2];
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    g.setIndex(indices);
+    g.computeVertexNormals();
+    const color = (MESH_INFO[region] || {}).color || 0xffffff;
+    const mat = new THREE.MeshPhongMaterial({
+        color, transparent: true, opacity: getMeshOpacity(), side: THREE.DoubleSide,
+        depthWrite: false, shininess: 40, specular: 0x222222,
+    });
+    const mesh = new THREE.Mesh(g, mat);
+    scene.add(mesh);
+    meshOverlays[region] = mesh;
+}
+
+function applyMeshVisibility() {
+    const masterOn = isMeshMasterOn();
+    Object.entries(meshOverlays).forEach(([r, m]) => {
+        m.visible = masterOn && isRegionVisible(r);
+    });
+    const regionWrap = document.getElementById('mesh-region-toggles');
+    if (regionWrap) regionWrap.style.display = masterOn ? '' : 'none';
+    const opRow = document.getElementById('mesh-opacity-row');
+    if (opRow) opRow.style.display = masterOn ? '' : 'none';
+}
+
+function applyMeshOpacity() {
+    const op = getMeshOpacity();
+    Object.values(meshOverlays).forEach(m => { m.material.opacity = op; });
+}
+
+async function loadMeshOverlay() {
+    if (meshOverlayLoaded) return;
+    const status = document.getElementById('mesh-status');
+    if (status) status.textContent = 'loading meshes…';
+    try {
+        const resp = await fetch(
+            `/api/meshes/${PATIENT_INDEX}?phase=${encodeURIComponent(CURRENT_PHASE)}`);
+        const data = await resp.json();
+        meshOverlayLoaded = true;
+        if (!data.available) {
+            if (status) status.textContent = 'no fitted meshes for this case';
+            return;
+        }
+        Object.entries(data.regions || {}).forEach(([r, geom]) => addRegionMesh(r, geom));
+        if (status) status.textContent = '';
+        buildMeshRegionToggles(Object.keys(meshOverlays));
+    } catch (e) {
+        console.error('mesh overlay load failed', e);
+        if (status) status.textContent = 'mesh load failed';
+    }
+}
+
+function buildMeshRegionToggles(regions) {
+    const wrap = document.getElementById('mesh-region-toggles');
+    if (!wrap) return;
+    regions.sort();
+    let html = '';
+    regions.forEach(r => {
+        const css = '#' + ((MESH_INFO[r] || {}).color || 0xffffff).toString(16).padStart(6, '0');
+        html += `<label class="lt-row">` +
+            `<input type="checkbox" class="mesh-cb" data-region="${r}" ${isRegionVisible(r) ? 'checked' : ''}>` +
+            `<span class="lt-swatch" style="background:${css}"></span>` +
+            `<span class="lt-name">${r}</span></label>`;
+    });
+    wrap.innerHTML = html;
+    wrap.querySelectorAll('.mesh-cb').forEach(cb => {
+        cb.addEventListener('change', () => {
+            saveMeshVis(cb.dataset.region, cb.checked);
+            applyMeshVisibility();
+        });
+    });
+    applyMeshVisibility();
+}
+
+function setupMeshOverlay() {
+    const wrap = document.getElementById('mesh-toggles');
+    if (!wrap) return;
+    const opPct = Math.round(getMeshOpacity() * 100);
+    wrap.innerHTML =
+        '<div class="lt-title">Fitted mesh overlay</div>' +
+        `<label class="lt-row"><input type="checkbox" id="mesh-master" ${isMeshMasterOn() ? 'checked' : ''}>` +
+        `<span class="lt-name">show meshes</span></label>` +
+        `<div id="mesh-opacity-row" class="mesh-op-row">` +
+        `<span class="mesh-op-label">opacity <span id="mesh-op-val">${opPct}</span>%</span>` +
+        `<input type="range" id="mesh-opacity" min="5" max="100" step="5" value="${opPct}"></div>` +
+        '<div id="mesh-region-toggles"></div>' +
+        '<div id="mesh-status" class="mesh-status"></div>';
+    document.getElementById('mesh-master').addEventListener('change', (e) => {
+        saveMeshVis('__on', e.target.checked);
+        if (e.target.checked) loadMeshOverlay().then(applyMeshVisibility);
+        else applyMeshVisibility();
+    });
+    document.getElementById('mesh-opacity').addEventListener('input', (e) => {
+        const pct = parseInt(e.target.value, 10);
+        saveMeshVis('__opacity', pct / 100);
+        document.getElementById('mesh-op-val').textContent = pct;
+        applyMeshOpacity();
+    });
+    applyMeshVisibility();  // also sets opacity-row visibility from the master state
+    if (isMeshMasterOn()) loadMeshOverlay().then(applyMeshVisibility);
 }
 
 // Handle window resize

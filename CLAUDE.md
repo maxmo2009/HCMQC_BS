@@ -45,27 +45,30 @@ app.py            create_app() — registers auth_bp, pages_bp, api_bp
 config.py         constants + path helpers (USERS_JSON_PATH, user_dir, ...)
 routes/
   auth.py         /login, /logout; login_required + admin_required decorators
-  pages.py        /  (HTML),  /docs (doc viewer),  /files (admin file browser),  /health
-  api.py          /api/*  (JSON),  /api/fs/* (admin file browse + nifti load)
+  pages.py        /  (HTML),  /docs (doc viewer/editor),  /files + /admin (admin pages),  /health
+  api.py          /api/*  (JSON),  /api/fs/* (admin file browse),  /api/admin/* (admin tools),  /api/docs/* (doc list + editing)
 services/
-  users.py        load users.json, authenticate(), list_qc_files(), resolve_qc_path() (path-traversal guard)
+  users.py        load users.json, authenticate(), list_qc_files(), account CRUD (add/set_password/delete), admin_overview(), resolve_qc_path() (path-traversal guard)
   qc_store.py     QCStore class — loads one user's JSON file, mutates in memory, persists on save
   nifti_loader.py NIfTI → base64 PNG slices; voxel coords/labels for 3D; load_nifti_voxels() for arbitrary files
   filebrowser.py  FILES_ROOT-confined directory listing + path-traversal guard for the /files browser
+  docs.py         /docs backend — list_docs() discovery + doc CRUD (save/create/delete/image), _resolve() traversal guard
   patient.py      get_store_for_session() + build_patient_payload() — orchestrator that ties session → store → loader
 templates/
   index.html      Single-page shell. Initial data is Jinja-injected as top-level `const`s in a classic <script> (PATIENT_INDEX, MRI_SLICES, SEG_COORDS, ACTIVE_QC_FILE, ...) and consumed by static/js/app.js
-  docs.html       Standalone doc viewer — fetches reports/ markdown and renders it client-side via marked.js (CDN)
+  docs.html       Standalone doc viewer/editor — marked.js render + Toast UI WYSIWYG editing (both CDN); page-specific JS inline
   files.html      Admin File System page — file tree + up to 6 independent 3D segmentation viewers
+  admin.html      Admin Tools page — account management + per-user file visibility + QC progress
   login.html      Username + password form
 static/
   js/app.js       All frontend logic (Three.js scene, Chart.js stats, slice playback, panel drag, controls)
   js/files.js     File System page logic — lazy file tree + SegViewer class (one 3D scene per pane)
-  css/app.css     All UI styles (files.html keeps its own page-specific styles inline)
+  js/admin.js     Admin Tools page logic (user cards, visibility toggles, account CRUD, delete modal)
+  css/app.css     All UI styles (files.html and admin.html keep their page-specific styles inline)
 JSON/             gitignored — credentials + per-user QC data
   users.json      {"username": "plaintext_password", ...}
   users/<user>/   *.json QC dataset files (one per dataset)
-reports/          gitignored — generated team docs (markdown + patient-derived PNGs), served read-only by /docs
+reports/          gitignored — team docs (markdown + patient-derived PNGs), served AND edited via /docs
 tempCMR/          early-development sample NIfTI pair (ED only) — kept for ad-hoc loader testing, not referenced by the running app
 ```
 
@@ -104,9 +107,9 @@ Per-patient files under `resolved_path(i)`: `lvsa_SR_{ED,ES}.nii.gz`, `seg_lvsa_
 
 ### Auth model
 
-Plaintext passwords in `JSON/users.json` (read on every login attempt — no restart needed to add users). Sessions are server-side via Flask's signed cookie, secret in `config.py:SECRET_KEY`, lifetime 3 days rolling. There is **no** registration UI — adding a user is a manual three-step process: edit `users.json`, `mkdir JSON/users/<name>`, drop dataset `.json` files in that folder. See README "Adding Users".
+Plaintext passwords in `JSON/users.json` (read on every login attempt — no restart needed to add users). Sessions are server-side via Flask's signed cookie, secret in `config.py:SECRET_KEY`, lifetime 3 days rolling. Accounts are managed from **Admin Tools** (see below) — add user, change password, delete user — or still by hand (edit `users.json`, `mkdir JSON/users/<name>`, drop dataset `.json` files). Passwords stay **plaintext** by design — `authenticate()` does a plaintext compare, so don't introduce hashing in one place without the other.
 
-**Admin gating**: there is no role system — "admin" is simply `username == 'admin'`. The `admin_required` decorator (in `routes/auth.py`) enforces it: 403 JSON for `/api/*`, `abort(403)` otherwise. Only the File System feature uses it (`/files`, `/api/fs/*`). UI elements that should be admin-only are *also* gated in the template (e.g. the "File System" dropdown item renders as a disabled `<span class="dropdown-item disabled">` for non-admins) — but always enforce server-side too; the template check is cosmetic.
+**Admin gating**: there is no role system — "admin" is simply `username == 'admin'`. The `admin_required` decorator (in `routes/auth.py`) enforces it: 403 JSON for `/api/*`, `abort(403)` otherwise. Two features use it: File System (`/files`, `/api/fs/*`) and Admin Tools (`/admin`, `/api/admin/*`). UI elements that should be admin-only are *also* gated in the template (e.g. the "File System" / "Admin Tools" dropdown items render as a disabled `<span class="dropdown-item disabled">` for non-admins) — but always enforce server-side too; the template check is cosmetic.
 
 ### Color map
 
@@ -120,12 +123,22 @@ Plaintext passwords in `JSON/users.json` (read on every login attempt — no res
 
 ### Document viewer (`/docs`)
 
-A "Useful Document" feature surfaces a pre-generated markdown report inside the app. Three pieces:
+A "Useful Document" feature surfaces pre-generated markdown reports inside the app, with a **document switcher** so multiple reports can coexist. Pieces:
 - **Top-bar dropdown** in `templates/index.html` (`#nav-menu`, toggled by a small block at the bottom of `app.js`) → links to `/docs`.
-- **`/docs`** renders `templates/docs.html`, a standalone page that `fetch`es the raw markdown and renders it **client-side with marked.js (CDN)** — deliberately no server-side markdown dependency. It rewrites relative `src="imgs/..."` → `src="/docs/file/imgs/..."` after parsing, then runs the result through **DOMPurify (CDN)** before `innerHTML`. Marked v12 dropped its built-in `sanitize` option, so without DOMPurify any `<script>` or `<img onerror>` in `report.md` would execute in the reviewer's authenticated session. **Keep that sanitiser** if you swap the markdown source.
-- **`/docs/file/<path:filename>`** serves the markdown + image assets via `send_from_directory(DOCS_DIR, ...)`, `@login_required`.
+- **`services/docs.py`** — `list_docs()` walks `reports/` for every `.md` (skipping hidden + `imgs/` folders) and returns `{title, file, dir}` per doc: `title` is the file's first H1 (fallback: folder/filename), `file` is the reports-relative path (`hulei_acdc_discussion/report.md`), `dir` is its reports-relative folder (used to resolve that doc's `imgs/`). **Adding a document is zero-code**: drop `reports/<name>/report.md` + an `imgs/` folder; it appears in the switcher.
+- **`/api/docs`** (`routes/api.py`, `@login_required`) → `{docs: [...]}` from `list_docs()`.
+- **`/docs`** renders `templates/docs.html`, a standalone page that fetches `/api/docs`, populates the `#doc-select` switcher (hidden when only one doc), then `fetch`es the chosen doc's markdown and renders it **client-side with marked.js (CDN)** — deliberately no server-side markdown dependency. It rewrites that doc's relative `src="imgs/..."` → `src="/docs/file/<doc.dir>/imgs/..."` (folder-scoped — **not** a bare `/docs/file/imgs/`, since each doc has its own `imgs/`), then runs the result through **DOMPurify (CDN)** before `innerHTML`. Marked v12 dropped its built-in `sanitize` option, so without DOMPurify any `<script>` or `<img onerror>` in a report would execute in the reviewer's authenticated session. **Keep that sanitiser** if you swap the markdown source. The last-viewed doc persists per-user as `docsActiveFile::<user>` in localStorage.
+- **`/docs/file/<path:filename>`** serves any document's markdown + image assets via `send_from_directory(DOCS_ROOT, ...)` (`= reports/`, from `services/docs.py`), `@login_required`. `filename` is reports-relative; `send_from_directory`'s `safe_join` blocks path traversal (verified: `../config.py` → 404).
 
-Two things to know before extending this: `DOCS_DIR` in `routes/pages.py` is **hardcoded** to `reports/hulei_acdc_discussion/`, and the doc is shown to **every logged-in user** (not scoped per-user). The markdown + PNGs are generated **outside the app** (ad-hoc scripts) and dropped into `reports/`; the app only serves them. `reports/` is gitignored because the images are patient-derived.
+**In-browser editing** (`templates/docs.html` toolbar — **any logged-in user**, since docs are shared). The editor is **Toast UI Editor (CDN, pinned 3.2.2, dark theme)** in WYSIWYG mode (a Markdown/WYSIWYG mode-switch tab sits at the bottom). Created on *Edit* / destroyed on *Save/Cancel* (`enterEdit`/`destroyEditor` — never stack two instances). **Image path round-trip**: stored markdown keeps doc-relative `imgs/...`, but the editor needs absolute URLs to display them — `absImgPaths()` rewrites on load, `relImgPaths()` reverses on save (covers both `src="` and `](` forms). Toolbar-insert / paste / drag-drop images all funnel through `hooks.addImageBlobHook` → `/api/docs/image` (pasted blobs get a `pasted.png` fallback name). Caveat: a WYSIWYG round-trip **normalises raw HTML** — inline `style=` attributes are stripped on save (this once ate the DOCX-derived image sizing). Two mitigations are in place: (1) docs whose markdown contains styled raw HTML are auto-opened in **Markdown mode** (`hasStyledHtml` check in `enterEdit`; the hint line warns that the WYSIWYG tab would still mangle them), and (2) the DOCX-derived doc was regenerated to be WYSIWYG-safe — images **pixel-resized on disk** to their intended display width (Pillow, from `source.docx`'s `width:…in` × 96) and referenced as plain `![](imgs/…)`; `#doc-content img` renders natural size (`width:auto; max-width:100%` — do **not** reintroduce `width:100%`, it stretches small thumbnails). Prefer this pattern (resize the file, plain markdown ref) over inline-style sizing for any future imported doc. Four `@login_required` endpoints in `routes/api.py`, all backed by `services/docs.py`:
+- **`/api/docs/save`** (POST `{file, content}`) → `save_doc()`: overwrites an **existing** reports-relative `.md` (≤ `MAX_MD_BYTES` = 2 MB).
+- **`/api/docs/create`** (POST `{title}`) → `create_doc()`: makes `reports/<slug>/report.md` (seeded with `# <title>`) + empty `imgs/`. Folder = `_slugify(title)` (non-`[A-Za-z0-9_.-]` → `_`); a non-ASCII title like `分割判断` slugs to empty → falls back to `doc`, then `doc_2`… on collision. The H1 carries the real (possibly unicode) title, so the dropdown still shows it.
+- **`/api/docs/delete`** (POST `{dir}`) → `delete_doc()`: `rmtree`s a doc folder — only a **direct child** of `reports/` (`os.path.dirname(full) == DOCS_ROOT`).
+- **`/api/docs/image`** (POST multipart `dir`, `image`) → `save_doc_image()`: writes into `<dir>/imgs/`, allowlisted raster ext (`IMG_EXTS`, no SVG), ≤ `MAX_IMG_BYTES` = 12 MB, `secure_filename` + numeric-suffix de-dupe; returns `imgs/<name>` for the editor to insert as `![](…)`.
+
+**The single guard** for all four is `services.docs._resolve(rel)` — `realpath`-confines a client-supplied reports-relative path to `DOCS_ROOT` (rejects `..`, absolute paths, NUL). **Route every filesystem path from an edit request through `_resolve()`.** Stored markdown is still rendered through DOMPurify, so a user typing `<script>`/`<img onerror>` into the editor is neutralised at render time for every viewer — the sanitiser is load-bearing now that content is user-writable, not just generated.
+
+Docs are shown to **every logged-in user** (not scoped per-user) and are equally writable by every logged-in user — there is no per-doc ownership and no version history (a Save overwrites; a Delete is final). Content arrives two ways: generated **outside the app** (ad-hoc scripts / pandoc DOCX conversion) and dropped into `reports/`, or created/edited **in the page** via the toolbar. `reports/` is gitignored because the images are patient-derived.
 
 ### 3D per-category visibility
 
@@ -154,14 +167,19 @@ A second admin-only page (Menu → *Admin Tools*; disabled `<span>` for non-admi
 
 - **`/api/admin/overview`** → `services.users.admin_overview()`: every user + their QC files, each file carrying `visible` (bool) and `progress` (`{total, ed, es}`).
 - **`/api/admin/visibility`** (POST `{username, filename, visible}`) → `set_file_visibility()`.
+- **`/api/admin/user`** (POST `{username, password}`) → `add_user()`: creates the credential + an empty `JSON/users/<name>/` folder.
+- **`/api/admin/user/password`** (POST `{username, password}`) → `set_password()`.
+- **`/api/admin/user/delete`** (POST `{username, delete_data}`) → `delete_user()`: removes the credential + its `file_visibility.json` entries; if `delete_data` is true, also `shutil.rmtree`s the data folder (confined to `USERS_DIR`). The **`admin` account is protected** (can't be deleted).
+
+**Account management** — usernames double as folder names, so `valid_username()` (`services/users.py`) requires a single safe path segment (`^[A-Za-z0-9][A-Za-z0-9_.\-]{0,63}$` — must start alphanumeric, blocking `.`/`..`/dotfiles/traversal). `_save_users()` rewrites `users.json` (indent=2, `ensure_ascii=False`). Frontend: the `#acct-bar` add-user form + per-card *Change Password* / *Delete* buttons in `static/js/admin.js` (page UI is English). **Delete uses a confirm modal** (`#del-modal`) with a *also delete data folder* checkbox → `delete_data` in the POST. Changing a user's password does **not** invalidate their existing session (sessions store only the username, not the password).
 
 **Per-user file visibility** — stored in `JSON/file_visibility.json` as `{username: [hidden_filename, ...]}` (gitignored, like all of `JSON/`). `list_qc_files(username)` filters these out for non-admins, so a hidden file vanishes from that user's dataset dropdown (the file on disk is untouched). **Admin is never filtered** (`username == 'admin'` short-circuits) and can't hide its own files. `_list_files_raw()` is the unfiltered variant the admin overview uses.
 
-**QC progress** — `_file_progress()` counts a phase as done only when its comment is a *real reviewer decision*: `parse_decision(comment) in QC_DECISIONS`. A bare `CardiacAgent: …` note parses to `'unknown'` and is **not** counted, so agent-fixed datasets don't show false 100% progress. `static/js/admin.js` renders `ED x/N · ES y/N` per file (green when complete).
+**QC progress** — `_file_progress()` counts a phase as done only when its comment is a *real reviewer decision*: `parse_decision(comment) in QC_DECISIONS`. A bare `CardiacAgent: …` note parses to `'unknown'` and is **not** counted, so agent-fixed datasets don't show false 100% progress. `static/js/admin.js` renders `ED x/N · ES y/N` per file plus a **progress bar** (fill = combined `(ed+es)/(total*2)`, turns `--ok` green when complete).
 
 ### Top-bar dropdown & floating panels
 
-The **Menu** dropdown (`#nav-menu`, toggled + wired in `app.js`) holds: *Useful Document* (`/docs`), *File System* (`/files`, admin-only — a disabled `<span>` for non-admins), and **⟲ Reset Panel Positions**.
+The **Menu** dropdown (`#nav-menu`, toggled + wired in `app.js`) holds: *Useful Document* (`/docs`), *File System* (`/files`), *Admin Tools* (`/admin`) — the latter two admin-only, rendered as disabled `<span>`s for non-admins — and **⟲ Reset Panel Positions**.
 
 Two panels are drag-positioned in `app.js` and persisted to `localStorage`: the Control Panel (`#floating-qc-panel`, anchored **top-left** at `top:62 left:440` — just right of QC Statistics — dragged via CSS `transform: translate`, keys `panelPosX/Y`) and the QC Statistics panel (`#floating-stats-panel`, anchored top-left, dragged via inline `left/top`, keys `statsPanelPosX/Y`); each also persists a `*Minimized` flag (`panelMinimized`, `statsPanelMinimized`, `infoPanelMinimized` for the 3D Controls). `resetPanelPositions()` clears positions AND the minimized flags AND restores the in-DOM minimize state (removes `.minimized`/`.hidden`, flips the toggle text from `＋` back to `－`) — without that last step, a panel minimized + dragged off-screen comes back as an unfindable tiny strip. The 3D `#info` ("Controls") panel is collapsible but **fixed-position** (not draggable, so it can't be lost).
 
@@ -172,10 +190,10 @@ The Control Panel's drag handler (`dragStart` in `app.js`) skips elements where 
 ## Editing tips
 
 - **Backend Python change** → `systemctl --user restart hcmqc`. Flask runs with `DEBUG=False`, so there's no auto-reload.
-- **Template change** (`templates/*.html`) → restart Flask (templates are cached when `DEBUG=False`).
+- **Template change** (`templates/*.html`) → restart Flask (templates are cached when `DEBUG=False`). Note `docs.html` carries ALL its page CSS **and JS** inline (including the whole editor logic), and `files.html`/`admin.html` carry their page CSS inline — changing that "frontend" code is a template change and needs the restart (their JS in `static/` does not).
 - **Static change** (`static/js/app.js`, `static/css/app.css`) → no restart, just hard-refresh the browser (Ctrl-Shift-R) — Flask serves static files directly.
 - **Injecting server values into `index.html`** → they become top-level `const`s in the inline `<script>` that `app.js` reads. **String values MUST use `| tojson`** (e.g. `const QC_COMMENT = {{ qc_comment | tojson }};`), never bare `"{{ ... }}"`. QC comments can contain newlines or quotes (e.g. multi-line CardiacAgent notes appended after the decision); injected raw, a newline/quote breaks the entire inline script → every `const` is undefined → `app.js` throws → the page silently fails to load (this exact bug froze a reviewer's app). Arrays/objects are pre-`json.dumps`'d in `routes/pages.py` and injected with `|safe`.
-- **Adding a new `/api/*` route** → put it in `routes/api.py`, decorate with `@login_required` (or `@admin_required` for admin-only), use `_store_or_404()` if it needs the active dataset. Keep business logic in `services/`. Anything that touches the host filesystem must go through `services.filebrowser.resolve()`.
+- **Adding a new `/api/*` route** → put it in `routes/api.py`, decorate with `@login_required` (or `@admin_required` for admin-only), use `_store_or_404()` if it needs the active dataset. Keep business logic in `services/`. Any client-supplied filesystem path must go through the matching confinement guard: `services.filebrowser.resolve()` (FILES_ROOT), `services.docs._resolve()` (reports/), or `services.users.valid_username()`/`resolve_qc_path()` (JSON/users/).
 - **`JSON/` is fully gitignored** — never commit credentials or patient data. Verify with `git check-ignore -v JSON/whatever`.
 - **Keyboard shortcuts** live in a single `keydown` listener at the bottom of `static/js/app.js`: `1`=accept, `2`=reject, `S`=save, `←`/`→`=prev/next patient. Suppressed when focus is in an `<input>`/`<textarea>`/**`<select>`** (without the select check, typing `S` to typeahead-jump in the dataset dropdown silently saves QC, and arrow keys would reload the page) or any modifier (Ctrl/Meta/Alt) is held, so `Ctrl+S` still does the browser default. Hint chips render via `<span class="kbd">` in `templates/index.html`, styled in `static/css/app.css`.
 

@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/3.2.2/toastui-editor.min.css">
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/3.2.2/theme/toastui-editor-dark.min.css">
     <style>
         body { overflow: auto; }
         #doc-top {
@@ -28,8 +30,30 @@
         }
         #doc-top .spacer { margin-left: auto; }
         #doc-top .user { color: var(--accent); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }
+        #doc-select {
+            font-family: var(--font-mono); font-size: 11px; color: var(--text-0);
+            background: var(--bg-0); border: 1px solid var(--line-mid);
+            padding: 4px 8px; max-width: 360px; cursor: pointer;
+        }
+        #doc-select:focus { outline: none; border-color: var(--accent-dim); }
+        .doc-btn {
+            color: var(--text-1); background: var(--bg-0); padding: 5px 10px; cursor: pointer;
+            border: 1px solid var(--line-mid); font-size: 10px; letter-spacing: 0.14em;
+            text-transform: uppercase; font-family: var(--font-mono);
+            transition: background .12s, border-color .12s, color .12s;
+        }
+        .doc-btn:hover { background: var(--accent-bg); border-color: var(--accent-dim); color: var(--accent); }
+        .doc-btn.danger:hover { background: rgba(255,80,80,.12); border-color: var(--no); color: var(--no); }
+        .doc-btn.primary { color: var(--accent); border-color: var(--accent-dim); }
+        #doc-toolbar { display: flex; gap: 8px; align-items: center; }
 
         #doc-wrap { max-width: 900px; margin: 70px auto 80px; padding: 0 28px; }
+        #doc-editor { display: none; }
+        /* Blend the Toast UI dark theme into the app palette. */
+        #doc-editor .toastui-editor-defaultUI { border-color: var(--line-mid); }
+        #editor-hint { color: var(--text-2); font-family: var(--font-mono); font-size: 10.5px; margin: 8px 0 0; display: none; }
+        body.editing #doc-editor, body.editing #editor-hint { display: block; }
+        body.editing #doc-content { display: none; }
         #doc-content { color: var(--text-0); font-family: var(--font-sans); font-size: 14px; line-height: 1.7; }
         #doc-content h1 { font-family: var(--font-mono); font-size: 22px; letter-spacing: .04em; color: var(--accent-hi); margin: 0 0 14px; }
         #doc-content h2 {
@@ -51,8 +75,11 @@
             border: 1px solid var(--line); padding: 1px 5px; border-radius: 3px; color: var(--accent-hi);
         }
         #doc-content img {
-            display: block; max-width: 420px; width: 100%; height: auto; margin: 12px 0 6px;
-            border: 1px solid var(--line-mid); background: #000;
+            /* Natural size (images are pre-resized on disk to their intended
+               display width), capped to the column. width:100% would stretch
+               small thumbnails — don't reintroduce it. */
+            display: inline-block; vertical-align: top; max-width: 100%; width: auto; height: auto;
+            margin: 12px 6px 6px 0; border: 1px solid var(--line-mid); background: #000;
         }
         #doc-content table { border-collapse: collapse; margin: 12px 0; font-size: 13px; }
         #doc-content th, #doc-content td { border: 1px solid var(--line-mid); padding: 6px 12px; text-align: left; }
@@ -64,7 +91,17 @@
     <div id="doc-top">
         <a class="back" href="/">← Back to QC</a>
         <span class="title">Useful Document</span>
+        <select id="doc-select" title="Switch document"></select>
         <span class="spacer"></span>
+        <div id="doc-toolbar">
+            <!-- View mode -->
+            <button class="doc-btn" id="btn-new">＋ New</button>
+            <button class="doc-btn" id="btn-edit">✎ Edit</button>
+            <button class="doc-btn danger" id="btn-delete">🗑 Delete</button>
+            <!-- Edit mode -->
+            <button class="doc-btn primary" id="btn-save" hidden>💾 Save</button>
+            <button class="doc-btn" id="btn-cancel" hidden>✕ Cancel</button>
+        </div>
         <span class="user">{{ username }}</span>
         <a class="back" href="/logout">Logout</a>
     </div>
@@ -72,36 +109,248 @@
     <div id="doc-wrap">
         <div id="doc-status">Loading document…</div>
         <div id="doc-content"></div>
+        <div id="doc-editor"></div>
+        <div id="editor-hint">WYSIWYG editing · paste / drag / toolbar-insert images to upload · changes are shared with all users on Save.</div>
     </div>
 
+    <script src="https://uicdn.toast.com/editor/3.2.2/toastui-editor-all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
     <script>
-        (async function () {
-            const status = document.getElementById('doc-status');
-            const content = document.getElementById('doc-content');
+        const CURRENT_USER = {{ username | tojson }};
+        // Remember the last-viewed document per user (shared workstation safe).
+        const ACTIVE_DOC_KEY = 'docsActiveFile::' + CURRENT_USER;
+
+        const status = document.getElementById('doc-status');
+        const content = document.getElementById('doc-content');
+        const select = document.getElementById('doc-select');
+        const editorEl = document.getElementById('doc-editor');
+        const $ = id => document.getElementById(id);
+
+        let tuiEditor = null;   // Toast UI Editor instance while in edit mode
+
+        // The stored markdown references images as doc-relative `imgs/...`.
+        // Inside the editor those must be absolute (`/docs/file/<dir>/imgs/...`)
+        // to display; on save we rewrite them back so files on disk stay
+        // location-independent. Covers both HTML `src="` and markdown `](`.
+        function imgPrefix(dir) { return '/docs/file/' + (dir ? dir + '/' : ''); }
+        function absImgPaths(md, dir) {
+            const p = imgPrefix(dir);
+            return md.replaceAll('src="imgs/', 'src="' + p + 'imgs/')
+                     .replaceAll('](imgs/', '](' + p + 'imgs/');
+        }
+        function relImgPaths(md, dir) {
+            const p = imgPrefix(dir);
+            return md.replaceAll('src="' + p + 'imgs/', 'src="imgs/')
+                     .replaceAll('](' + p + 'imgs/', '](imgs/');
+        }
+
+        // file -> doc record ({title, file, dir}) for the chosen <option>.
+        const docsByFile = new Map();
+        let currentDoc = null;   // doc record currently shown
+        let currentMd = '';      // raw markdown of the current doc
+
+        function renderMarkdown(md, dir) {
+            let html = marked.parse(md);
+            // Rewrite this doc's relative image paths to the login-gated asset
+            // route, prefixed by its own reports-relative folder so each
+            // document resolves its own imgs/.
+            const imgPrefix = '/docs/file/' + (dir ? dir + '/' : '');
+            html = html.replaceAll('src="imgs/', 'src="' + imgPrefix + 'imgs/');
+            // Marked v12 does NOT sanitize HTML by default (sanitize option was
+            // removed in v5+). Run the parsed HTML through DOMPurify to strip
+            // <script>, on*-handlers, javascript: URLs, etc. before injecting.
+            // This also neutralises anything a user types into the editor.
+            if (typeof DOMPurify !== 'undefined') html = DOMPurify.sanitize(html);
+            content.innerHTML = html;
+        }
+
+        async function loadDoc(doc) {
+            currentDoc = doc || null;
+            updateButtons();
+            if (!doc) { content.innerHTML = ''; return; }
+            status.style.display = '';
+            status.textContent = 'Loading document…';
+            content.innerHTML = '';
             try {
-                const resp = await fetch('/docs/file/report.md', { cache: 'no-store' });
+                // Encode each path segment (not the '/' separators) so a folder
+                // or filename containing #, ?, & etc. produces a valid URL.
+                const encodedPath = doc.file.split('/').map(encodeURIComponent).join('/');
+                const resp = await fetch('/docs/file/' + encodedPath, { cache: 'no-store' });
                 if (!resp.ok) throw new Error('HTTP ' + resp.status);
-                const md = await resp.text();
-                let html = marked.parse(md);
-                // Rewrite relative image paths to the login-gated asset route.
-                html = html.replaceAll('src="imgs/', 'src="/docs/file/imgs/');
-                // Marked v12 does NOT sanitize HTML by default (sanitize option
-                // was removed in v5+). Run the parsed HTML through DOMPurify to
-                // strip <script>, on*-handlers, javascript: URLs, etc. before
-                // injecting into the live DOM. Defense-in-depth for the case
-                // where the report.md generation pipeline ever ingests
-                // untrusted input.
-                if (typeof DOMPurify !== 'undefined') {
-                    html = DOMPurify.sanitize(html);
-                }
-                content.innerHTML = html;
+                currentMd = await resp.text();
+                renderMarkdown(currentMd, doc.dir);
                 status.style.display = 'none';
             } catch (err) {
-                status.textContent = '无法加载文档 (' + err.message + ')。报告可能尚未生成。';
+                status.style.display = '';
+                status.textContent = 'Failed to load document (' + err.message + ').';
             }
-        })();
+        }
+
+        // Re-fetch the document list, rebuild the dropdown, and load `selectFile`
+        // (or the first doc). Used after create/save/delete so titles stay fresh.
+        async function loadDocsList(selectFile) {
+            let docs = [];
+            try {
+                const resp = await fetch('/api/docs', { cache: 'no-store' });
+                if (resp.ok) docs = (await resp.json()).docs || [];
+            } catch (err) { /* fall through to empty state */ }
+
+            docsByFile.clear();
+            select.innerHTML = '';
+            for (const doc of docs) {
+                docsByFile.set(doc.file, doc);
+                const opt = document.createElement('option');
+                opt.value = doc.file;          // textContent assignment — no HTML injection
+                opt.textContent = doc.title;
+                select.appendChild(opt);
+            }
+            select.style.display = docs.length > 1 ? '' : 'none';
+
+            if (!docs.length) {
+                status.style.display = '';
+                status.textContent = 'No documents yet — click “New” to create one.';
+                await loadDoc(null);
+                return;
+            }
+            let target = selectFile && docsByFile.has(selectFile) ? selectFile : null;
+            if (!target) {
+                const remembered = localStorage.getItem(ACTIVE_DOC_KEY);
+                target = docsByFile.has(remembered) ? remembered : docs[0].file;
+            }
+            select.value = target;
+            localStorage.setItem(ACTIVE_DOC_KEY, target);
+            // Await so callers (e.g. “New” → edit) see currentMd/currentDoc updated.
+            await loadDoc(docsByFile.get(target));
+        }
+
+        select.addEventListener('change', function () {
+            const doc = docsByFile.get(select.value);
+            if (doc) {
+                localStorage.setItem(ACTIVE_DOC_KEY, doc.file);
+                loadDoc(doc);
+            }
+        });
+
+        // ── Edit mode (Toast UI WYSIWYG) ────────────────────────────────────
+        function setEditMode(on) {
+            document.body.classList.toggle('editing', on);
+            ['btn-new', 'btn-edit', 'btn-delete'].forEach(id => $(id).hidden = on);
+            ['btn-save', 'btn-cancel'].forEach(id => $(id).hidden = !on);
+            select.disabled = on;
+            if (on) status.style.display = 'none';
+        }
+        function updateButtons() {
+            // No doc selected → nothing to edit or delete.
+            $('btn-edit').disabled = !currentDoc;
+            $('btn-delete').disabled = !currentDoc;
+        }
+
+        function destroyEditor() {
+            if (tuiEditor) { tuiEditor.destroy(); tuiEditor = null; }
+            editorEl.innerHTML = '';
+        }
+
+        function enterEdit() {
+            if (!currentDoc) return;
+            setEditMode(true);
+            destroyEditor();   // safety: never stack two instances
+            // WYSIWYG round-trips NORMALISE raw HTML — inline style attributes
+            // (e.g. <span style="color:…">) are stripped on save. Docs that
+            // carry styled HTML open in Markdown mode instead; switching to
+            // the WYSIWYG tab and saving would still mangle them.
+            const hasStyledHtml = /<[a-z][a-z0-9]*\s[^>]*style=/i.test(currentMd);
+            $('editor-hint').textContent = hasStyledHtml
+                ? '⚠ This document contains raw HTML with inline styles — opened in Markdown mode. Saving from the WYSIWYG tab would strip those styles.'
+                : 'WYSIWYG editing · paste / drag / toolbar-insert images to upload · changes are shared with all users on Save.';
+            tuiEditor = new toastui.Editor({
+                el: editorEl,
+                initialEditType: hasStyledHtml ? 'markdown' : 'wysiwyg',
+                height: 'calc(100vh - 170px)',
+                initialValue: absImgPaths(currentMd, currentDoc.dir),
+                theme: 'dark',
+                usageStatistics: false,
+                autofocus: true,
+                hooks: {
+                    // Toolbar insert, paste, and drag-drop all funnel through here.
+                    addImageBlobHook: async (blob, callback) => {
+                        try {
+                            const fd = new FormData();
+                            fd.append('dir', currentDoc.dir);
+                            // Pasted blobs may lack a name — default to .png.
+                            fd.append('image', blob, blob.name || 'pasted.png');
+                            const resp = await fetch('/api/docs/image', { method: 'POST', body: fd });
+                            const d = await resp.json();
+                            if (!resp.ok || d.status !== 'success') throw new Error(d.message || ('HTTP ' + resp.status));
+                            // Insert absolute so it displays; save rewrites to relative.
+                            callback(imgPrefix(currentDoc.dir) + d.path, '');
+                        } catch (err) {
+                            alert('Image upload failed: ' + err.message);
+                        }
+                    }
+                }
+            });
+        }
+
+        $('btn-edit').addEventListener('click', enterEdit);
+        $('btn-cancel').addEventListener('click', () => { destroyEditor(); setEditMode(false); });
+
+        $('btn-save').addEventListener('click', async () => {
+            if (!currentDoc || !tuiEditor) return;
+            const btn = $('btn-save');
+            btn.disabled = true;
+            try {
+                const md = relImgPaths(tuiEditor.getMarkdown(), currentDoc.dir);
+                await postJSON('/api/docs/save', { file: currentDoc.file, content: md });
+                currentMd = md;
+                destroyEditor();
+                setEditMode(false);
+                // The H1 (= dropdown title) may have changed — refresh the list.
+                await loadDocsList(currentDoc.file);
+            } catch (err) {
+                alert('Save failed: ' + err.message);
+            } finally {
+                btn.disabled = false;
+            }
+        });
+
+        $('btn-new').addEventListener('click', async () => {
+            const title = prompt('New document title:');
+            if (title === null) return;
+            if (!title.trim()) { alert('Title cannot be empty'); return; }
+            try {
+                const d = await postJSON('/api/docs/create', { title: title.trim() });
+                await loadDocsList(d.doc.file);
+                enterEdit();   // jump straight into editing the fresh doc
+            } catch (err) {
+                alert('Create failed: ' + err.message);
+            }
+        });
+
+        $('btn-delete').addEventListener('click', async () => {
+            if (!currentDoc) return;
+            if (!confirm(`Delete document “${currentDoc.title}” and all its images? This cannot be undone.`)) return;
+            try {
+                await postJSON('/api/docs/delete', { dir: currentDoc.dir });
+                localStorage.removeItem(ACTIVE_DOC_KEY);
+                await loadDocsList();
+            } catch (err) {
+                alert('Delete failed: ' + err.message);
+            }
+        });
+
+        async function postJSON(url, body) {
+            const r = await fetch(url, {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
+            });
+            let d = {};
+            try { d = await r.json(); } catch (e) { /* non-JSON */ }
+            if (!r.ok || d.status !== 'success') throw new Error(d.message || ('HTTP ' + r.status));
+            return d;
+        }
+
+        loadDocsList();
     </script>
 </body>
 </html>

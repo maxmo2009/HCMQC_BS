@@ -1,17 +1,13 @@
 import json
-import os
 
 from flask import Blueprint, jsonify, render_template, send_from_directory, session
 
-from config import PROJECT_ROOT
 from routes.auth import admin_required, login_required
+from services.docs import DOCS_ROOT
 from services.patient import build_patient_payload, get_store_for_session
 from services.users import list_qc_files
 
 pages_bp = Blueprint('pages', __name__)
-
-# Folder holding generated team documents (markdown + image assets).
-DOCS_DIR = os.path.join(PROJECT_ROOT, 'reports', 'hulei_acdc_discussion')
 
 
 def _empty_render(username, files, active):
@@ -96,8 +92,12 @@ def docs():
 @pages_bp.route('/docs/file/<path:filename>')
 @login_required
 def docs_file(filename):
-    """Serve the markdown and its image assets (login-gated — patient-derived)."""
-    return send_from_directory(DOCS_DIR, filename)
+    """Serve any document's markdown + image assets (login-gated — patient-derived).
+
+    `filename` is reports-relative (e.g. `hulei_acdc_discussion/report.md` or
+    `.../imgs/x.png`); send_from_directory's safe_join blocks path traversal.
+    """
+    return send_from_directory(DOCS_ROOT, filename)
 
 
 @pages_bp.route('/files')

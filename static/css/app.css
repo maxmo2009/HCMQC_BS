@@ -490,13 +490,15 @@ body::before {
 }
 
 /* 3D per-category show/hide toggles */
-#label-toggles {
+#label-toggles,
+#mesh-toggles {
     margin-top: 8px;
     padding-top: 8px;
     border-top: 1px solid var(--line);
 }
 
-#label-toggles .lt-title {
+#label-toggles .lt-title,
+#mesh-toggles .lt-title {
     font-size: 9px;
     color: var(--text-2);
     text-transform: uppercase;
@@ -504,7 +506,8 @@ body::before {
     margin-bottom: 5px;
 }
 
-#label-toggles .lt-row {
+#label-toggles .lt-row,
+#mesh-toggles .lt-row {
     display: flex;
     align-items: center;
     gap: 7px;
@@ -513,29 +516,75 @@ body::before {
     user-select: none;
 }
 
-#label-toggles .lt-cb {
+#label-toggles .lt-cb,
+#mesh-toggles .lt-cb,
+#mesh-toggles .mesh-cb,
+#mesh-toggles #mesh-master {
     cursor: pointer;
     accent-color: var(--accent);
     margin: 0;
 }
 
-#label-toggles .lt-swatch {
+#label-toggles .lt-swatch,
+#mesh-toggles .lt-swatch {
     width: 10px;
     height: 10px;
     border: 1px solid rgba(255, 255, 255, 0.25);
     flex-shrink: 0;
 }
 
-#label-toggles .lt-name {
+#label-toggles .lt-name,
+#mesh-toggles .lt-name {
     font-family: var(--font-mono);
     font-size: 10px;
     color: var(--text-0);
     letter-spacing: 0.06em;
 }
 
-#label-toggles .lt-row:has(.lt-cb:not(:checked)) .lt-name {
+#label-toggles .lt-row:has(.lt-cb:not(:checked)) .lt-name,
+#mesh-toggles .lt-row:has(.mesh-cb:not(:checked)) .lt-name {
     color: var(--text-2);
     text-decoration: line-through;
+}
+
+#mesh-region-toggles {
+    margin-left: 4px;
+}
+
+#mesh-toggles .mesh-status {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-2);
+    margin-top: 3px;
+}
+
+#mesh-toggles .mesh-op-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 3px 0 1px;
+}
+
+#mesh-toggles .mesh-op-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-0);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+
+/* Fixed-width value so 5% -> 100% doesn't reflow the row and jitter the slider. */
+#mesh-toggles #mesh-op-val {
+    display: inline-block;
+    width: 24px;
+    text-align: right;
+}
+
+#mesh-toggles #mesh-opacity {
+    width: 84px;
+    flex: none;
+    accent-color: var(--accent);
+    cursor: pointer;
 }
 
 #loading {
@@ -699,10 +748,19 @@ body::before {
     background: var(--accent-bg);
 }
 
-#drag-icon {
+/* Shared right-side header cluster: minimize button + drag handle.
+   Used identically by the Control Panel and QC Statistics panel headers. */
+.panel-header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.drag-icon {
     color: var(--text-2);
     font-size: 10px;
     letter-spacing: 0.1em;
+    cursor: move;
 }
 
 /* QC panel interior */
@@ -1085,7 +1143,6 @@ body::before {
     transform-origin: top left;
     background: var(--bg-2);
     border: 1px solid var(--line-strong);
-    padding: 12px 14px;
     z-index: 2000;
     min-width: 350px;
     max-width: 400px;
@@ -1107,12 +1164,17 @@ body::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: -12px -14px 12px -14px;
     padding: 9px 14px;
     background: var(--bg-3);
     border-bottom: 1px solid var(--line-strong);
     color: var(--accent);
     cursor: move;
+}
+
+/* Interior padding lives on the content (not the panel root) so a minimized
+   panel collapses to just the header bar — matching the Control Panel. */
+#stats-panel-content {
+    padding: 12px 14px;
 }
 
 #stats-panel-title {

@@ -88,6 +88,7 @@
                     R-click + drag &nbsp;·&nbsp; pan<br>
                     Scroll &nbsp;·&nbsp; zoom<br>
                     <div id="label-toggles"></div>
+                    <div id="mesh-toggles"></div>
                     <div id="stats"></div>
                 </div>
             </div>
@@ -103,9 +104,9 @@
     <div id="floating-qc-panel">
         <div id="panel-header">
             <span id="panel-title">Control Panel</span>
-            <div style="display: flex; gap: 10px;">
-                <span id="minimize-btn" style="cursor: pointer; font-size: 18px; line-height: 1;" title="Minimize">－</span>
-                <span id="drag-icon">⋮⋮</span>
+            <div class="panel-header-controls">
+                <span id="minimize-btn" title="Minimize">－</span>
+                <span id="drag-icon" class="drag-icon">⋮⋮</span>
             </div>
         </div>
         <div id="panel-content">
@@ -176,7 +177,10 @@
     <div id="floating-stats-panel">
         <div id="stats-panel-header">
             <span id="stats-panel-title">QC Statistics</span>
-            <span id="stats-minimize-btn" title="Minimize">－</span>
+            <div class="panel-header-controls">
+                <span id="stats-minimize-btn" title="Minimize">－</span>
+                <span id="stats-drag-icon" class="drag-icon">⋮⋮</span>
+            </div>
         </div>
         <div id="stats-panel-content">
             <div id="dataset-selector-container">

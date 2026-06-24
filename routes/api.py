@@ -3,11 +3,27 @@ import os
 from flask import Blueprint, jsonify, request, send_file, session
 
 from routes.auth import admin_required, login_required
+from services.docs import (
+    create_doc,
+    delete_doc,
+    list_docs,
+    save_doc,
+    save_doc_image,
+)
 from services.filebrowser import is_nifti, list_dir, resolve
+from services.mesh_loader import load_patient_meshes
 from services.nifti_loader import load_nifti_voxels
 from services.patient import build_patient_payload, get_store_for_session
 from services.qc_store import parse_decision
-from services.users import admin_overview, list_qc_files, resolve_qc_path, set_file_visibility
+from services.users import (
+    add_user,
+    admin_overview,
+    delete_user,
+    list_qc_files,
+    resolve_qc_path,
+    set_file_visibility,
+    set_password,
+)
 
 api_bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -32,6 +48,62 @@ def api_list_qc_files():
         'files': files,
         'active': session.get('active_qc_file'),
     })
+
+
+@api_bp.route('/docs')
+@login_required
+def api_docs():
+    """List the markdown documents available to the /docs viewer."""
+    return jsonify({'status': 'success', 'docs': list_docs()})
+
+
+# ── Document editing (any logged-in user; docs are shared) ──────────────────
+@api_bp.route('/docs/save', methods=['POST'])
+@login_required
+def api_docs_save():
+    """Overwrite an existing doc's markdown. Body: {file, content}."""
+    data = request.get_json(silent=True) or {}
+    ok, msg = save_doc(data.get('file'), data.get('content'))
+    if not ok:
+        return jsonify({'status': 'error', 'message': msg}), 400
+    return jsonify({'status': 'success'})
+
+
+@api_bp.route('/docs/create', methods=['POST'])
+@login_required
+def api_docs_create():
+    """Create a new blank document. Body: {title}. Returns the doc record."""
+    data = request.get_json(silent=True) or {}
+    ok, res = create_doc(data.get('title'))
+    if not ok:
+        return jsonify({'status': 'error', 'message': res}), 400
+    return jsonify({'status': 'success', 'doc': res})
+
+
+@api_bp.route('/docs/delete', methods=['POST'])
+@login_required
+def api_docs_delete():
+    """Delete an entire document folder. Body: {dir}."""
+    data = request.get_json(silent=True) or {}
+    ok, msg = delete_doc(data.get('dir'))
+    if not ok:
+        return jsonify({'status': 'error', 'message': msg}), 400
+    return jsonify({'status': 'success'})
+
+
+@api_bp.route('/docs/image', methods=['POST'])
+@login_required
+def api_docs_image():
+    """Upload an image into a doc's imgs/ folder. Multipart: dir=<rel>, image=<file>.
+    Returns the doc-relative path ('imgs/<name>') to insert into the markdown."""
+    dir_rel = request.form.get('dir')
+    f = request.files.get('image')
+    if f is None:
+        return jsonify({'status': 'error', 'message': 'no image uploaded'}), 400
+    ok, res = save_doc_image(dir_rel, f.filename, f.read())
+    if not ok:
+        return jsonify({'status': 'error', 'message': res}), 400
+    return jsonify({'status': 'success', 'path': res})
 
 
 @api_bp.route('/set_qc_file/<path:filename>')
@@ -98,6 +170,26 @@ def get_patient_data():
     if payload is None:
         return jsonify({'status': 'error', 'message': 'Patient data not found'}), 404
     return jsonify({'status': 'success', 'data': payload})
+
+
+@api_bp.route('/meshes/<int:patient_index>')
+@login_required
+def get_patient_meshes(patient_index):
+    """Fitted template-mesh geometry for a patient/phase, for 3D overlay.
+
+    Returns voxel-space vertices + triangle faces per region (LVendo/LVepi/
+    LVmyo/RV), or {'available': False} when the patient has no vtks/ folder.
+    Loaded lazily (meshes are large) — the viewer fetches this only when the
+    mesh overlay is switched on.
+    """
+    store, err = _store_or_404()
+    if err: return err
+    patient_path = store.resolved_path(patient_index)
+    if patient_path is None:
+        return jsonify({'status': 'error', 'message': 'Invalid patient index'}), 404
+    phase = request.args.get('phase', session.get('phase', 'ED'))
+    data = load_patient_meshes(patient_path, phase)
+    return jsonify({'status': 'success', 'phase': phase, **data})
 
 
 @api_bp.route('/patient_list')
@@ -245,6 +337,45 @@ def api_admin_visibility():
     if not set_file_visibility(username, filename, visible):
         return jsonify({'status': 'error', 'message': 'File not found in that user\'s folder'}), 404
     return jsonify({'status': 'success', 'username': username, 'filename': filename, 'visible': visible})
+
+
+@api_bp.route('/admin/user', methods=['POST'])
+@admin_required
+def api_admin_create_user():
+    """Create a user + empty data folder. Body: {username, password}."""
+    data = request.get_json(silent=True) or {}
+    username = (data.get('username') or '').strip()
+    password = data.get('password') or ''
+    ok, msg = add_user(username, password)
+    if not ok:
+        return jsonify({'status': 'error', 'message': msg}), 400
+    return jsonify({'status': 'success', 'username': username})
+
+
+@api_bp.route('/admin/user/password', methods=['POST'])
+@admin_required
+def api_admin_set_password():
+    """Change a user's password. Body: {username, password}."""
+    data = request.get_json(silent=True) or {}
+    username = data.get('username')
+    password = data.get('password') or ''
+    ok, msg = set_password(username, password)
+    if not ok:
+        return jsonify({'status': 'error', 'message': msg}), (404 if msg == 'user not found' else 400)
+    return jsonify({'status': 'success', 'username': username})
+
+
+@api_bp.route('/admin/user/delete', methods=['POST'])
+@admin_required
+def api_admin_delete_user():
+    """Delete a user. Body: {username, delete_data}. Admin account is protected."""
+    data = request.get_json(silent=True) or {}
+    username = data.get('username')
+    delete_data = bool(data.get('delete_data'))
+    ok, msg = delete_user(username, delete_data)
+    if not ok:
+        return jsonify({'status': 'error', 'message': msg}), (404 if msg == 'user not found' else 400)
+    return jsonify({'status': 'success', 'username': username, 'deleted_data': delete_data})
 
 
 @api_bp.route('/download_json')
