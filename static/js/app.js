@@ -244,7 +244,7 @@ function buildLabelToggles(presentLabels) {
     let html = '<div class="lt-title">Show / Hide</div>';
     html += `<div class="mesh-op-row">` +
         `<span class="mesh-op-label">opacity <span id="seg-op-val">${segPct}</span>%</span>` +
-        `<input type="range" id="seg-opacity" min="10" max="100" step="5" value="${segPct}"></div>`;
+        `<input type="range" id="seg-opacity" min="0" max="100" step="5" value="${segPct}"></div>`;
     presentLabels.forEach(lab => {
         const info = LABEL_INFO[lab] || { name: 'Label ' + lab, css: '#ffffff' };
         html += `<label class="lt-row">` +
