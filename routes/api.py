@@ -187,8 +187,19 @@ def get_patient_meshes(patient_index):
     patient_path = store.resolved_path(patient_index)
     if patient_path is None:
         return jsonify({'status': 'error', 'message': 'Invalid patient index'}), 404
+    # Validate phase: it is interpolated into seg/vtk filenames, so an
+    # unconstrained value (e.g. 'ES/../../etc/x') would escape the patient dir.
     phase = request.args.get('phase', session.get('phase', 'ED'))
-    data = load_patient_meshes(patient_path, phase)
+    if phase not in ('ED', 'ES'):
+        return jsonify({'status': 'error', 'message': "phase must be 'ED' or 'ES'"}), 400
+    # Guard against loader failures (singular/degenerate affine -> inv() raises,
+    # unreadable NIfTI, malformed VTK) so a bad case degrades instead of 500ing.
+    try:
+        data = load_patient_meshes(patient_path, phase)
+    except Exception as exc:
+        print(f"get_patient_meshes: {patient_path} {phase}: {exc}")
+        return jsonify({'status': 'error', 'message': 'Failed to load meshes',
+                        'available': False, 'regions': {}}), 500
     return jsonify({'status': 'success', 'phase': phase, **data})
 
 
