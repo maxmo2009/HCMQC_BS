@@ -150,13 +150,19 @@ function createPointCloud(coordinates, labels) {
         const coords = labelGroups[label];
         const color = labelColors[parseInt(label)] || 0xffffff;
 
+        const segOp = getSegOpacity();
         const material = new THREE.MeshPhongMaterial({
             color: color,
             shininess: 30,
             specular: 0x333333,
             emissive: color,
             emissiveIntensity: 0.05,
-            flatShading: false
+            flatShading: false,
+            // Voxel opacity — fully opaque (1.0) keeps the original solid look;
+            // transparent/depthWrite only flip on below 100% to avoid sort artifacts.
+            transparent: segOp < 1.0,
+            opacity: segOp,
+            depthWrite: segOp >= 1.0,
         });
 
         const instancedMesh = new THREE.InstancedMesh(boxGeometry, material, coords.length);
@@ -214,11 +220,31 @@ function saveLabelVisibility(label, visible) {
     localStorage.setItem(LABEL_VIS_KEY, JSON.stringify(v));
 }
 
+// Segmentation 3D voxel opacity (per-user, viewerPrefs). Default 1.0 = solid,
+// matching the original look. Mirrors the fitted-mesh overlay opacity control.
+function getSegOpacity() {
+    const o = loadViewerPrefs().seg3dOpacity;
+    return (typeof o === 'number') ? o : 1.0;
+}
+function applySegOpacity() {
+    const op = getSegOpacity();
+    Object.values(labelMeshes).forEach(m => {
+        m.material.transparent = op < 1.0;
+        m.material.opacity = op;
+        m.material.depthWrite = op >= 1.0;   // solid voxels write depth; translucent don't
+        m.material.needsUpdate = true;
+    });
+}
+
 function buildLabelToggles(presentLabels) {
     const wrap = document.getElementById('label-toggles');
     if (!wrap) return;
     presentLabels.sort((a, b) => a - b);
+    const segPct = Math.round(getSegOpacity() * 100);
     let html = '<div class="lt-title">Show / Hide</div>';
+    html += `<div class="mesh-op-row">` +
+        `<span class="mesh-op-label">opacity <span id="seg-op-val">${segPct}</span>%</span>` +
+        `<input type="range" id="seg-opacity" min="10" max="100" step="5" value="${segPct}"></div>`;
     presentLabels.forEach(lab => {
         const info = LABEL_INFO[lab] || { name: 'Label ' + lab, css: '#ffffff' };
         html += `<label class="lt-row">` +
@@ -235,6 +261,13 @@ function buildLabelToggles(presentLabels) {
             if (mesh) mesh.visible = cb.checked;
             saveLabelVisibility(lab, cb.checked);  // persist globally
         });
+    });
+    const opSlider = document.getElementById('seg-opacity');
+    if (opSlider) opSlider.addEventListener('input', (e) => {
+        const pct = parseInt(e.target.value, 10);
+        saveViewerPref('seg3dOpacity', pct / 100);
+        document.getElementById('seg-op-val').textContent = pct;
+        applySegOpacity();
     });
 }
 

@@ -558,14 +558,16 @@ body::before {
     margin-top: 3px;
 }
 
-#mesh-toggles .mesh-op-row {
+#mesh-toggles .mesh-op-row,
+#label-toggles .mesh-op-row {
     display: flex;
     align-items: center;
     gap: 7px;
     padding: 3px 0 1px;
 }
 
-#mesh-toggles .mesh-op-label {
+#mesh-toggles .mesh-op-label,
+#label-toggles .mesh-op-label {
     font-family: var(--font-mono);
     font-size: 10px;
     color: var(--text-0);
@@ -574,13 +576,15 @@ body::before {
 }
 
 /* Fixed-width value so 5% -> 100% doesn't reflow the row and jitter the slider. */
-#mesh-toggles #mesh-op-val {
+#mesh-toggles #mesh-op-val,
+#label-toggles #seg-op-val {
     display: inline-block;
     width: 24px;
     text-align: right;
 }
 
-#mesh-toggles #mesh-opacity {
+#mesh-toggles #mesh-opacity,
+#label-toggles #seg-opacity {
     width: 84px;
     flex: none;
     accent-color: var(--accent);

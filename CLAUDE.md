@@ -103,7 +103,16 @@ Callers (`services/patient.py`, `routes/api.py`'s `patient_list` aggregation) mu
 
 `__meta__` is filtered out of `patient_data` on load and re-emitted **first** on `_persist()` so patient indexing (`session['patient_index']` is positional) stays stable across save/reload. Migrating an existing file from v1 → v2 is a one-shot `python3 tools/migrate_qc_to_relative.py --apply` — it computes the common path of all keys, strips the prefix, writes `__meta__`, and leaves a `.bak`. Idempotent (already-v2 files skipped). The legacy `BASE_PATH` in `config.py` is now unused — `_seg_file/_mri_file` in `nifti_loader.py` still prepend it for backward compat, but it stays `''`.
 
-Per-patient files under `resolved_path(i)`: `lvsa_SR_{ED,ES}.nii.gz`, `seg_lvsa_SR_{ED,ES}.nii.gz`.
+Per-patient files under `resolved_path(i)`: `lvsa_SR_{ED,ES}.nii.gz`, `seg_lvsa_SR_{ED,ES}.nii.gz`, and (when fitted) `vtks/F_<region>_<phase>.vtk`.
+
+### Degenerate sform — use qform for any affine-based geometry
+
+**Most dataset NIfTIs have a broken sform.** `nib.load(f).affine` (which prefers the sform) comes back with unit/degenerate scale — diagonal `[1,1,1]` (or `[0,0,0]` for savioli) — so the **z spacing is lost** (recorded 1 mm vs the true 10 mm). The real geometry survives in **`get_qform()`** and in `header.get_zooms()` (`(1.5625, 1.5625, 10.0)`). Affected: sabotaged_acdc, gpt-5.5, mnms2, savioli — basically everything **except `rulebase_fixed`**.
+
+Consequences and where it's handled:
+- **Image/segmentation rendering is safe**: `nifti_loader.py` derives `spacing` from `header.get_zooms()` (never the affine), so `SEG_SPACING` already carries the true 10 mm z, and the viewer places voxels at `(idx - center) * spacing` correctly.
+- **Mesh overlay was NOT**: `mesh_loader.py` mapped mesh world-mm verts → voxel via `nib.load().affine` (the bad sform), so the mesh landed **~10× too long in z** over the segmentation. Fixed by `services.mesh_loader._corrected_affine(img)`: if the affine's column norms don't match `header.get_zooms()`, fall back to `get_qform()` (validated against zooms) — mirroring the `_affine_with_spacing` logic the meshes were fitted with, so mesh and image share one coordinate system. `rulebase_fixed` (consistent sform) is returned unchanged.
+- **Any future affine-based geometry** (volumes, distances, slice localization) must route through the same qform-fallback, not `nib.load().affine` directly. Quick check: `slices × zooms[2]` should be ~80–100 mm; if you compute ~9 mm you've hit the bad sform.
 
 ### Auth model
 
@@ -145,6 +154,8 @@ Docs are shown to **every logged-in user** (not scoped per-user) and are equally
 `createPointCloud()` in `app.js` stores each label's `THREE.InstancedMesh` in the module-level `labelMeshes` map, and `buildLabelToggles()` renders one checkbox per *present* label into `#label-toggles` (in the 3D "Controls" panel). Toggling a box sets `mesh.visible` — show/hide is purely client-side, no reload.
 
 The state persists in `localStorage` so it survives the page reload that every patient/phase change triggers. The key is **scoped by user**: `LABEL_VIS_KEY = 'labelVisibility::' + CURRENT_USER`. Without this scope, a shared workstation leaks User A's hidden-myocardium preference into User B's session (localStorage is origin-scoped, not session-scoped). When adding new global preferences, follow the same `'<feature>::' + CURRENT_USER` pattern.
+
+A separate **3D segmentation-voxel opacity** slider (`#seg-opacity`, in the same `#label-toggles` block as the show/hide checkboxes) mirrors the mesh-overlay opacity: `getSegOpacity()`/`applySegOpacity()` set each `labelMeshes[*].material.opacity` (default 1.0 = solid; `transparent`/`depthWrite` only flip below 100% to avoid sort artifacts), persisted per-user in `VIEWER_PREFS_KEY` under `seg3dOpacity`. `createPointCloud()` reads it for the initial material and `buildLabelToggles()` seeds the slider, so it survives the patient/phase reload without a `restoreViewerPrefs()` entry.
 
 **Other viewer preferences** — Show Overlay, overlay transparency, zoom, and the **Hide MRI panel** toggle — share one per-user JSON object under `VIEWER_PREFS_KEY = 'viewerPrefs::' + CURRENT_USER`, restored by `restoreViewerPrefs()` **before the first render** so the initial draw already reflects them (it only touches DOM/state, never the not-yet-initialised 3D). *Hide MRI panel* (`hideMriPanel`, a checkbox under the Control Panel's "View" section) sets `#left-panel` to `display:none`; the flex `#main-container` then re-flows the middle (segmentation) + right (3D) panels wider, and the handler calls `onWindowResize()` so the 3D canvas re-fits.
 

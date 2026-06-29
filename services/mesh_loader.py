@@ -64,6 +64,36 @@ def _parse_vtk_polydata(path):
     return verts, faces
 
 
+def _corrected_affine(img):
+    """Return an affine whose voxel scale matches the header zooms.
+
+    Most NIfTI files in these datasets have a **degenerate sform** — voxel
+    spacing was lost (z recorded as 1 mm, or all-zero for savioli) while the
+    true geometry survives in the **qform** (z = 10 mm). `nib.load().affine`
+    prefers the sform, so a mesh mapped through it lands ~10× too long in z.
+
+    Detect the degeneracy (affine column norms ≠ header zooms) and fall back to
+    qform — mirroring the `_affine_with_spacing` logic used when the meshes were
+    fitted, so mesh and image share one coordinate system. Returns the original
+    affine when it's already consistent (e.g. rulebase_fixed) or when no usable
+    qform exists.
+    """
+    affine = img.affine
+    zooms = np.asarray(img.header.get_zooms()[:3], dtype=float)
+    col_norm = np.linalg.norm(np.asarray(affine)[:3, :3], axis=0)
+    if np.allclose(col_norm, zooms, rtol=0.05):
+        return affine  # sform already carries the real spacing
+    try:
+        q = np.asarray(img.get_qform())
+    except Exception:
+        return affine
+    if q is None or not np.all(np.isfinite(q)):
+        return affine
+    q_norm = np.linalg.norm(q[:3, :3], axis=0)
+    # Only trust qform if IT matches the zooms; otherwise keep the original.
+    return q if np.allclose(q_norm, zooms, rtol=0.05) else affine
+
+
 def _world_to_voxel(verts_world, affine):
     """Map (N,3) world-mm vertices to voxel-index coordinates via inv(affine)."""
     inv = np.linalg.inv(affine)
@@ -89,7 +119,9 @@ def load_patient_meshes(patient_path, phase="ED"):
     if not os.path.isdir(vtk_dir) or not os.path.exists(seg_path):
         return {"available": False, "regions": {}}
 
-    affine = nib.load(seg_path).affine
+    # Use the corrected affine (qform when the sform is degenerate) so the mesh
+    # maps into the same voxel grid the viewer renders the segmentation in.
+    affine = _corrected_affine(nib.load(seg_path))
 
     regions = {}
     for region in MESH_REGIONS:
