@@ -150,8 +150,20 @@
         let currentDoc = null;   // doc record currently shown
         let currentMd = '';      // raw markdown of the current doc
 
+        // `![alt](src){width=400}` / `{width=50%}` → an <img> with an inline
+        // width. Runs on raw markdown BEFORE marked, so the `src="imgs/…` path
+        // rewrite below still matches. Bare number → px; a `%` is kept as-is.
+        function applyImageWidth(md) {
+            return md.replace(
+                /!\[([^\]]*)\]\(([^)\s]+)\)\{\s*width\s*=\s*(\d+%?)\s*\}/g,
+                (m, alt, src, w) => {
+                    const width = /%$/.test(w) ? w : w + 'px';
+                    return `<img src="${src}" alt="${alt}" style="width:${width}">`;
+                });
+        }
+
         function renderMarkdown(md, dir) {
-            let html = marked.parse(md);
+            let html = marked.parse(applyImageWidth(md));
             // Rewrite this doc's relative image paths to the login-gated asset
             // route, prefixed by its own reports-relative folder so each
             // document resolves its own imgs/.
@@ -256,16 +268,18 @@
             setEditMode(true);
             destroyEditor();   // safety: never stack two instances
             // WYSIWYG round-trips NORMALISE raw HTML — inline style attributes
-            // (e.g. <span style="color:…">) are stripped on save. Docs that
-            // carry styled HTML open in Markdown mode instead; switching to
-            // the WYSIWYG tab and saving would still mangle them.
+            // (e.g. <span style="color:…">) are stripped on save, and trailing
+            // {width=…} image markers get mangled. Docs that carry either open
+            // in Markdown mode instead; the WYSIWYG tab would still break them.
             const hasStyledHtml = /<[a-z][a-z0-9]*\s[^>]*style=/i.test(currentMd);
-            $('editor-hint').textContent = hasStyledHtml
-                ? '⚠ This document contains raw HTML with inline styles — opened in Markdown mode. Saving from the WYSIWYG tab would strip those styles.'
-                : 'WYSIWYG editing · paste / drag / toolbar-insert images to upload · changes are shared with all users on Save.';
+            const hasImgWidth = /\]\([^)\s]+\)\{\s*width\s*=/.test(currentMd);
+            const needsMd = hasStyledHtml || hasImgWidth;
+            $('editor-hint').innerHTML = needsMd
+                ? '⚠ Opened in Markdown mode (contains inline styles or <code>{width=…}</code> image sizing). Resize an image by writing <code>![](imgs/name.png){width=400}</code> — the WYSIWYG tab would strip these.'
+                : 'WYSIWYG editing · paste / drag / toolbar-insert images to upload · size an image in Markdown mode with <code>{width=400}</code> · Save shares with all users.';
             tuiEditor = new toastui.Editor({
                 el: editorEl,
-                initialEditType: hasStyledHtml ? 'markdown' : 'wysiwyg',
+                initialEditType: needsMd ? 'markdown' : 'wysiwyg',
                 height: 'calc(100vh - 170px)',
                 initialValue: absImgPaths(currentMd, currentDoc.dir),
                 theme: 'dark',
