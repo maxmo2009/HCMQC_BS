@@ -1,5 +1,11 @@
 # Segmentation QC Criteria
 
+## Overall principle
+
+**What we are assessing is the segmentation** — whether it conforms to clinically correct cardiac structure. A segmentation that faithfully follows the true anatomy is what allows an accurate mesh to be fitted from it.
+
+The 3D mesh is therefore a **visualization aid, not the target of the assessment**: it makes structural problems in the segmentation easier to see. Treat it as a reference — judge the **segmentation**, and use the mesh to help you spot where it goes wrong.
+
 ## Terminology & grading
 
 - **LVepi / LVendo / LVmyo** — the LV **epi**cardium, **endo**cardium, and **myo**cardium mesh surfaces. Assess final mesh quality with *either* the **LVepi + LVendo** pair *or* the **LVmyo** surface; if either representation is acceptable, the case passes (see Notice 1).
