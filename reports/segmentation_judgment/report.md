@@ -32,7 +32,7 @@
 
 ![](imgs/Fig5.1.png){width=100}![](imgs/Fig5.2.png){width=99}
 
-*(In this case, mild misalignmen results in focal irregularity of the cardiac morphology)*
+*(In this case, mild misalignment results in focal irregularity of the cardiac morphology)*
 
 #### Diffuse misalignment
 
