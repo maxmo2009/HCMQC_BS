@@ -1,14 +1,21 @@
 # Segmentation QC Criteria
 
+## Terminology & grading
+
+- **LVepi / LVendo / LVmyo** — the LV **epi**cardium, **endo**cardium, and **myo**cardium mesh surfaces. Assess final mesh quality with *either* the **LVepi + LVendo** pair *or* the **LVmyo** surface; if either representation is acceptable, the case passes (see Notice 1).
+- **Two grading bars** are used below:
+  - **Strict** — judge the mesh against a normal heart on every feature and reject any notable deviation.
+  - **Minimum-requirement** — accept a mesh that is usable overall, tolerating specific known artifacts (e.g. apical-thickness overestimation) by excluding them from assessment.
+
 ## Notice
 
-1. **When assessing the final Mesh quality, you have two options: LVepi + LVendo, and LVmyo, either one is acceptable, that works.**
+1. **When assessing the final mesh quality, you have two options: LVepi + LVendo, or LVmyo — either one passing is enough.**
 <br>
 ***Recommendation: for the LVepi + LVendo mesh, <span style="color:#ff4747">REJECT</span> (strict); for the LVmyo mesh, <span style="color:#22e06b">ACCEPT</span>***
 <br>
     ![](imgs/eg1.1_2.png){width=100}![](imgs/eg1.2.png){width=100}
 
-*(In this case, LVepi + LVendo shows thicker apex than normal heart, while LVmyo looks good, so finally accept this case)*
+*(In this case, LVepi + LVendo shows a thicker apex than a normal heart, while LVmyo looks good, so finally accept this case)*
 
 2. **In some cases, if the overestimation of apical thickness is the only issue, then exclude it from assessment.**
 <br>
@@ -16,19 +23,19 @@
 <br>
     ![](imgs/eg2.1_3.png){width=100}![](imgs/eg2.3_2.png){width=95}
 
-*(In this case, due to focal basal hypertrophy, LVmyo is not real and suitable. For LVepi + LVendo, accept the case with excluding the thick apex from assessment)*
+*(In this case, due to focal basal hypertrophy, LVmyo is not realistic or suitable. For LVepi + LVendo, accept the case, excluding the thick apex from assessment)*
 
-3. **Based on observation, LVmyo is not suitable for cases with myocardial hypertrophy, so in these cases, better use LVepi + LVendo for assessment. Also, set the segmentation opacity into 90% to easily identify myocardial hypertrophy.**
+3. **Based on observation, LVmyo is not suitable for cases with myocardial hypertrophy, so in these cases, better use LVepi + LVendo for assessment. Also, set the segmentation opacity to 90% to easily identify myocardial hypertrophy.**
 <br>
 ***Recommendation: <span style="color:#ff4747">REJECT</span>***
 <br>
     ![](imgs/eg3.1.png){width=90}![](imgs/eg3.2.png){width=100}
 
-*(In this case, due to diffuse concentric hypertrophy, LVmyo is not real and suitable)*
+*(In this case, due to diffuse concentric hypertrophy, LVmyo is not realistic or suitable)*
 
 ## Slice misalignment
 
-*Set the segmentation opacity into 90% to observe the LV epicardium and endocardium.*
+*Set the segmentation opacity to 90% to observe the LV epicardium and endocardium.*
 
 #### Basal endocardial misalignment
 
@@ -55,7 +62,7 @@
 ## Flat apex
 
 - When generating the mesh, the apical endocardium is typically near the superior margin of the final slice, whereas the epicardium is generally near the inferior margin of the final slice
-- There are slight differences in mesh generation depending on whether the final slice are all myocardium or contains part of cavity
+- There are slight differences in mesh generation depending on whether the final slice is all myocardium or contains part of the cavity
 - If the final slice is relatively small, it may be ignored during mesh generation.
 
 ![](imgs/Fig7.1.png){width=100}![](imgs/Fig7.2.png){width=110}
