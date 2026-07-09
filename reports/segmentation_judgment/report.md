@@ -9,6 +9,8 @@
 
 ## Notice
 
+> **Decisions are made per case, not per individual mesh.** A case passes if *either* representation (LVepi + LVendo, or LVmyo) is acceptable. Notice 1 illustrates this: the LVepi + LVendo mesh is rejected (thick apex), but since LVmyo is good, the **case is accepted**.
+
 1. **When assessing the final mesh quality, you have two options: LVepi + LVendo, or LVmyo — either one passing is enough.**
 <br>
 ***Recommendation: for the LVepi + LVendo mesh, <span style="color:#ff4747">REJECT</span> (strict); for the LVmyo mesh, <span style="color:#22e06b">ACCEPT</span>***
@@ -59,6 +61,8 @@
 
 ![](imgs/Fig6.1_2.png){width=100}![](imgs/Fig6.2.png){width=100}
 
+*(Misalignment across multiple slice levels distorts the overall cardiac morphology)*
+
 ## Flat apex
 
 - When generating the mesh, the apical endocardium is typically near the superior margin of the final slice, whereas the epicardium is generally near the inferior margin of the final slice
@@ -77,17 +81,23 @@ Evaluate whether the cardiac apex is sharp based on the mesh generation pattern.
 
 ## Special cases
 
+#### Oblique short-axis plane
+
 ***Recommendation: <span style="color:#ff4747">REJECT</span>***
 
 ![](imgs/Fig9.1.png){width=100}![](imgs/Fig2.png){width=100}
 
 *(When scanning, the short-axis plane was not perpendicular to the long axis, resulting in an irregular overall morphology)*
 
+#### Global slice shift
+
 ***Recommendation: <span style="color:#ff4747">REJECT</span>***
 
 ![](imgs/Fig10.1.png){width=100}![](imgs/Fig10.2.png){width=100}
 
 *(All slices are displaced simultaneously toward one side)*
+
+#### Insufficient apical repair
 
 ***Recommendation: <span style="color:#ff4747">REJECT</span>***
 
@@ -101,6 +111,10 @@ Evaluate whether the cardiac apex is sharp based on the mesh generation pattern.
 
 ![](imgs/Fig13.1.png){width=100}![](imgs/Fig13.2.png){width=90}
 
+*(Sharp apex, well-aligned slices, and realistic myocardial thickness)*
+
 ***Recommendation: <span style="color:#22e06b">ACCEPT</span>***
 
 ![](imgs/Fig12.1.png){width=100}![](imgs/Fig12.2.png){width=95}
+
+*(Clean epicardial and endocardial contours with no misalignment)*
