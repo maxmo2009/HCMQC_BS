@@ -70,7 +70,7 @@ static/
 JSON/             gitignored — credentials + per-user QC data
   users.json      {"username": "plaintext_password", ...}
   users/<user>/   *.json QC dataset files (one per dataset)
-reports/          gitignored — team docs (markdown + patient-derived PNGs), served AND edited via /docs
+reports/          git-TRACKED (repo is private) — team docs (markdown + patient-derived PNGs), served AND edited via /docs
 tempCMR/          early-development sample NIfTI pair (ED only) — kept for ad-hoc loader testing, not referenced by the running app
 ```
 
@@ -153,7 +153,7 @@ Four `@login_required` endpoints in `routes/api.py`, all backed by `services/doc
 
 **The single guard** for all four is `services.docs._resolve(rel)` — `realpath`-confines a client-supplied reports-relative path to `DOCS_ROOT` (rejects `..`, absolute paths, NUL). **Route every filesystem path from an edit request through `_resolve()`.** Stored markdown is still rendered through DOMPurify, so a user typing `<script>`/`<img onerror>` into the editor is neutralised at render time for every viewer — the sanitiser is load-bearing now that content is user-writable, not just generated.
 
-Docs are shown to **every logged-in user** (not scoped per-user) and are equally writable by every logged-in user — there is no per-doc ownership and no version history (a Save overwrites; a Delete is final). Content arrives two ways: generated **outside the app** (ad-hoc scripts / pandoc DOCX conversion) and dropped into `reports/`, or created/edited **in the page** via the toolbar. `reports/` is gitignored because the images are patient-derived.
+Docs are shown to **every logged-in user** (not scoped per-user) and are equally writable by every logged-in user — there is no per-doc ownership and no *in-app* version history (a Save overwrites; a Delete is final). Content arrives two ways: generated **outside the app** (ad-hoc scripts / pandoc DOCX conversion) and dropped into `reports/`, or created/edited **in the page** via the toolbar. `reports/` is now **git-tracked** (was gitignored) — the repo is private, so the patient-derived imagery is acceptable there and the docs get an off-machine backup + git history. **Consequence: editing is now a multi-writer git workflow** — `/docs` in-page saves, external drops, and other people's `git push`es all touch `reports/`; `git pull` before editing and `git push` after, or edits silently clobber each other (this has happened — a concurrent editor overwrote an in-flight restructure, and an image rename left a dangling ref). Keep the repo **private**; making it public would expose the imagery irreversibly (git history). `JSON/` stays gitignored.
 
 ### 3D per-category visibility
 
