@@ -1,10 +1,10 @@
 # Segmentation QC Criteria
 
-### **Notice**
+## Notice
 
 1. **When assessing the final Mesh quality, you have two options: LVepi + LVendo, and LVmyo, either one is acceptable, that works.**
 <br>
-Recommendation: for the LVepi + LVendo mesh, reject (strict); for the LVmyo mesh, accept
+***Recommendation: for the LVepi + LVendo mesh, reject (strict); for the LVmyo mesh, accept***
 <br>
     ![](imgs/eg1.1_2.png){width=100}![](imgs/eg1.2.png){width=100}
 
@@ -12,7 +12,7 @@ Recommendation: for the LVepi + LVendo mesh, reject (strict); for the LVmyo mesh
 
 2. **In some cases, if the overestimation of apical thickness is the only issue, then exclude it from assessment.**
 <br>
-Recommendation: under the minimum-requirement standard, accept
+***Recommendation: under the minimum-requirement standard, accept***
 <br>
     ![](imgs/eg2.1_3.png){width=100}![](imgs/eg2.3_2.png){width=95}
 
@@ -20,7 +20,7 @@ Recommendation: under the minimum-requirement standard, accept
 
 3. **Based on observation, LVmyo is not suitable for cases with myocardial hypertrophy, so in these cases, better use LVepi + LVendo for assessment. Also, set the segmentation opacity into 90% to easily identify myocardial hypertrophy.**
 <br>
-Recommendation: reject
+***Recommendation: reject***
 <br>
     ![](imgs/eg3.1.png){width=90}![](imgs/eg3.2.png){width=100}
 
@@ -28,7 +28,9 @@ Recommendation: reject
 
 ## Slice misalignment
 
-#### Set the segmentation opacity into 90% to observe the LV epicardium and endocardium
+*Set the segmentation opacity into 90% to observe the LV epicardium and endocardium.*
+
+#### Basal endocardial misalignment
 
 ***Recommendation: reject***
 
@@ -52,15 +54,13 @@ Recommendation: reject
 
 ## Flat apex
 
-#### When generating the mesh, the apical endocardium is typically near the superior margin of the final slice, whereas the epicardium is generally near the inferior margin of the final slice
-
-#### There are slight differences in mesh generation depending on whether the final slice are all myocardium or contains part of cavity
-
-#### If the final slice is relatively small, it may be ignored during mesh generation.
+- When generating the mesh, the apical endocardium is typically near the superior margin of the final slice, whereas the epicardium is generally near the inferior margin of the final slice
+- There are slight differences in mesh generation depending on whether the final slice are all myocardium or contains part of cavity
+- If the final slice is relatively small, it may be ignored during mesh generation.
 
 ![](imgs/Fig7.1.png){width=100}![](imgs/Fig7.2.png){width=110}
 
-#### Evaluate whether the cardiac apex is sharp based on the mesh generation pattern
+Evaluate whether the cardiac apex is sharp based on the mesh generation pattern.
 
 ***Recommendation: accept the first mesh, reject the second mesh***
 
