@@ -4,7 +4,7 @@
 
 1. **When assessing the final Mesh quality, you have two options: LVepi + LVendo, and LVmyo, either one is acceptable, that works.**
 <br>
-    ***Recommendation: for the LVepi + LVendo mesh, reject (strict); for the LVmyo mesh, accept***
+Recommendation: for the LVepi + LVendo mesh, reject (strict); for the LVmyo mesh, accept
 <br>
     ![](imgs/eg1.1_2.png){width=100}![](imgs/eg1.2.png){width=100}
 
@@ -12,7 +12,7 @@
 
 2. **In some cases, if the overestimation of apical thickness is the only issue, then exclude it from assessment.**
 <br>
-    ***Recommendation: under the minimum-requirement standard, accept***
+Recommendation: under the minimum-requirement standard, accept
 <br>
     ![](imgs/eg2.1_3.png){width=100}![](imgs/eg2.3_2.png){width=95}
 
@@ -20,7 +20,7 @@
 
 3. **Based on observation, LVmyo is not suitable for cases with myocardial hypertrophy, so in these cases, better use LVepi + LVendo for assessment. Also, set the segmentation opacity into 90% to easily identify myocardial hypertrophy.**
 <br>
-    ***Recommendation: reject***
+Recommendation: reject
 <br>
     ![](imgs/eg3.1.png){width=90}![](imgs/eg3.2.png){width=100}
 
@@ -48,7 +48,7 @@
 
 ***Recommendation: reject***
 
-![](imgs/Fig6.1_2.png){width=100}![](imgs/Fog6.2.png){width=100}
+![](imgs/Fig6.1_2.png){width=100}![](imgs/Fig6.2.png){width=100}
 
 ## Flat apex
 
@@ -92,8 +92,8 @@
 
 ***Recommendation: accept***
 
-![](imgs/Fig13.1.png){width=100}![](imgs/Fig13.2.png){width=100}
+![](imgs/Fig13.1.png){width=100}![](imgs/Fig13.2.png){width=90}
 
 ***Recommendation: accept***
 
-![](imgs/Fig12.1.png){width=100}![](imgs/Fig12.2.png){width=100}
+![](imgs/Fig12.1.png){width=100}![](imgs/Fig12.2.png){width=95}
