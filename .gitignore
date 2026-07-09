@@ -44,6 +44,6 @@ Thumbs.db
 # Data files
 JSON/QC_logs.json
 
-# Generated QC reports (contain patient-derived imagery)
-reports/
+# Generated QC reports — now TRACKED (repo is private; patient-derived imagery
+# is acceptable here). Re-add `reports/` below to stop tracking them again.
 JSON/*
