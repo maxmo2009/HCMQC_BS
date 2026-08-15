@@ -1,0 +1,4514 @@
+{
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient008": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": -5,
+                    "slice": 1
+                },
+                {
+                    "dx": 4,
+                    "dy": -4,
+                    "slice": 2
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 3
+                },
+                {
+                    "dx": 0,
+                    "dy": -4,
+                    "slice": 4
+                },
+                {
+                    "dx": -3,
+                    "dy": 2,
+                    "slice": 6
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -1,
+                    "slice": 2
+                },
+                {
+                    "dx": -3,
+                    "dy": -1,
+                    "slice": 4
+                },
+                {
+                    "dx": -4,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": -1,
+                    "dy": 4,
+                    "slice": 6
+                },
+                {
+                    "dx": 0,
+                    "dy": -2,
+                    "slice": 7
+                }
+            ]
+        },
+        "ED_Comments": "reject: [Base] 8ED | hulei=accept | mattia=reject | shifts=6 slice(s), max +/-5 px | source=added for balance",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient018": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -2,
+                    "dy": -4,
+                    "slice": 0
+                },
+                {
+                    "dx": 2,
+                    "dy": -2,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": 0,
+                    "slice": 5
+                },
+                {
+                    "dx": -2,
+                    "dy": 0,
+                    "slice": 6
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 4,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": -2,
+                    "dy": 1,
+                    "slice": 3
+                },
+                {
+                    "dx": -2,
+                    "dy": 2,
+                    "slice": 4
+                },
+                {
+                    "dx": -5,
+                    "dy": -4,
+                    "slice": 6
+                },
+                {
+                    "dx": 1,
+                    "dy": -2,
+                    "slice": 7
+                }
+            ]
+        },
+        "ED_Comments": "accept: [Base] 18ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-4 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient026": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -5,
+                    "dy": -3,
+                    "slice": 1
+                },
+                {
+                    "dx": 3,
+                    "dy": 2,
+                    "slice": 6
+                },
+                {
+                    "dx": -3,
+                    "dy": 1,
+                    "slice": 7
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": 0,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": 0,
+                    "slice": 2
+                },
+                {
+                    "dx": 0,
+                    "dy": 5,
+                    "slice": 5
+                },
+                {
+                    "dx": -4,
+                    "dy": -2,
+                    "slice": 9
+                }
+            ]
+        },
+        "ED_Comments": "unclassified: [Base] 26ED | hulei=reject | mattia=accept | shifts=3 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient028": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 0,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": 1,
+                    "dy": -1,
+                    "slice": 2
+                },
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 3
+                },
+                {
+                    "dx": 1,
+                    "dy": 4,
+                    "slice": 6
+                },
+                {
+                    "dx": -1,
+                    "dy": -1,
+                    "slice": 7
+                },
+                {
+                    "dx": 5,
+                    "dy": 1,
+                    "slice": 8
+                },
+                {
+                    "dx": 4,
+                    "dy": 5,
+                    "slice": 9
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 0,
+                    "dy": -2,
+                    "slice": 7
+                }
+            ]
+        },
+        "ED_Comments": "accept: [Base] 28ED | hulei=reject | mattia=accept | shifts=7 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient031": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": 1,
+                    "slice": 3
+                },
+                {
+                    "dx": 0,
+                    "dy": -2,
+                    "slice": 8
+                },
+                {
+                    "dx": -2,
+                    "dy": 0,
+                    "slice": 9
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": 0,
+                    "slice": 0
+                },
+                {
+                    "dx": 1,
+                    "dy": -1,
+                    "slice": 3
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 4
+                },
+                {
+                    "dx": -2,
+                    "dy": 5,
+                    "slice": 5
+                },
+                {
+                    "dx": 0,
+                    "dy": -2,
+                    "slice": 8
+                }
+            ]
+        },
+        "ED_Comments": "accept: [Base] 31ED | hulei=reject | mattia=accept | shifts=3 slice(s), max +/-3 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient036": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -5,
+                    "slice": 1
+                },
+                {
+                    "dx": 1,
+                    "dy": -3,
+                    "slice": 2
+                },
+                {
+                    "dx": 3,
+                    "dy": -2,
+                    "slice": 3
+                },
+                {
+                    "dx": -5,
+                    "dy": 1,
+                    "slice": 7
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": 0,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": 1,
+                    "slice": 4
+                },
+                {
+                    "dx": 0,
+                    "dy": -3,
+                    "slice": 5
+                }
+            ]
+        },
+        "ED_Comments": "accept: [Base] 36ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient038": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": 2,
+                    "slice": 0
+                },
+                {
+                    "dx": 4,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": 4,
+                    "dy": 5,
+                    "slice": 2
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 7
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": -1,
+                    "slice": 2
+                },
+                {
+                    "dx": -5,
+                    "dy": -5,
+                    "slice": 3
+                },
+                {
+                    "dx": -1,
+                    "dy": -4,
+                    "slice": 4
+                },
+                {
+                    "dx": 4,
+                    "dy": 3,
+                    "slice": 7
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "accept: [Base] 38ES | hulei=reject | mattia=accept | shifts=5 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient040": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": 3,
+                    "slice": 0
+                },
+                {
+                    "dx": 5,
+                    "dy": 4,
+                    "slice": 2
+                },
+                {
+                    "dx": 4,
+                    "dy": 5,
+                    "slice": 4
+                },
+                {
+                    "dx": 0,
+                    "dy": -1,
+                    "slice": 5
+                },
+                {
+                    "dx": 4,
+                    "dy": -4,
+                    "slice": 8
+                },
+                {
+                    "dx": 1,
+                    "dy": 5,
+                    "slice": 9
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 0,
+                    "dy": -5,
+                    "slice": 8
+                },
+                {
+                    "dx": -3,
+                    "dy": -2,
+                    "slice": 9
+                }
+            ]
+        },
+        "ED_Comments": "reject: [Base] 40ED | hulei=accept | mattia=reject | shifts=6 slice(s), max +/-5 px | source=added for balance",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient043": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -4,
+                    "slice": 0
+                },
+                {
+                    "dx": -3,
+                    "dy": -1,
+                    "slice": 1
+                },
+                {
+                    "dx": 3,
+                    "dy": -3,
+                    "slice": 2
+                },
+                {
+                    "dx": -2,
+                    "dy": 2,
+                    "slice": 4
+                },
+                {
+                    "dx": 1,
+                    "dy": 3,
+                    "slice": 7
+                },
+                {
+                    "dx": 1,
+                    "dy": -4,
+                    "slice": 8
+                },
+                {
+                    "dx": -5,
+                    "dy": 0,
+                    "slice": 9
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": 2,
+                    "dy": 2,
+                    "slice": 4
+                },
+                {
+                    "dx": -2,
+                    "dy": -3,
+                    "slice": 7
+                },
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 11
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "accept: [Base] 43ES | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-3 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient048": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": 2,
+                    "slice": 0
+                },
+                {
+                    "dx": 4,
+                    "dy": -1,
+                    "slice": 1
+                },
+                {
+                    "dx": -3,
+                    "dy": -4,
+                    "slice": 4
+                },
+                {
+                    "dx": 2,
+                    "dy": -4,
+                    "slice": 5
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": -3,
+                    "slice": 4
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Base] 48ES | hulei=reject | mattia=accept | shifts=1 slice(s), max +/-3 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient056": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": 0,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": -2,
+                    "slice": 7
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 0
+                },
+                {
+                    "dx": 2,
+                    "dy": 0,
+                    "slice": 6
+                }
+            ]
+        },
+        "ED_Comments": "accept: [Base] 56ED | hulei=reject | mattia=accept | shifts=2 slice(s), max +/-3 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient057": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 4,
+                    "dy": 5,
+                    "slice": 1
+                },
+                {
+                    "dx": 0,
+                    "dy": -3,
+                    "slice": 4
+                },
+                {
+                    "dx": -1,
+                    "dy": -4,
+                    "slice": 5
+                },
+                {
+                    "dx": 2,
+                    "dy": 5,
+                    "slice": 6
+                },
+                {
+                    "dx": 2,
+                    "dy": -2,
+                    "slice": 7
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": 4,
+                    "dy": 4,
+                    "slice": 3
+                },
+                {
+                    "dx": -5,
+                    "dy": 5,
+                    "slice": 4
+                },
+                {
+                    "dx": -2,
+                    "dy": -5,
+                    "slice": 6
+                },
+                {
+                    "dx": 0,
+                    "dy": 2,
+                    "slice": 7
+                }
+            ]
+        },
+        "ED_Comments": "unclassified: [Base] 57ED | hulei=reject | mattia=accept | shifts=5 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": "unclassified: [Base] 57ES | hulei=reject | mattia=accept | shifts=5 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient059": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 4,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": 0,
+                    "dy": -1,
+                    "slice": 2
+                },
+                {
+                    "dx": 5,
+                    "dy": 3,
+                    "slice": 3
+                },
+                {
+                    "dx": 3,
+                    "dy": 2,
+                    "slice": 6
+                },
+                {
+                    "dx": -4,
+                    "dy": 0,
+                    "slice": 7
+                },
+                {
+                    "dx": 2,
+                    "dy": 5,
+                    "slice": 8
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": -5,
+                    "slice": 0
+                },
+                {
+                    "dx": 5,
+                    "dy": 1,
+                    "slice": 5
+                },
+                {
+                    "dx": 5,
+                    "dy": -4,
+                    "slice": 8
+                }
+            ]
+        },
+        "ED_Comments": "reject: [Base] 59ED | hulei=reject | mattia=accept | shifts=6 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient066": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -2,
+                    "dy": -4,
+                    "slice": 1
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 7
+                },
+                {
+                    "dx": -1,
+                    "dy": 1,
+                    "slice": 8
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": 0,
+                    "slice": 0
+                },
+                {
+                    "dx": 0,
+                    "dy": 3,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": 0,
+                    "slice": 3
+                },
+                {
+                    "dx": 1,
+                    "dy": -5,
+                    "slice": 5
+                },
+                {
+                    "dx": -3,
+                    "dy": -5,
+                    "slice": 7
+                },
+                {
+                    "dx": 4,
+                    "dy": 4,
+                    "slice": 8
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Base] 66ES | hulei=accept | mattia=reject | shifts=6 slice(s), max +/-5 px | source=added for balance"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient067": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -2,
+                    "dy": 0,
+                    "slice": 1
+                },
+                {
+                    "dx": 4,
+                    "dy": -2,
+                    "slice": 2
+                },
+                {
+                    "dx": 5,
+                    "dy": 5,
+                    "slice": 3
+                },
+                {
+                    "dx": 2,
+                    "dy": 5,
+                    "slice": 4
+                },
+                {
+                    "dx": 0,
+                    "dy": -3,
+                    "slice": 6
+                },
+                {
+                    "dx": 3,
+                    "dy": 2,
+                    "slice": 7
+                },
+                {
+                    "dx": 3,
+                    "dy": 5,
+                    "slice": 8
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": -5,
+                    "slice": 2
+                },
+                {
+                    "dx": 5,
+                    "dy": -2,
+                    "slice": 4
+                },
+                {
+                    "dx": -3,
+                    "dy": -5,
+                    "slice": 5
+                },
+                {
+                    "dx": 2,
+                    "dy": 0,
+                    "slice": 6
+                },
+                {
+                    "dx": 5,
+                    "dy": 5,
+                    "slice": 7
+                }
+            ]
+        },
+        "ED_Comments": "reject: [Base] 67ED | hulei=accept | mattia=reject | shifts=7 slice(s), max +/-5 px | source=added for balance",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient072": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -4,
+                    "slice": 1
+                },
+                {
+                    "dx": -1,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": -1,
+                    "dy": -4,
+                    "slice": 3
+                },
+                {
+                    "dx": -3,
+                    "dy": 1,
+                    "slice": 4
+                },
+                {
+                    "dx": 3,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": -5,
+                    "dy": -4,
+                    "slice": 6
+                },
+                {
+                    "dx": -4,
+                    "dy": 4,
+                    "slice": 7
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 1,
+                    "dy": -5,
+                    "slice": 1
+                },
+                {
+                    "dx": 1,
+                    "dy": -4,
+                    "slice": 2
+                },
+                {
+                    "dx": 3,
+                    "dy": -3,
+                    "slice": 6
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "accept: [Base] 72ES | hulei=reject | mattia=accept | shifts=3 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient080": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": 0,
+                    "slice": 0
+                },
+                {
+                    "dx": -2,
+                    "dy": 1,
+                    "slice": 4
+                },
+                {
+                    "dx": 5,
+                    "dy": -2,
+                    "slice": 5
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -5,
+                    "dy": 2,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 1
+                },
+                {
+                    "dx": -2,
+                    "dy": -2,
+                    "slice": 3
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Base] 80ES | hulei=reject | mattia=accept | shifts=3 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient100": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 1,
+                    "dy": 1,
+                    "slice": 0
+                },
+                {
+                    "dx": -5,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": -2,
+                    "dy": 5,
+                    "slice": 4
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Base] 100ES | hulei=accept | mattia=reject | shifts=3 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient102": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": -3,
+                    "slice": 0
+                },
+                {
+                    "dx": 4,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": -3,
+                    "dy": -4,
+                    "slice": 3
+                },
+                {
+                    "dx": 5,
+                    "dy": -3,
+                    "slice": 4
+                },
+                {
+                    "dx": -5,
+                    "dy": -5,
+                    "slice": 5
+                },
+                {
+                    "dx": -2,
+                    "dy": -3,
+                    "slice": 6
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -3,
+                    "slice": 0
+                },
+                {
+                    "dx": 2,
+                    "dy": 1,
+                    "slice": 3
+                },
+                {
+                    "dx": 3,
+                    "dy": -2,
+                    "slice": 4
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Base] 102ES | hulei=reject | mattia=accept | shifts=3 slice(s), max +/-4 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient116": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -2,
+                    "slice": 0
+                },
+                {
+                    "dx": 2,
+                    "dy": 0,
+                    "slice": 8
+                },
+                {
+                    "dx": -4,
+                    "dy": -5,
+                    "slice": 9
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": 3,
+                    "slice": 0
+                },
+                {
+                    "dx": -2,
+                    "dy": -1,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": 5,
+                    "slice": 2
+                },
+                {
+                    "dx": 0,
+                    "dy": -5,
+                    "slice": 3
+                },
+                {
+                    "dx": -4,
+                    "dy": 3,
+                    "slice": 4
+                },
+                {
+                    "dx": 4,
+                    "dy": -4,
+                    "slice": 5
+                },
+                {
+                    "dx": 3,
+                    "dy": -4,
+                    "slice": 9
+                }
+            ]
+        },
+        "ED_Comments": "accept: [Base] 116ED | hulei=accept | mattia=reject | shifts=3 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient119": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 0,
+                    "dy": -3,
+                    "slice": 0
+                },
+                {
+                    "dx": 2,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": -1,
+                    "dy": 2,
+                    "slice": 3
+                },
+                {
+                    "dx": 4,
+                    "dy": -4,
+                    "slice": 5
+                },
+                {
+                    "dx": 3,
+                    "dy": -2,
+                    "slice": 8
+                },
+                {
+                    "dx": 5,
+                    "dy": -4,
+                    "slice": 9
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -5,
+                    "dy": 3,
+                    "slice": 0
+                },
+                {
+                    "dx": 3,
+                    "dy": 2,
+                    "slice": 1
+                },
+                {
+                    "dx": 1,
+                    "dy": -2,
+                    "slice": 3
+                },
+                {
+                    "dx": 3,
+                    "dy": 3,
+                    "slice": 7
+                },
+                {
+                    "dx": 0,
+                    "dy": 3,
+                    "slice": 8
+                },
+                {
+                    "dx": -2,
+                    "dy": 4,
+                    "slice": 9
+                },
+                {
+                    "dx": -3,
+                    "dy": -3,
+                    "slice": 12
+                },
+                {
+                    "dx": 2,
+                    "dy": 0,
+                    "slice": 16
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "unclassified: [Base] 119ES | hulei=accept | mattia=reject | shifts=8 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient122": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": 4,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": 1,
+                    "dy": 4,
+                    "slice": 4
+                },
+                {
+                    "dx": 4,
+                    "dy": -3,
+                    "slice": 5
+                },
+                {
+                    "dx": 5,
+                    "dy": 0,
+                    "slice": 8
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 1,
+                    "dy": 1,
+                    "slice": 2
+                },
+                {
+                    "dx": -5,
+                    "dy": -2,
+                    "slice": 3
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Base] 122ES | hulei=reject | mattia=accept | shifts=2 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient124": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -2,
+                    "dy": -5,
+                    "slice": 0
+                },
+                {
+                    "dx": -5,
+                    "dy": 1,
+                    "slice": 4
+                },
+                {
+                    "dx": 0,
+                    "dy": -4,
+                    "slice": 7
+                },
+                {
+                    "dx": 5,
+                    "dy": 4,
+                    "slice": 8
+                },
+                {
+                    "dx": 3,
+                    "dy": 1,
+                    "slice": 9
+                },
+                {
+                    "dx": -2,
+                    "dy": 1,
+                    "slice": 13
+                },
+                {
+                    "dx": 3,
+                    "dy": 3,
+                    "slice": 16
+                },
+                {
+                    "dx": -1,
+                    "dy": 4,
+                    "slice": 17
+                },
+                {
+                    "dx": 1,
+                    "dy": -3,
+                    "slice": 18
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": -4,
+                    "slice": 1
+                },
+                {
+                    "dx": 1,
+                    "dy": 0,
+                    "slice": 2
+                },
+                {
+                    "dx": 1,
+                    "dy": 5,
+                    "slice": 6
+                },
+                {
+                    "dx": -4,
+                    "dy": -3,
+                    "slice": 7
+                },
+                {
+                    "dx": 4,
+                    "dy": 1,
+                    "slice": 8
+                },
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 9
+                },
+                {
+                    "dx": 4,
+                    "dy": -5,
+                    "slice": 10
+                },
+                {
+                    "dx": 5,
+                    "dy": 3,
+                    "slice": 13
+                },
+                {
+                    "dx": 4,
+                    "dy": -5,
+                    "slice": 14
+                },
+                {
+                    "dx": -2,
+                    "dy": 5,
+                    "slice": 18
+                }
+            ]
+        },
+        "ED_Comments": "reject: [Base] 124ED | hulei=accept | mattia=reject | shifts=9 slice(s), max +/-5 px | source=added for balance",
+        "ES_Comments": "reject: [Base] 124ES | hulei=accept | mattia=reject | shifts=10 slice(s), max +/-5 px | source=added for balance"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient126": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -2,
+                    "dy": 5,
+                    "slice": 0
+                },
+                {
+                    "dx": 0,
+                    "dy": 3,
+                    "slice": 3
+                },
+                {
+                    "dx": -1,
+                    "dy": -4,
+                    "slice": 6
+                },
+                {
+                    "dx": 0,
+                    "dy": -4,
+                    "slice": 7
+                },
+                {
+                    "dx": 4,
+                    "dy": -1,
+                    "slice": 10
+                },
+                {
+                    "dx": 5,
+                    "dy": -2,
+                    "slice": 11
+                },
+                {
+                    "dx": -2,
+                    "dy": -2,
+                    "slice": 12
+                },
+                {
+                    "dx": -2,
+                    "dy": -2,
+                    "slice": 15
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -4,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": 0,
+                    "slice": 8
+                },
+                {
+                    "dx": 4,
+                    "dy": -1,
+                    "slice": 10
+                },
+                {
+                    "dx": 3,
+                    "dy": -1,
+                    "slice": 11
+                },
+                {
+                    "dx": 4,
+                    "dy": -3,
+                    "slice": 12
+                },
+                {
+                    "dx": 1,
+                    "dy": 2,
+                    "slice": 13
+                },
+                {
+                    "dx": 0,
+                    "dy": 1,
+                    "slice": 15
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Base] 126ES | hulei=accept | mattia=reject | shifts=7 slice(s), max +/-4 px | source=added for balance"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient135": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 4,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 4
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 6
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -3,
+                    "slice": 7
+                }
+            ]
+        },
+        "ED_Comments": "reject: [Base] 135ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-4 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient140": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": -3,
+                    "dy": -5,
+                    "slice": 6
+                },
+                {
+                    "dx": 4,
+                    "dy": -1,
+                    "slice": 7
+                },
+                {
+                    "dx": 5,
+                    "dy": -5,
+                    "slice": 8
+                },
+                {
+                    "dx": 5,
+                    "dy": -1,
+                    "slice": 9
+                },
+                {
+                    "dx": -4,
+                    "dy": -5,
+                    "slice": 12
+                },
+                {
+                    "dx": 5,
+                    "dy": 1,
+                    "slice": 13
+                },
+                {
+                    "dx": 1,
+                    "dy": 3,
+                    "slice": 14
+                },
+                {
+                    "dx": 0,
+                    "dy": 2,
+                    "slice": 16
+                },
+                {
+                    "dx": 3,
+                    "dy": 2,
+                    "slice": 19
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -1,
+                    "slice": 2
+                },
+                {
+                    "dx": 1,
+                    "dy": -3,
+                    "slice": 3
+                },
+                {
+                    "dx": 5,
+                    "dy": 0,
+                    "slice": 4
+                },
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 5
+                },
+                {
+                    "dx": -5,
+                    "dy": 5,
+                    "slice": 8
+                },
+                {
+                    "dx": 1,
+                    "dy": -5,
+                    "slice": 9
+                },
+                {
+                    "dx": 0,
+                    "dy": 1,
+                    "slice": 12
+                },
+                {
+                    "dx": 1,
+                    "dy": 3,
+                    "slice": 14
+                },
+                {
+                    "dx": -2,
+                    "dy": 4,
+                    "slice": 18
+                },
+                {
+                    "dx": -1,
+                    "dy": 4,
+                    "slice": 19
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Base] 140ES | hulei=accept | mattia=reject | shifts=10 slice(s), max +/-5 px | source=added for balance"
+    },
+    "/home/maxmo2009/AQC_dataset/sabotaged_dataset/sabotaged_acdc/seed42_ratio0.5_shift5/patient147": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 1,
+                    "dy": -4,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": -3,
+                    "slice": 4
+                },
+                {
+                    "dx": -1,
+                    "dy": 0,
+                    "slice": 5
+                },
+                {
+                    "dx": 5,
+                    "dy": 3,
+                    "slice": 10
+                },
+                {
+                    "dx": 4,
+                    "dy": -1,
+                    "slice": 12
+                },
+                {
+                    "dx": 0,
+                    "dy": -1,
+                    "slice": 13
+                }
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": -3,
+                    "dy": 4,
+                    "slice": 5
+                },
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 6
+                },
+                {
+                    "dx": -5,
+                    "dy": 2,
+                    "slice": 7
+                },
+                {
+                    "dx": -2,
+                    "dy": 4,
+                    "slice": 9
+                },
+                {
+                    "dx": -2,
+                    "dy": -1,
+                    "slice": 14
+                }
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "unclassified: [Base] 147ES | hulei=accept | mattia=reject | shifts=6 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient004": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -5,
+                    "slice": 0
+                },
+                {
+                    "dx": 3,
+                    "dy": -1,
+                    "slice": 2
+                },
+                {
+                    "dx": -1,
+                    "dy": 1,
+                    "slice": 4
+                },
+                {
+                    "dx": -5,
+                    "dy": -1,
+                    "slice": 5
+                },
+                {
+                    "dx": 5,
+                    "dy": -1,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 0,
+                    "dy": -3,
+                    "slice": 2
+                },
+                {
+                    "dx": 0,
+                    "dy": 2,
+                    "slice": 6
+                },
+                {
+                    "dx": 0,
+                    "dy": -1,
+                    "slice": 7
+                },
+                {
+                    "dx": -2,
+                    "dy": 4,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "accept: [Rule-based] 4ES | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-4 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient005": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 2,
+                    "dy": -4,
+                    "slice": 0
+                },
+                {
+                    "dx": 5,
+                    "dy": 2,
+                    "slice": 3
+                },
+                {
+                    "dx": 3,
+                    "dy": 4,
+                    "slice": 5
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 6
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": 5,
+                    "slice": 0
+                },
+                {
+                    "dx": 3,
+                    "dy": 2,
+                    "slice": 1
+                },
+                {
+                    "dx": -2,
+                    "dy": -4,
+                    "slice": 2
+                },
+                {
+                    "dx": 4,
+                    "dy": 3,
+                    "slice": 3
+                },
+                {
+                    "dx": -2,
+                    "dy": -5,
+                    "slice": 4
+                },
+                {
+                    "dx": 5,
+                    "dy": -5,
+                    "slice": 5
+                },
+                {
+                    "dx": -5,
+                    "dy": 0,
+                    "slice": 6
+                },
+                {
+                    "dx": -2,
+                    "dy": -1,
+                    "slice": 7
+                },
+                {
+                    "dx": -3,
+                    "dy": 4,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "unclassified: [Rule-based] 5ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient013": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": 4,
+                    "slice": 2
+                },
+                {
+                    "dx": 1,
+                    "dy": 2,
+                    "slice": 3
+                },
+                {
+                    "dx": -3,
+                    "dy": 5,
+                    "slice": 4
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": 2,
+                    "slice": 0
+                },
+                {
+                    "dx": -2,
+                    "dy": -4,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": 5,
+                    "slice": 2
+                },
+                {
+                    "dx": 2,
+                    "dy": 4,
+                    "slice": 5
+                },
+                {
+                    "dx": 3,
+                    "dy": 2,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "accept: [Rule-based] 13ED | hulei=reject | mattia=accept | shifts=3 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient016": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 1,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 3
+                },
+                {
+                    "dx": 3,
+                    "dy": -5,
+                    "slice": 4
+                },
+                {
+                    "dx": 5,
+                    "dy": -4,
+                    "slice": 6
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -5,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": -3,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": -1,
+                    "dy": 0,
+                    "slice": 5
+                },
+                {
+                    "dx": 4,
+                    "dy": -4,
+                    "slice": 6
+                },
+                {
+                    "dx": -1,
+                    "dy": -4,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "accept: [Rule-based] 16ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient024": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": 2,
+                    "dy": -4,
+                    "slice": 1
+                },
+                {
+                    "dx": 5,
+                    "dy": 4,
+                    "slice": 2
+                },
+                {
+                    "dx": -5,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": -2,
+                    "dy": -4,
+                    "slice": 6
+                },
+                {
+                    "dx": -4,
+                    "dy": 5,
+                    "slice": 7
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": 3,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": 2,
+                    "slice": 3
+                },
+                {
+                    "dx": 3,
+                    "dy": -3,
+                    "slice": 4
+                },
+                {
+                    "dx": 4,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": -4,
+                    "dy": -1,
+                    "slice": 7
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "unclassified: [Rule-based] 24ES | hulei=reject | mattia=accept | shifts=5 slice(s), max +/-4 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient028": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 0,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": 1,
+                    "dy": -1,
+                    "slice": 2
+                },
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 3
+                },
+                {
+                    "dx": 1,
+                    "dy": 4,
+                    "slice": 6
+                },
+                {
+                    "dx": -1,
+                    "dy": -1,
+                    "slice": 7
+                },
+                {
+                    "dx": 5,
+                    "dy": 1,
+                    "slice": 8
+                },
+                {
+                    "dx": 4,
+                    "dy": 5,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 0,
+                    "dy": -2,
+                    "slice": 7
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "unclassified: [Rule-based] 28ED | hulei=reject | mattia=accept | shifts=7 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient029": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 2,
+                    "dy": -5,
+                    "slice": 7
+                },
+                {
+                    "dx": -1,
+                    "dy": 0,
+                    "slice": 10
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": 3,
+                    "slice": 1
+                },
+                {
+                    "dx": 3,
+                    "dy": -1,
+                    "slice": 3
+                },
+                {
+                    "dx": 2,
+                    "dy": -1,
+                    "slice": 5
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 7
+                },
+                {
+                    "dx": -2,
+                    "dy": 5,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Rule-based] 29ES | hulei=accept | mattia=reject | shifts=5 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient030": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 1,
+                    "dy": -5,
+                    "slice": 3
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 4
+                },
+                {
+                    "dx": 5,
+                    "dy": -1,
+                    "slice": 5
+                },
+                {
+                    "dx": -2,
+                    "dy": 2,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": 0,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": 5,
+                    "slice": 2
+                },
+                {
+                    "dx": 1,
+                    "dy": -4,
+                    "slice": 5
+                },
+                {
+                    "dx": -5,
+                    "dy": -1,
+                    "slice": 6
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 8
+                },
+                {
+                    "dx": 2,
+                    "dy": 0,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "accept: [Rule-based] 30ES | hulei=reject | mattia=accept | shifts=6 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient031": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": 1,
+                    "slice": 3
+                },
+                {
+                    "dx": 0,
+                    "dy": -2,
+                    "slice": 8
+                },
+                {
+                    "dx": -2,
+                    "dy": 0,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": 0,
+                    "slice": 0
+                },
+                {
+                    "dx": 1,
+                    "dy": -1,
+                    "slice": 3
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 4
+                },
+                {
+                    "dx": -2,
+                    "dy": 5,
+                    "slice": 5
+                },
+                {
+                    "dx": 0,
+                    "dy": -2,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "accept: [Rule-based] 31ES | hulei=reject | mattia=accept | shifts=5 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient032": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -2,
+                    "slice": 1
+                },
+                {
+                    "dx": -3,
+                    "dy": 4,
+                    "slice": 4
+                },
+                {
+                    "dx": -3,
+                    "dy": -3,
+                    "slice": 5
+                },
+                {
+                    "dx": -5,
+                    "dy": -3,
+                    "slice": 8
+                },
+                {
+                    "dx": -2,
+                    "dy": 4,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": 1,
+                    "dy": 3,
+                    "slice": 1
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": 0,
+                    "dy": 3,
+                    "slice": 3
+                },
+                {
+                    "dx": -2,
+                    "dy": 4,
+                    "slice": 5
+                },
+                {
+                    "dx": 5,
+                    "dy": 3,
+                    "slice": 6
+                },
+                {
+                    "dx": 5,
+                    "dy": -5,
+                    "slice": 7
+                },
+                {
+                    "dx": 2,
+                    "dy": 1,
+                    "slice": 8
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "reject: [Rule-based] 32ED | hulei=reject | mattia=accept | shifts=5 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient034": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": 1,
+                    "slice": 3
+                },
+                {
+                    "dx": 5,
+                    "dy": 1,
+                    "slice": 4
+                },
+                {
+                    "dx": 4,
+                    "dy": 3,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": 2,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": 0,
+                    "slice": 1
+                },
+                {
+                    "dx": -1,
+                    "dy": 4,
+                    "slice": 3
+                },
+                {
+                    "dx": 1,
+                    "dy": 3,
+                    "slice": 4
+                },
+                {
+                    "dx": 5,
+                    "dy": -1,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "unclassified: [Rule-based] 34ES | hulei=reject | mattia=accept | shifts=5 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient052": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": -1,
+                    "dy": 2,
+                    "slice": 4
+                },
+                {
+                    "dx": 1,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": -2,
+                    "dy": -2,
+                    "slice": 6
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": 2,
+                    "slice": 0
+                },
+                {
+                    "dx": -5,
+                    "dy": -4,
+                    "slice": 4
+                },
+                {
+                    "dx": -1,
+                    "dy": 0,
+                    "slice": 5
+                },
+                {
+                    "dx": 1,
+                    "dy": -5,
+                    "slice": 7
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "accept: [Rule-based] 52ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-3 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient092": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": -5,
+                    "slice": 0
+                },
+                {
+                    "dx": 0,
+                    "dy": 4,
+                    "slice": 2
+                },
+                {
+                    "dx": 5,
+                    "dy": -2,
+                    "slice": 5
+                },
+                {
+                    "dx": -5,
+                    "dy": -2,
+                    "slice": 6
+                },
+                {
+                    "dx": -3,
+                    "dy": -3,
+                    "slice": 9
+                },
+                {
+                    "dx": 0,
+                    "dy": 4,
+                    "slice": 12
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 2,
+                    "dy": 3,
+                    "slice": 0
+                },
+                {
+                    "dx": 2,
+                    "dy": -5,
+                    "slice": 1
+                },
+                {
+                    "dx": -2,
+                    "dy": 4,
+                    "slice": 2
+                },
+                {
+                    "dx": 3,
+                    "dy": 2,
+                    "slice": 3
+                },
+                {
+                    "dx": 4,
+                    "dy": -2,
+                    "slice": 4
+                },
+                {
+                    "dx": -3,
+                    "dy": 0,
+                    "slice": 6
+                },
+                {
+                    "dx": -3,
+                    "dy": 4,
+                    "slice": 7
+                },
+                {
+                    "dx": -4,
+                    "dy": 3,
+                    "slice": 9
+                },
+                {
+                    "dx": 5,
+                    "dy": 1,
+                    "slice": 12
+                },
+                {
+                    "dx": 0,
+                    "dy": -3,
+                    "slice": 14
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "unclassified: [Rule-based] 92ED | hulei=reject | mattia=accept | shifts=6 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient102": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": -3,
+                    "slice": 0
+                },
+                {
+                    "dx": 4,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": -3,
+                    "dy": -4,
+                    "slice": 3
+                },
+                {
+                    "dx": 5,
+                    "dy": -3,
+                    "slice": 4
+                },
+                {
+                    "dx": -5,
+                    "dy": -5,
+                    "slice": 5
+                },
+                {
+                    "dx": -2,
+                    "dy": -3,
+                    "slice": 6
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -3,
+                    "slice": 0
+                },
+                {
+                    "dx": 2,
+                    "dy": 1,
+                    "slice": 3
+                },
+                {
+                    "dx": 3,
+                    "dy": -2,
+                    "slice": 4
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "reject: [Rule-based] 102ED | hulei=reject | mattia=accept | shifts=6 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient110": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": 2,
+                    "slice": 0
+                },
+                {
+                    "dx": 1,
+                    "dy": -4,
+                    "slice": 1
+                },
+                {
+                    "dx": -2,
+                    "dy": -2,
+                    "slice": 2
+                },
+                {
+                    "dx": 1,
+                    "dy": -2,
+                    "slice": 3
+                },
+                {
+                    "dx": -2,
+                    "dy": 0,
+                    "slice": 4
+                },
+                {
+                    "dx": 1,
+                    "dy": -5,
+                    "slice": 5
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": -5,
+                    "slice": 3
+                },
+                {
+                    "dx": 1,
+                    "dy": 4,
+                    "slice": 5
+                },
+                {
+                    "dx": 3,
+                    "dy": -3,
+                    "slice": 6
+                },
+                {
+                    "dx": -3,
+                    "dy": -4,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "accept: [Rule-based] 110ED | hulei=reject | mattia=accept | shifts=6 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient117": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": 2,
+                    "dy": 1,
+                    "slice": 2
+                },
+                {
+                    "dx": 5,
+                    "dy": -5,
+                    "slice": 3
+                },
+                {
+                    "dx": 3,
+                    "dy": -2,
+                    "slice": 4
+                },
+                {
+                    "dx": 1,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": 5,
+                    "dy": -3,
+                    "slice": 6
+                },
+                {
+                    "dx": 5,
+                    "dy": 0,
+                    "slice": 7
+                },
+                {
+                    "dx": 3,
+                    "dy": -3,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -5,
+                    "dy": 4,
+                    "slice": 0
+                },
+                {
+                    "dx": 0,
+                    "dy": -2,
+                    "slice": 4
+                },
+                {
+                    "dx": 5,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": -3,
+                    "dy": -2,
+                    "slice": 6
+                },
+                {
+                    "dx": -4,
+                    "dy": -3,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "unclassified: [Rule-based] 117ED | hulei=reject | mattia=accept | shifts=8 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient135": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 4,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 4
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 6
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -3,
+                    "slice": 7
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "unclassified: [Rule-based] 135ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-4 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/rulebase_fixed_dataset/rulebase_fixed_acdc/seed42_ratio0.5_shift5/patient139": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 0,
+                    "dy": -4,
+                    "slice": 1
+                },
+                {
+                    "dx": -5,
+                    "dy": 3,
+                    "slice": 2
+                },
+                {
+                    "dx": -4,
+                    "dy": 1,
+                    "slice": 3
+                },
+                {
+                    "dx": -3,
+                    "dy": 2,
+                    "slice": 6
+                },
+                {
+                    "dx": 5,
+                    "dy": 4,
+                    "slice": 8
+                },
+                {
+                    "dx": 4,
+                    "dy": 3,
+                    "slice": 9
+                },
+                {
+                    "dx": -4,
+                    "dy": -1,
+                    "slice": 10
+                },
+                {
+                    "dx": 4,
+                    "dy": -4,
+                    "slice": 12
+                },
+                {
+                    "dx": 1,
+                    "dy": 1,
+                    "slice": 13
+                },
+                {
+                    "dx": -2,
+                    "dy": 0,
+                    "slice": 14
+                },
+                {
+                    "dx": 5,
+                    "dy": -5,
+                    "slice": 15
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 0,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": -2,
+                    "dy": -2,
+                    "slice": 5
+                },
+                {
+                    "dx": -4,
+                    "dy": -4,
+                    "slice": 7
+                },
+                {
+                    "dx": 4,
+                    "dy": -3,
+                    "slice": 9
+                },
+                {
+                    "dx": -4,
+                    "dy": -1,
+                    "slice": 12
+                },
+                {
+                    "dx": -5,
+                    "dy": 0,
+                    "slice": 13
+                },
+                {
+                    "dx": 3,
+                    "dy": -2,
+                    "slice": 14
+                },
+                {
+                    "dx": 3,
+                    "dy": -1,
+                    "slice": 15
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Rule-based] 139ES | hulei=accept | mattia=reject | shifts=8 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient006": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 2,
+                    "dy": 1,
+                    "slice": 1
+                },
+                {
+                    "dx": -4,
+                    "dy": 5,
+                    "slice": 2
+                },
+                {
+                    "dx": 1,
+                    "dy": 1,
+                    "slice": 3
+                },
+                {
+                    "dx": -5,
+                    "dy": 5,
+                    "slice": 4
+                },
+                {
+                    "dx": 0,
+                    "dy": -4,
+                    "slice": 7
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 8
+                },
+                {
+                    "dx": 1,
+                    "dy": -3,
+                    "slice": 9
+                },
+                {
+                    "dx": -2,
+                    "dy": -4,
+                    "slice": 10
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -4,
+                    "slice": 0
+                },
+                {
+                    "dx": 3,
+                    "dy": -5,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": 2,
+                    "slice": 5
+                },
+                {
+                    "dx": 1,
+                    "dy": -5,
+                    "slice": 6
+                },
+                {
+                    "dx": -5,
+                    "dy": 1,
+                    "slice": 7
+                },
+                {
+                    "dx": 2,
+                    "dy": -1,
+                    "slice": 8
+                },
+                {
+                    "dx": 3,
+                    "dy": 5,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "accept: [Agent] 6ES | hulei=reject | mattia=accept | shifts=7 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient007": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 0
+                },
+                {
+                    "dx": 4,
+                    "dy": 2,
+                    "slice": 5
+                },
+                {
+                    "dx": 3,
+                    "dy": -4,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": 5,
+                    "slice": 0
+                },
+                {
+                    "dx": 4,
+                    "dy": -2,
+                    "slice": 2
+                },
+                {
+                    "dx": -4,
+                    "dy": 1,
+                    "slice": 4
+                },
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 7
+                },
+                {
+                    "dx": -1,
+                    "dy": 1,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ED_Comments": "accept: [Agent] 7ED | hulei=accept | mattia=reject | shifts=3 slice(s), max +/-4 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient008": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": -5,
+                    "slice": 1
+                },
+                {
+                    "dx": 4,
+                    "dy": -4,
+                    "slice": 2
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 3
+                },
+                {
+                    "dx": 0,
+                    "dy": -4,
+                    "slice": 4
+                },
+                {
+                    "dx": -3,
+                    "dy": 2,
+                    "slice": 6
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -1,
+                    "slice": 2
+                },
+                {
+                    "dx": -3,
+                    "dy": -1,
+                    "slice": 4
+                },
+                {
+                    "dx": -4,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": -1,
+                    "dy": 4,
+                    "slice": 6
+                },
+                {
+                    "dx": 0,
+                    "dy": -2,
+                    "slice": 7
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "accept: [Agent] 8ES | hulei=reject | mattia=accept | shifts=5 slice(s), max +/-4 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient016": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 1,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 3
+                },
+                {
+                    "dx": 3,
+                    "dy": -5,
+                    "slice": 4
+                },
+                {
+                    "dx": 5,
+                    "dy": -4,
+                    "slice": 6
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -5,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": -3,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": -1,
+                    "dy": 0,
+                    "slice": 5
+                },
+                {
+                    "dx": 4,
+                    "dy": -4,
+                    "slice": 6
+                },
+                {
+                    "dx": -1,
+                    "dy": -4,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "accept: [Agent] 16ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient025": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -1,
+                    "slice": 2
+                },
+                {
+                    "dx": -1,
+                    "dy": 4,
+                    "slice": 4
+                },
+                {
+                    "dx": 2,
+                    "dy": 0,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": 1,
+                    "slice": 0
+                },
+                {
+                    "dx": 0,
+                    "dy": -2,
+                    "slice": 1
+                },
+                {
+                    "dx": 1,
+                    "dy": -2,
+                    "slice": 3
+                },
+                {
+                    "dx": 0,
+                    "dy": 2,
+                    "slice": 5
+                },
+                {
+                    "dx": 5,
+                    "dy": 5,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ED_Comments": "unclassified: [Agent] 25ED | hulei=accept | mattia=reject | shifts=3 slice(s), max +/-4 px | source=hulei list",
+        "ES_Comments": "unclassified: [Agent] 25ES | hulei=accept | mattia=reject | shifts=5 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient027": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": 5,
+                    "slice": 4
+                },
+                {
+                    "dx": -3,
+                    "dy": -1,
+                    "slice": 6
+                },
+                {
+                    "dx": -5,
+                    "dy": -1,
+                    "slice": 8
+                },
+                {
+                    "dx": 1,
+                    "dy": -3,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 1,
+                    "dy": 4,
+                    "slice": 0
+                },
+                {
+                    "dx": -3,
+                    "dy": -4,
+                    "slice": 2
+                },
+                {
+                    "dx": 5,
+                    "dy": -2,
+                    "slice": 4
+                },
+                {
+                    "dx": 4,
+                    "dy": -3,
+                    "slice": 5
+                },
+                {
+                    "dx": 5,
+                    "dy": -1,
+                    "slice": 6
+                },
+                {
+                    "dx": 5,
+                    "dy": -5,
+                    "slice": 7
+                },
+                {
+                    "dx": -1,
+                    "dy": 5,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "accept: [Agent] 27ES | hulei=accept | mattia=reject | shifts=7 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient032": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -2,
+                    "slice": 1
+                },
+                {
+                    "dx": -3,
+                    "dy": 4,
+                    "slice": 4
+                },
+                {
+                    "dx": -3,
+                    "dy": -3,
+                    "slice": 5
+                },
+                {
+                    "dx": -5,
+                    "dy": -3,
+                    "slice": 8
+                },
+                {
+                    "dx": -2,
+                    "dy": 4,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": 1,
+                    "dy": 3,
+                    "slice": 1
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": 0,
+                    "dy": 3,
+                    "slice": 3
+                },
+                {
+                    "dx": -2,
+                    "dy": 4,
+                    "slice": 5
+                },
+                {
+                    "dx": 5,
+                    "dy": 3,
+                    "slice": 6
+                },
+                {
+                    "dx": 5,
+                    "dy": -5,
+                    "slice": 7
+                },
+                {
+                    "dx": 2,
+                    "dy": 1,
+                    "slice": 8
+                },
+                {
+                    "dx": -4,
+                    "dy": 2,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "accept: [Agent] 32ED | hulei=reject | mattia=accept | shifts=5 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient035": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": -1,
+                    "slice": 0
+                },
+                {
+                    "dx": -3,
+                    "dy": -3,
+                    "slice": 2
+                },
+                {
+                    "dx": -3,
+                    "dy": 5,
+                    "slice": 4
+                },
+                {
+                    "dx": 3,
+                    "dy": -2,
+                    "slice": 6
+                },
+                {
+                    "dx": 2,
+                    "dy": 0,
+                    "slice": 7
+                },
+                {
+                    "dx": -1,
+                    "dy": 0,
+                    "slice": 8
+                },
+                {
+                    "dx": -5,
+                    "dy": -3,
+                    "slice": 11
+                },
+                {
+                    "dx": 4,
+                    "dy": -5,
+                    "slice": 12
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": 1,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": 1,
+                    "slice": 2
+                },
+                {
+                    "dx": 3,
+                    "dy": -4,
+                    "slice": 3
+                },
+                {
+                    "dx": -4,
+                    "dy": -1,
+                    "slice": 4
+                },
+                {
+                    "dx": -2,
+                    "dy": 1,
+                    "slice": 8
+                },
+                {
+                    "dx": -2,
+                    "dy": -1,
+                    "slice": 10
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "reject: [Agent] 35ED | hulei=reject | mattia=accept | shifts=8 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient037": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -2,
+                    "slice": 2
+                },
+                {
+                    "dx": 1,
+                    "dy": 3,
+                    "slice": 3
+                },
+                {
+                    "dx": -1,
+                    "dy": 0,
+                    "slice": 4
+                },
+                {
+                    "dx": -3,
+                    "dy": -4,
+                    "slice": 5
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -2,
+                    "slice": 0
+                },
+                {
+                    "dx": 5,
+                    "dy": -3,
+                    "slice": 2
+                },
+                {
+                    "dx": -3,
+                    "dy": -1,
+                    "slice": 3
+                },
+                {
+                    "dx": 4,
+                    "dy": -3,
+                    "slice": 4
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ED_Comments": "accept: [Agent] 37ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-4 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient043": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -4,
+                    "slice": 0
+                },
+                {
+                    "dx": -3,
+                    "dy": -1,
+                    "slice": 1
+                },
+                {
+                    "dx": 3,
+                    "dy": -3,
+                    "slice": 2
+                },
+                {
+                    "dx": -2,
+                    "dy": 2,
+                    "slice": 4
+                },
+                {
+                    "dx": 1,
+                    "dy": 3,
+                    "slice": 7
+                },
+                {
+                    "dx": 1,
+                    "dy": -4,
+                    "slice": 8
+                },
+                {
+                    "dx": -5,
+                    "dy": 0,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": 2,
+                    "dy": 2,
+                    "slice": 4
+                },
+                {
+                    "dx": -2,
+                    "dy": -3,
+                    "slice": 7
+                },
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 11
+                }
+            ],
+            "agent_status": "proper",
+            "agent_plan": []
+        },
+        "ED_Comments": "accept: [Agent] 43ED | hulei=reject | mattia=accept | shifts=7 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient052": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": 2,
+                    "slice": 2
+                },
+                {
+                    "dx": -1,
+                    "dy": 2,
+                    "slice": 4
+                },
+                {
+                    "dx": 1,
+                    "dy": 3,
+                    "slice": 5
+                },
+                {
+                    "dx": -2,
+                    "dy": -2,
+                    "slice": 6
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -1,
+                    "dy": 2,
+                    "slice": 0
+                },
+                {
+                    "dx": -5,
+                    "dy": -4,
+                    "slice": 4
+                },
+                {
+                    "dx": -1,
+                    "dy": 0,
+                    "slice": 5
+                },
+                {
+                    "dx": 1,
+                    "dy": -5,
+                    "slice": 7
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "accept: [Agent] 52ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-3 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient054": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 3,
+                    "dy": -3,
+                    "slice": 1
+                },
+                {
+                    "dx": 4,
+                    "dy": 0,
+                    "slice": 2
+                },
+                {
+                    "dx": 4,
+                    "dy": -1,
+                    "slice": 3
+                },
+                {
+                    "dx": 4,
+                    "dy": -1,
+                    "slice": 7
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -5,
+                    "dy": 0,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": 1,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": -1,
+                    "slice": 6
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ED_Comments": "reject: [Agent] 54ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-4 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient065": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 2,
+                    "dy": -5,
+                    "slice": 1
+                },
+                {
+                    "dx": -2,
+                    "dy": -1,
+                    "slice": 5
+                },
+                {
+                    "dx": 5,
+                    "dy": -4,
+                    "slice": 6
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -2,
+                    "dy": -5,
+                    "slice": 1
+                },
+                {
+                    "dx": 5,
+                    "dy": 4,
+                    "slice": 2
+                },
+                {
+                    "dx": 4,
+                    "dy": 5,
+                    "slice": 5
+                },
+                {
+                    "dx": 0,
+                    "dy": -1,
+                    "slice": 7
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "unclassified: [Agent] 65ED | hulei=reject | mattia=accept | shifts=3 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient066": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -2,
+                    "dy": -4,
+                    "slice": 1
+                },
+                {
+                    "dx": -2,
+                    "dy": 3,
+                    "slice": 7
+                },
+                {
+                    "dx": -1,
+                    "dy": 1,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": 0,
+                    "slice": 0
+                },
+                {
+                    "dx": 0,
+                    "dy": 3,
+                    "slice": 1
+                },
+                {
+                    "dx": 2,
+                    "dy": 0,
+                    "slice": 3
+                },
+                {
+                    "dx": 1,
+                    "dy": -5,
+                    "slice": 5
+                },
+                {
+                    "dx": -3,
+                    "dy": -5,
+                    "slice": 7
+                },
+                {
+                    "dx": 4,
+                    "dy": 4,
+                    "slice": 8
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "accept: [Agent] 66ED | hulei=reject | mattia=accept | shifts=3 slice(s), max +/-4 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient070": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": 5,
+                    "slice": 0
+                },
+                {
+                    "dx": 0,
+                    "dy": -5,
+                    "slice": 4
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "apex_estimation"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -1,
+                    "slice": 3
+                },
+                {
+                    "dx": -2,
+                    "dy": 4,
+                    "slice": 4
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "unclassified: [Agent] 70ES | hulei=reject | mattia=accept | shifts=2 slice(s), max +/-4 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient077": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -3,
+                    "dy": 0,
+                    "slice": 0
+                },
+                {
+                    "dx": 1,
+                    "dy": 5,
+                    "slice": 3
+                },
+                {
+                    "dx": 5,
+                    "dy": 5,
+                    "slice": 4
+                },
+                {
+                    "dx": -5,
+                    "dy": 4,
+                    "slice": 5
+                },
+                {
+                    "dx": 1,
+                    "dy": 1,
+                    "slice": 7
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -2,
+                    "dy": -2,
+                    "slice": 0
+                },
+                {
+                    "dx": -4,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": 3,
+                    "dy": -3,
+                    "slice": 2
+                },
+                {
+                    "dx": -2,
+                    "dy": 2,
+                    "slice": 3
+                },
+                {
+                    "dx": 5,
+                    "dy": 2,
+                    "slice": 4
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "accept: [Agent] 77ES | hulei=reject | mattia=accept | shifts=5 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient083": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -2,
+                    "dy": 5,
+                    "slice": 0
+                },
+                {
+                    "dx": -2,
+                    "dy": -4,
+                    "slice": 4
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": 4,
+                    "slice": 0
+                },
+                {
+                    "dx": 1,
+                    "dy": 0,
+                    "slice": 2
+                },
+                {
+                    "dx": 5,
+                    "dy": -4,
+                    "slice": 4
+                },
+                {
+                    "dx": 4,
+                    "dy": 4,
+                    "slice": 5
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Agent] 83ES | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient089": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -2,
+                    "dy": 0,
+                    "slice": 0
+                },
+                {
+                    "dx": -5,
+                    "dy": 5,
+                    "slice": 1
+                },
+                {
+                    "dx": -3,
+                    "dy": -5,
+                    "slice": 2
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -3,
+                    "slice": 1
+                },
+                {
+                    "dx": -5,
+                    "dy": -2,
+                    "slice": 2
+                },
+                {
+                    "dx": 1,
+                    "dy": 0,
+                    "slice": 3
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "unclassified: [Agent] 89ES | hulei=reject | mattia=accept | shifts=3 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient095": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 5,
+                    "dy": -3,
+                    "slice": 0
+                },
+                {
+                    "dx": -5,
+                    "dy": -4,
+                    "slice": 2
+                },
+                {
+                    "dx": -2,
+                    "dy": 1,
+                    "slice": 3
+                },
+                {
+                    "dx": -1,
+                    "dy": -1,
+                    "slice": 7
+                },
+                {
+                    "dx": -5,
+                    "dy": 1,
+                    "slice": 8
+                },
+                {
+                    "dx": 0,
+                    "dy": -5,
+                    "slice": 11
+                },
+                {
+                    "dx": -1,
+                    "dy": 5,
+                    "slice": 12
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -4,
+                    "dy": -5,
+                    "slice": 0
+                },
+                {
+                    "dx": 5,
+                    "dy": -1,
+                    "slice": 1
+                },
+                {
+                    "dx": -4,
+                    "dy": -1,
+                    "slice": 3
+                },
+                {
+                    "dx": 5,
+                    "dy": -1,
+                    "slice": 5
+                },
+                {
+                    "dx": 3,
+                    "dy": 1,
+                    "slice": 6
+                },
+                {
+                    "dx": 1,
+                    "dy": 0,
+                    "slice": 7
+                },
+                {
+                    "dx": -5,
+                    "dy": -1,
+                    "slice": 8
+                },
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 9
+                },
+                {
+                    "dx": 5,
+                    "dy": -4,
+                    "slice": 12
+                },
+                {
+                    "dx": 0,
+                    "dy": 3,
+                    "slice": 13
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ED_Comments": "accept: [Agent] 95ED | hulei=reject | mattia=accept | shifts=7 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient139": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 0,
+                    "dy": -4,
+                    "slice": 1
+                },
+                {
+                    "dx": -5,
+                    "dy": 3,
+                    "slice": 2
+                },
+                {
+                    "dx": -4,
+                    "dy": 1,
+                    "slice": 3
+                },
+                {
+                    "dx": -3,
+                    "dy": 2,
+                    "slice": 6
+                },
+                {
+                    "dx": 5,
+                    "dy": 4,
+                    "slice": 8
+                },
+                {
+                    "dx": 4,
+                    "dy": 3,
+                    "slice": 9
+                },
+                {
+                    "dx": -4,
+                    "dy": -1,
+                    "slice": 10
+                },
+                {
+                    "dx": 4,
+                    "dy": -4,
+                    "slice": 12
+                },
+                {
+                    "dx": 1,
+                    "dy": 1,
+                    "slice": 13
+                },
+                {
+                    "dx": -2,
+                    "dy": 0,
+                    "slice": 14
+                },
+                {
+                    "dx": 5,
+                    "dy": -5,
+                    "slice": 15
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 0,
+                    "dy": 4,
+                    "slice": 1
+                },
+                {
+                    "dx": -2,
+                    "dy": -2,
+                    "slice": 5
+                },
+                {
+                    "dx": -4,
+                    "dy": -4,
+                    "slice": 7
+                },
+                {
+                    "dx": 4,
+                    "dy": -3,
+                    "slice": 9
+                },
+                {
+                    "dx": -4,
+                    "dy": -1,
+                    "slice": 12
+                },
+                {
+                    "dx": -5,
+                    "dy": 0,
+                    "slice": 13
+                },
+                {
+                    "dx": 3,
+                    "dy": -2,
+                    "slice": 14
+                },
+                {
+                    "dx": 3,
+                    "dy": -1,
+                    "slice": 15
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix",
+                "apex_estimation"
+            ]
+        },
+        "ED_Comments": "",
+        "ES_Comments": "reject: [Agent] 139ES | hulei=reject | mattia=accept | shifts=8 slice(s), max +/-5 px | source=hulei list"
+    },
+    "/home/maxmo2009/AQC_dataset/cardiac_agent_fixed_dataset/cardiac_agent_fixed_acdc/seed42_ratio0.5_shift5_gpt-5.5/patient149": {
+        "ED": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": 4,
+                    "dy": 5,
+                    "slice": 1
+                },
+                {
+                    "dx": 0,
+                    "dy": -4,
+                    "slice": 2
+                },
+                {
+                    "dx": -5,
+                    "dy": 0,
+                    "slice": 4
+                },
+                {
+                    "dx": 4,
+                    "dy": -4,
+                    "slice": 9
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ES": {
+            "sabotaged": true,
+            "shifts": [
+                {
+                    "dx": -5,
+                    "dy": -1,
+                    "slice": 3
+                },
+                {
+                    "dx": 2,
+                    "dy": -2,
+                    "slice": 4
+                },
+                {
+                    "dx": -1,
+                    "dy": -2,
+                    "slice": 5
+                },
+                {
+                    "dx": 0,
+                    "dy": -5,
+                    "slice": 7
+                }
+            ],
+            "agent_status": "fixed",
+            "agent_plan": [
+                "misalignment_fix"
+            ]
+        },
+        "ED_Comments": "accept: [Agent] 149ED | hulei=reject | mattia=accept | shifts=4 slice(s), max +/-5 px | source=hulei list",
+        "ES_Comments": ""
+    }
+}

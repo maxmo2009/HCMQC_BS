@@ -47,3 +47,14 @@ JSON/QC_logs.json
 # Generated QC reports — now TRACKED (repo is private; patient-derived imagery
 # is acceptable here). Re-add `reports/` below to stop tracking them again.
 JSON/*
+
+# Reviewer QC decisions ARE tracked (repo is private; ACDC and M&Ms-2 are public
+# challenge cohorts and the Savioli keys are anonymised). They are the primary
+# record of the clinical review, so they belong in version control with history.
+#
+# NOTE the re-include below only reaches JSON/users/ — `JSON/*` still hides
+# JSON/users.json (PLAINTEXT PASSWORDS), file_visibility.json and QC_logs.json.
+# Never narrow that: credentials in git history cannot be taken back, private
+# repo or not.
+!JSON/users/
+JSON/users/**/*.bak
