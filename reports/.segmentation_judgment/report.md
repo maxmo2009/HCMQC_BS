@@ -8,10 +8,10 @@ The 3D mesh is therefore a **visualization aid, not the target of the assessment
 
 ## Terminology & grading
 
-- **LVepi / LVendo / LVmyo** — the LV **epi**cardium, **endo**cardium, and **myo**cardium mesh surfaces. Assess final mesh quality with *either* the **LVepi + LVendo** pair *or* the **LVmyo** surface; if either representation is acceptable, the case passes (see Notice 1).
-- **Two grading bars** are used below:
-  - **Strict** — judge the mesh against a normal heart on every feature and reject any notable deviation.
-  - **Minimum-requirement** — accept a mesh that is usable overall, tolerating specific known artifacts (e.g. apical-thickness overestimation) by excluding them from assessment.
+* **LVepi / LVendo / LVmyo** — the LV **epi**cardium, **endo**cardium, and **myo**cardium mesh surfaces. Assess final mesh quality with *either* the **LVepi + LVendo** pair *or* the **LVmyo** surface; if either representation is acceptable, the case passes (see Notice 1).
+* **Two grading bars** are used below:
+    * **Strict** — judge the mesh against a normal heart on every feature and reject any notable deviation.
+    * **Minimum-requirement** — accept a mesh that is usable overall, tolerating specific known artifacts (e.g. apical-thickness overestimation) by excluding them from assessment.
 
 ## Notice
 
@@ -19,7 +19,7 @@ The 3D mesh is therefore a **visualization aid, not the target of the assessment
 
 1. **When assessing the final mesh quality, you have two options: LVepi + LVendo, or LVmyo — either one passing is enough.**
 <br>
-***Recommendation: for the LVepi + LVendo mesh, <span style="color:#ff4747">REJECT</span> (strict); for the LVmyo mesh, <span style="color:#22e06b">ACCEPT</span>***
+    ***Recommendation: for the LVepi + LVendo mesh, REJECT (strict); for the LVmyo mesh, ACCEPT***
 <br>
     ![](imgs/eg1.1_2.png){width=100}![](imgs/eg1.2.png){width=100}
 
@@ -27,15 +27,21 @@ The 3D mesh is therefore a **visualization aid, not the target of the assessment
 
 2. **In some cases, if the overestimation of apical thickness is the only issue, then exclude it from assessment.**
 <br>
-***Recommendation: under the minimum-requirement standard, <span style="color:#22e06b">ACCEPT</span>***
+    ***Recommendation: under the minimum-requirement standard, ACCEPT***
 <br>
     ![](imgs/eg2.1_3.png){width=100}![](imgs/eg2.3_2.png){width=95}
 
 *(In this case, due to focal basal hypertrophy, LVmyo is not realistic or suitable. For LVepi + LVendo, accept the case, excluding the thick apex from assessment)*
 
+**Suggestion: When repairing the apex, excessive repair of all-myocardium (no cavity) slices may distort the endocardial contour. So, at ED phase, no more than 1 all-myocardium (no cavity) slice can be accepted, and at ES phase, no more than 2 all-myocardium (no cavity) slices can be accepted.**
+
+***Recommendation: Fig.1: ED, 1 all-myocardium slice, ACCEPT; Fig.2: ED, 2 all-myocardium slices, REJECT; Fig 3, ES, 3 all-myocardium slices, REJECT; Fig.4: ES, 2 all-myocardium slices, ACCEPT***
+
+![](imgs/Fig.b.png){width=80}![](imgs/Fig.a.png){width=80}![](imgs/Fig.c.png){width=80}![](imgs/Fig.d.png){width=88}
+
 3. **Based on observation, LVmyo is not suitable for cases with myocardial hypertrophy, so in these cases, better use LVepi + LVendo for assessment. Also, set the segmentation opacity to 90% to easily identify myocardial hypertrophy.**
 <br>
-***Recommendation: <span style="color:#ff4747">REJECT</span>***
+    ***Recommendation: REJECT***
 <br>
     ![](imgs/eg3.1.png){width=90}![](imgs/eg3.2.png){width=100}
 
@@ -47,7 +53,7 @@ The 3D mesh is therefore a **visualization aid, not the target of the assessment
 
 #### Basal endocardial misalignment
 
-***Recommendation: <span style="color:#ff4747">REJECT</span>***
+***Recommendation: REJECT***
 
 ![](imgs/Fig4.1.png){width=100}![](imgs/Fig4.2.png){width=100}
 
@@ -55,15 +61,15 @@ The 3D mesh is therefore a **visualization aid, not the target of the assessment
 
 #### Focal misalignment
 
-***Recommendation: <span style="color:#ff4747">REJECT</span>***
+***Recommendation: REJECT***
 
-![](imgs/Fig5.1.png){width=100}![](imgs/Fig5.2.png){width=99}
+![](imgs/Fig.e.png){width=90}![](imgs/Fig.f.png){width=100}
 
 *(In this case, mild misalignment results in focal irregularity of the cardiac morphology)*
 
 #### Diffuse misalignment
 
-***Recommendation: <span style="color:#ff4747">REJECT</span>***
+***Recommendation: REJECT***
 
 ![](imgs/Fig6.1_2.png){width=100}![](imgs/Fig6.2.png){width=100}
 
@@ -71,15 +77,15 @@ The 3D mesh is therefore a **visualization aid, not the target of the assessment
 
 ## Flat apex
 
-- When generating the mesh, the apical endocardium is typically near the superior margin of the final slice, whereas the epicardium is generally near the inferior margin of the final slice
-- There are slight differences in mesh generation depending on whether the final slice is all myocardium or contains part of the cavity
-- If the final slice is relatively small, it may be ignored during mesh generation.
+* When generating the mesh, the apical endocardium is typically near the superior margin of the final slice, whereas the epicardium is generally near the inferior margin of the final slice
+* There are slight differences in mesh generation depending on whether the final slice is all myocardium or contains part of the cavity
+* If the final slice is relatively small, it may be ignored during mesh generation.
 
 ![](imgs/Fig7.1.png){width=100}![](imgs/Fig7.2.png){width=110}
 
 Evaluate whether the cardiac apex is sharp based on the mesh generation pattern.
 
-***Recommendation: <span style="color:#22e06b">ACCEPT</span> the first mesh, <span style="color:#ff4747">REJECT</span> the second mesh***
+***Recommendation: ACCEPT the first mesh, REJECT the second mesh***
 
 ![](imgs/Fig8.1.png){width=100}![](imgs/Fig8.2.png){width=100}
 
@@ -89,7 +95,7 @@ Evaluate whether the cardiac apex is sharp based on the mesh generation pattern.
 
 #### Oblique short-axis plane
 
-***Recommendation: <span style="color:#ff4747">REJECT</span>***
+***Recommendation: REJECT***
 
 ![](imgs/Fig9.1.png){width=100}![](imgs/Fig2.png){width=100}
 
@@ -97,7 +103,7 @@ Evaluate whether the cardiac apex is sharp based on the mesh generation pattern.
 
 #### Global slice shift
 
-***Recommendation: <span style="color:#ff4747">REJECT</span>***
+***Recommendation: REJECT***
 
 ![](imgs/Fig10.1.png){width=100}![](imgs/Fig10.2.png){width=100}
 
@@ -105,7 +111,7 @@ Evaluate whether the cardiac apex is sharp based on the mesh generation pattern.
 
 #### Insufficient apical repair
 
-***Recommendation: <span style="color:#ff4747">REJECT</span>***
+***Recommendation: REJECT***
 
 ![](imgs/Fig11.1.png){width=100}![](imgs/Fig11.2.png){width=100}
 
@@ -113,13 +119,13 @@ Evaluate whether the cardiac apex is sharp based on the mesh generation pattern.
 
 ## Good cases
 
-***Recommendation: <span style="color:#22e06b">ACCEPT</span>***
+***Recommendation: ACCEPT***
 
 ![](imgs/Fig13.1.png){width=100}![](imgs/Fig13.2.png){width=90}
 
 *(Sharp apex, well-aligned slices, and realistic myocardial thickness)*
 
-***Recommendation: <span style="color:#22e06b">ACCEPT</span>***
+***Recommendation: ACCEPT***
 
 ![](imgs/Fig12.1.png){width=100}![](imgs/Fig12.2.png){width=95}
 
