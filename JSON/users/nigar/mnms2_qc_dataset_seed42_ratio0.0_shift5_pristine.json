@@ -1,0 +1,1806 @@
+{
+    "__meta__": {
+        "schema_version": 2,
+        "dataset_root": "/home/maxmo2009/AQC_dataset/no_sabotage_dataset/pristine_mnms2/seed42_ratio0.0_shift5"
+    },
+    "mnms2_test_203": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_204": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_205": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_206": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_207": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_208": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_209": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_211": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_214": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_215": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_218": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_221": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_224": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_225": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_228": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_230": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_231": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_232": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_233": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_234": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_235": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_236": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_237": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_238": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_239": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_240": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_241": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_242": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_243": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_244": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_245": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_246": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_247": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_248": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_249": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_250": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_251": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_252": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:Last basal slice is oversegmented ",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_253": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_254": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_255": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_257": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_258": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_260": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_263": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_264": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_266": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_267": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:I would like to discuss this case",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_268": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_270": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_274": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_276": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_277": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_279": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_281": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_283": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_284": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_285": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_288": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_289": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_291": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_292": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Here small apical formation would be nice "
+    },
+    "mnms2_test_293": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_294": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_295": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_296": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_297": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_298": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_299": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_300": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:needs to discuss",
+        "ES_Comments": "accept:Check last apical slices "
+    },
+    "mnms2_test_301": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_302": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_303": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_304": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Here apical formation would be great ",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_305": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_306": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_307": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_308": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_309": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_310": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_311": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_312": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_313": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_314": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:Last spicsl slice was not segmented . ",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_315": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_316": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_317": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_318": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_321": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_322": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_324": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_336": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_338": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_339": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_342": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:LAst apical slice was not segmented",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_344": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_345": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_349": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_350": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_351": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_test_352": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_test_358": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_001": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_002": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_003": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_016": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_023": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_025": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_026": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_029": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_030": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_033": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_035": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Mesh fitting underesitmated segmentation "
+    },
+    "mnms2_train_037": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_074": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_075": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_078": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_082": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_083": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_084": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_085": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:Last apical slice was not segmented"
+    },
+    "mnms2_train_091": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_093": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_102": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_104": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_105": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_107": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_110": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_113": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_114": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Last apical slice was not segmented ",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_117": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_118": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_121": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Mesh fitting did not cover whole segmented slices ",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_train_123": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_124": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_125": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:Last apical slice was not segmented"
+    },
+    "mnms2_train_132": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:I would like to discuss this case",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_143": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_152": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:last apical slice was not segmented ",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_train_159": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_val_162": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_val_164": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_val_165": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_val_173": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_val_174": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_val_188": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_val_192": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "mnms2_val_194": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_val_198": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "mnms2_val_199": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    }
+}

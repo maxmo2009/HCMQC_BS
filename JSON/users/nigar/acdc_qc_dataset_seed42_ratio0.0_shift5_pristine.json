@@ -1,0 +1,1806 @@
+{
+    "__meta__": {
+        "schema_version": 2,
+        "dataset_root": "/home/maxmo2009/AQC_dataset/no_sabotage_dataset/pristine_acdc/seed42_ratio0.0_shift5"
+    },
+    "patient001": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient002": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient003": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient004": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:I rejected it because of basal slices. I assume there are no all basal slices in cardiac MRI itself. \n\nLet's check together this ",
+        "ES_Comments": "reject:I rejected it because of basal slices. I assume there are no all basal slices in cardiac MRI itself. \n\nLet's check together this "
+    },
+    "patient005": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient006": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient007": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Endo and epi mesh apical part is not correct",
+        "ES_Comments": "reject:Endo and epi mesh apical part is not correct"
+    },
+    "patient008": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient009": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Here also apical part in mesh is not good",
+        "ES_Comments": "reject:"
+    },
+    "patient010": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "patient011": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient012": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient013": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Misalignment and also apical part is not good in mesh ",
+        "ES_Comments": "reject:"
+    },
+    "patient014": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Severe misalignment ",
+        "ES_Comments": "reject:Severe misalignment "
+    },
+    "patient015": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient016": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient017": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient018": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Basal slices are missing ",
+        "ES_Comments": "reject:Basal slices are missing "
+    },
+    "patient019": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient020": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient021": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient022": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Basal slices are missing ",
+        "ES_Comments": "reject:Basal slices are missing "
+    },
+    "patient023": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Apical slice was not segmented even if it is in CMR ",
+        "ES_Comments": "accept:"
+    },
+    "patient024": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Basal slices are missing ",
+        "ES_Comments": "reject:Basal slices are missing "
+    },
+    "patient025": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Misalignment ",
+        "ES_Comments": "reject:Misalignment "
+    },
+    "patient026": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient027": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient028": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:Last apical slice was not segmented but it is not huge part of apex"
+    },
+    "patient029": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient030": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient031": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient032": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient033": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:Misalignment"
+    },
+    "patient034": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient035": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient036": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Basal slices are missing ",
+        "ES_Comments": "accept:"
+    },
+    "patient037": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient038": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient039": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient040": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "patient041": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient042": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "patient043": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient044": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient045": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Misalignment ",
+        "ES_Comments": "reject:Misalignment "
+    },
+    "patient046": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Segmentation is good, but the mesh is not good in apical side ",
+        "ES_Comments": "reject:"
+    },
+    "patient047": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient048": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient049": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient050": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient051": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Misalignment "
+    },
+    "patient052": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:Segmentation is good but mesh fitting is not correct"
+    },
+    "patient053": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient054": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Mesh fitting is not correct",
+        "ES_Comments": "reject:"
+    },
+    "patient055": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient056": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient057": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Basal slices are missing ",
+        "ES_Comments": "accept:"
+    },
+    "patient058": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "patient059": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient060": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient061": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient062": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient063": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient064": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient065": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Basal slices are missing ",
+        "ES_Comments": "accept:"
+    },
+    "patient066": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient067": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient068": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient069": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient070": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:basal slices are missing ",
+        "ES_Comments": "reject:"
+    },
+    "patient071": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient072": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient073": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient074": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Misaligned"
+    },
+    "patient075": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Basal slices are missing ",
+        "ES_Comments": "accept:"
+    },
+    "patient076": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient077": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient078": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient079": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient080": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient081": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient082": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient083": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient084": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient085": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient086": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "patient087": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:misaligned "
+    },
+    "patient088": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:misaligned ",
+        "ES_Comments": "reject:"
+    },
+    "patient089": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient090": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient091": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient092": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:basal slices are missing ",
+        "ES_Comments": "accept:"
+    },
+    "patient093": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient094": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient095": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient096": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient097": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient098": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient099": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient100": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient101": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient102": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient103": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient104": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient105": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient106": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient107": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient108": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:LAst two basal slices were not segmented "
+    },
+    "patient109": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient110": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient111": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient112": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient113": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient114": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient115": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient116": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient117": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "patient118": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient119": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient120": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient121": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient122": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient123": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient124": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Misalignment"
+    },
+    "patient125": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient126": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient127": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient128": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:Last basal slice was not segmented"
+    },
+    "patient129": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient130": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient131": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "reject:"
+    },
+    "patient132": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Last basal slice was segmented but mesh fitting did not capture it",
+        "ES_Comments": "reject:Same"
+    },
+    "patient133": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient134": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient135": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient136": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient137": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "accept:"
+    },
+    "patient138": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient139": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient140": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient141": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient142": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient143": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:I unclassified it due to mesh fitting - it is not covering whole segmented slices",
+        "ES_Comments": "accept:"
+    },
+    "patient144": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient145": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:",
+        "ES_Comments": "reject:"
+    },
+    "patient146": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient147": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient148": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:Basal slices are missing ",
+        "ES_Comments": "reject:"
+    },
+    "patient149": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "accept:",
+        "ES_Comments": "accept:"
+    },
+    "patient150": {
+        "ED": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ES": {
+            "sabotaged": false,
+            "shifts": []
+        },
+        "ED_Comments": "reject:I am not sure about basal slice ",
+        "ES_Comments": "accept:"
+    }
+}
