@@ -67,9 +67,9 @@ static/
   js/files.js     File System page logic — lazy file tree + SegViewer class (one 3D scene per pane)
   js/admin.js     Admin Tools page logic (user cards, visibility toggles, account CRUD, delete modal)
   css/app.css     All UI styles (files.html and admin.html keep their page-specific styles inline)
-JSON/             gitignored — credentials + per-user QC data
-  users.json      {"username": "plaintext_password", ...}
-  users/<user>/   *.json QC dataset files (one per dataset)
+JSON/             credentials (gitignored) + per-user QC data (users/ is TRACKED)
+  users.json      {"username": "plaintext_password", ...} — gitignored, NEVER track
+  users/<user>/   *.json QC dataset files (one per dataset) — git-tracked (see Editing tips)
 reports/          git-TRACKED (repo is private) — team docs (markdown + patient-derived PNGs), served AND edited via /docs
 tempCMR/          early-development sample NIfTI pair (ED only) — kept for ad-hoc loader testing, not referenced by the running app
 ```
@@ -92,7 +92,9 @@ Patient/phase navigation triggers a **full page reload** (the session is the sou
 
 ### QCStore persistence
 
-`QCStore._persist()` rewrites the entire user JSON file on every `set_comment()` call. Per-user file isolation makes concurrent collisions unlikely but **not impossible** — the same user opening two browser tabs and saving in parallel can race. There is no file lock.
+`QCStore._persist()` rewrites the entire user JSON file on every `set_comment()` call, via an **atomic replace**: it writes `<file>.json.tmp` and `os.replace()`s it over the original. Do not "simplify" this back to a plain `open(path, 'w')` — that truncates the file first, and a concurrent reader (the frontend fires `save_qc` and `qc_statistics` near-simultaneously) catches it empty → `JSONDecodeError` → 500. This actually fired ~5 times during a heavy review session (2026-08-30) before the atomic write landed.
+
+What atomicity does and doesn't buy: readers now always see a complete file, but there is still **no file lock** — the same user saving from two browser tabs in parallel is last-write-wins (one tab's decision can be silently overwritten by the other's stale in-memory copy).
 
 ### Patient paths
 
@@ -131,6 +133,14 @@ Plaintext passwords in `JSON/users.json` (read on every login attempt — no res
 ### QC comment encoding
 
 `{ED,ES}_Comments` fields are stored as `"<decision>:<free-text>"`. `services.qc_store.parse_decision()` extracts the decision; `QC_DECISIONS = ('accept', 'reject', 'finetune', 'unclassified')` in `config.py` is the allowed set. Empty string → `'-'`; non-matching prefix → `'unknown'`.
+
+### Dataset-name blinding (reviewer-facing dropdown)
+
+Reviewers must not be able to tell *which method's output* (or whether an uncorrupted control) they are scoring, so the dataset dropdown shows **blinded labels** for non-admins. `datasetLabel()` in `app.js`: strip `.json`, strip everything **after** `_shift<N>` (hides method suffixes like `_gpt-5.5` / `_rulebase` / `_pristine`), then strip `_ratio<X>` (which sits *before* `_shift<N>` and would otherwise leak — `ratio0.0` literally announces "uncorrupted"). Labels that collide after blinding get neutral numeric suffixes `(1)`, `(2)` from `populateDatasetSelector()` — distinguishable, but not identifiable. Admins (and anyone ticking the *Show full filename* checkbox under the dropdown — it's a convenience, not a security boundary) see real filenames.
+
+**Naming convention this imposes**: any revealing token in a QC filename MUST come after `_shift<N>` — e.g. `mmcmr_qc_dataset_seed42_ratio0.0_shift5_pristine.json` blinds to `mmcmr_qc_dataset_seed42_shift5`, identical in shape to a future corrupted `..._ratio0.5_shift5.json` (they'd collide → neutral numbering, which is the intent). Uncorrupted control sets keep the full `seed{N}_ratio{R}_shift{S}` config block for exactly this reason, even though `shift` is meaningless at ratio 0. Never name a dataset so that something identifying survives left of `_shift<N>`.
+
+Blinding pairs with **per-user file visibility** (Admin Tools) to scope what a reviewer sees at all — the operational pattern for a blinded task is: deploy the QC file(s), hide everything else for that user, and keep the case *order* identical across arms (the app addresses patients positionally, so reviewer case #N must be the same heart in every arm).
 
 ### Document viewer (`/docs`)
 
@@ -196,9 +206,13 @@ A second admin-only page (Menu → *Admin Tools*; disabled `<span>` for non-admi
 
 ### Top-bar dropdown & floating panels
 
-The **Menu** dropdown (`#nav-menu`, toggled + wired in `app.js`) holds: *Useful Document* (`/docs`), *File System* (`/files`), *Admin Tools* (`/admin`) — the latter two admin-only, rendered as disabled `<span>`s for non-admins — and **⟲ Reset Panel Positions**.
+The **Menu** dropdown (`#nav-menu`, toggled + wired in `app.js`) holds: *Useful Document* (`/docs`), *File System* (`/files`), *Admin Tools* (`/admin`) — the latter two admin-only, rendered as disabled `<span>`s for non-admins — and **⟲ Reset Layout** (`resetPanelPositions()`, which despite the function name now resets *everything* below: panel positions, minimize state, the 3D Controls position, and the main-view split).
 
-Two panels are drag-positioned in `app.js` and persisted to `localStorage`: the Control Panel (`#floating-qc-panel`, anchored **top-left** at `top:62 left:440` — just right of QC Statistics — dragged via CSS `transform: translate`, keys `panelPosX/Y`) and the QC Statistics panel (`#floating-stats-panel`, anchored top-left, dragged via inline `left/top`, keys `statsPanelPosX/Y`); each also persists a `*Minimized` flag (`panelMinimized`, `statsPanelMinimized`, `infoPanelMinimized` for the 3D Controls). `resetPanelPositions()` clears positions AND the minimized flags AND restores the in-DOM minimize state (removes `.minimized`/`.hidden`, flips the toggle text from `＋` back to `－`) — without that last step, a panel minimized + dragged off-screen comes back as an unfindable tiny strip. The 3D `#info` ("Controls") panel is collapsible but **fixed-position** (not draggable, so it can't be lost).
+Two panels are drag-positioned in `app.js` and persisted to `localStorage`: the Control Panel (`#floating-qc-panel`, anchored **top-left** at `top:62 left:440` — just right of QC Statistics — dragged via CSS `transform: translate`, keys `panelPosX/Y`) and the QC Statistics panel (`#floating-stats-panel`, anchored top-left, dragged via inline `left/top`, keys `statsPanelPosX/Y`); each also persists a `*Minimized` flag (`panelMinimized`, `statsPanelMinimized`, `infoPanelMinimized` for the 3D Controls). `resetPanelPositions()` clears positions AND the minimized flags AND restores the in-DOM minimize state (removes `.minimized`/`.hidden`, flips the toggle text from `＋` back to `－`) — without that last step, a panel minimized + dragged off-screen comes back as an unfindable tiny strip.
+
+**The 3D `#info` ("Controls") panel is draggable too** (by its `#info-header`), but with different mechanics from the other two: it lives *inside* `#right-panel` (`position:relative` + `overflow:hidden`), so anything dragged past an edge would be **clipped**, not merely off-screen — including its own reset button. `applyInfoPos()` therefore clamps the position to the container on every move, and re-clamps on window resize and on minimize/expand (expanding grows the panel and can push it out the bottom). Position persists per-user as `infoPanelPos::<user>`; a corrupt stored value is discarded (falls back to the CSS default `top:48 left:10`). Two resets: the ⟲ button in its own header (`resetInfoPanelPos()`), and Menu → Reset Layout.
+
+**Main-view splitters** — the three viewports (MRI / segmentation / 3D) are separated by two draggable `.panel-splitter` dividers. `.panel` is `flex: <grow> 1 0` with `min-width:0`, so **width is exactly proportional to flex-grow**; a drag moves grow between the two adjacent panels only (total conserved, third panel untouched). Each panel is clamped to `MIN_PANEL_PX` (140). Ratios persist per-user as `panelSplit::<user>` (array of 3 grows; non-positive/corrupt values are discarded on load — a zero grow would collapse a panel with no way back). Double-clicking a splitter resets to equal thirds (`resetPanelSplit()`). `syncSplitterVisibility()` hides `#splitter-1` whenever *Hide MRI panel* hides `#left-panel` (a splitter bordering a hidden panel would silently resize it). Every applied change calls `onWindowResize()` so the Three.js canvas re-fits live during the drag. While dragging, `body.col-resizing` forces the col-resize cursor and disables text selection.
 
 **Both floating panels are uniformly scalable** via a bottom-right resize handle (`#panel-resize-handle` / `#stats-resize-handle`): drag to set a `scale()` (clamped 0.6–1.8), persisted per-user as `panelScale::<user>` / `statsPanelScale::<user>`. Both use `transform-origin: top left` so the handle follows the cursor (top-left fixed, panel grows toward bottom-right) — which is *why* the Control Panel was re-anchored from its old bottom-right corner to top-left: it needs bottom-right room to grow. A one-time `panelAnchorTL` flag drops the now-meaningless old `panelPosX/Y` offsets on first load after the move. The Control Panel's transform is thus `translate(x,y) scale(s)` (drag + zoom combined); the Stats panel drags via `left/top`, leaving `transform` free for a plain `scale(s)`. Resize handles `stopPropagation` on mousedown so they don't start a panel drag, and are also listed in `dragStart`'s skip set.
 
@@ -211,7 +225,7 @@ The Control Panel's drag handler (`dragStart` in `app.js`) skips elements where 
 - **Static change** (`static/js/app.js`, `static/css/app.css`) → no restart, just hard-refresh the browser (Ctrl-Shift-R) — Flask serves static files directly.
 - **Injecting server values into `index.html`** → they become top-level `const`s in the inline `<script>` that `app.js` reads. **String values MUST use `| tojson`** (e.g. `const QC_COMMENT = {{ qc_comment | tojson }};`), never bare `"{{ ... }}"`. QC comments can contain newlines or quotes (e.g. multi-line CardiacAgent notes appended after the decision); injected raw, a newline/quote breaks the entire inline script → every `const` is undefined → `app.js` throws → the page silently fails to load (this exact bug froze a reviewer's app). Arrays/objects are pre-`json.dumps`'d in `routes/pages.py` and injected with `|safe`.
 - **Adding a new `/api/*` route** → put it in `routes/api.py`, decorate with `@login_required` (or `@admin_required` for admin-only), use `_store_or_404()` if it needs the active dataset. Keep business logic in `services/`. Any client-supplied filesystem path must go through the matching confinement guard: `services.filebrowser.resolve()` (FILES_ROOT), `services.docs._resolve()` (reports/), or `services.users.valid_username()`/`resolve_qc_path()` (JSON/users/).
-- **`JSON/` is fully gitignored** — never commit credentials or patient data. Verify with `git check-ignore -v JSON/whatever`.
+- **`JSON/` gitignore policy is split** (`.gitignore`: `JSON/*` + `!JSON/users/` + `JSON/users/**/*.bak`). `JSON/users/**` — the reviewer QC decision files — **is tracked**: they are the primary record of the clinical review and belong in version control (repo is private; the cohorts are public/anonymised). Commit new QC dataset files when you deploy them. Everything else under `JSON/` stays ignored — **`users.json` holds plaintext passwords and must never be tracked** (nor `file_visibility.json`, `QC_logs.json`, `*.bak`). Never narrow the re-include; verify with `git check-ignore -v JSON/users.json` after touching `.gitignore`.
 - **Keyboard shortcuts** live in a single `keydown` listener at the bottom of `static/js/app.js`: `1`=accept, `2`=reject, `S`=save, `←`/`→`=prev/next patient. Suppressed when focus is in an `<input>`/`<textarea>`/**`<select>`** (without the select check, typing `S` to typeahead-jump in the dataset dropdown silently saves QC, and arrow keys would reload the page) or any modifier (Ctrl/Meta/Alt) is held, so `Ctrl+S` still does the browser default. Hint chips render via `<span class="kbd">` in `templates/index.html`, styled in `static/css/app.css`.
 
 ## GitHub
