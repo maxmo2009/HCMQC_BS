@@ -29,7 +29,7 @@
                 <span class="dropdown-item disabled" role="menuitem" aria-disabled="true" title="Admin only">Admin Tools <span class="lock">admin</span></span>
                 {% endif %}
                 <div class="dropdown-sep" role="separator"></div>
-                <div class="dropdown-item dropdown-action" id="reset-panels" role="menuitem" tabindex="0" title="Move all floating panels back to their default position (in case one was dragged off-screen)">⟲ Reset Panel Positions</div>
+                <div class="dropdown-item dropdown-action" id="reset-panels" role="menuitem" tabindex="0" title="Restore the default layout: floating panels back to their starting position, and the three main views back to equal thirds">⟲ Reset Layout</div>
             </div>
         </div>
         <h1>Cardiac Segmentation QC Studio</h1>
@@ -68,20 +68,27 @@
             </div>
         </div>
 
+        <div class="panel-splitter" id="splitter-1" title="Drag to resize · double-click to reset"></div>
+
         <!-- Middle Panel (Segmentation) -->
         <div id="middle-panel" class="panel">
             <div class="panel-title">Segmentation - Slice <span id="seg-slice-number">1</span>/<span id="seg-total-slices">0</span></div>
             <img id="seg-slice-img" alt="Segmentation Slice" class="placeholder-img" style="image-rendering: pixelated;">
         </div>
 
+        <div class="panel-splitter" id="splitter-2" title="Drag to resize · double-click to reset"></div>
+
         <!-- Right Panel (3D Visualization) -->
         <div id="right-panel" class="panel">
             <div class="panel-title">3D Visualization</div>
             <div id="container"></div>
             <div id="info">
-                <div id="info-header">
+                <div id="info-header" title="Drag to move">
                     <h1>Controls</h1>
-                    <span id="info-minimize-btn" title="Minimize">－</span>
+                    <span id="info-header-btns">
+                        <span id="info-reset-btn" title="Reset position">⟲</span>
+                        <span id="info-minimize-btn" title="Minimize">－</span>
+                    </span>
                 </div>
                 <div id="info-content">
                     L-click + drag &nbsp;·&nbsp; rotate<br>

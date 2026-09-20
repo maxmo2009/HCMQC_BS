@@ -844,9 +844,117 @@ function saveViewerPref(key, val) {
     cb.addEventListener('change', function () {
         const lp = document.getElementById('left-panel');
         if (lp) lp.style.display = cb.checked ? 'none' : '';
+        syncSplitterVisibility();
         saveViewerPref('hideMriPanel', cb.checked);
         if (typeof onWindowResize === 'function') onWindowResize();
     });
+})();
+
+// ───────── Main-view splitters ─────────
+// Let the reviewer redistribute screen width between the MRI, segmentation and
+// 3D panels — the useful ratio depends on the case and on the reviewer.
+//
+// The panels are `flex: <grow> 1 0`, so width is exactly proportional to grow.
+// A drag therefore only has to move grow between the two adjacent panels; the
+// third is untouched and the total is conserved, so nothing reflows unexpectedly.
+const SPLIT_KEY = 'panelSplit::' +
+    (typeof CURRENT_USER !== 'undefined' && CURRENT_USER ? CURRENT_USER : '_anon');
+const MIN_PANEL_PX = 140;          // below this a panel is unusable, not just small
+const PANEL_IDS = ['left-panel', 'middle-panel', 'right-panel'];
+
+function panelEls() {
+    return PANEL_IDS.map(id => document.getElementById(id));
+}
+
+// A splitter is meaningless when one of the panels it borders is hidden — and
+// worse, dragging it would silently rewrite the hidden panel's share.
+function syncSplitterVisibility() {
+    const lp = document.getElementById('left-panel');
+    const s1 = document.getElementById('splitter-1');
+    if (s1) s1.style.display = (lp && lp.style.display === 'none') ? 'none' : '';
+}
+
+function applyPanelGrows(grows) {
+    panelEls().forEach((el, i) => { if (el) el.style.flex = grows[i] + ' 1 0'; });
+    if (typeof onWindowResize === 'function') onWindowResize();
+}
+
+function resetPanelSplit() {
+    panelEls().forEach(el => { if (el) el.style.flex = ''; });
+    localStorage.removeItem(SPLIT_KEY);
+    if (typeof onWindowResize === 'function') onWindowResize();
+}
+
+(function () {
+    const panels = panelEls();
+    if (panels.some(p => !p)) return;
+
+    function currentGrows() {
+        return panels.map(el => parseFloat(el.style.flexGrow) || 1);
+    }
+
+    function bindSplitter(splitter, aIdx, bIdx) {
+        if (!splitter) return;
+        splitter.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            const a = panels[aIdx], b = panels[bIdx];
+            const startX = e.clientX;
+            const wA = a.getBoundingClientRect().width;
+            const wB = b.getBoundingClientRect().width;
+            const grows = currentGrows();
+            const pairGrow = grows[aIdx] + grows[bIdx];
+            const pairPx = wA + wB;
+            if (pairPx <= 0) return;
+
+            splitter.classList.add('dragging');
+            document.body.classList.add('col-resizing');
+
+            function onMove(ev) {
+                let newA = wA + (ev.clientX - startX);
+                newA = Math.max(MIN_PANEL_PX, Math.min(pairPx - MIN_PANEL_PX, newA));
+                const g = currentGrows();
+                g[aIdx] = pairGrow * (newA / pairPx);
+                g[bIdx] = pairGrow - g[aIdx];
+                applyPanelGrows(g);
+            }
+
+            function onUp() {
+                document.removeEventListener('mousemove', onMove);
+                document.removeEventListener('mouseup', onUp);
+                splitter.classList.remove('dragging');
+                document.body.classList.remove('col-resizing');
+                localStorage.setItem(SPLIT_KEY, JSON.stringify(currentGrows()));
+            }
+
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('mouseup', onUp);
+        });
+
+        // Double-click a splitter to go back to equal thirds.
+        splitter.addEventListener('dblclick', function (e) {
+            e.preventDefault();
+            resetPanelSplit();
+        });
+    }
+
+    bindSplitter(document.getElementById('splitter-1'), 0, 1);
+    bindSplitter(document.getElementById('splitter-2'), 1, 2);
+
+    // Restore. Guard against a corrupt or non-positive entry, which would
+    // collapse a panel to zero width with no way back except clearing storage.
+    try {
+        const saved = JSON.parse(localStorage.getItem(SPLIT_KEY) || 'null');
+        if (Array.isArray(saved) && saved.length === 3 &&
+            saved.every(v => typeof v === 'number' && isFinite(v) && v > 0.05)) {
+            panels.forEach((el, i) => { el.style.flex = saved[i] + ' 1 0'; });
+        } else if (saved !== null) {
+            localStorage.removeItem(SPLIT_KEY);
+        }
+    } catch (err) {
+        localStorage.removeItem(SPLIT_KEY);
+    }
+
+    syncSplitterVisibility();
 })();
 
 // Overlay checkbox handler
@@ -1560,6 +1668,11 @@ infoMinimizeBtn.addEventListener('click', function(e) {
         infoMinimizeBtn.title = 'Minimize';
         localStorage.setItem('infoPanelMinimized', 'false');
     }
+    // Expanding makes the panel taller, which can push it past the bottom edge
+    // of a container it previously fitted in — re-clamp if it has been dragged.
+    if (localStorage.getItem(INFO_POS_KEY)) {
+        applyInfoPos(infoPanel.offsetLeft, infoPanel.offsetTop);
+    }
 });
 
 const savedInfoMinimized = localStorage.getItem('infoPanelMinimized');
@@ -1570,6 +1683,99 @@ if (savedInfoMinimized === 'true') {
     infoMinimizeBtn.textContent = '＋';
     infoMinimizeBtn.title = 'Expand';
 }
+
+// 3D "Controls" panel — draggable by its header (it overlaps the model, and the
+// interesting anatomy is often exactly under it). Positioned via inline left/top,
+// like the stats panel.
+//
+// Unlike the other two floating panels this one lives INSIDE #right-panel
+// (position:relative, overflow:hidden), so its coordinates are container-relative
+// and anything dragged past an edge is clipped rather than merely off-screen —
+// including its own ⟲ button. Hence the clamp: the panel can never be moved
+// somewhere it cannot be dragged back from. The Menu's "Reset Panel Positions"
+// covers it too, as a second way out.
+const INFO_POS_KEY = 'infoPanelPos::' +
+    (typeof CURRENT_USER !== 'undefined' && CURRENT_USER ? CURRENT_USER : '_anon');
+const infoHeader = document.getElementById('info-header');
+const infoResetBtn = document.getElementById('info-reset-btn');
+
+// Keep the panel fully inside its container. Also re-run on window resize and on
+// minimize/expand, since either can shrink the box out from under a saved offset.
+function applyInfoPos(left, top) {
+    if (!infoPanel) return;
+    const host = infoPanel.offsetParent || infoPanel.parentElement;
+    if (host) {
+        left = Math.min(Math.max(0, left), Math.max(0, host.clientWidth - infoPanel.offsetWidth));
+        top = Math.min(Math.max(0, top), Math.max(0, host.clientHeight - infoPanel.offsetHeight));
+    }
+    infoPanel.style.left = left + 'px';
+    infoPanel.style.top = top + 'px';
+}
+
+// Clearing the inline values falls back to the CSS default (top:48px, left:10px).
+function resetInfoPanelPos() {
+    if (!infoPanel) return;
+    infoPanel.style.left = '';
+    infoPanel.style.top = '';
+    localStorage.removeItem(INFO_POS_KEY);
+}
+
+(function () {
+    if (!infoPanel || !infoHeader) return;
+    let dragging = false, startX = 0, startY = 0, baseLeft = 0, baseTop = 0;
+
+    infoHeader.addEventListener('mousedown', function (e) {
+        // Let the header buttons act as buttons, not as drag handles.
+        if (e.target === infoMinimizeBtn || e.target === infoResetBtn) return;
+        e.preventDefault();
+        dragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        baseLeft = infoPanel.offsetLeft;
+        baseTop = infoPanel.offsetTop;
+        document.addEventListener('mousemove', onInfoDrag);
+        document.addEventListener('mouseup', onInfoDragEnd);
+    });
+
+    function onInfoDrag(e) {
+        if (!dragging) return;
+        e.preventDefault();   // OrbitControls also listens on this area
+        applyInfoPos(baseLeft + (e.clientX - startX), baseTop + (e.clientY - startY));
+    }
+
+    function onInfoDragEnd() {
+        if (!dragging) return;
+        dragging = false;
+        document.removeEventListener('mousemove', onInfoDrag);
+        document.removeEventListener('mouseup', onInfoDragEnd);
+        localStorage.setItem(INFO_POS_KEY, JSON.stringify(
+            { left: infoPanel.offsetLeft, top: infoPanel.offsetTop }));
+    }
+
+    if (infoResetBtn) {
+        infoResetBtn.addEventListener('click', function (e) {
+            e.stopPropagation();     // don't start a drag
+            resetInfoPanelPos();
+        });
+    }
+
+    // Restore. Re-clamped on the way in: the window may be smaller than it was
+    // when the position was saved.
+    try {
+        const saved = JSON.parse(localStorage.getItem(INFO_POS_KEY) || 'null');
+        if (saved && typeof saved.left === 'number' && typeof saved.top === 'number') {
+            applyInfoPos(saved.left, saved.top);
+        }
+    } catch (err) {
+        localStorage.removeItem(INFO_POS_KEY);   // corrupt entry — use the CSS default
+    }
+
+    window.addEventListener('resize', function () {
+        if (localStorage.getItem(INFO_POS_KEY)) {
+            applyInfoPos(infoPanel.offsetLeft, infoPanel.offsetTop);
+        }
+    });
+})();
 
 // Initialize chart and load statistics on page load
 initPieChart();
@@ -1596,6 +1802,14 @@ function datasetLabel(name) {
     // everything past `_shift<N>` so new method suffixes are hidden automatically.
     // Falls back to the full name if the filename doesn't match the convention.
     lab = lab.replace(/(_shift\d+).*$/, '$1');
+    // Also drop the sabotage ratio, which sits BEFORE `_shift<N>` and so survived
+    // the strip above. It is not a neutral detail: an un-corrupted control set is
+    // generated at ratio 0.0, so leaving it in announces "this one is the pristine
+    // data" and invites the reviewer to relax their bar on exactly the dataset
+    // whose accept rate we are trying to measure. Removing it makes such a set
+    // collide with the corrupted one, and the numeric suffix added by
+    // populateDatasetSelector keeps them distinguishable without saying which.
+    lab = lab.replace(/_ratio[\d.]+/, '');
     return lab;
 }
 (function () {
@@ -1737,6 +1951,13 @@ function resetPanelPositions() {
     }
     localStorage.removeItem('statsPanelPosX');
     localStorage.removeItem('statsPanelPosY');
+
+    // 3D Controls panel: same idea, but it also has its own ⟲ in its header.
+    if (typeof resetInfoPanelPos === 'function') resetInfoPanelPos();
+
+    // Main-view split ratio back to equal thirds (also available by
+    // double-clicking a splitter).
+    if (typeof resetPanelSplit === 'function') resetPanelSplit();
 
     // Also restore the minimized state, otherwise a panel that was dragged
     // off-screen WHILE minimized comes back as a tiny collapsed strip and

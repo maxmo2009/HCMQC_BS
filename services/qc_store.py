@@ -98,8 +98,16 @@ class QCStore:
                 'dataset_root': self.dataset_root,
             }
         out.update(self.patient_data)
-        with open(self.json_path, 'w') as f:
+        # Atomic replace. A plain open('w') truncates the file first, so any
+        # concurrent reader (save_qc and qc_statistics fire near-simultaneously
+        # from the same browser) can catch it empty -> JSONDecodeError -> 500.
+        # This actually happened ~5x during a heavy review session (2026-08-30).
+        # Writing a sibling tmp file and os.replace()-ing it in keeps a complete
+        # file visible to readers at every instant.
+        tmp = self.json_path + '.tmp'
+        with open(tmp, 'w') as f:
             json.dump(out, f, indent=4)
+        os.replace(tmp, self.json_path)
 
 
 def parse_decision(comment):

@@ -261,20 +261,67 @@ body::before {
     z-index: 1;
 }
 
+/* Width comes from flex-grow (basis 0), so a panel's width is exactly
+   proportional to its grow value — that is what makes the splitter drag maths
+   trivial. min-width:0 is required or the flex items refuse to shrink below
+   their content. Default grow is 1 each = equal thirds; the splitters below
+   rewrite grow inline. */
 .panel {
-    width: calc(100vh - 44px);
+    flex: 1 1 0;
+    min-width: 0;
     height: calc(100vh - 44px);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid var(--line);
     background: var(--bg-0);
     overflow: hidden;
 }
 
-#right-panel {
-    border-right: none;
+/* Draggable divider between two main views. Separation lines live here rather
+   than on .panel so hiding a panel doesn't leave a stray border behind. */
+.panel-splitter {
+    flex: 0 0 7px;
+    height: calc(100vh - 44px);
+    background: var(--bg-1);
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    cursor: col-resize;
+    position: relative;
+    z-index: 200;
+    transition: background 0.12s linear;
+}
+
+/* Grip marker — without it a 7px strip reads as a border, not a control. */
+.panel-splitter::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3px;
+    height: 34px;
+    background: var(--line-strong);
+    transition: background 0.12s linear;
+}
+
+.panel-splitter:hover,
+.panel-splitter.dragging {
+    background: var(--accent-bg);
+    border-color: var(--accent-dim);
+}
+
+.panel-splitter:hover::after,
+.panel-splitter.dragging::after {
+    background: var(--accent);
+}
+
+/* While dragging, keep the resize cursor everywhere and stop the pointer from
+   selecting panel text as it sweeps across. */
+body.col-resizing,
+body.col-resizing * {
+    cursor: col-resize !important;
+    user-select: none !important;
 }
 
 .placeholder-img,
@@ -443,6 +490,14 @@ body::before {
     padding-bottom: 6px;
     margin-bottom: 8px;
     border-bottom: 1px solid var(--line);
+    cursor: move;          /* the panel is draggable by its header */
+    user-select: none;     /* dragging must not select the "Controls" text */
+}
+
+#info-header-btns {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 #info h1 {
@@ -456,7 +511,8 @@ body::before {
     border-bottom: none;
 }
 
-#info-minimize-btn {
+#info-minimize-btn,
+#info-reset-btn {
     cursor: pointer !important;
     color: var(--text-1);
     font-size: 12px;
@@ -471,7 +527,8 @@ body::before {
     user-select: none;
 }
 
-#info-minimize-btn:hover {
+#info-minimize-btn:hover,
+#info-reset-btn:hover {
     color: var(--text-0);
     border-color: var(--accent);
     background: var(--accent-bg);
